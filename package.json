@@ -20,6 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@axe-core/react": "^4.7.3",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.9",
@@ -43,11 +44,13 @@
     "graphql-middleware": "^6.1.35",
     "graphql-shield": "^7.6.5",
     "graphql-upload": "^13.0.0",
+    "i18next": "^21.6.7",
     "jsonwebtoken": "^9.0.2",
     "passport-jwt": "^4.0.1",
     "pg": "^8.11.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^11.15.3",
     "react-router-dom": "^6.16.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.1"
