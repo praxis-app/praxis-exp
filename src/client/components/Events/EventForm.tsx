@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import dayjs, { Dayjs } from 'dayjs';
 import { Form, Formik, FormikErrors } from 'formik';
-import produce from 'immer';
+import { produce } from 'immer';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toastVar } from '../../apollo/cache';

@@ -1,5 +1,5 @@
 import { Reference } from '@apollo/client';
-import produce from 'immer';
+import { produce } from 'immer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FollowButtonFragment } from '../../apollo/users/generated/FollowButton.fragment';

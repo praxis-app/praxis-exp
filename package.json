@@ -45,6 +45,7 @@
     "crypto-random-string": "^3.3.1",
     "dotenv": "^16.3.1",
     "formik": "^2.4.5",
+    "formik-material-ui": "^4.0.0-alpha.2",
     "graphql": "^16.8.0",
     "graphql-middleware": "^6.1.35",
     "graphql-shield": "^7.6.5",
