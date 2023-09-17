@@ -1,3 +1,3 @@
 module.exports = {
-  translationsFilePath: './src/client/i18n/locales/en.json',
+  translationsFilePath: './src/client/locales/en.json',
 };

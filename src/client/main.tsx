@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { Environments } from './constants/common.constants';
-import './i18n/i18n.config';
+import './locales/i18n.config';
 import './styles/globals.css';
 import theme from './styles/theme';
 
