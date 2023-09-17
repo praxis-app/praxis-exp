@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HomePage = () => {
-  return <>Hello World 🎉</>;
+  return <>Welcome to Praxis</>;
 };
 
 export default HomePage;
