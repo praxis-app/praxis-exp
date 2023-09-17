@@ -1,7 +1,6 @@
 import { useReactiveVar } from '@apollo/client';
 import { Card, CardContent, FormGroup } from '@mui/material';
 import { Form, Formik } from 'formik';
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLoginMutation } from '../../apollo/auth/generated/Login.mutation';
 import { isLoggedInVar, isNavDrawerOpenVar, toastVar } from '../../apollo/cache';

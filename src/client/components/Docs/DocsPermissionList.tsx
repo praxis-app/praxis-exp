@@ -1,5 +1,4 @@
 import { Box } from '@mui/material';
-import React from 'react';
 import { GROUP_PERMISSION_NAMES, SERVER_PERMISSION_NAMES } from '../../constants/role.constants';
 import { getPermissionText } from '../../utils/role.utils';
 import DocsDefinitionListItem from './DocsDefinitionListItem';

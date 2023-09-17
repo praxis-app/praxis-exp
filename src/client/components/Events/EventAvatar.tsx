@@ -1,5 +1,4 @@
 import { Avatar, AvatarProps, useTheme } from '@mui/material';
-import React from 'react';
 import { EventAvatarFragment } from '../../apollo/events/generated/EventAvatar.fragment';
 import { ProposalActionEventAvatarFragment } from '../../apollo/proposals/generated/ProposalActionEventAvatar.fragment';
 import { getEventPath } from '../../utils/event.utils';

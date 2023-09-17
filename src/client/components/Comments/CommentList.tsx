@@ -1,5 +1,4 @@
 import { Box, BoxProps } from '@mui/material';
-import React from 'react';
 import { CommentFragment } from '../../apollo/comments/generated/Comment.fragment';
 import Comment from './Comment';
 

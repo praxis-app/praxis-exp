@@ -12,7 +12,6 @@ import {
 import dayjs, { Dayjs } from 'dayjs';
 import { Form, Formik, FormikErrors } from 'formik';
 import produce from 'immer';
-import React from 'react';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toastVar } from '../../apollo/cache';

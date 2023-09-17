@@ -2,7 +2,7 @@ import { useReactiveVar } from '@apollo/client';
 import { Card, CardContent, FormGroup } from '@mui/material';
 import { Form, Formik, FormikErrors } from 'formik';
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSignUpMutation } from '../../apollo/auth/generated/SignUp.mutation';
 import { inviteTokenVar, isLoggedInVar, isNavDrawerOpenVar, toastVar } from '../../apollo/cache';

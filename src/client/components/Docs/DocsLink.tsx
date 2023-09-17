@@ -1,5 +1,4 @@
 import { Box } from '@mui/material';
-import React from 'react';
 import ExternalLink from '../Shared/ExternalLink';
 import Link from '../Shared/Link';
 
