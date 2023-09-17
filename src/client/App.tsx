@@ -1,18 +1,14 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import HomePage from './pages/HomePage';
 
-const API_ROOT = '/api';
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <HomePage />,
+  },
+]);
 
-const App = () => {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    axios.get(API_ROOT).then((res) => {
-      setMessage(res.data);
-    });
-  }, []);
-
-  return <>{message}</>;
-};
+const App = () => <RouterProvider router={router} />;
 
 export default App;
