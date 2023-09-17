@@ -2,9 +2,11 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { GraphQLSchema } from 'graphql';
 import { applyMiddleware } from 'graphql-middleware';
 import { GraphQLUpload } from 'graphql-upload';
+import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
 import { CommentsModule } from './comments/comments.module';
 import { Environment } from './common/common.constants';
@@ -42,6 +44,11 @@ export const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'client'),
+      exclude: ['/api/(.*)', '/graphql'],
+      renderPath: '/*',
+    }),
     ApolloModule,
     AuthModule,
     CommentsModule,
