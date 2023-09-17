@@ -34,7 +34,6 @@ export const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
     context: contextService.getContext.bind(contextService),
     cors: { origin: true, credentials: true },
     csrfPrevention: configService.get('NODE_ENV') !== Environment.Development,
-    path: '/api/graphql',
     resolvers: { Upload: GraphQLUpload },
     transformSchema: (schema: GraphQLSchema) => applyMiddleware(schema, shieldPermissions),
   }),

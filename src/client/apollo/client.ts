@@ -5,10 +5,8 @@ import refreshTokenLink from './auth/links/refresh-token.link';
 import cache from './cache';
 
 const terminatingLink = createUploadLink({
-  uri: `${API_ROOT}/graphql`,
-  headers: {
-    'Apollo-Require-Preflight': 'true',
-  },
+  headers: { 'Apollo-Require-Preflight': 'true' },
+  uri: '/graphql',
 });
 
 const client = new ApolloClient({
