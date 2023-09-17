@@ -1,26 +1,34 @@
-import { ConfigService } from '@nestjs/config';
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { NestExpressApplication } from '@nestjs/platform-express';
+import { GraphQLSchemaHost } from '@nestjs/graphql';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as cookieParser from 'cookie-parser';
+import { writeFileSync } from 'fs';
+import { printSchema } from 'graphql';
+import { graphqlUploadExpress } from 'graphql-upload';
+import { join } from 'path';
 import { AppModule } from './app.module';
 
-export interface EnvironmentVariables {
-  CORS_ALLOWED_ORIGIN: string;
-  SERVER_PORT: number;
-  NODE_ENV: string;
-}
+const bootstrap = async () => {
+  const app = await NestFactory.create(AppModule, { cors: true });
 
-async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  const configService = app.get<ConfigService<EnvironmentVariables>>(ConfigService);
+  app.useGlobalPipes(new ValidationPipe());
+  app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 }));
+  app.use(cookieParser());
 
-  app.setGlobalPrefix('api');
-  app.enable('trust proxy');
-  app.enableCors({
-    credentials: true,
-    origin: configService.get<string>('CORS_ALLOWED_ORIGIN', '').split(','),
-  });
+  const config = new DocumentBuilder()
+    .setTitle('Praxis')
+    .setDescription('Social networking platform built with Vite and NestJS')
+    .setVersion('1.0')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
 
-  await app.listen(configService.get<string>('SERVER_PORT', ''));
-}
+  SwaggerModule.setup('api', app, document);
+
+  await app.listen(process.env.SERVER_PORT);
+
+  const { schema } = app.get(GraphQLSchemaHost);
+  writeFileSync(join(process.cwd(), `./schema.graphql`), printSchema(schema));
+};
 
 bootstrap();
