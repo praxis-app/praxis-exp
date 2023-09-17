@@ -1,5 +1,7 @@
 import { InMemoryCache, makeVar } from '@apollo/client';
 import { AlertColor } from '@mui/material';
+import { INVITE_TOKEN } from '../constants/server-invite.constants';
+import { getLocalStorageItem } from '../utils/common.utils';
 
 interface ToastNotification {
   status: AlertColor;
@@ -14,6 +16,7 @@ export const isNavDrawerOpenVar = makeVar(false);
 export const isLoggedInVar = makeVar(false);
 export const isAuthLoadingVar = makeVar(false);
 export const isRefreshingTokenVar = makeVar(false);
+export const inviteTokenVar = makeVar(getLocalStorageItem(INVITE_TOKEN));
 
 /**
  * TODO: Determine whether defining custom merge functions as done below is
