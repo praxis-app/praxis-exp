@@ -1,8 +1,5 @@
-import axe from '@axe-core/react';
 import Router from 'next/router';
-import React, { isValidElement, ReactNode } from 'react';
-import ReactDOM from 'react-dom/client';
-import { Environments } from '../constants/common.constants';
+import { isValidElement, ReactNode } from 'react';
 
 /**
  * Returns whether or not a given node can be successfully rendered.
@@ -31,13 +28,6 @@ export const isValidUrl = (str: string) => {
     return false;
   }
   return url.protocol === 'http:' || url.protocol === 'https:';
-};
-
-export const initAxe = () => {
-  if (process.env.NODE_ENV === Environments.Production) {
-    return;
-  }
-  axe(React, ReactDOM, 1000);
 };
 
 export const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
