@@ -3,7 +3,7 @@ import React from 'react';
 
 const HomePage = () => {
   return (
-    <Typography variant="h2" textAlign="center" paddingTop={4}>
+    <Typography textAlign="center" paddingTop={4} fontFamily="Inter Bold" fontSize={40}>
       Welcome to Praxis
     </Typography>
   );
