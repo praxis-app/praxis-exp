@@ -9,6 +9,7 @@ declare global {
     interface ProcessEnv {
       CLIENT_PORT: number;
       SERVER_PORT: number;
+      NODE_ENV: string;
     }
   }
 }
@@ -26,6 +27,9 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+  },
+  define: {
+    'process.env': process.env,
   },
   build: {
     outDir: '../../dist/client',
