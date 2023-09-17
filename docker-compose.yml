@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: vite-nestjs
+    build:
+      context: .
+      target: runtime_stage
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    command: node /app/dist/server/main.js
+    env_file: .env
