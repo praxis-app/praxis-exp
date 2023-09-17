@@ -26,6 +26,11 @@ export default defineConfig({
         rewrite: (path: string) => path.replace(/^\/api/, ''),
         changeOrigin: true,
       },
+      '/graphql': {
+        target: `http://localhost:${process.env.SERVER_PORT}/graphql`,
+        rewrite: (path: string) => path.replace(/^\/graphql/, ''),
+        changeOrigin: true,
+      },
     },
   },
   define: {

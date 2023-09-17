@@ -1,9 +1,7 @@
 import { Controller, Get, Param, ParseIntPipe, Res } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { ImagesService } from './images.service';
 
-@ApiTags('images')
 @Controller('images')
 export class ImagesController {
   constructor(private service: ImagesService) {}
