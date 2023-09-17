@@ -1,5 +1,5 @@
 import { useReactiveVar } from '@apollo/client';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { isLoggedInVar } from '../../apollo/cache';
 import LoginForm from '../../components/Auth/LoginForm';
 import ProgressBar from '../../components/Shared/ProgressBar';

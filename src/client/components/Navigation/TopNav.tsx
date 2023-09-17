@@ -1,6 +1,5 @@
 import { Search as SearchIcon } from '@mui/icons-material';
 import { AppBar, AppBarProps, IconButton, SxProps, Toolbar, useTheme } from '@mui/material';
-import { useRouter } from 'next/router';
 import { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavigationPaths } from '../../constants/common.constants';
@@ -15,7 +14,6 @@ interface Props {
 }
 
 const TopNav = ({ appBarProps }: Props) => {
-  const { asPath, reload } = useRouter();
   const { t } = useTranslation();
   const isDesktop = useIsDesktop();
   const theme = useTheme();
@@ -54,13 +52,14 @@ const TopNav = ({ appBarProps }: Props) => {
   };
 
   const renderBrand = () => {
-    if (asPath === NavigationPaths.Home) {
-      return (
-        <LevelOneHeading onClick={() => reload()} sx={brandStyles}>
-          {t('brand')}
-        </LevelOneHeading>
-      );
-    }
+    // TODO: Add reload functionality
+    // if (asPath === NavigationPaths.Home) {
+    //   return (
+    //     <LevelOneHeading onClick={() => reload()} sx={brandStyles}>
+    //       {t('brand')}
+    //     </LevelOneHeading>
+    //   );
+    // }
     return (
       <Link href={NavigationPaths.Home}>
         <LevelOneHeading sx={brandStyles}>{t('brand')}</LevelOneHeading>

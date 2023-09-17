@@ -18,7 +18,6 @@ import {
   ListItemText as MuiListItemText,
 } from '@mui/material';
 import { styled, SxProps } from '@mui/material/styles';
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLogOutMutation } from '../../apollo/auth/generated/LogOut.mutation';
@@ -56,7 +55,6 @@ const NavDrawer = () => {
   const { data: isFirstUserData } = useIsFirstUserQuery({ skip: isLoggedIn });
   const [logOut] = useLogOutMutation();
 
-  const router = useRouter();
   const { t } = useTranslation();
 
   const handleLogOutClick = async () =>
@@ -72,9 +70,10 @@ const NavDrawer = () => {
 
   const handleClose = () => isNavDrawerOpenVar(false);
 
-  useEffect(() => {
-    handleClose();
-  }, [router.pathname]);
+  // TODO: Add reload functionality
+  // useEffect(() => {
+  //   handleClose();
+  // }, [router.pathname]);
 
   const renderDocsButton = () => (
     <ListItemButton onClick={redirectTo(NavigationPaths.Docs)}>

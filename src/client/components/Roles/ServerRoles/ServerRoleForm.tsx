@@ -1,5 +1,5 @@
 import { FormikHelpers } from 'formik';
-import produce from 'immer';
+import { produce } from 'immer';
 import { useState } from 'react';
 import { toastVar } from '../../../apollo/cache';
 import { CreateServerRoleInput } from '../../../apollo/gen';

@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useAboveBreakpoint, useIsDesktop } from '../../hooks/common.hooks';
 import BottomNav from '../Navigation/BottomNav';
 import LeftNav from '../Navigation/LeftNav';

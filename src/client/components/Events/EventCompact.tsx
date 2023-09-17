@@ -1,7 +1,7 @@
 import { useReactiveVar } from '@apollo/client';
 import { Box, Divider, Stack, SxProps, Typography } from '@mui/material';
 import dayjs from 'dayjs';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isLoggedInVar, toastVar } from '../../apollo/cache';
 import { useDeleteEventMutation } from '../../apollo/events/generated/DeleteEvent.mutation';

@@ -1,7 +1,7 @@
 import { ApolloCache } from '@apollo/client';
 import { CheckCircle, Star } from '@mui/icons-material';
 import { ButtonProps, Stack, StackProps, styled } from '@mui/material';
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useCreateEventAttendeeMutation } from '../../apollo/events/generated/CreateEventAttendee.mutation';
 import { useDeleteEventAttendeeMutation } from '../../apollo/events/generated/DeleteEventAttendee.mutation';

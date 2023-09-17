@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { usePublicGroupsFeedQuery } from '../apollo/groups/generated/PublicGroupsFeed.query';
 
-const HomePage = () => {
+const Home = () => {
   usePublicGroupsFeedQuery({
     onCompleted(data) {
       console.log('PublicGroupsFeedQuery onCompleted', data);
@@ -19,4 +19,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

@@ -10,7 +10,7 @@ import {
   styled,
   Typography,
 } from '@mui/material';
-import produce from 'immer';
+import { produce } from 'immer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toastVar } from '../../apollo/cache';

@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Form, Formik, FormikErrors, FormikFormProps, FormikHelpers } from 'formik';
-import produce from 'immer';
+import { produce } from 'immer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toastVar } from '../../apollo/cache';
