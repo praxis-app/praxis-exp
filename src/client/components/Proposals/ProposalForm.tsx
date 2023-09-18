@@ -168,8 +168,8 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
   };
 
   const handleSubmit = async (
-    formValues: CreateProposalInput | UpdateProposalInput,
-    formHelpers: FormikHelpers<CreateProposalInput | UpdateProposalInput>,
+    formValues: CreateProposalInput,
+    formHelpers: FormikHelpers<CreateProposalInput>,
   ) => {
     try {
       if (editProposal) {
