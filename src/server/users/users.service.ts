@@ -4,7 +4,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import * as fs from 'fs';
 import { FileUpload } from 'graphql-upload';
 import { FindOptionsWhere, In, Repository } from 'typeorm';
-import { DEFAULT_PAGE_SIZE } from '../common/common.constants';
+import { DEFAULT_PAGE_SIZE } from '../shared/shared.constants';
 import { IsFollowedByMeKey } from '../dataloader/dataloader.types';
 import { GroupPermissionsMap } from '../groups/group-roles/models/group-permissions.type';
 import { randomDefaultImagePath, saveImage } from '../images/image.utils';

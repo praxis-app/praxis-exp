@@ -10,7 +10,7 @@ import {
 } from '@nestjs/graphql';
 import { In } from 'typeorm';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
-import { FeedItem } from '../common/models/feed-item.union';
+import { FeedItem } from '../shared/models/feed-item.union';
 import { Dataloaders } from '../dataloader/dataloader.types';
 import { Group } from '../groups/models/group.model';
 import { Image } from '../images/models/image.model';

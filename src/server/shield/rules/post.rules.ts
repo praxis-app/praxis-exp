@@ -1,5 +1,5 @@
 import { rule } from 'graphql-shield';
-import { UNAUTHORIZED } from '../../common/common.constants';
+import { UNAUTHORIZED } from '../../shared/shared.constants';
 import { Context } from '../../context/context.types';
 import { GroupPrivacy } from '../../groups/group-configs/models/group-config.model';
 import { UpdatePostInput } from '../../posts/models/update-post.input';

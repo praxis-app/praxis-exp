@@ -1,7 +1,7 @@
 import { rule } from 'graphql-shield';
 import { Comment } from '../../comments/models/comment.model';
 import { UpdateCommentInput } from '../../comments/models/update-comment.input';
-import { UNAUTHORIZED } from '../../common/common.constants';
+import { UNAUTHORIZED } from '../../shared/shared.constants';
 import { Context } from '../../context/context.types';
 import { GroupPrivacy } from '../../groups/group-configs/models/group-config.model';
 

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FileUpload } from 'graphql-upload';
 import { FindOptionsWhere, In, Repository } from 'typeorm';
-import { DEFAULT_PAGE_SIZE } from '../common/common.constants';
+import { DEFAULT_PAGE_SIZE } from '../shared/shared.constants';
 import { deleteImageFile, saveImage } from '../images/image.utils';
 import { ImagesService } from '../images/images.service';
 import { Image } from '../images/models/image.model';
