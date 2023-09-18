@@ -1,13 +1,13 @@
 import { CropOriginal } from '@mui/icons-material';
 import { Box, Typography } from '@mui/material';
 import { FormikErrors, FormikTouched } from 'formik';
-import { t } from 'i18next';
 import { CreateProposalInput } from '../../../apollo/gen';
 import { ProposalFormFragment } from '../../../apollo/proposals/generated/ProposalForm.fragment';
 import { ProposalActionFieldName, ProposalActionType } from '../../../constants/proposal.constants';
 import AttachedImagePreview from '../../Images/AttachedImagePreview';
 import ImageInput from '../../Images/ImageInput';
 import { TextField } from '../../Shared/TextField';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   editProposal?: ProposalFormFragment;
@@ -26,6 +26,8 @@ const ProposalActionFields = ({
   touched,
   values,
 }: Props) => {
+  const { t } = useTranslation();
+
   if (values.action.actionType === ProposalActionType.ChangeName) {
     const isInvalid = !!errors.action?.groupName && touched.action?.groupName;
     return (
