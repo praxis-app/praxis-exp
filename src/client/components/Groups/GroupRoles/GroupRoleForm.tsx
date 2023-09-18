@@ -5,7 +5,7 @@ import { useCreateGroupRoleMutation } from '../../../apollo/groups/generated/Cre
 import { GroupRoleFragment } from '../../../apollo/groups/generated/GroupRole.fragment';
 import { useUpdateGroupRoleMutation } from '../../../apollo/groups/generated/UpdateGroupRole.mutation';
 import { DEFAULT_ROLE_COLOR } from '../../../constants/role.constants';
-import { getRandomString } from '../../../utils/common.utils';
+import { getRandomString } from '../../../utils/shared.utils';
 import RoleForm from '../../Roles/RoleForm';
 
 interface Props {

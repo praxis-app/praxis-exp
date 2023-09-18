@@ -16,7 +16,7 @@ import {
   MemberRequestsDocument,
   MemberRequestsQuery,
 } from '../../apollo/groups/generated/MemberRequests.query';
-import { TypeNames } from '../../constants/common.constants';
+import { TypeNames } from '../../constants/shared.constants';
 import GhostButton from '../Shared/GhostButton';
 
 const Button = styled(GhostButton)(() => ({

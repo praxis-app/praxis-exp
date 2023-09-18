@@ -9,8 +9,8 @@ import { useCreateGroupMutation } from '../../apollo/groups/generated/CreateGrou
 import { GroupFormFragment } from '../../apollo/groups/generated/GroupForm.fragment';
 import { GroupsDocument, GroupsQuery } from '../../apollo/groups/generated/Groups.query';
 import { useUpdateGroupMutation } from '../../apollo/groups/generated/UpdateGroup.mutation';
-import { FieldNames } from '../../constants/common.constants';
-import { getRandomString, redirectTo } from '../../utils/common.utils';
+import { FieldNames } from '../../constants/shared.constants';
+import { getRandomString, redirectTo } from '../../utils/shared.utils';
 import { getGroupPath } from '../../utils/group.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';
 import ImageInput from '../Images/ImageInput';

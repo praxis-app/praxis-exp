@@ -3,8 +3,8 @@ import { Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { toastVar } from '../../apollo/cache';
 import { useDeleteProposalMutation } from '../../apollo/proposals/generated/DeleteProposal.mutation';
-import { NavigationPaths, TypeNames } from '../../constants/common.constants';
-import { redirectTo } from '../../utils/common.utils';
+import { NavigationPaths, TypeNames } from '../../constants/shared.constants';
+import { redirectTo } from '../../utils/shared.utils';
 
 export const removeProposal = (proposalId: number) => (cache: ApolloCache<any>) => {
   const proposalCacheId = cache.identify({

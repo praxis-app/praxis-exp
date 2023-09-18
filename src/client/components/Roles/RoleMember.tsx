@@ -12,7 +12,7 @@ import {
   useDeleteServerRoleMemberMutation,
 } from '../../apollo/roles/generated/DeleteServerRoleMember.mutation';
 import { RoleMemberFragment } from '../../apollo/roles/generated/RoleMember.fragment';
-import { FORBIDDEN, NavigationPaths } from '../../constants/common.constants';
+import { FORBIDDEN, NavigationPaths } from '../../constants/shared.constants';
 import { getUserProfilePath } from '../../utils/user.utils';
 import Flex from '../Shared/Flex';
 import Link from '../Shared/Link';

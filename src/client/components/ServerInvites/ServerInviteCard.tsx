@@ -20,7 +20,7 @@ import {
   ServerInvitesDocument,
   ServerInvitesQuery,
 } from '../../apollo/invites/generated/ServerInvites.query';
-import { TypeNames } from '../../constants/common.constants';
+import { TypeNames } from '../../constants/shared.constants';
 import { copyInviteLink } from '../../utils/server-invite.utils';
 import { timeFromNow } from '../../utils/time.utils';
 import { getUserProfilePath } from '../../utils/user.utils';

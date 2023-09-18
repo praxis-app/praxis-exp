@@ -6,8 +6,8 @@ import {
   ServerRolesDocument,
   ServerRolesQuery,
 } from '../../../apollo/roles/generated/ServerRoles.query';
-import { NavigationPaths, TypeNames } from '../../../constants/common.constants';
-import { redirectTo } from '../../../utils/common.utils';
+import { NavigationPaths, TypeNames } from '../../../constants/shared.constants';
+import { redirectTo } from '../../../utils/shared.utils';
 import DeleteButton from '../../Shared/DeleteButton';
 
 interface Props {

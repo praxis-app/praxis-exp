@@ -25,7 +25,7 @@ import {
 } from '../../apollo/groups/generated/GroupEventsTab.query';
 import { useGroupMembersByGroupIdLazyQuery } from '../../apollo/groups/generated/GroupMembersByGroupId.query';
 import { Blurple } from '../../styles/theme';
-import { getRandomString, isValidUrl, redirectTo } from '../../utils/common.utils';
+import { getRandomString, isValidUrl, redirectTo } from '../../utils/shared.utils';
 import { getEventPath } from '../../utils/event.utils';
 import { startOfNextHour } from '../../utils/time.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';

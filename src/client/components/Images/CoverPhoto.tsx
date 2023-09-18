@@ -1,6 +1,6 @@
 import { Box, SxProps } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import { useIsDesktop } from '../../hooks/common.hooks';
+import { useIsDesktop } from '../../hooks/shared.hooks';
 import { getImagePath } from '../../utils/image.utils';
 
 interface Props {

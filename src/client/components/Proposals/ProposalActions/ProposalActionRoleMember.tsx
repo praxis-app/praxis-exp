@@ -2,7 +2,7 @@ import { SxProps, Typography, useTheme } from '@mui/material';
 import { ProposalActionRoleMemberInput } from '../../../apollo/gen';
 import { ProposalActionRoleMemberFragment } from '../../../apollo/proposals/generated/ProposalActionRoleMember.fragment';
 import { UserAvatarFragment } from '../../../apollo/users/generated/UserAvatar.fragment';
-import { ChangeType } from '../../../constants/common.constants';
+import { ChangeType } from '../../../constants/shared.constants';
 import { ProposalActionType } from '../../../constants/proposal.constants';
 import { getUserProfilePath } from '../../../utils/user.utils';
 import Flex from '../../Shared/Flex';

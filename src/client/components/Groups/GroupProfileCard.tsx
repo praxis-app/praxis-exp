@@ -26,9 +26,9 @@ import {
   MIDDOT_WITH_SPACES,
   NavigationPaths,
   TAB_QUERY_PARAM,
-} from '../../constants/common.constants';
-import { useAboveBreakpoint } from '../../hooks/common.hooks';
-import { redirectTo } from '../../utils/common.utils';
+} from '../../constants/shared.constants';
+import { useAboveBreakpoint } from '../../hooks/shared.hooks';
+import { redirectTo } from '../../utils/shared.utils';
 import {
   getEditGroupPath,
   getGroupMembersPath,

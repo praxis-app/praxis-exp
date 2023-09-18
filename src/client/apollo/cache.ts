@@ -1,7 +1,7 @@
 import { InMemoryCache, makeVar } from '@apollo/client';
 import { AlertColor } from '@mui/material';
 import { INVITE_TOKEN } from '../constants/server-invite.constants';
-import { getLocalStorageItem } from '../utils/common.utils';
+import { getLocalStorageItem } from '../utils/shared.utils';
 
 interface ToastNotification {
   status: AlertColor;

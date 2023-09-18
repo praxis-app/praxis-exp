@@ -2,7 +2,7 @@ import { Delete, Edit, MoreHoriz } from '@mui/icons-material';
 import { IconButton, Menu, MenuItem, SxProps } from '@mui/material';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { redirectTo } from '../../utils/common.utils';
+import { redirectTo } from '../../utils/shared.utils';
 import GhostButton from './GhostButton';
 
 interface Props {

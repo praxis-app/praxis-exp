@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { ProposalActionEventInput } from '../../../apollo/gen';
 import { ProposalActionEventFragment } from '../../../apollo/proposals/generated/ProposalActionEvent.fragment';
 import { useUserByUserIdLazyQuery } from '../../../apollo/users/generated/UserByUserId.query';
-import { useAboveBreakpoint, useIsDesktop } from '../../../hooks/common.hooks';
+import { useAboveBreakpoint, useIsDesktop } from '../../../hooks/shared.hooks';
 import { getGroupEventsTabPath } from '../../../utils/group.utils';
 import { formatDateTime } from '../../../utils/time.utils';
 import { getUserProfilePath } from '../../../utils/user.utils';

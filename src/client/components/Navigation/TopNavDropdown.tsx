@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useLogOutMutation } from '../../apollo/auth/generated/LogOut.mutation';
 import { isAuthLoadingVar, isLoggedInVar, isRefreshingTokenVar } from '../../apollo/cache';
 import { TopNavDropdownFragment } from '../../apollo/users/generated/TopNavDropdown.fragment';
-import { NavigationPaths } from '../../constants/common.constants';
-import { inDevToast, redirectTo } from '../../utils/common.utils';
+import { NavigationPaths } from '../../constants/shared.constants';
+import { inDevToast, redirectTo } from '../../utils/shared.utils';
 
 export const handleLogOutComplete = () => {
   isLoggedInVar(false);

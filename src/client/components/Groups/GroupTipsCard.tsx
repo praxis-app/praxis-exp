@@ -3,7 +3,7 @@ import { Card, CardContent as MuiCardContent, CardHeader, styled, Typography } f
 import { useTranslation } from 'react-i18next';
 import { inviteTokenVar } from '../../apollo/cache';
 import Link from '../../components/Shared/Link';
-import { NavigationPaths } from '../../constants/common.constants';
+import { NavigationPaths } from '../../constants/shared.constants';
 
 const CardContent = styled(MuiCardContent)(() => ({
   '&:last-child': {

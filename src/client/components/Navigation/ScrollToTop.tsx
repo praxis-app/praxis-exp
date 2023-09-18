@@ -2,8 +2,8 @@ import { Publish } from '@mui/icons-material';
 import { IconButton, SxProps } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useScrollPosition } from '../../hooks/common.hooks';
-import { scrollTop } from '../../utils/common.utils';
+import { useScrollPosition } from '../../hooks/shared.hooks';
+import { scrollTop } from '../../utils/shared.utils';
 
 const ICON_BUTTON_STYLES: SxProps = {
   position: 'fixed',

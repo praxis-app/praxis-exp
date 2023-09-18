@@ -9,8 +9,8 @@ import { useCreateCommentMutation } from '../../apollo/comments/generated/Create
 import { useUpdateCommentMutation } from '../../apollo/comments/generated/UpdateComment.mutation';
 import { CreateCommentInput, UpdateCommentInput } from '../../apollo/gen';
 import { useDeleteImageMutation } from '../../apollo/images/generated/DeleteImage.mutation';
-import { FieldNames, KeyCodes, TypeNames } from '../../constants/common.constants';
-import { getRandomString } from '../../utils/common.utils';
+import { FieldNames, KeyCodes, TypeNames } from '../../constants/shared.constants';
+import { getRandomString } from '../../utils/shared.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';
 import ImageInput from '../Images/ImageInput';
 import Flex from '../Shared/Flex';

@@ -20,7 +20,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
 import { isLoggedInVar } from '../../apollo/cache';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
-import { NavigationPaths } from '../../constants/common.constants';
+import { NavigationPaths } from '../../constants/shared.constants';
 import Link from '../Shared/Link';
 
 interface ListItemTextProps extends MuiListItemTextProps {

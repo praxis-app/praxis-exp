@@ -12,8 +12,8 @@ import { useCreatePostMutation } from '../../apollo/posts/generated/CreatePost.m
 import { PostFormFragment } from '../../apollo/posts/generated/PostForm.fragment';
 import { useUpdatePostMutation } from '../../apollo/posts/generated/UpdatePost.mutation';
 import { HomeFeedDocument, HomeFeedQuery } from '../../apollo/users/generated/HomeFeed.query';
-import { FieldNames, NavigationPaths, TypeNames } from '../../constants/common.constants';
-import { getRandomString, redirectTo } from '../../utils/common.utils';
+import { FieldNames, NavigationPaths, TypeNames } from '../../constants/shared.constants';
+import { getRandomString, redirectTo } from '../../utils/shared.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';
 import ImageInput from '../Images/ImageInput';
 import Flex from '../Shared/Flex';

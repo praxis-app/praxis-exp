@@ -15,11 +15,11 @@ import {
   UpdateVoteMutation,
   useUpdateVoteMutation,
 } from '../../apollo/votes/generated/UpdateVote.mutation';
-import { NavigationPaths } from '../../constants/common.constants';
+import { NavigationPaths } from '../../constants/shared.constants';
 import { ProposalActionType, ProposalStage } from '../../constants/proposal.constants';
 import { VoteTypes } from '../../constants/vote.constants';
 import { Blurple } from '../../styles/theme';
-import { redirectTo } from '../../utils/common.utils';
+import { redirectTo } from '../../utils/shared.utils';
 import { getGroupPath } from '../../utils/group.utils';
 
 const ICON_STYLES = {

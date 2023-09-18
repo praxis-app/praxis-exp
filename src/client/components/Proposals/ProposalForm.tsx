@@ -19,9 +19,9 @@ import { ProposalFormFragment } from '../../apollo/proposals/generated/ProposalF
 import { useUpdateProposalMutation } from '../../apollo/proposals/generated/UpdateProposal.mutation';
 import { HomeFeedDocument, HomeFeedQuery } from '../../apollo/users/generated/HomeFeed.query';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
-import { FieldNames, NavigationPaths, TypeNames } from '../../constants/common.constants';
+import { FieldNames, NavigationPaths, TypeNames } from '../../constants/shared.constants';
 import { ProposalActionFieldName, ProposalActionType } from '../../constants/proposal.constants';
-import { getRandomString, redirectTo } from '../../utils/common.utils';
+import { getRandomString, redirectTo } from '../../utils/shared.utils';
 import { getProposalActionTypeOptions } from '../../utils/proposal.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';
 import ImageInput from '../Images/ImageInput';

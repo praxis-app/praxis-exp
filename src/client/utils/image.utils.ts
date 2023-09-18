@@ -1,3 +1,3 @@
-import { API_ROOT } from '../constants/common.constants';
+import { API_ROOT } from '../constants/shared.constants';
 
 export const getImagePath = (imageId: number) => `${API_ROOT}/images/${imageId}/view`;

@@ -19,7 +19,7 @@ import PrimaryActionButton from '../../components/Shared/PrimaryActionButton';
 import { TextField } from '../../components/Shared/TextField';
 import { INVITE_TOKEN } from '../../constants/server-invite.constants';
 import { UserFieldNames } from '../../constants/user.constants';
-import { getRandomString, removeLocalStorageItem } from '../../utils/common.utils';
+import { getRandomString, removeLocalStorageItem } from '../../utils/shared.utils';
 
 const SignUpForm = () => {
   const isNavDrawerOpen = useReactiveVar(isNavDrawerOpenVar);

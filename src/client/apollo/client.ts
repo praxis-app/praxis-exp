@@ -1,6 +1,6 @@
 import { ApolloClient, from } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
-import { API_ROOT, Environments } from '../constants/common.constants';
+import { API_ROOT, Environments } from '../constants/shared.constants';
 import refreshTokenLink from './auth/links/refresh-token.link';
 import cache from './cache';
 

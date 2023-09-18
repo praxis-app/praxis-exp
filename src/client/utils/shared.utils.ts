@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { isValidElement, ReactNode } from 'react';
 import { animateScroll } from 'react-scroll';
 import { toastVar } from '../apollo/cache';
-import { Environments, SCROLL_DURATION } from '../constants/common.constants';
+import { Environments, SCROLL_DURATION } from '../constants/shared.constants';
 
 /**
  * Returns whether or not a given node can be successfully rendered.

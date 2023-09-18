@@ -1,6 +1,6 @@
 import { Breakpoint, useMediaQuery, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { BrowserEvents } from '../constants/common.constants';
+import { BrowserEvents } from '../constants/shared.constants';
 
 export const useAboveBreakpoint = (breakpoint: Breakpoint) =>
   useMediaQuery(useTheme().breakpoints.up(breakpoint));

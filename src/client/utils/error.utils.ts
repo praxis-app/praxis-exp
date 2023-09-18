@@ -1,6 +1,6 @@
 import { ApolloError } from '@apollo/client';
 import { SourceLocation } from 'graphql';
-import { FORBIDDEN, UNAUTHORIZED } from '../constants/common.constants';
+import { FORBIDDEN, UNAUTHORIZED } from '../constants/shared.constants';
 
 export const isDeniedAccess = (error: ApolloError | undefined) => {
   if (!error?.message) {

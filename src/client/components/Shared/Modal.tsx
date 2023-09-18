@@ -13,8 +13,8 @@ import {
   useTheme,
 } from '@mui/material';
 import { KeyboardEvent, ReactNode } from 'react';
-import { KeyCodes } from '../../constants/common.constants';
-import { useIsDesktop } from '../../hooks/common.hooks';
+import { KeyCodes } from '../../constants/shared.constants';
+import { useIsDesktop } from '../../hooks/shared.hooks';
 
 interface Props {
   actionLabel?: string;

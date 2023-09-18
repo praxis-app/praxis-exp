@@ -17,7 +17,7 @@ import {
   ServerInvitesDocument,
   ServerInvitesQuery,
 } from '../../apollo/invites/generated/ServerInvites.query';
-import { Time } from '../../constants/common.constants';
+import { Time } from '../../constants/shared.constants';
 import { MAX_USES_OPTIONS, ServerInviteFieldNames } from '../../constants/server-invite.constants';
 import Flex from '../Shared/Flex';
 import PrimaryActionButton from '../Shared/PrimaryActionButton';

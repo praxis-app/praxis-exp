@@ -15,7 +15,7 @@ import { useTranslation } from 'react-i18next';
 import { ProposalActionEventInput } from '../../../apollo/gen';
 import { useGroupMembersByGroupIdLazyQuery } from '../../../apollo/groups/generated/GroupMembersByGroupId.query';
 import { ProposalActionFieldName, ProposalActionType } from '../../../constants/proposal.constants';
-import { getRandomString, isValidUrl } from '../../../utils/common.utils';
+import { getRandomString, isValidUrl } from '../../../utils/shared.utils';
 import { startOfNextHour } from '../../../utils/time.utils';
 import { EventFormFieldName, SHOW_ENDS_AT_BUTTON_STYLES } from '../../Events/EventForm';
 import AttachedImagePreview from '../../Images/AttachedImagePreview';

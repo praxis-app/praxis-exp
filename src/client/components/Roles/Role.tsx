@@ -3,7 +3,7 @@ import { Avatar, Box, CardActionArea, Typography, useTheme } from '@mui/material
 import { useTranslation } from 'react-i18next';
 import { GroupRoleFragment } from '../../apollo/groups/generated/GroupRole.fragment';
 import { ServerRoleFragment } from '../../apollo/roles/generated/ServerRole.fragment';
-import { NavigationPaths } from '../../constants/common.constants';
+import { NavigationPaths } from '../../constants/shared.constants';
 import { getGroupPath } from '../../utils/group.utils';
 import Flex from '../Shared/Flex';
 import Link from '../Shared/Link';

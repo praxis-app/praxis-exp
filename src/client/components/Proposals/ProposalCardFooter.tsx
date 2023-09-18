@@ -10,7 +10,7 @@ import { ProposalCardFragment } from '../../apollo/proposals/generated/ProposalC
 import { useProposalCommentsLazyQuery } from '../../apollo/proposals/generated/ProposalComments.query';
 import { ProposalStage } from '../../constants/proposal.constants';
 import { Blurple } from '../../styles/theme';
-import { inDevToast } from '../../utils/common.utils';
+import { inDevToast } from '../../utils/shared.utils';
 import CommentForm from '../Comments/CommentForm';
 import CommentsList from '../Comments/CommentList';
 import CardFooterButton from '../Shared/CardFooterButton';

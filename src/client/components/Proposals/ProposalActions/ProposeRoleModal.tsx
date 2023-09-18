@@ -19,7 +19,7 @@ import {
 import { useGroupMembersByGroupIdLazyQuery } from '../../../apollo/groups/generated/GroupMembersByGroupId.query';
 import { useGroupRoleByRoleIdLazyQuery } from '../../../apollo/groups/generated/GroupRoleByRoleId.query';
 import { useGroupRolesByGroupIdLazyQuery } from '../../../apollo/groups/generated/GroupRolesByGroupId.query';
-import { FieldNames } from '../../../constants/common.constants';
+import { FieldNames } from '../../../constants/shared.constants';
 import {
   ProposalActionFieldName,
   ProposalActionType,

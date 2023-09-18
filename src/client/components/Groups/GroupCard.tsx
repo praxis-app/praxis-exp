@@ -20,8 +20,8 @@ import {
 } from '../../apollo/groups/generated/DeleteGroup.mutation';
 import { GroupCardFragment } from '../../apollo/groups/generated/GroupCard.fragment';
 import { GroupsDocument, GroupsQuery } from '../../apollo/groups/generated/Groups.query';
-import { MIDDOT_WITH_SPACES, NavigationPaths, TypeNames } from '../../constants/common.constants';
-import { redirectTo } from '../../utils/common.utils';
+import { MIDDOT_WITH_SPACES, NavigationPaths, TypeNames } from '../../constants/shared.constants';
+import { redirectTo } from '../../utils/shared.utils';
 import {
   getEditGroupPath,
   getGroupMembersPath,

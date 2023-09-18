@@ -7,7 +7,7 @@ import { useCreateEventAttendeeMutation } from '../../apollo/events/generated/Cr
 import { useDeleteEventAttendeeMutation } from '../../apollo/events/generated/DeleteEventAttendee.mutation';
 import { EventAttendeeButtonsFragment } from '../../apollo/events/generated/EventAttendeeButtons.fragment';
 import { useUpdateEventAttendeeMutation } from '../../apollo/events/generated/UpdateEventAttendee.mutation';
-import { useIsDesktop } from '../../hooks/common.hooks';
+import { useIsDesktop } from '../../hooks/shared.hooks';
 import { Blurple } from '../../styles/theme';
 import GhostButton from '../Shared/GhostButton';
 

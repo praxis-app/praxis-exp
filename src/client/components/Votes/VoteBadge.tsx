@@ -3,7 +3,7 @@ import { SxProps, useTheme } from '@mui/material';
 import { useState } from 'react';
 import { VoteFragment } from '../../apollo/votes/generated/Vote.fragment';
 import { VoteTypes } from '../../constants/vote.constants';
-import { useIsDesktop } from '../../hooks/common.hooks';
+import { useIsDesktop } from '../../hooks/shared.hooks';
 import { Blurple } from '../../styles/theme';
 import Flex from '../Shared/Flex';
 import VotesPopover from './VotesPopover';

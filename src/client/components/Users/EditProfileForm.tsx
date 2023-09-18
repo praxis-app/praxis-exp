@@ -7,7 +7,7 @@ import { UpdateUserInput } from '../../apollo/gen';
 import { EditProfileFormFragment } from '../../apollo/users/generated/EditProfileForm.fragment';
 import { useUpdateUserMutation } from '../../apollo/users/generated/UpdateUser.mutation';
 import { UserFieldNames } from '../../constants/user.constants';
-import { redirectTo } from '../../utils/common.utils';
+import { redirectTo } from '../../utils/shared.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import CoverPhoto from '../Images/CoverPhoto';
 import ImageInput from '../Images/ImageInput';

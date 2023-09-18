@@ -7,9 +7,9 @@ import { useServerInviteQuery } from '../../apollo/invites/generated/ServerInvit
 import { useIsFirstUserQuery } from '../../apollo/users/generated/IsFirstUser.query';
 import SignUpForm from '../../components/Auth/SignUpForm';
 import ProgressBar from '../../components/Shared/ProgressBar';
-import { NavigationPaths } from '../../constants/common.constants';
+import { NavigationPaths } from '../../constants/shared.constants';
 import { INVITE_TOKEN } from '../../constants/server-invite.constants';
-import { redirectTo, setLocalStorageItem } from '../../utils/common.utils';
+import { redirectTo, setLocalStorageItem } from '../../utils/shared.utils';
 
 const SignUp = () => {
   const isLoggedIn = useReactiveVar(isLoggedInVar);

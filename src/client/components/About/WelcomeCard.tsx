@@ -3,7 +3,7 @@ import { Button, Card, CardActions, CardContent, CardHeader, Typography } from '
 import { useTranslation } from 'react-i18next';
 import { inviteTokenVar, isLoggedInVar } from '../../apollo/cache';
 import { useIsFirstUserQuery } from '../../apollo/users/generated/IsFirstUser.query';
-import { NavigationPaths } from '../../constants/common.constants';
+import { NavigationPaths } from '../../constants/shared.constants';
 import Link from '../Shared/Link';
 
 const WelcomeCard = () => {

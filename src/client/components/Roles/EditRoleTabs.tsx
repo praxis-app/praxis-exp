@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { EditGroupRoleTabsFragment } from '../../apollo/groups/generated/EditGroupRoleTabs.fragment';
 import { EditServerRoleTabsFragment } from '../../apollo/roles/generated/EditServerRoleTabs.fragment';
 import { EditRoleTabNames } from '../../constants/role.constants';
-import { useAboveBreakpoint } from '../../hooks/common.hooks';
+import { useAboveBreakpoint } from '../../hooks/shared.hooks';
 import DeleteGroupRoleButton from '../Groups/GroupRoles/DeleteGroupRoleButton';
 import GroupPermissionsForm from '../Groups/GroupRoles/GroupPermissionsForm';
 import GroupRoleForm from '../Groups/GroupRoles/GroupRoleForm';

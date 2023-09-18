@@ -7,10 +7,10 @@ import { ProposalActionRoleInput, ProposalActionRoleMemberInput } from '../../..
 import { useGroupRoleByRoleIdLazyQuery } from '../../../apollo/groups/generated/GroupRoleByRoleId.query';
 import { ProposalActionRoleFragment } from '../../../apollo/proposals/generated/ProposalActionRole.fragment';
 import { useUsersByIdsLazyQuery } from '../../../apollo/users/generated/UsersByIds.query';
-import { ChangeType } from '../../../constants/common.constants';
+import { ChangeType } from '../../../constants/shared.constants';
 import { ProposalActionType } from '../../../constants/proposal.constants';
-import { useIsDesktop } from '../../../hooks/common.hooks';
-import { getTypedKeys } from '../../../utils/common.utils';
+import { useIsDesktop } from '../../../hooks/shared.hooks';
+import { getTypedKeys } from '../../../utils/shared.utils';
 import { cleanPermissions } from '../../../utils/role.utils';
 import Accordion, { AccordionDetails, AccordionSummary } from '../../Shared/Accordion';
 import Flex from '../../Shared/Flex';

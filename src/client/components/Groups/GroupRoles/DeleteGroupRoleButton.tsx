@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { toastVar } from '../../../apollo/cache';
 import { useDeleteGroupRoleMutation } from '../../../apollo/groups/generated/DeleteGroupRole.mutation';
 import { DeleteGroupRoleButtonFragment } from '../../../apollo/groups/generated/DeleteGroupRoleButton.fragment';
-import { NavigationPaths } from '../../../constants/common.constants';
-import { redirectTo } from '../../../utils/common.utils';
+import { NavigationPaths } from '../../../constants/shared.constants';
+import { redirectTo } from '../../../utils/shared.utils';
 import DeleteButton from '../../Shared/DeleteButton';
 
 interface Props {

@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { isLoggedInVar } from '../../apollo/cache';
 import { PostCardFragment } from '../../apollo/posts/generated/PostCard.fragment';
 import { usePostCommentsLazyQuery } from '../../apollo/posts/generated/PostComments.query';
-import { inDevToast } from '../../utils/common.utils';
+import { inDevToast } from '../../utils/shared.utils';
 import CommentForm from '../Comments/CommentForm';
 import CommentsList from '../Comments/CommentList';
 import CardFooterButton from '../Shared/CardFooterButton';

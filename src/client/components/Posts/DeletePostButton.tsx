@@ -5,8 +5,8 @@ import {
   DeletePostMutation,
   useDeletePostMutation,
 } from '../../apollo/posts/generated/DeletePost.mutation';
-import { NavigationPaths, TypeNames } from '../../constants/common.constants';
-import { redirectTo } from '../../utils/common.utils';
+import { NavigationPaths, TypeNames } from '../../constants/shared.constants';
+import { redirectTo } from '../../utils/shared.utils';
 import DeleteButton from '../Shared/DeleteButton';
 
 export const removePost =

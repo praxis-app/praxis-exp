@@ -12,7 +12,7 @@ import {
   MemberRequestsQuery,
   MemberRequestsQueryVariables,
 } from '../../apollo/groups/generated/MemberRequests.query';
-import { TypeNames } from '../../constants/common.constants';
+import { TypeNames } from '../../constants/shared.constants';
 import { getUserProfilePath } from '../../utils/user.utils';
 import SharedFlex from '../Shared/Flex';
 import Link from '../Shared/Link';
