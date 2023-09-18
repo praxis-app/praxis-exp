@@ -1,7 +1,5 @@
 import { Box, SxProps } from '@mui/material';
 import { grey } from '@mui/material/colors';
-import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
 import { useIsDesktop } from '../../hooks/common.hooks';
 import { getImagePath } from '../../utils/image.utils';
 
@@ -14,12 +12,12 @@ interface Props {
 }
 
 const CoverPhoto = ({ imageFile, imageId, rounded, topRounded, sx }: Props) => {
-  const { t } = useTranslation();
   const isDesktop = useIsDesktop();
 
-  const imageStyles = {
-    transform: `translateY(-${isDesktop ? 210 : 115}px)`,
-  };
+  // TODO: Add back with image layout
+  // const imageStyles = {
+  //   transform: `translateY(-${isDesktop ? 210 : 115}px)`,
+  // };
 
   const getImageSrc = () => {
     if (imageFile) {
@@ -64,6 +62,7 @@ const CoverPhoto = ({ imageFile, imageId, rounded, topRounded, sx }: Props) => {
         ...sharedBoxStyles,
       }}
     >
+      {/* TODO: Add image layout
       <Image
         alt={t('images.labels.coverPhoto')}
         blurDataURL={getImageSrc()}
@@ -73,7 +72,7 @@ const CoverPhoto = ({ imageFile, imageId, rounded, topRounded, sx }: Props) => {
         style={imageStyles}
         height={300}
         width={300}
-      />
+      /> */}
     </Box>
   );
 };
