@@ -1,6 +1,6 @@
 import { TextFieldProps } from '@mui/material';
 import { Field as FormikField, FieldAttributes } from 'formik';
-import { TextField as FormikMUITextField } from 'formik-material-ui';
+import { TextField as FormikMUITextField } from 'formik-mui';
 
 export const TextField = (props: FieldAttributes<TextFieldProps>) => (
   <FormikField
