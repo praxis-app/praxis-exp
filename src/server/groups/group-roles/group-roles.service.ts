@@ -1,6 +1,5 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserInputError } from 'apollo-server-express';
 import { DeepPartial, FindOptionsWhere, In, Not, Repository } from 'typeorm';
 import { ADMIN_ROLE_NAME, DEFAULT_ROLE_COLOR } from '../../server-roles/server-roles.constants';
 import { UsersService } from '../../users/users.service';
@@ -8,6 +7,7 @@ import { cleanGroupPermissions, initGroupRolePermissions } from './group-role.ut
 import { GroupRolePermission } from './models/group-role-permission.model';
 import { GroupRole } from './models/group-role.model';
 import { UpdateGroupRoleInput } from './models/update-group-role.input';
+import { UserInputError } from '@nestjs/apollo';
 
 type GroupRoleWithMemberCount = GroupRole & { memberCount: number };
 

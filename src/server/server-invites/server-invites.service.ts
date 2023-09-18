@@ -1,6 +1,6 @@
+import { UserInputError, ValidationError } from '@nestjs/apollo';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserInputError, ValidationError } from 'apollo-server-express';
 import * as cryptoRandomString from 'crypto-random-string';
 import { Repository } from 'typeorm';
 import { DEFAULT_PAGE_SIZE } from '../common/common.constants';

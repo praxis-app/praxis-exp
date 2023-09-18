@@ -1,5 +1,5 @@
+import { ValidationError } from '@nestjs/apollo';
 import { Injectable, PipeTransform } from '@nestjs/common';
-import { ValidationError } from 'apollo-server-express';
 import { ProposalStage } from '../../proposals/proposals.constants';
 import { VotesService } from '../votes.service';
 

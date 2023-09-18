@@ -1,6 +1,6 @@
+import { UserInputError } from '@nestjs/apollo';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserInputError } from 'apollo-server-express';
 import { DeepPartial, FindOptionsWhere, In, Not, Repository } from 'typeorm';
 import { User } from '../users/models/user.model';
 import { UsersService } from '../users/users.service';

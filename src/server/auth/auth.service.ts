@@ -1,6 +1,5 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { UserInputError, ValidationError } from 'apollo-server-express';
 import { compare, hash } from 'bcrypt';
 import { ServerInvitesService } from '../server-invites/server-invites.service';
 import { User } from '../users/models/user.model';
@@ -10,6 +9,7 @@ import { LoginInput } from './models/login.input';
 import { SignUpInput } from './models/sign-up.input';
 import { RefreshTokensService } from './refresh-tokens/refresh-tokens.service';
 import { AccessTokenPayload } from './strategies/jwt.strategy';
+import { UserInputError, ValidationError } from '@nestjs/apollo';
 
 const ACCESS_TOKEN_EXPIRES_IN = 60 * 60 * 24 * 90;
 const SALT_ROUNDS = 10;
