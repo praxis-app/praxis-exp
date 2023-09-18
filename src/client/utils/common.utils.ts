@@ -88,6 +88,8 @@ export const getRandomString = () =>
     .map((c) => (Math.random() < 0.5 ? c : c.toUpperCase()))
     .join('');
 
-export const getTypedKeys = <T>(object: T): (keyof T)[] => Object.keys(object) as (keyof T)[];
+export const getTypedKeys = <T>(object: T): (keyof T)[] => {
+  return Object.keys(object as {}) as (keyof T)[];
+};
 
 export const redirectTo = (path: string) => Router.push(path);
