@@ -2,7 +2,7 @@
 
 import { ApolloCache, Reference } from '@apollo/client';
 import { Box, Button, styled, Typography } from '@mui/material';
-import produce from 'immer';
+import { produce } from 'immer';
 import { useTranslation } from 'react-i18next';
 import { useApproveGroupMemberRequestMutation } from '../../apollo/groups/generated/ApproveGroupMemberRequest.mutation';
 import { useDenyGroupMemberRequestMutation } from '../../apollo/groups/generated/DenyGroupMemberRequest.mutation';

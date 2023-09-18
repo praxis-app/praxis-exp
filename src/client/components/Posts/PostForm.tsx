@@ -2,7 +2,7 @@
 
 import { Divider, FormGroup } from '@mui/material';
 import { Form, Formik, FormikFormProps, FormikHelpers } from 'formik';
-import produce from 'immer';
+import { produce } from 'immer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toastVar } from '../../apollo/cache';
