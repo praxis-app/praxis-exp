@@ -1,22 +1,15 @@
-import { Typography } from '@mui/material';
-import { useTranslation } from 'react-i18next';
-import { usePublicGroupsFeedQuery } from '../apollo/groups/generated/PublicGroupsFeed.query';
+import { useReactiveVar } from '@apollo/client';
+import { isLoggedInVar } from '../apollo/cache';
+import PublicGroupsFeed from '../components/Groups/PublicGroupsFeed';
+import HomeFeed from '../components/Users/HomeFeed';
 
 const Home = () => {
-  usePublicGroupsFeedQuery({
-    onCompleted(data) {
-      console.log('PublicGroupsFeedQuery onCompleted', data);
-    },
-    errorPolicy: 'all',
-  });
+  const isLoggedIn = useReactiveVar(isLoggedInVar);
 
-  const { t } = useTranslation();
-
-  return (
-    <Typography textAlign="center" paddingTop={4} fontFamily="Inter Bold" fontSize={40}>
-      {t('prompts.welcomeToPraxis')}
-    </Typography>
-  );
+  if (!isLoggedIn) {
+    return <PublicGroupsFeed />;
+  }
+  return <HomeFeed />;
 };
 
 export default Home;

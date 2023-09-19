@@ -2,9 +2,9 @@ import { Flag, Language, Person, Place, Timer } from '@mui/icons-material';
 import { Box, Divider, SxProps, Typography } from '@mui/material';
 import dayjs from 'dayjs';
 import humanizeDuration from 'humanize-duration';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { ProposalActionEventInput } from '../../../apollo/gen';
 import { ProposalActionEventFragment } from '../../../apollo/proposals/generated/ProposalActionEvent.fragment';
 import { useUserByUserIdLazyQuery } from '../../../apollo/users/generated/UserByUserId.query';
@@ -25,8 +25,8 @@ interface Props {
 }
 
 const ProposalActionEvent = ({ event, coverPhotoFile, preview }: Props) => {
-  const { asPath } = useRouter();
-  const isProposalPage = asPath.includes('/proposals/');
+  const { pathname } = useLocation();
+  const isProposalPage = pathname.includes('/proposals/');
   const [showEvent, setShowEvent] = useState(!!preview || isProposalPage);
 
   const [getUserByUserId, { data }] = useUserByUserIdLazyQuery();

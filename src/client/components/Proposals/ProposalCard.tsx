@@ -2,24 +2,24 @@ import { useReactiveVar } from '@apollo/client';
 import {
   Box,
   Card,
+  CardProps,
   CardContent as MuiCardContent,
   CardHeader as MuiCardHeader,
-  CardProps,
-  styled,
   Typography,
+  styled,
 } from '@mui/material';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { isLoggedInVar, toastVar } from '../../apollo/cache';
 import { useDeleteProposalMutation } from '../../apollo/proposals/generated/DeleteProposal.mutation';
 import { ProposalCardFragment } from '../../apollo/proposals/generated/ProposalCard.fragment';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
-import { MIDDOT_WITH_SPACES, NavigationPaths } from '../../constants/shared.constants';
 import { ProposalStage } from '../../constants/proposal.constants';
-import { redirectTo } from '../../utils/shared.utils';
+import { MIDDOT_WITH_SPACES, NavigationPaths } from '../../constants/shared.constants';
 import { getGroupPath } from '../../utils/group.utils';
 import { getProposalActionLabel } from '../../utils/proposal.utils';
+import { redirectTo } from '../../utils/shared.utils';
 import { timeAgo } from '../../utils/time.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import GroupItemAvatar from '../Groups/GroupItemAvatar';
@@ -62,15 +62,15 @@ const ProposalCard = ({ proposal, inModal, ...cardProps }: Props) => {
     skip: !isLoggedIn,
   });
 
-  const { asPath } = useRouter();
+  const { pathname } = useLocation();
   const { t } = useTranslation();
 
   const { action, body, createdAt, group, id, images, user, voteCount, stage } = proposal;
 
   const me = data && data.me;
   const isMe = me?.id === user.id;
-  const isGroupPage = asPath.includes(NavigationPaths.Groups);
-  const isProposalPage = asPath.includes(NavigationPaths.Proposals);
+  const isGroupPage = pathname.includes(NavigationPaths.Groups);
+  const isProposalPage = pathname.includes(NavigationPaths.Proposals);
 
   const hasMedia =
     action.event ||
