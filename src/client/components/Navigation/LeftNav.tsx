@@ -1,11 +1,11 @@
 import { useReactiveVar } from '@apollo/client';
 import {
-  AccountBox as RolesIcon,
   Article as DocsIcon,
   EventNote as EventsIcon,
   Group as GroupsIcon,
   Home as HomeIcon,
   Link as InvitesIcon,
+  AccountBox as RolesIcon,
   SupervisedUserCircle as UsersIcon,
 } from '@mui/icons-material';
 import {
@@ -15,9 +15,9 @@ import {
   ListItemText as MuiListItemText,
   ListItemTextProps as MuiListItemTextProps,
 } from '@mui/material';
-import { styled, SxProps } from '@mui/material/styles';
-import { useRouter } from 'next/router';
+import { SxProps, styled } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { isLoggedInVar } from '../../apollo/cache';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
 import { NavigationPaths } from '../../constants/shared.constants';
@@ -53,7 +53,7 @@ const LeftNav = () => {
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const { data, loading } = useMeQuery({ skip: !isLoggedIn });
 
-  const { asPath } = useRouter();
+  const { pathname } = useLocation();
   const { t } = useTranslation();
 
   const me = data?.me;
@@ -71,13 +71,13 @@ const LeftNav = () => {
 
   const getIconStyle = (path: NavigationPaths) => {
     const transition = { transition: '0.2s ease' };
-    if (asPath === path) {
+    if (path === pathname) {
       return { fontSize: 28, ...transition };
     }
     return transition;
   };
 
-  const isActive = (path: NavigationPaths) => path === asPath;
+  const isActive = (path: NavigationPaths) => path === pathname;
 
   if (loading) {
     return null;
