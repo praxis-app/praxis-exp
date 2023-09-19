@@ -1,8 +1,8 @@
 import { Reference } from '@apollo/client';
 import { PanTool, ThumbDown, ThumbsUpDown, ThumbUp } from '@mui/icons-material';
 import { Menu, MenuItem } from '@mui/material';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { toastVar } from '../../apollo/cache';
 import { ProposalCardFragment } from '../../apollo/proposals/generated/ProposalCard.fragment';
 import { useRolesByGroupIdLazyQuery } from '../../apollo/roles/generated/RolesByGroupId.query';
@@ -15,12 +15,12 @@ import {
   UpdateVoteMutation,
   useUpdateVoteMutation,
 } from '../../apollo/votes/generated/UpdateVote.mutation';
-import { NavigationPaths } from '../../constants/shared.constants';
 import { ProposalActionType, ProposalStage } from '../../constants/proposal.constants';
+import { NavigationPaths } from '../../constants/shared.constants';
 import { VoteTypes } from '../../constants/vote.constants';
 import { Blurple } from '../../styles/theme';
-import { redirectTo } from '../../utils/shared.utils';
 import { getGroupPath } from '../../utils/group.utils';
+import { redirectTo } from '../../utils/shared.utils';
 
 const ICON_STYLES = {
   fontSize: 20,
@@ -41,7 +41,7 @@ const VoteMenu = ({ anchorEl, onClose, currentUserId, proposal }: Props) => {
 
   const [getGroupRoles] = useRolesByGroupIdLazyQuery();
 
-  const { asPath } = useRouter();
+  const { pathname } = useLocation();
   const { t } = useTranslation();
 
   const voteByCurrentUser = proposal.votes.find((vote) => vote.user.id === currentUserId);
@@ -83,7 +83,7 @@ const VoteMenu = ({ anchorEl, onClose, currentUserId, proposal }: Props) => {
     }
 
     if (
-      asPath.includes(NavigationPaths.Groups) &&
+      pathname.includes(NavigationPaths.Groups) &&
       actionType === ProposalActionType.ChangeName &&
       isRatified &&
       group

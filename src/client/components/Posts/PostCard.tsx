@@ -2,23 +2,23 @@ import { useReactiveVar } from '@apollo/client';
 import {
   Box,
   Card,
+  CardProps,
   CardContent as MuiCardContent,
   CardHeader as MuiCardHeader,
-  CardProps,
-  styled,
   SxProps,
   Typography,
+  styled,
 } from '@mui/material';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { isLoggedInVar } from '../../apollo/cache';
 import { useDeletePostMutation } from '../../apollo/posts/generated/DeletePost.mutation';
 import { PostCardFragment } from '../../apollo/posts/generated/PostCard.fragment';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
 import { MIDDOT_WITH_SPACES, NavigationPaths } from '../../constants/shared.constants';
-import { redirectTo } from '../../utils/shared.utils';
 import { getGroupPath } from '../../utils/group.utils';
+import { redirectTo } from '../../utils/shared.utils';
 import { timeAgo } from '../../utils/time.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import EventItemAvatar from '../Events/EventItemAvatar';
@@ -61,7 +61,7 @@ const PostCard = ({ post, inModal = false, ...cardProps }: Props) => {
     skip: !isLoggedIn,
   });
 
-  const { asPath } = useRouter();
+  const { pathname } = useLocation();
   const { t } = useTranslation();
 
   const { id, body, images, user, group, event, createdAt } = post;
@@ -70,9 +70,9 @@ const PostCard = ({ post, inModal = false, ...cardProps }: Props) => {
   const formattedDate = timeAgo(createdAt);
 
   const groupPath = getGroupPath(group?.name || '');
-  const isEventPage = asPath.includes(NavigationPaths.Events);
-  const isGroupPage = asPath.includes(NavigationPaths.Groups);
-  const isPostPage = asPath.includes(NavigationPaths.Posts);
+  const isEventPage = pathname.includes(NavigationPaths.Events);
+  const isGroupPage = pathname.includes(NavigationPaths.Groups);
+  const isPostPage = pathname.includes(NavigationPaths.Posts);
   const postPath = `${NavigationPaths.Posts}/${id}`;
   const userProfilePath = getUserProfilePath(user?.name);
 
