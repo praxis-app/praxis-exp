@@ -1,6 +1,7 @@
 import { Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 import { useAboveBreakpoint, useIsDesktop } from '../../hooks/shared.hooks';
+import AuthWrapper from '../Auth/AuthWrapper';
 import BottomNav from '../Navigation/BottomNav';
 import LeftNav from '../Navigation/LeftNav';
 import NavDrawer from '../Navigation/NavDrawer';
@@ -13,7 +14,7 @@ const Layout = () => {
   const isLarge = useAboveBreakpoint('lg');
 
   return (
-    <>
+    <AuthWrapper>
       <TopNav />
       <NavDrawer />
       {!isLarge && <BottomNav />}
@@ -26,7 +27,7 @@ const Layout = () => {
           {isDesktop && <ScrollToTop />}
         </main>
       </Container>
-    </>
+    </AuthWrapper>
   );
 };
 
