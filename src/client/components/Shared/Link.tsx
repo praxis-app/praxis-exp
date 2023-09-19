@@ -1,8 +1,8 @@
 import { Link as MuiLink, SxProps } from '@mui/material';
-import NextLink, { LinkProps } from 'next/link';
 import { ReactNode } from 'react';
+import { Link as ReactRouterLink } from 'react-router-dom';
 
-interface Props extends LinkProps {
+interface Props {
   children: ReactNode;
   disabled?: boolean;
   href: string;
@@ -10,8 +10,8 @@ interface Props extends LinkProps {
   sx?: SxProps;
 }
 
-const Link = ({ children, disabled, href, leftSpace, sx, ...linkProps }: Props) => (
-  <NextLink href={href} {...linkProps} passHref>
+const Link = ({ children, disabled, href, leftSpace, sx }: Props) => (
+  <ReactRouterLink to={href}>
     <MuiLink
       href={href}
       sx={{
@@ -24,7 +24,7 @@ const Link = ({ children, disabled, href, leftSpace, sx, ...linkProps }: Props) 
       {leftSpace ? ' ' : ''}
       {children}
     </MuiLink>
-  </NextLink>
+  </ReactRouterLink>
 );
 
 export default Link;
