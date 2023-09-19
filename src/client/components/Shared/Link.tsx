@@ -10,21 +10,21 @@ interface Props {
   sx?: SxProps;
 }
 
-const Link = ({ children, disabled, href, leftSpace, sx }: Props) => (
-  <ReactRouterLink to={href}>
-    <MuiLink
-      href={href}
-      sx={{
-        color: 'text.primary',
-        pointerEvents: disabled ? 'none' : undefined,
-        textDecoration: 'none',
-        ...sx,
-      }}
-    >
-      {leftSpace ? ' ' : ''}
-      {children}
-    </MuiLink>
-  </ReactRouterLink>
-);
+const Link = ({ children, disabled, href, leftSpace, sx }: Props) => {
+  const muiLinkStyles: SxProps = {
+    color: 'text.primary',
+    pointerEvents: disabled ? 'none' : undefined,
+    textDecoration: 'none',
+    ...sx,
+  };
+  return (
+    <ReactRouterLink to={href} style={{ textDecoration: 'none' }}>
+      <MuiLink component="span" sx={muiLinkStyles}>
+        {leftSpace ? ' ' : ''}
+        {children}
+      </MuiLink>
+    </ReactRouterLink>
+  );
+};
 
 export default Link;
