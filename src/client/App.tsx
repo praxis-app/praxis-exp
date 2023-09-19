@@ -7,22 +7,24 @@ import Home from './pages/Home';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Home />,
-  },
-  {
-    path: '/login',
-    element: <Login />,
-  },
-  {
-    path: '/signup',
-    element: <SignUp />,
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/signup',
+        element: <SignUp />,
+      },
+    ],
   },
 ]);
 
-const App = () => (
-  <Layout>
-    <RouterProvider router={router} />
-  </Layout>
-);
+const App = () => <RouterProvider router={router} />;
 
 export default App;

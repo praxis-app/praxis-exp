@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import { ReactNode } from 'react';
+import { Outlet } from 'react-router-dom';
 import { useAboveBreakpoint, useIsDesktop } from '../../hooks/shared.hooks';
 import BottomNav from '../Navigation/BottomNav';
 import LeftNav from '../Navigation/LeftNav';
@@ -8,11 +8,7 @@ import ScrollToTop from '../Navigation/ScrollToTop';
 import TopNav from '../Navigation/TopNav';
 import Toast from '../Shared/Toast';
 
-interface Props {
-  children: ReactNode;
-}
-
-const Layout = ({ children }: Props) => {
+const Layout = () => {
   const isDesktop = useIsDesktop();
   const isLarge = useAboveBreakpoint('lg');
 
@@ -25,8 +21,7 @@ const Layout = ({ children }: Props) => {
 
       <Container maxWidth="sm">
         <main role="main">
-          {children}
-
+          <Outlet />
           <Toast />
           {isDesktop && <ScrollToTop />}
         </main>
