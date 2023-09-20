@@ -3,11 +3,11 @@ import { ArrowDropDown } from '@mui/icons-material';
 import { Button, IconButton, SxProps } from '@mui/material';
 import { MouseEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { inviteTokenVar, isLoggedInVar } from '../../apollo/cache';
 import { useIsFirstUserQuery } from '../../apollo/users/generated/IsFirstUser.query';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
 import { NavigationPaths } from '../../constants/shared.constants';
-import { redirectTo } from '../../utils/shared.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import Flex from '../Shared/Flex';
 import Link from '../Shared/Link';
@@ -46,6 +46,7 @@ const TopNavDesktop = () => {
   });
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const me = meData?.me;
   const isFirstUser = isFirstUserData?.isFirstUser;
@@ -84,12 +85,12 @@ const TopNavDesktop = () => {
 
       {!isLoggedIn && (
         <Flex>
-          <Button onClick={() => redirectTo(NavigationPaths.LogIn)} sx={{ color: 'text.primary' }}>
+          <Button onClick={() => navigate(NavigationPaths.LogIn)} sx={{ color: 'text.primary' }}>
             {t('users.actions.logIn')}
           </Button>
 
           {(inviteToken || isFirstUser) && (
-            <Button onClick={() => redirectTo(signUpPath)} sx={{ color: 'text.primary' }}>
+            <Button onClick={() => navigate(signUpPath)} sx={{ color: 'text.primary' }}>
               {t('users.actions.signUp')}
             </Button>
           )}
