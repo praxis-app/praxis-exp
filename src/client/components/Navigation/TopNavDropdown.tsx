@@ -1,18 +1,12 @@
 import { AccountBox, ExitToApp, Person, Settings } from '@mui/icons-material';
 import { Menu, MenuItem, SvgIconProps } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { useLogOutMutation } from '../../apollo/auth/generated/LogOut.mutation';
 import { isAuthLoadingVar, isLoggedInVar, isRefreshingTokenVar } from '../../apollo/cache';
 import { TopNavDropdownFragment } from '../../apollo/users/generated/TopNavDropdown.fragment';
 import { NavigationPaths } from '../../constants/shared.constants';
 import { inDevToast, redirectTo } from '../../utils/shared.utils';
-
-export const handleLogOutComplete = () => {
-  isLoggedInVar(false);
-  isAuthLoadingVar(false);
-  isRefreshingTokenVar(false);
-  redirectTo(NavigationPaths.LogIn);
-};
 
 const ICON_PROPS: SvgIconProps = {
   fontSize: 'small',
@@ -29,12 +23,19 @@ interface Props {
 
 const TopNavDropdown = ({ anchorEl, handleClose, user: { name, serverPermissions } }: Props) => {
   const [logOut] = useLogOutMutation();
+
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const handleLogOutButtonClick = () =>
     window.confirm(t('users.prompts.logOut')) &&
     logOut({
-      onCompleted: handleLogOutComplete,
+      onCompleted() {
+        isLoggedInVar(false);
+        isAuthLoadingVar(false);
+        isRefreshingTokenVar(false);
+        navigate(NavigationPaths.LogIn);
+      },
       update: (cache) => cache.reset(),
     });
 

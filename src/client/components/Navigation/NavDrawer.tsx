@@ -1,10 +1,10 @@
 import { useReactiveVar } from '@apollo/client';
 import {
   AccountBox,
-  Article as DocsIcon,
   Close,
-  ExitToApp as SessionIcon,
+  Article as DocsIcon,
   Link as InvitesIcon,
+  ExitToApp as SessionIcon,
   PersonAdd as SignUpIcon,
   SupervisedUserCircle as UsersIcon,
 } from '@mui/icons-material';
@@ -17,11 +17,17 @@ import {
   ListItemIcon,
   ListItemText as MuiListItemText,
 } from '@mui/material';
-import { styled, SxProps } from '@mui/material/styles';
-import { useEffect } from 'react';
+import { SxProps, styled } from '@mui/material/styles';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { useLogOutMutation } from '../../apollo/auth/generated/LogOut.mutation';
-import { inviteTokenVar, isLoggedInVar, isNavDrawerOpenVar } from '../../apollo/cache';
+import {
+  inviteTokenVar,
+  isAuthLoadingVar,
+  isLoggedInVar,
+  isNavDrawerOpenVar,
+  isRefreshingTokenVar,
+} from '../../apollo/cache';
 import { useIsFirstUserQuery } from '../../apollo/users/generated/IsFirstUser.query';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
 import { NavigationPaths } from '../../constants/shared.constants';
@@ -29,7 +35,6 @@ import { redirectTo as commonRedirectTo } from '../../utils/shared.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import Flex from '../Shared/Flex';
 import UserAvatar from '../Users/UserAvatar';
-import { handleLogOutComplete } from './TopNavDropdown';
 
 const USER_AVATAR_STYLES: SxProps = {
   width: 21,
@@ -56,10 +61,16 @@ const NavDrawer = () => {
   const [logOut] = useLogOutMutation();
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const handleLogOutClick = async () =>
     await logOut({
-      onCompleted: handleLogOutComplete,
+      onCompleted() {
+        isLoggedInVar(false);
+        isAuthLoadingVar(false);
+        isRefreshingTokenVar(false);
+        navigate(NavigationPaths.LogIn);
+      },
       update: (cache) => cache.reset(),
     });
 
