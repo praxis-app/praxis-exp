@@ -31,7 +31,6 @@ import {
 import { useIsFirstUserQuery } from '../../apollo/users/generated/IsFirstUser.query';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
 import { NavigationPaths } from '../../constants/shared.constants';
-import { redirectTo as commonRedirectTo } from '../../utils/shared.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import Flex from '../Shared/Flex';
 import UserAvatar from '../Users/UserAvatar';
@@ -76,7 +75,7 @@ const NavDrawer = () => {
 
   const redirectTo = (path: string) => () => {
     handleClose();
-    commonRedirectTo(path);
+    navigate(path);
   };
 
   const handleClose = () => isNavDrawerOpenVar(false);
