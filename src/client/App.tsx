@@ -4,6 +4,7 @@ import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
 import Home from './pages/Home';
 import ServerInvites from './pages/Invites/ServerInvites';
+import ServerInvite from './pages/Invites/ServerInvite';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: '/invites',
         element: <ServerInvites />,
+      },
+      {
+        path: '/invites/:token',
+        element: <ServerInvite />,
       },
     ],
   },
