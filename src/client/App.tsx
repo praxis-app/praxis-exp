@@ -3,8 +3,8 @@ import Layout from './components/App/Layout';
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
 import Home from './pages/Home';
-import ServerInvites from './pages/Invites/ServerInvites';
 import ServerInvite from './pages/Invites/ServerInvite';
+import ServerInvites from './pages/Invites/ServerInvites';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/i/:token',
-        element: <Home />,
+        element: <ServerInvite />,
       },
     ],
   },
