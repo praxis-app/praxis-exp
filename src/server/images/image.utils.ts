@@ -46,7 +46,7 @@ export const copyImage = (filename: string) => {
 };
 
 export const randomDefaultImagePath = () =>
-  `./src/images/assets/defaults/${Math.floor(Math.random() * DEFAULT_IMAGES_SIZE) + 1}.jpeg`;
+  `./src/server/images/assets/defaults/${Math.floor(Math.random() * DEFAULT_IMAGES_SIZE) + 1}.jpeg`;
 
 export const deleteImageFile = async (filename: string) => {
   const unlinkAsync = promisify(fs.unlink);

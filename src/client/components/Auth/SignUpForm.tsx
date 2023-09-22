@@ -1,7 +1,6 @@
 import { useReactiveVar } from '@apollo/client';
 import { Card, CardContent, FormGroup } from '@mui/material';
 import { Form, Formik, FormikErrors } from 'formik';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSignUpMutation } from '../../apollo/auth/generated/SignUp.mutation';
@@ -20,6 +19,7 @@ import { TextField } from '../../components/Shared/TextField';
 import { INVITE_TOKEN } from '../../constants/server-invite.constants';
 import { UserFieldNames } from '../../constants/user.constants';
 import { getRandomString, removeLocalStorageItem } from '../../utils/shared.utils';
+import { useParams } from 'react-router-dom';
 
 const SignUpForm = () => {
   const isNavDrawerOpen = useReactiveVar(isNavDrawerOpenVar);
@@ -27,10 +27,8 @@ const SignUpForm = () => {
   const [imageInputKey, setImageInputKey] = useState('');
   const [signUp] = useSignUpMutation();
 
-  const { query } = useRouter();
+  const { token } = useParams();
   const { t } = useTranslation();
-
-  const token = String(query?.token || '');
 
   const initialValues: SignUpInput = {
     email: '',

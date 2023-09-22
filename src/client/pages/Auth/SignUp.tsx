@@ -2,30 +2,25 @@ import { useReactiveVar } from '@apollo/client';
 import { Typography } from '@mui/material';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate, useParams } from 'react-router-dom';
 import { inviteTokenVar, isLoggedInVar } from '../../apollo/cache';
-import { useServerInviteQuery } from '../../apollo/invites/generated/ServerInvite.query';
+import { useServerInviteLazyQuery } from '../../apollo/invites/generated/ServerInvite.query';
 import { useIsFirstUserQuery } from '../../apollo/users/generated/IsFirstUser.query';
 import SignUpForm from '../../components/Auth/SignUpForm';
 import ProgressBar from '../../components/Shared/ProgressBar';
-import { NavigationPaths } from '../../constants/shared.constants';
 import { INVITE_TOKEN } from '../../constants/server-invite.constants';
-import { redirectTo, setLocalStorageItem } from '../../utils/shared.utils';
+import { NavigationPaths } from '../../constants/shared.constants';
+import { setLocalStorageItem } from '../../utils/shared.utils';
 
 const SignUp = () => {
   const isLoggedIn = useReactiveVar(isLoggedInVar);
+
   const { t } = useTranslation();
+  const { token } = useParams();
+  const navigate = useNavigate();
 
-  // TODO: Parse query for token
-  const token = ''; // String(query?.token || '');
-
-  const { loading: serverInviteLoading, error: serverInviteError } = useServerInviteQuery({
-    onCompleted({ serverInvite }) {
-      inviteTokenVar(serverInvite.token);
-      setLocalStorageItem(INVITE_TOKEN, serverInvite.token);
-    },
-    variables: { token },
-    skip: isLoggedIn || !token,
-  });
+  const [getServerInvite, { loading: serverInviteLoading, error: serverInviteError }] =
+    useServerInviteLazyQuery();
 
   const {
     data,
@@ -35,9 +30,19 @@ const SignUp = () => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      redirectTo(NavigationPaths.Home);
+      navigate(NavigationPaths.Home);
+      return;
     }
-  }, [isLoggedIn]);
+    if (token) {
+      getServerInvite({
+        variables: { token },
+        onCompleted({ serverInvite }) {
+          inviteTokenVar(serverInvite.token);
+          setLocalStorageItem(INVITE_TOKEN, serverInvite.token);
+        },
+      });
+    }
+  }, [isLoggedIn, token]);
 
   if (serverInviteError) {
     return <Typography>{t('invites.prompts.expiredOrInvalid')}</Typography>;
