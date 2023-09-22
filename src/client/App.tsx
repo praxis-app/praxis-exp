@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: '/',
+        index: true,
         element: <Home />,
       },
       {
@@ -28,8 +28,8 @@ const router = createBrowserRouter([
         element: <ServerInvites />,
       },
       {
-        path: '/invites/:token',
-        element: <ServerInvite />,
+        path: '/i/:token',
+        element: <Home />,
       },
     ],
   },
