@@ -1,7 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "compilerOptions": { "deleteOutDir": true },
+  "compilerOptions": {
+    "assets": [
+      {
+        "include": "**/*.jpeg",
+        "outDir": "dist/server"
+      }
+    ],
+    "deleteOutDir": true
+  },
   "entryFile": "server/main",
   "sourceRoot": "src/server"
 }
