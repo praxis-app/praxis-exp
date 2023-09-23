@@ -2,10 +2,11 @@ import { UnsupportedMediaTypeException } from '@nestjs/common';
 import * as fs from 'fs';
 import { FileUpload } from 'graphql-upload';
 import { promisify } from 'util';
-import { Environment } from '../shared/shared.constants';
 
 const DEFAULT_IMAGES_SIZE = 10;
 const VALID_IMAGE_FORMAT = /(jpe?g|png|gif|webp)$/;
+
+export const getUploadsPath = () => `${__dirname}/../../../uploads`;
 
 export const saveImage = async (image: Promise<FileUpload>) => {
   const { createReadStream, mimetype } = await image;
@@ -56,11 +57,4 @@ export const deleteImageFile = async (filename: string) => {
   const uploadsPath = getUploadsPath();
   const imagePath = `${uploadsPath}/${filename}`;
   await unlinkAsync(imagePath);
-};
-
-export const getUploadsPath = () => {
-  if (process.env.NODE_ENV === Environment.Development) {
-    return './uploads';
-  }
-  return '/app/uploads';
 };
