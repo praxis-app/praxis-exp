@@ -2,20 +2,20 @@ import { useReactiveVar } from '@apollo/client';
 import { Flag, Group, Language, Person, Place, Timer } from '@mui/icons-material';
 import {
   Card,
-  CardContent as MuiCardContent,
   CardProps,
   Divider,
-  styled,
+  CardContent as MuiCardContent,
   SxProps,
   Tab,
   Tabs,
   Typography,
+  styled,
 } from '@mui/material';
 import dayjs from 'dayjs';
 import humanizeDuration from 'humanize-duration';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 import { isLoggedInVar, toastVar } from '../../apollo/cache';
 import { useDeleteEventMutation } from '../../apollo/events/generated/DeleteEvent.mutation';
 import { EventPageCardFragment } from '../../apollo/events/generated/EventPageCard.fragment';
@@ -25,9 +25,9 @@ import {
   TAB_QUERY_PARAM,
 } from '../../constants/shared.constants';
 import { useAboveBreakpoint } from '../../hooks/shared.hooks';
-import { redirectTo } from '../../utils/shared.utils';
 import { getEventPath } from '../../utils/event.utils';
 import { getGroupEventsTabPath } from '../../utils/group.utils';
+import { redirectTo } from '../../utils/shared.utils';
 import { formatDateTime } from '../../utils/time.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import CoverPhoto from '../Images/CoverPhoto';
@@ -65,19 +65,19 @@ const EventPageCard = ({ event, canManageAllEvents, setIsDeleting, setTab, tab }
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const [deleteEvent] = useDeleteEventMutation();
 
-  const { query } = useRouter();
+  const params = useParams();
   const { t } = useTranslation();
   const isAboveMedium = useAboveBreakpoint('md');
   const isAboveSmall = useAboveBreakpoint('sm');
 
   useEffect(() => {
-    if (!query.tab) {
+    if (!params.tab) {
       return;
     }
-    if (query.tab === EventPageTabs.Discussion) {
+    if (params.tab === EventPageTabs.Discussion) {
       setTab(1);
     }
-  }, [query.tab, setTab]);
+  }, [params.tab, setTab]);
 
   const {
     id,
