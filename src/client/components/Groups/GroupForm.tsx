@@ -1,8 +1,9 @@
-import { Card, CardContent as MuiCardContent, CardProps, FormGroup, styled } from '@mui/material';
+import { Card, CardProps, FormGroup, CardContent as MuiCardContent, styled } from '@mui/material';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { produce } from 'immer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { toastVar } from '../../apollo/cache';
 import { CreateGroupInput, UpdateGroupInput } from '../../apollo/gen';
 import { useCreateGroupMutation } from '../../apollo/groups/generated/CreateGroup.mutation';
@@ -10,8 +11,8 @@ import { GroupFormFragment } from '../../apollo/groups/generated/GroupForm.fragm
 import { GroupsDocument, GroupsQuery } from '../../apollo/groups/generated/Groups.query';
 import { useUpdateGroupMutation } from '../../apollo/groups/generated/UpdateGroup.mutation';
 import { FieldNames } from '../../constants/shared.constants';
-import { getRandomString, redirectTo } from '../../utils/shared.utils';
 import { getGroupPath } from '../../utils/group.utils';
+import { getRandomString } from '../../utils/shared.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';
 import ImageInput from '../Images/ImageInput';
 import Flex from '../Shared/Flex';
@@ -35,6 +36,7 @@ const GroupForm = ({ editGroup, ...cardProps }: Props) => {
   const [updateGroup] = useUpdateGroupMutation();
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const initialValues = {
     name: editGroup ? editGroup.name : '',
@@ -93,7 +95,7 @@ const GroupForm = ({ editGroup, ...cardProps }: Props) => {
       },
       onCompleted({ updateGroup: { group } }) {
         const groupPagePath = getGroupPath(group.name);
-        redirectTo(groupPagePath);
+        navigate(groupPagePath);
       },
       onError() {
         throw new Error(t('groups.errors.couldNotUpdate'));
