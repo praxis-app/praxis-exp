@@ -2,9 +2,9 @@
 
 import { ApolloCache, ApolloError, Reference } from '@apollo/client';
 import { RemoveCircle } from '@mui/icons-material';
-import { IconButton, styled, Typography } from '@mui/material';
-import { useRouter } from 'next/router';
+import { IconButton, Typography, styled } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { toastVar } from '../../apollo/cache';
 import { useDeleteGroupRoleMemberMutation } from '../../apollo/groups/generated/DeleteGroupRoleMember.mutation';
 import {
@@ -34,10 +34,10 @@ interface Props {
 }
 
 const RoleMember = ({ roleMember, roleId }: Props) => {
-  const { asPath } = useRouter();
+  const { pathname } = useLocation();
   const { t } = useTranslation();
 
-  const isGroupRole = asPath.includes(NavigationPaths.Groups);
+  const isGroupRole = pathname.includes(NavigationPaths.Groups);
   const userProfilePath = getUserProfilePath(roleMember.name);
 
   const [deleteServerRoleMember] = useDeleteServerRoleMemberMutation();
