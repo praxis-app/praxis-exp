@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import ServerInvite from './pages/Invites/ServerInvite';
 import ServerInvites from './pages/Invites/ServerInvites';
 import Post from './pages/Posts/Post';
+import Proposal from './pages/Proposals/Proposal';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: '/posts/:id',
         element: <Post />,
+      },
+      {
+        path: '/proposals/:id',
+        element: <Proposal />,
       },
     ],
   },
