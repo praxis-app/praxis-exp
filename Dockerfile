@@ -8,6 +8,7 @@ COPY package.json /app
 COPY package-lock.json /app
 COPY tsconfig.json /app
 COPY tsconfig.build.json /app
+COPY nest-cli.json /app
 
 WORKDIR /app
 RUN npm ci
