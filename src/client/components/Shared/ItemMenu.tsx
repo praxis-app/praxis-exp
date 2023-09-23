@@ -2,7 +2,7 @@ import { Delete, Edit, MoreHoriz } from '@mui/icons-material';
 import { IconButton, Menu, MenuItem, SxProps } from '@mui/material';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
-import { redirectTo } from '../../utils/shared.utils';
+import { useNavigate } from 'react-router-dom';
 import GhostButton from './GhostButton';
 
 interface Props {
@@ -35,6 +35,7 @@ const ItemMenu = ({
   variant,
 }: Props) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   if (!canUpdate && !canDelete && !children) {
     return null;
@@ -67,7 +68,7 @@ const ItemMenu = ({
     if (!editPath) {
       return;
     }
-    redirectTo(editPath);
+    navigate(editPath);
   };
 
   const handleDelete = () => {
