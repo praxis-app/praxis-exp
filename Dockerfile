@@ -35,4 +35,4 @@ FROM node:18.17.1-alpine AS runtime_stage
 
 COPY --from=build_stage /app /app
 
-CMD [ "node", "app/dist/server/main.js" ]
+CMD [ "node", "/app/dist/server/main.js" ]
