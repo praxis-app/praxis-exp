@@ -7,6 +7,7 @@
   "scripts": {
     "build": "nest build",
     "build:client": "vite build src/client",
+    "copy:assets": "cp -r src/server/images/assets dist/server/images",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",

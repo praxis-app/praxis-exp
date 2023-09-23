@@ -17,13 +17,13 @@ RUN npm ci
 RUN mv src/client ..
 RUN npm run build
 
-# Include image assets in build folder
-COPY src/server/images/assets dist/images/assets
-
 # Ensure dist/server hierarchy
 RUN mv dist server
 RUN mkdir dist
 RUN mv server dist
+
+# Include image assets in build folder
+RUN npm run copy:assets
 
 # Re-include client for vite build
 RUN mv ../client src
