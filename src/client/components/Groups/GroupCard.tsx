@@ -21,7 +21,6 @@ import {
 import { GroupCardFragment } from '../../apollo/groups/generated/GroupCard.fragment';
 import { GroupsDocument, GroupsQuery } from '../../apollo/groups/generated/Groups.query';
 import { MIDDOT_WITH_SPACES, NavigationPaths, TypeNames } from '../../constants/shared.constants';
-import { redirectTo } from '../../utils/shared.utils';
 import {
   getEditGroupPath,
   getGroupMembersPath,
@@ -32,6 +31,7 @@ import ItemMenu from '../Shared/ItemMenu';
 import Link from '../Shared/Link';
 import GroupAvatar from './GroupAvatar';
 import JoinButton from './JoinButton';
+import { useNavigate } from 'react-router-dom';
 
 export const removeGroup =
   (id: number) =>
@@ -75,6 +75,7 @@ const GroupCard = ({ group, currentUserId, ...cardProps }: Props) => {
   const [deleteGroup] = useDeleteGroupMutation();
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const { id, name, description, isJoinedByMe, memberCount, memberRequestCount, myPermissions } =
     group;
@@ -93,14 +94,14 @@ const GroupCard = ({ group, currentUserId, ...cardProps }: Props) => {
       update: removeGroup(id),
     });
 
-  const handleRolesButtonClick = async () => {
+  const handleRolesButtonClick = () => {
     const groupRolesPath = `${NavigationPaths.Groups}/${name}/roles`;
-    await redirectTo(groupRolesPath);
+    navigate(groupRolesPath);
   };
 
-  const handleSettingsButtonClick = async () => {
+  const handleSettingsButtonClick = () => {
     const settingsPath = `${NavigationPaths.Groups}/${name}/settings`;
-    await redirectTo(settingsPath);
+    navigate(settingsPath);
   };
 
   const renderItemMenu = () => {

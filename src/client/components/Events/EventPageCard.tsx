@@ -15,7 +15,7 @@ import dayjs from 'dayjs';
 import humanizeDuration from 'humanize-duration';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { isLoggedInVar, toastVar } from '../../apollo/cache';
 import { useDeleteEventMutation } from '../../apollo/events/generated/DeleteEvent.mutation';
 import { EventPageCardFragment } from '../../apollo/events/generated/EventPageCard.fragment';
@@ -27,7 +27,6 @@ import {
 import { useAboveBreakpoint } from '../../hooks/shared.hooks';
 import { getEventPath } from '../../utils/event.utils';
 import { getGroupEventsTabPath } from '../../utils/group.utils';
-import { redirectTo } from '../../utils/shared.utils';
 import { formatDateTime } from '../../utils/time.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import CoverPhoto from '../Images/CoverPhoto';
@@ -65,10 +64,11 @@ const EventPageCard = ({ event, canManageAllEvents, setIsDeleting, setTab, tab }
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const [deleteEvent] = useDeleteEventMutation();
 
-  const params = useParams();
   const { t } = useTranslation();
   const isAboveMedium = useAboveBreakpoint('md');
   const isAboveSmall = useAboveBreakpoint('sm');
+  const navigate = useNavigate();
+  const params = useParams();
 
   useEffect(() => {
     if (!params.tab) {
@@ -140,10 +140,10 @@ const EventPageCard = ({ event, canManageAllEvents, setIsDeleting, setTab, tab }
       },
       onCompleted() {
         if (group) {
-          redirectTo(groupEventsTabPath);
+          navigate(groupEventsTabPath);
           return;
         }
-        redirectTo(NavigationPaths.Events);
+        navigate(NavigationPaths.Events);
       },
       onError(err) {
         toastVar({
@@ -263,8 +263,8 @@ const EventPageCard = ({ event, canManageAllEvents, setIsDeleting, setTab, tab }
       <Divider sx={{ marginX: '16px', marginBottom: 0.25 }} />
 
       <Tabs onChange={(_: any, value: number) => setTab(value)} textColor="inherit" value={tab}>
-        <Tab label={t('events.tabs.about')} onClick={() => redirectTo(eventPagePath)} />
-        <Tab label={t('events.tabs.discussion')} onClick={() => redirectTo(discussionTabPath)} />
+        <Tab label={t('events.tabs.about')} onClick={() => navigate(eventPagePath)} />
+        <Tab label={t('events.tabs.discussion')} onClick={() => navigate(discussionTabPath)} />
       </Tabs>
     </Card>
   );
