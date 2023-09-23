@@ -1,9 +1,9 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { toastVar } from '../../../apollo/cache';
 import { useDeleteGroupRoleMutation } from '../../../apollo/groups/generated/DeleteGroupRole.mutation';
 import { DeleteGroupRoleButtonFragment } from '../../../apollo/groups/generated/DeleteGroupRoleButton.fragment';
 import { NavigationPaths } from '../../../constants/shared.constants';
-import { redirectTo } from '../../../utils/shared.utils';
 import DeleteButton from '../../Shared/DeleteButton';
 
 interface Props {
@@ -12,11 +12,13 @@ interface Props {
 
 const DeleteGroupRoleButton = ({ role: { id, group, __typename } }: Props) => {
   const [deleteRole] = useDeleteGroupRoleMutation();
+
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const handleClick = async () => {
     const groupRolesPath = `${NavigationPaths.Groups}/${group?.name}/roles`;
-    await redirectTo(groupRolesPath);
+    await navigate(groupRolesPath);
 
     await deleteRole({
       variables: { id },

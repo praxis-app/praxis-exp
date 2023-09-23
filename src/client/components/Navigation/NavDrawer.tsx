@@ -18,8 +18,9 @@ import {
   ListItemText as MuiListItemText,
 } from '@mui/material';
 import { SxProps, styled } from '@mui/material/styles';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useLogOutMutation } from '../../apollo/auth/generated/LogOut.mutation';
 import {
   inviteTokenVar,
@@ -60,6 +61,7 @@ const NavDrawer = () => {
   const [logOut] = useLogOutMutation();
 
   const { t } = useTranslation();
+  const { pathname } = useLocation();
   const navigate = useNavigate();
 
   const handleLogOutClick = async () =>
@@ -73,20 +75,19 @@ const NavDrawer = () => {
       update: (cache) => cache.reset(),
     });
 
-  const redirectTo = (path: string) => () => {
+  const handleLinkClick = (path: string) => () => {
     handleClose();
     navigate(path);
   };
 
   const handleClose = () => isNavDrawerOpenVar(false);
 
-  // TODO: Add reload functionality
-  // useEffect(() => {
-  //   handleClose();
-  // }, [router.pathname]);
+  useEffect(() => {
+    handleClose();
+  }, [pathname]);
 
   const renderDocsButton = () => (
-    <ListItemButton onClick={redirectTo(NavigationPaths.Docs)}>
+    <ListItemButton onClick={handleLinkClick(NavigationPaths.Docs)}>
       <ListItemIcon>
         <DocsIcon />
       </ListItemIcon>
@@ -104,7 +105,7 @@ const NavDrawer = () => {
         <>
           {renderDocsButton()}
 
-          <ListItemButton onClick={redirectTo(NavigationPaths.LogIn)}>
+          <ListItemButton onClick={handleLinkClick(NavigationPaths.LogIn)}>
             <ListItemIcon>
               <SessionIcon />
             </ListItemIcon>
@@ -112,7 +113,7 @@ const NavDrawer = () => {
           </ListItemButton>
 
           {(inviteToken || isFirstUserData?.isFirstUser) && (
-            <ListItemButton onClick={redirectTo(signUpPath)}>
+            <ListItemButton onClick={handleLinkClick(signUpPath)}>
               <ListItemIcon>
                 <SignUpIcon />
               </ListItemIcon>
@@ -130,7 +131,7 @@ const NavDrawer = () => {
 
     return (
       <>
-        <ListItemButton onClick={redirectTo(userProfilePath)}>
+        <ListItemButton onClick={handleLinkClick(userProfilePath)}>
           <ListItemIcon>
             <UserAvatar user={me} sx={USER_AVATAR_STYLES} />
           </ListItemIcon>
@@ -138,7 +139,7 @@ const NavDrawer = () => {
         </ListItemButton>
 
         {manageRoles && (
-          <ListItemButton onClick={redirectTo(NavigationPaths.Roles)}>
+          <ListItemButton onClick={handleLinkClick(NavigationPaths.Roles)}>
             <ListItemIcon>
               <AccountBox />
             </ListItemIcon>
@@ -147,7 +148,7 @@ const NavDrawer = () => {
         )}
 
         {removeMembers && (
-          <ListItemButton onClick={redirectTo(NavigationPaths.Users)}>
+          <ListItemButton onClick={handleLinkClick(NavigationPaths.Users)}>
             <ListItemIcon>
               <UsersIcon />
             </ListItemIcon>
@@ -156,7 +157,7 @@ const NavDrawer = () => {
         )}
 
         {(createInvites || manageInvites) && (
-          <ListItemButton onClick={redirectTo(NavigationPaths.Invites)}>
+          <ListItemButton onClick={handleLinkClick(NavigationPaths.Invites)}>
             <ListItemIcon>
               <InvitesIcon />
             </ListItemIcon>

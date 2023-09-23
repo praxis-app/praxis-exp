@@ -18,7 +18,7 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { isLoggedInVar } from '../../apollo/cache';
 import { useDeleteGroupMutation } from '../../apollo/groups/generated/DeleteGroup.mutation';
 import { GroupProfileCardFragment } from '../../apollo/groups/generated/GroupProfileCard.fragment';
@@ -34,7 +34,6 @@ import {
   getGroupPath,
   getMemberRequestsPath,
 } from '../../utils/group.utils';
-import { redirectTo } from '../../utils/shared.utils';
 import CoverPhoto from '../Images/CoverPhoto';
 import Flex from '../Shared/Flex';
 import ItemMenu from '../Shared/ItemMenu';
@@ -75,10 +74,11 @@ const GroupProfileCard = ({ currentUserId, group, setTab, tab, ...cardProps }: P
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const [deleteGroup] = useDeleteGroupMutation();
 
-  const params = useParams();
   const { t } = useTranslation();
   const isAboveMedium = useAboveBreakpoint('md');
   const isAboveSmall = useAboveBreakpoint('sm');
+  const navigate = useNavigate();
+  const params = useParams();
 
   useEffect(() => {
     if (!params.tab) {
@@ -131,7 +131,7 @@ const GroupProfileCard = ({ currentUserId, group, setTab, tab, ...cardProps }: P
   };
 
   const handleDelete = async () => {
-    await redirectTo(NavigationPaths.Groups);
+    navigate(NavigationPaths.Groups);
     await deleteGroup({
       variables: { id },
       update: removeGroup(id),
@@ -140,12 +140,12 @@ const GroupProfileCard = ({ currentUserId, group, setTab, tab, ...cardProps }: P
 
   const handleRolesButtonClick = async () => {
     const groupRolesPath = `${NavigationPaths.Groups}/${name}/roles`;
-    await redirectTo(groupRolesPath);
+    navigate(groupRolesPath);
   };
 
   const handleSettingsButtonClick = async () => {
     const settingsPath = `${NavigationPaths.Groups}/${name}/settings`;
-    await redirectTo(settingsPath);
+    navigate(settingsPath);
   };
 
   const handleTabsChange = (_: React.SyntheticEvent, newValue: number) => setTab(newValue);
@@ -240,9 +240,9 @@ const GroupProfileCard = ({ currentUserId, group, setTab, tab, ...cardProps }: P
       <Divider sx={{ marginX: '16px', marginBottom: 0.25 }} />
 
       <Tabs onChange={handleTabsChange} textColor="inherit" value={tab}>
-        <Tab label={t('groups.tabs.feed')} onClick={() => redirectTo(groupPagePath)} />
-        <Tab label={t('groups.tabs.events')} onClick={() => redirectTo(eventsTabPath)} />
-        <Tab label={t('groups.tabs.about')} onClick={() => redirectTo(aboutTabPath)} />
+        <Tab label={t('groups.tabs.feed')} onClick={() => navigate(groupPagePath)} />
+        <Tab label={t('groups.tabs.events')} onClick={() => navigate(eventsTabPath)} />
+        <Tab label={t('groups.tabs.about')} onClick={() => navigate(aboutTabPath)} />
       </Tabs>
     </Card>
   );
