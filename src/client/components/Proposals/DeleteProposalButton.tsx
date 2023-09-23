@@ -1,10 +1,10 @@
 import { ApolloCache } from '@apollo/client';
 import { Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { toastVar } from '../../apollo/cache';
 import { useDeleteProposalMutation } from '../../apollo/proposals/generated/DeleteProposal.mutation';
 import { NavigationPaths, TypeNames } from '../../constants/shared.constants';
-import { redirectTo } from '../../utils/shared.utils';
 
 export const removeProposal = (proposalId: number) => (cache: ApolloCache<any>) => {
   const proposalCacheId = cache.identify({
@@ -21,11 +21,11 @@ interface Props {
 
 const DeleteProposalButton = ({ proposalId }: Props) => {
   const [deleteProposal] = useDeleteProposalMutation();
+
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const handleClick = async () => {
-    await redirectTo(NavigationPaths.Home);
-
     await deleteProposal({
       variables: { id: proposalId },
       update: removeProposal(proposalId),
@@ -36,6 +36,7 @@ const DeleteProposalButton = ({ proposalId }: Props) => {
         });
       },
     });
+    navigate(NavigationPaths.Home);
   };
 
   const handleClickWithConfirm = () =>

@@ -5,6 +5,7 @@ import { Form, Formik, FormikFormProps, FormikHelpers } from 'formik';
 import { produce } from 'immer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { toastVar } from '../../apollo/cache';
 import { CreatePostInput, UpdatePostInput } from '../../apollo/gen';
 import { useDeleteImageMutation } from '../../apollo/images/generated/DeleteImage.mutation';
@@ -13,7 +14,7 @@ import { PostFormFragment } from '../../apollo/posts/generated/PostForm.fragment
 import { useUpdatePostMutation } from '../../apollo/posts/generated/UpdatePost.mutation';
 import { HomeFeedDocument, HomeFeedQuery } from '../../apollo/users/generated/HomeFeed.query';
 import { FieldNames, NavigationPaths, TypeNames } from '../../constants/shared.constants';
-import { getRandomString, redirectTo } from '../../utils/shared.utils';
+import { getRandomString } from '../../utils/shared.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';
 import ImageInput from '../Images/ImageInput';
 import Flex from '../Shared/Flex';
@@ -35,6 +36,7 @@ const PostForm = ({ editPost, groupId, eventId, ...formProps }: Props) => {
   const [updatePost] = useUpdatePostMutation();
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const initialValues: CreatePostInput = {
     body: editPost?.body || '',
@@ -104,7 +106,6 @@ const PostForm = ({ editPost, groupId, eventId, ...formProps }: Props) => {
     formValues: Omit<UpdatePostInput, 'id'>,
     editPost: PostFormFragment,
   ) => {
-    await redirectTo(NavigationPaths.Home);
     await updatePost({
       variables: {
         postData: {
@@ -114,6 +115,7 @@ const PostForm = ({ editPost, groupId, eventId, ...formProps }: Props) => {
         },
       },
     });
+    navigate(NavigationPaths.Home);
   };
 
   const handleSubmit = async (

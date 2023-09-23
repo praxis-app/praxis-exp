@@ -1,5 +1,6 @@
 import { produce } from 'immer';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { toastVar } from '../../../apollo/cache';
 import { useDeleteServerRoleMutation } from '../../../apollo/roles/generated/DeleteServerRole.mutation';
 import {
@@ -7,7 +8,6 @@ import {
   ServerRolesQuery,
 } from '../../../apollo/roles/generated/ServerRoles.query';
 import { NavigationPaths, TypeNames } from '../../../constants/shared.constants';
-import { redirectTo } from '../../../utils/shared.utils';
 import DeleteButton from '../../Shared/DeleteButton';
 
 interface Props {
@@ -16,10 +16,11 @@ interface Props {
 
 const DeleteServerRoleButton = ({ roleId }: Props) => {
   const [deleteRole] = useDeleteServerRoleMutation();
+
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const handleClick = async () => {
-    await redirectTo(NavigationPaths.Roles);
     await deleteRole({
       variables: { id: roleId },
       update(cache) {
@@ -46,6 +47,7 @@ const DeleteServerRoleButton = ({ roleId }: Props) => {
         });
       },
     });
+    navigate(NavigationPaths.Roles);
   };
 
   const handleClickWithConfirm = () =>

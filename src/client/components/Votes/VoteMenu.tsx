@@ -2,7 +2,7 @@ import { Reference } from '@apollo/client';
 import { PanTool, ThumbDown, ThumbsUpDown, ThumbUp } from '@mui/icons-material';
 import { Menu, MenuItem } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { toastVar } from '../../apollo/cache';
 import { ProposalCardFragment } from '../../apollo/proposals/generated/ProposalCard.fragment';
 import { useRolesByGroupIdLazyQuery } from '../../apollo/roles/generated/RolesByGroupId.query';
@@ -20,7 +20,6 @@ import { NavigationPaths } from '../../constants/shared.constants';
 import { VoteTypes } from '../../constants/vote.constants';
 import { Blurple } from '../../styles/theme';
 import { getGroupPath } from '../../utils/group.utils';
-import { redirectTo } from '../../utils/shared.utils';
 
 const ICON_STYLES = {
   fontSize: 20,
@@ -43,6 +42,7 @@ const VoteMenu = ({ anchorEl, onClose, currentUserId, proposal }: Props) => {
 
   const { pathname } = useLocation();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const voteByCurrentUser = proposal.votes.find((vote) => vote.user.id === currentUserId);
 
@@ -89,7 +89,7 @@ const VoteMenu = ({ anchorEl, onClose, currentUserId, proposal }: Props) => {
       group
     ) {
       const groupPath = getGroupPath(group.name);
-      redirectTo(groupPath);
+      navigate(groupPath);
     }
   };
 

@@ -1,12 +1,12 @@
 import { ApolloCache, FetchResult } from '@apollo/client';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { toastVar } from '../../apollo/cache';
 import {
   DeletePostMutation,
   useDeletePostMutation,
 } from '../../apollo/posts/generated/DeletePost.mutation';
 import { NavigationPaths, TypeNames } from '../../constants/shared.constants';
-import { redirectTo } from '../../utils/shared.utils';
 import DeleteButton from '../Shared/DeleteButton';
 
 export const removePost =
@@ -30,11 +30,11 @@ interface Props {
 
 const DeletePostButton = ({ postId }: Props) => {
   const [deletePost] = useDeletePostMutation();
+
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const handleClick = async () => {
-    await redirectTo(NavigationPaths.Home);
-
     await deletePost({
       variables: { id: postId },
       update: removePost(postId),
@@ -45,6 +45,7 @@ const DeletePostButton = ({ postId }: Props) => {
         });
       },
     });
+    navigate(NavigationPaths.Home);
   };
 
   const handleClickWithConfirm = () =>

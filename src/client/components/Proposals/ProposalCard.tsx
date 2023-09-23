@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { isLoggedInVar, toastVar } from '../../apollo/cache';
 import { useDeleteProposalMutation } from '../../apollo/proposals/generated/DeleteProposal.mutation';
 import { ProposalCardFragment } from '../../apollo/proposals/generated/ProposalCard.fragment';
@@ -19,7 +19,6 @@ import { ProposalStage } from '../../constants/proposal.constants';
 import { MIDDOT_WITH_SPACES, NavigationPaths } from '../../constants/shared.constants';
 import { getGroupPath } from '../../utils/group.utils';
 import { getProposalActionLabel } from '../../utils/proposal.utils';
-import { redirectTo } from '../../utils/shared.utils';
 import { timeAgo } from '../../utils/time.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import GroupItemAvatar from '../Groups/GroupItemAvatar';
@@ -64,6 +63,7 @@ const ProposalCard = ({ proposal, inModal, ...cardProps }: Props) => {
 
   const { pathname } = useLocation();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const { action, body, createdAt, group, id, images, user, voteCount, stage } = proposal;
 
@@ -94,9 +94,6 @@ const ProposalCard = ({ proposal, inModal, ...cardProps }: Props) => {
   };
 
   const handleDelete = async () => {
-    if (isProposalPage) {
-      await redirectTo(NavigationPaths.Home);
-    }
     await deleteProposal({
       variables: { id },
       update: removeProposal(id),
@@ -107,6 +104,9 @@ const ProposalCard = ({ proposal, inModal, ...cardProps }: Props) => {
         });
       },
     });
+    if (isProposalPage) {
+      navigate(NavigationPaths.Home);
+    }
   };
 
   const renderAvatar = () => {

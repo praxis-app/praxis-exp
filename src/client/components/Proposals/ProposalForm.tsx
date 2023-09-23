@@ -11,6 +11,7 @@ import { Form, Formik, FormikErrors, FormikFormProps, FormikHelpers } from 'form
 import { produce } from 'immer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { toastVar } from '../../apollo/cache';
 import { CreateProposalInput, ProposalActionInput, UpdateProposalInput } from '../../apollo/gen';
 import { useDeleteImageMutation } from '../../apollo/images/generated/DeleteImage.mutation';
@@ -19,10 +20,10 @@ import { ProposalFormFragment } from '../../apollo/proposals/generated/ProposalF
 import { useUpdateProposalMutation } from '../../apollo/proposals/generated/UpdateProposal.mutation';
 import { HomeFeedDocument, HomeFeedQuery } from '../../apollo/users/generated/HomeFeed.query';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
-import { FieldNames, NavigationPaths, TypeNames } from '../../constants/shared.constants';
 import { ProposalActionFieldName, ProposalActionType } from '../../constants/proposal.constants';
-import { getRandomString, redirectTo } from '../../utils/shared.utils';
+import { FieldNames, NavigationPaths, TypeNames } from '../../constants/shared.constants';
 import { getProposalActionTypeOptions } from '../../utils/proposal.utils';
+import { getRandomString } from '../../utils/shared.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';
 import ImageInput from '../Images/ImageInput';
 import Flex from '../Shared/Flex';
@@ -55,6 +56,7 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
   const [deleteImage] = useDeleteImageMutation();
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const action: ProposalActionInput = {
     actionType: editProposal?.action.actionType || '',
@@ -156,7 +158,6 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
     formValues: Omit<UpdateProposalInput, 'id'>,
     editProposal: ProposalFormFragment,
   ) => {
-    await redirectTo(NavigationPaths.Home);
     await updateProposal({
       variables: {
         proposalData: {
@@ -165,6 +166,7 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
         },
       },
     });
+    navigate(NavigationPaths.Home);
   };
 
   const handleSubmit = async (

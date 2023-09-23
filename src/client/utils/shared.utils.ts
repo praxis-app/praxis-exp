@@ -1,9 +1,8 @@
 import { t } from 'i18next';
-import Router from 'next/router';
 import { isValidElement, ReactNode } from 'react';
 import { animateScroll } from 'react-scroll';
 import { toastVar } from '../apollo/cache';
-import { Environments, SCROLL_DURATION } from '../constants/shared.constants';
+import { SCROLL_DURATION } from '../constants/shared.constants';
 
 /**
  * Returns whether or not a given node can be successfully rendered.
@@ -91,5 +90,3 @@ export const getRandomString = () =>
 export const getTypedKeys = <T>(object: T): (keyof T)[] => {
   return Object.keys(object as {}) as (keyof T)[];
 };
-
-export const redirectTo = (path: string) => Router.push(path);

@@ -6,7 +6,7 @@ import { useLogOutMutation } from '../../apollo/auth/generated/LogOut.mutation';
 import { isAuthLoadingVar, isLoggedInVar, isRefreshingTokenVar } from '../../apollo/cache';
 import { TopNavDropdownFragment } from '../../apollo/users/generated/TopNavDropdown.fragment';
 import { NavigationPaths } from '../../constants/shared.constants';
-import { inDevToast, redirectTo } from '../../utils/shared.utils';
+import { inDevToast } from '../../utils/shared.utils';
 
 const ICON_PROPS: SvgIconProps = {
   fontSize: 'small',
@@ -41,10 +41,10 @@ const TopNavDropdown = ({ anchorEl, handleClose, user: { name, serverPermissions
 
   const handleEditProfileButtonClick = () => {
     const path = `${NavigationPaths.Users}/${name}/edit`;
-    redirectTo(path);
+    navigate(path);
   };
 
-  const handleRolesButtonClick = () => redirectTo(NavigationPaths.Roles);
+  const handleRolesButtonClick = () => navigate(NavigationPaths.Roles);
 
   return (
     <Menu

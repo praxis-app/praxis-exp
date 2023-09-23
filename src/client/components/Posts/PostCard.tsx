@@ -11,14 +11,13 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { isLoggedInVar } from '../../apollo/cache';
 import { useDeletePostMutation } from '../../apollo/posts/generated/DeletePost.mutation';
 import { PostCardFragment } from '../../apollo/posts/generated/PostCard.fragment';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
 import { MIDDOT_WITH_SPACES, NavigationPaths } from '../../constants/shared.constants';
 import { getGroupPath } from '../../utils/group.utils';
-import { redirectTo } from '../../utils/shared.utils';
 import { timeAgo } from '../../utils/time.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import EventItemAvatar from '../Events/EventItemAvatar';
@@ -63,6 +62,7 @@ const PostCard = ({ post, inModal = false, ...cardProps }: Props) => {
 
   const { pathname } = useLocation();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const { id, body, images, user, group, event, createdAt } = post;
   const me = data && data.me;
@@ -85,13 +85,13 @@ const PostCard = ({ post, inModal = false, ...cardProps }: Props) => {
   };
 
   const handleDelete = async () => {
-    if (isPostPage) {
-      await redirectTo(NavigationPaths.Home);
-    }
     await deletePost({
       variables: { id },
       update: removePost(id),
     });
+    if (isPostPage) {
+      navigate(NavigationPaths.Home);
+    }
   };
 
   const renderAvatar = () => {
