@@ -7,6 +7,7 @@ import ServerInvite from './pages/Invites/ServerInvite';
 import ServerInvites from './pages/Invites/ServerInvites';
 import Post from './pages/Posts/Post';
 import Proposal from './pages/Proposals/Proposal';
+import EditUserProfile from './pages/Users/EditUserProfile';
 import UserProfile from './pages/Users/UserProfile';
 
 const router = createBrowserRouter([
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
       {
         path: '/users/:name',
         element: <UserProfile />,
+      },
+      {
+        path: '/users/:name/edit',
+        element: <EditUserProfile />,
       },
     ],
   },

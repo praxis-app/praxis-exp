@@ -2,12 +2,12 @@ import { Divider, FormGroup, Typography } from '@mui/material';
 import { Form, Formik } from 'formik';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { toastVar } from '../../apollo/cache';
 import { UpdateUserInput } from '../../apollo/gen';
 import { EditProfileFormFragment } from '../../apollo/users/generated/EditProfileForm.fragment';
 import { useUpdateUserMutation } from '../../apollo/users/generated/UpdateUser.mutation';
 import { UserFieldNames } from '../../constants/user.constants';
-import { redirectTo } from '../../utils/shared.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
 import CoverPhoto from '../Images/CoverPhoto';
 import ImageInput from '../Images/ImageInput';
@@ -29,6 +29,7 @@ const EditProfileForm = ({ user, submitButtonText }: Props) => {
   const [profilePicture, setProfilePicture] = useState<File>();
 
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const initialValues: Omit<UpdateUserInput, 'id'> = {
     bio: user.bio || '',
@@ -48,7 +49,7 @@ const EditProfileForm = ({ user, submitButtonText }: Props) => {
       },
       onCompleted({ updateUser: { user } }) {
         const path = getUserProfilePath(user.name);
-        redirectTo(path);
+        navigate(path);
       },
       onError(error) {
         toastVar({ status: 'error', title: error.message });
