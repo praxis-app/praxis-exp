@@ -4,17 +4,17 @@ import { DateRange as JoinDateIcon } from '@mui/icons-material';
 import {
   Box,
   Card,
-  CardContent as MuiCardContent,
   CardHeader,
   CardProps,
-  styled,
+  CardContent as MuiCardContent,
   SxProps,
   Typography,
+  styled,
   useTheme,
 } from '@mui/material';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
 import { UserProfileCardFragment } from '../../apollo/users/generated/UserProfileCard.fragment';
 import { MIDDOT_WITH_SPACES, NavigationPaths } from '../../constants/shared.constants';
@@ -55,7 +55,7 @@ const UserProfileCard = ({ user, ...cardProps }: Props) => {
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
   const { data } = useMeQuery();
 
-  const { asPath } = useRouter();
+  const { pathname } = useLocation();
   const { t } = useTranslation();
   const isDesktop = useIsDesktop();
   const theme = useTheme();
@@ -65,9 +65,9 @@ const UserProfileCard = ({ user, ...cardProps }: Props) => {
   const isMe = me?.id === id;
 
   const deleteUserPrompt = t('prompts.deleteItem', { itemType: 'user' });
-  const editUserPath = `${asPath}${NavigationPaths.Edit}`;
-  const followersPath = `${asPath}${NavigationPaths.Followers}`;
-  const followingPath = `${asPath}${NavigationPaths.Following}`;
+  const editUserPath = `${pathname}${NavigationPaths.Edit}`;
+  const followersPath = `${pathname}${NavigationPaths.Followers}`;
+  const followingPath = `${pathname}${NavigationPaths.Following}`;
   const joinDate = formatDate(createdAt);
 
   const avatarStyles: SxProps = {
