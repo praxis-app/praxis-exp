@@ -15,8 +15,9 @@ export const saveImage = async (image: Promise<FileUpload>) => {
     throw new UnsupportedMediaTypeException('Only image files are allowed');
   }
 
+  const uploadsPath = getUploadsPath();
   const filename = `${Date.now()}.${extension}`;
-  const path = `./uploads/${filename}`;
+  const path = `${uploadsPath}/${filename}`;
 
   await new Promise((resolve, reject) => {
     const stream = createReadStream();
@@ -34,9 +35,10 @@ export const saveImage = async (image: Promise<FileUpload>) => {
 };
 
 export const copyImage = (filename: string) => {
-  const sourcePath = `./uploads/${filename}`;
+  const uploadsPath = getUploadsPath();
+  const sourcePath = `${uploadsPath}/${filename}`;
   const newFilename = `${Date.now()}.${filename.split('.')[1]}`;
-  const newPath = `./uploads/${newFilename}`;
+  const newPath = `${uploadsPath}/${newFilename}`;
 
   fs.copyFile(sourcePath, newPath, (err) => {
     if (err) {
@@ -51,8 +53,9 @@ export const randomDefaultImagePath = () =>
 
 export const deleteImageFile = async (filename: string) => {
   const unlinkAsync = promisify(fs.unlink);
-  const path = `./uploads/${filename}`;
-  await unlinkAsync(path);
+  const uploadsPath = getUploadsPath();
+  const imagePath = `${uploadsPath}/${filename}`;
+  await unlinkAsync(imagePath);
 };
 
 export const getUploadsPath = () => {
