@@ -3,12 +3,12 @@ import {
   Card,
   CardActionArea,
   CardContent as MuiCardContent,
-  styled,
   Typography,
+  styled,
 } from '@mui/material';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { AddGroupRoleMemberTabFragment } from '../../apollo/groups/generated/AddGroupRoleMemberTab.fragment';
 import { useUpdateGroupRoleMutation } from '../../apollo/groups/generated/UpdateGroupRole.mutation';
 import { AddServerRoleMemberTabFragment } from '../../apollo/roles/generated/AddServerRoleMemberTab.fragment';
@@ -45,7 +45,7 @@ const AddRoleMemberTab = ({ availableUsersToAdd, role: { id, members } }: Props)
   const [updateGroupRole] = useUpdateGroupRoleMutation();
   const [updateServerRole] = useUpdateServerRoleMutation();
 
-  const { asPath } = useRouter();
+  const { pathname } = useLocation();
   const { t } = useTranslation();
 
   const addCircleStyles = {
@@ -62,7 +62,7 @@ const AddRoleMemberTab = ({ availableUsersToAdd, role: { id, members } }: Props)
   };
 
   const handleSubmit = async () => {
-    const isGroupRole = asPath.includes(NavigationPaths.Groups);
+    const isGroupRole = pathname.includes(NavigationPaths.Groups);
     const roleData = { id, selectedUserIds };
 
     if (isGroupRole) {

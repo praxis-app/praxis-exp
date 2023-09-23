@@ -5,20 +5,20 @@ import { AccountBox, Lock, Public, Settings } from '@mui/icons-material';
 import {
   Box,
   Card,
-  CardContent as MuiCardContent,
-  CardHeader as MuiCardHeader,
   CardProps,
   Divider,
   MenuItem,
-  styled,
+  CardContent as MuiCardContent,
+  CardHeader as MuiCardHeader,
   SxProps,
   Tab,
   Tabs,
   Typography,
+  styled,
 } from '@mui/material';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useParams } from 'react-router-dom';
 import { isLoggedInVar } from '../../apollo/cache';
 import { useDeleteGroupMutation } from '../../apollo/groups/generated/DeleteGroup.mutation';
 import { GroupProfileCardFragment } from '../../apollo/groups/generated/GroupProfileCard.fragment';
@@ -28,13 +28,13 @@ import {
   TAB_QUERY_PARAM,
 } from '../../constants/shared.constants';
 import { useAboveBreakpoint } from '../../hooks/shared.hooks';
-import { redirectTo } from '../../utils/shared.utils';
 import {
   getEditGroupPath,
   getGroupMembersPath,
   getGroupPath,
   getMemberRequestsPath,
 } from '../../utils/group.utils';
+import { redirectTo } from '../../utils/shared.utils';
 import CoverPhoto from '../Images/CoverPhoto';
 import Flex from '../Shared/Flex';
 import ItemMenu from '../Shared/ItemMenu';
@@ -75,23 +75,23 @@ const GroupProfileCard = ({ currentUserId, group, setTab, tab, ...cardProps }: P
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const [deleteGroup] = useDeleteGroupMutation();
 
-  const { query } = useRouter();
+  const params = useParams();
   const { t } = useTranslation();
   const isAboveMedium = useAboveBreakpoint('md');
   const isAboveSmall = useAboveBreakpoint('sm');
 
   useEffect(() => {
-    if (!query.tab) {
+    if (!params.tab) {
       return;
     }
-    if (query.tab === GroupTabs.Events) {
+    if (params.tab === GroupTabs.Events) {
       setTab(1);
       return;
     }
-    if (query.tab === GroupTabs.About) {
+    if (params.tab === GroupTabs.About) {
       setTab(2);
     }
-  }, [query.tab, setTab]);
+  }, [params.tab, setTab]);
 
   const { id, name, coverPhoto, memberCount, memberRequestCount, myPermissions, settings } = group;
 

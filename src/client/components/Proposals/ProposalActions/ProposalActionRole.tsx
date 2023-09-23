@@ -1,17 +1,17 @@
 import { Circle } from '@mui/icons-material';
 import { Box, BoxProps, Divider, Grid, SxProps, Typography, useTheme } from '@mui/material';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 import { ProposalActionRoleInput, ProposalActionRoleMemberInput } from '../../../apollo/gen';
 import { useGroupRoleByRoleIdLazyQuery } from '../../../apollo/groups/generated/GroupRoleByRoleId.query';
 import { ProposalActionRoleFragment } from '../../../apollo/proposals/generated/ProposalActionRole.fragment';
 import { useUsersByIdsLazyQuery } from '../../../apollo/users/generated/UsersByIds.query';
-import { ChangeType } from '../../../constants/shared.constants';
 import { ProposalActionType } from '../../../constants/proposal.constants';
+import { ChangeType } from '../../../constants/shared.constants';
 import { useIsDesktop } from '../../../hooks/shared.hooks';
-import { getTypedKeys } from '../../../utils/shared.utils';
 import { cleanPermissions } from '../../../utils/role.utils';
+import { getTypedKeys } from '../../../utils/shared.utils';
 import Accordion, { AccordionDetails, AccordionSummary } from '../../Shared/Accordion';
 import Flex from '../../Shared/Flex';
 import ProgressBar from '../../Shared/ProgressBar';
@@ -27,8 +27,8 @@ interface Props extends Omit<BoxProps, 'role'> {
 }
 
 const ProposalActionRole = ({ actionType, preview, ratified, role, ...boxProps }: Props) => {
-  const { asPath } = useRouter();
-  const isProposalPage = asPath.includes('/proposals/');
+  const { pathname } = useLocation();
+  const isProposalPage = pathname.includes('/proposals/');
   const [showRole, setShowRole] = useState(!!preview || isProposalPage);
 
   const [
