@@ -37,6 +37,19 @@ export default defineConfig({
     'process.env': process.env,
   },
   build: {
-    outDir: '../../dist/client',
+    outDir: '../dist/client',
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            return id
+              .toString()
+              .split('node_modules/')[1]
+              .split('/')[0]
+              .toString();
+          }
+        },
+      },
+    },
   },
 });
