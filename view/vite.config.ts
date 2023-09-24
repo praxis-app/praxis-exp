@@ -37,7 +37,7 @@ export default defineConfig({
     'process.env': process.env,
   },
   build: {
-    outDir: '../dist/client',
+    outDir: '../dist/view',
     rollupOptions: {
       output: {
         manualChunks(id) {
