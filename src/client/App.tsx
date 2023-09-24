@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import {
+  createBrowserRouter,
+  RouteObject,
+  RouterProvider,
+} from 'react-router-dom';
 import Layout from './components/App/Layout';
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
@@ -10,56 +14,28 @@ import Proposal from './pages/Proposals/Proposal';
 import EditUserProfile from './pages/Users/EditUserProfile';
 import UserProfile from './pages/Users/UserProfile';
 
+const usersRouter: RouteObject = {
+  path: '/users',
+  children: [
+    { path: ':name', element: <UserProfile /> },
+    { path: ':name/edit', element: <EditUserProfile /> },
+  ],
+};
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
     children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: '/login',
-        element: <Login />,
-      },
-      {
-        path: '/signup',
-        element: <SignUp />,
-      },
-      {
-        path: '/signup/:token',
-        element: <SignUp />,
-      },
-      {
-        path: '/invites',
-        element: <ServerInvites />,
-      },
-      {
-        path: '/i/:token',
-        element: <ServerInvite />,
-      },
-      {
-        path: '/posts/:id',
-        element: <Post />,
-      },
-      {
-        path: '/proposals/:id',
-        element: <Proposal />,
-      },
-      {
-        path: '/users',
-        children: [
-          {
-            path: ':name',
-            element: <UserProfile />,
-          },
-          {
-            path: ':name/edit',
-            element: <EditUserProfile />,
-          },
-        ],
-      },
+      { index: true, element: <Home /> },
+      { path: '/login', element: <Login /> },
+      { path: '/signup', element: <SignUp /> },
+      { path: '/signup/:token', element: <SignUp /> },
+      { path: '/invites', element: <ServerInvites /> },
+      { path: '/i/:token', element: <ServerInvite /> },
+      { path: '/posts/:id', element: <Post /> },
+      { path: '/proposals/:id', element: <Proposal /> },
+      usersRouter,
     ],
   },
 ]);
