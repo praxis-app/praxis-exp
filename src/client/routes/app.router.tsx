@@ -19,23 +19,23 @@ const appRouter = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/login',
+        path: 'login',
         element: <Login />,
       },
       {
-        path: '/invites',
+        path: 'invites',
         element: <ServerInvites />,
       },
       {
-        path: '/i/:token',
+        path: 'i/:token',
         element: <ServerInvite />,
       },
       {
-        path: '/posts/:id',
+        path: 'posts/:id',
         element: <Post />,
       },
       {
-        path: '/proposals/:id',
+        path: 'proposals/:id',
         element: <Proposal />,
       },
       signUpRouter,
