@@ -158,6 +158,7 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
     formValues: Omit<UpdateProposalInput, 'id'>,
     editProposal: ProposalFormFragment,
   ) => {
+    navigate(NavigationPaths.Home);
     await updateProposal({
       variables: {
         proposalData: {
@@ -166,7 +167,6 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
         },
       },
     });
-    navigate(NavigationPaths.Home);
   };
 
   const handleSubmit = async (
