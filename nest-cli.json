@@ -10,6 +10,6 @@
     ],
     "deleteOutDir": true
   },
-  "entryFile": "server/main",
-  "sourceRoot": "src/server"
+  "entryFile": "main",
+  "sourceRoot": "src"
 }
