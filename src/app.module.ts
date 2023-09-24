@@ -9,7 +9,6 @@ import { GraphQLUpload } from 'graphql-upload';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
 import { CommentsModule } from './comments/comments.module';
-import { Environment } from './shared/shared.constants';
 import { ContextModule } from './context/context.module';
 import { ContextService } from './context/context.service';
 import { DatabaseModule } from './database/database.module';
@@ -22,6 +21,7 @@ import { PostsModule } from './posts/posts.module';
 import { ProposalsModule } from './proposals/proposals.module';
 import { ServerInvitesModule } from './server-invites/server-invites.module';
 import { ServerRolesModule } from './server-roles/server-roles.module';
+import { Environment } from './shared/shared.constants';
 import { ShieldModule } from './shield/shield.module';
 import { shieldPermissions } from './shield/shield.permissions';
 import { UsersModule } from './users/users.module';
@@ -49,7 +49,7 @@ export const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'client'),
+      rootPath: join(__dirname, 'view'),
       exclude: ['/api/(.*)', '/graphql'],
       renderPath: '/*',
     }),

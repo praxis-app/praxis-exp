@@ -10,7 +10,7 @@ services:
       - app:/app
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
-    command: node /app/dist/server/main.js
+    command: node /app/dist/main.js
     env_file: .env
     networks:
       - webnet
