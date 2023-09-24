@@ -1,13 +1,12 @@
+import { UserInputError } from '@nestjs/apollo';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserInputError } from 'apollo-server-express';
 import * as fs from 'fs';
 import { FileUpload } from 'graphql-upload';
 import { FindOptionsWhere, In, Repository } from 'typeorm';
-import { DEFAULT_PAGE_SIZE } from '../common/common.constants';
 import { IsFollowedByMeKey } from '../dataloader/dataloader.types';
 import { GroupPermissionsMap } from '../groups/group-roles/models/group-permissions.type';
-import { randomDefaultImagePath, saveImage } from '../images/image.utils';
+import { getUploadsPath, randomDefaultImagePath, saveImage } from '../images/image.utils';
 import { ImagesService, ImageTypes } from '../images/images.service';
 import { Image } from '../images/models/image.model';
 import { Post } from '../posts/models/post.model';
@@ -16,6 +15,7 @@ import { Proposal } from '../proposals/models/proposal.model';
 import { ServerPermissions } from '../server-roles/models/server-permissions.type';
 import { initServerRolePermissions } from '../server-roles/server-role.utils';
 import { ServerRolesService } from '../server-roles/server-roles.service';
+import { DEFAULT_PAGE_SIZE } from '../shared/shared.constants';
 import { UpdateUserInput } from './models/update-user.input';
 import { User } from './models/user.model';
 import { UserWithFollowerCount, UserWithFollowingCount } from './user.types';
@@ -327,8 +327,9 @@ export class UsersService {
 
   async saveDefaultProfilePicture(userId: number) {
     const sourcePath = randomDefaultImagePath();
+    const uploadsPath = getUploadsPath();
     const filename = `${Date.now()}.jpeg`;
-    const copyPath = `./uploads/${filename}`;
+    const copyPath = `${uploadsPath}/${filename}`;
 
     fs.copyFile(sourcePath, copyPath, (err) => {
       if (err) {

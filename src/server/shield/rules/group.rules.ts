@@ -1,6 +1,6 @@
 import { rule } from 'graphql-shield';
 import { FindOptionsWhere } from 'typeorm';
-import { UNAUTHORIZED } from '../../common/common.constants';
+import { UNAUTHORIZED } from '../../shared/shared.constants';
 import { Context } from '../../context/context.types';
 import { GroupConfig, GroupPrivacy } from '../../groups/group-configs/models/group-config.model';
 import { UpdateGroupConfigInput } from '../../groups/group-configs/models/update-group-config.input';

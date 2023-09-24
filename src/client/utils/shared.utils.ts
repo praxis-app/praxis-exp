@@ -1,5 +1,8 @@
-import Router from 'next/router';
+import { t } from 'i18next';
 import { isValidElement, ReactNode } from 'react';
+import { animateScroll } from 'react-scroll';
+import { toastVar } from '../apollo/cache';
+import { SCROLL_DURATION } from '../constants/shared.constants';
 
 /**
  * Returns whether or not a given node can be successfully rendered.
@@ -21,7 +24,7 @@ export const isRenderable = (node: ReactNode): boolean => {
 };
 
 export const isValidUrl = (str: string) => {
-  let url: URL;
+  let url;
   try {
     url = new URL(str);
   } catch {
@@ -41,6 +44,18 @@ export const waitFor = (conditionFn: () => boolean, ms = 250) => {
     }
   };
   return new Promise(poll);
+};
+
+export const inDevToast = () => {
+  toastVar({
+    status: 'info',
+    title: t('prompts.inDev'),
+  });
+};
+
+export const scrollTop = () => {
+  const options = { smooth: true, duration: SCROLL_DURATION };
+  animateScroll.scrollToTop(options);
 };
 
 export const getLocalStorageItem = (item: string) => {
@@ -72,6 +87,6 @@ export const getRandomString = () =>
     .map((c) => (Math.random() < 0.5 ? c : c.toUpperCase()))
     .join('');
 
-export const getTypedKeys = <T>(object: T): (keyof T)[] => Object.keys(object) as (keyof T)[];
-
-export const redirectTo = (path: string) => Router.push(path);
+export const getTypedKeys = <T>(object: T): (keyof T)[] => {
+  return Object.keys(object as {}) as (keyof T)[];
+};

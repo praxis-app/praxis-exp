@@ -1,5 +1,6 @@
 import { Controller, Get, Param, ParseIntPipe, Res } from '@nestjs/common';
 import { Response } from 'express';
+import { getUploadsPath } from './image.utils';
 import { ImagesService } from './images.service';
 
 @Controller('images')
@@ -12,6 +13,7 @@ export class ImagesController {
     if (!image) {
       throw new Error('Image not found');
     }
-    return res.sendFile(image.filename, { root: './uploads' });
+    const root = getUploadsPath();
+    return res.sendFile(image.filename, { root });
   }
 }

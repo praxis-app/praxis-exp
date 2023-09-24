@@ -13,7 +13,7 @@ import {
 } from 'typeorm';
 import { RefreshToken } from '../../auth/refresh-tokens/models/refresh-token.model';
 import { Comment } from '../../comments/models/comment.model';
-import { FeedItem } from '../../common/models/feed-item.union';
+import { FeedItem } from '../../shared/models/feed-item.union';
 import { EventAttendee } from '../../events/event-attendees/models/event-attendee.model';
 import { GroupMemberRequest } from '../../groups/group-member-requests/models/group-member-request.model';
 import { GroupRole } from '../../groups/group-roles/models/group-role.model';

@@ -7,9 +7,9 @@ dotenv.config();
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      CLIENT_PORT: number;
-      SERVER_PORT: number;
-      NODE_ENV: string;
+      CLIENT_PORT?: string;
+      SERVER_PORT?: string;
+      NODE_ENV?: string;
     }
   }
 }
@@ -19,7 +19,7 @@ export default defineConfig({
   plugins: [react()],
   root: 'src/client',
   server: {
-    port: process.env.CLIENT_PORT,
+    port: parseInt(process.env.CLIENT_PORT || '3000'),
     proxy: {
       '/api': {
         target: `http://localhost:${process.env.SERVER_PORT}/api`,

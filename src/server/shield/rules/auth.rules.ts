@@ -1,5 +1,5 @@
 import { rule } from 'graphql-shield';
-import { UNAUTHORIZED } from '../../common/common.constants';
+import { UNAUTHORIZED } from '../../shared/shared.constants';
 import { getJti, getSub } from '../../auth/auth.utils';
 import { Context } from '../../context/context.types';
 

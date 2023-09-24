@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import client from './apollo/client';
 import App from './App';
-import { Environments } from './constants/common.constants';
+import { Environments } from './constants/shared.constants';
 import './locales/i18n.config';
 import './styles/globals.css';
 import theme from './styles/theme';

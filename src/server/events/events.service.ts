@@ -2,7 +2,7 @@ import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FileUpload } from 'graphql-upload';
 import { Between, FindOptionsWhere, In, LessThan, MoreThan, Repository } from 'typeorm';
-import { DEFAULT_PAGE_SIZE } from '../common/common.constants';
+import { DEFAULT_PAGE_SIZE } from '../shared/shared.constants';
 import { GroupPrivacy } from '../groups/group-configs/models/group-config.model';
 import { saveImage } from '../images/image.utils';
 import { ImagesService, ImageTypes } from '../images/images.service';

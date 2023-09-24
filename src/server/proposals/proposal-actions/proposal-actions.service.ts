@@ -1,12 +1,12 @@
+import { UserInputError } from '@nestjs/apollo';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserInputError } from 'apollo-server-express';
 import { FileUpload } from 'graphql-upload';
 import { FindOptionsWhere, In, Repository } from 'typeorm';
 import { EventAttendeeStatus } from '../../events/event-attendees/models/event-attendee.model';
 import { GroupRolesService } from '../../groups/group-roles/group-roles.service';
 import { saveImage } from '../../images/image.utils';
-import { ImagesService, ImageTypes } from '../../images/images.service';
+import { ImageTypes, ImagesService } from '../../images/images.service';
 import { ProposalAction } from './models/proposal-action.model';
 import { ProposalActionEventsService } from './proposal-action-events/proposal-action-events.service';
 import {

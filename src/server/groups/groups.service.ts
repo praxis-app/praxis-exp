@@ -1,9 +1,8 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { UserInputError } from 'apollo-server-express';
 import { FileUpload } from 'graphql-upload';
 import { FindOptionsWhere, In, Repository } from 'typeorm';
-import { DEFAULT_PAGE_SIZE } from '../common/common.constants';
+import { DEFAULT_PAGE_SIZE } from '../shared/shared.constants';
 import { MyGroupsKey } from '../dataloader/dataloader.types';
 import { saveImage } from '../images/image.utils';
 import { ImagesService, ImageTypes } from '../images/images.service';
@@ -19,6 +18,7 @@ import { GroupRolesService } from './group-roles/group-roles.service';
 import { CreateGroupInput } from './models/create-group.input';
 import { Group } from './models/group.model';
 import { UpdateGroupInput } from './models/update-group.input';
+import { UserInputError } from '@nestjs/apollo';
 
 type GroupWithMemberCount = Group & { memberCount: number };
 

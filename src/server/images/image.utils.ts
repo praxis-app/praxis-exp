@@ -6,6 +6,8 @@ import { promisify } from 'util';
 const DEFAULT_IMAGES_SIZE = 10;
 const VALID_IMAGE_FORMAT = /(jpe?g|png|gif|webp)$/;
 
+export const getUploadsPath = () => `${__dirname}/../../../uploads`;
+
 export const saveImage = async (image: Promise<FileUpload>) => {
   const { createReadStream, mimetype } = await image;
   const extension = mimetype.split('/')[1];
@@ -14,8 +16,9 @@ export const saveImage = async (image: Promise<FileUpload>) => {
     throw new UnsupportedMediaTypeException('Only image files are allowed');
   }
 
+  const uploadsPath = getUploadsPath();
   const filename = `${Date.now()}.${extension}`;
-  const path = `./uploads/${filename}`;
+  const path = `${uploadsPath}/${filename}`;
 
   await new Promise((resolve, reject) => {
     const stream = createReadStream();
@@ -33,9 +36,10 @@ export const saveImage = async (image: Promise<FileUpload>) => {
 };
 
 export const copyImage = (filename: string) => {
-  const sourcePath = `./uploads/${filename}`;
+  const uploadsPath = getUploadsPath();
+  const sourcePath = `${uploadsPath}/${filename}`;
   const newFilename = `${Date.now()}.${filename.split('.')[1]}`;
-  const newPath = `./uploads/${newFilename}`;
+  const newPath = `${uploadsPath}/${newFilename}`;
 
   fs.copyFile(sourcePath, newPath, (err) => {
     if (err) {
@@ -46,10 +50,11 @@ export const copyImage = (filename: string) => {
 };
 
 export const randomDefaultImagePath = () =>
-  `./src/images/assets/defaults/${Math.floor(Math.random() * DEFAULT_IMAGES_SIZE) + 1}.jpeg`;
+  `${__dirname}/assets/defaults/${Math.floor(Math.random() * DEFAULT_IMAGES_SIZE) + 1}.jpeg`;
 
 export const deleteImageFile = async (filename: string) => {
   const unlinkAsync = promisify(fs.unlink);
-  const path = `./uploads/${filename}`;
-  await unlinkAsync(path);
+  const uploadsPath = getUploadsPath();
+  const imagePath = `${uploadsPath}/${filename}`;
+  await unlinkAsync(imagePath);
 };

@@ -17,11 +17,11 @@ export enum NavigationPaths {
   Groups = '/groups',
   Home = '/',
   Invites = '/invites',
-  LogIn = '/auth/login',
+  LogIn = '/login',
   Posts = '/posts',
   Proposals = '/proposals',
   Roles = '/roles',
-  SignUp = '/auth/signup',
+  SignUp = '/signup',
   Users = '/users',
 }
 

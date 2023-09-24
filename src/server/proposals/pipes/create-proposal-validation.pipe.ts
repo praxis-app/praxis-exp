@@ -1,7 +1,7 @@
 import { ArgumentMetadata, Injectable, PipeTransform } from '@nestjs/common';
-import { ValidationError } from 'apollo-server-express';
 import { CreateProposalInput } from '../models/create-proposal.input';
 import { ProposalActionType } from '../proposals.constants';
+import { ValidationError } from '@nestjs/apollo';
 
 @Injectable()
 export class CreateProposalValidationPipe implements PipeTransform {

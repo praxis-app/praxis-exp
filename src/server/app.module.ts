@@ -9,7 +9,7 @@ import { GraphQLUpload } from 'graphql-upload';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
 import { CommentsModule } from './comments/comments.module';
-import { Environment } from './common/common.constants';
+import { Environment } from './shared/shared.constants';
 import { ContextModule } from './context/context.module';
 import { ContextService } from './context/context.service';
 import { DatabaseModule } from './database/database.module';

@@ -1,4 +1,3 @@
-import { Context as ApolloContext } from 'apollo-server-core';
 import { JwtPayload } from 'jsonwebtoken';
 import { RefreshTokensService } from '../auth/refresh-tokens/refresh-tokens.service';
 import { CommentsService } from '../comments/comments.service';
@@ -35,7 +34,7 @@ export interface ContextServices {
   usersService: UsersService;
 }
 
-export interface Context extends ApolloContext {
+export interface Context {
   claims: {
     accessTokenClaims: JwtPayload | null;
     refreshTokenClaims: JwtPayload | null;
