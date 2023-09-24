@@ -14,7 +14,7 @@ WORKDIR /app
 RUN npm ci
 
 # Exclude client from nest build
-RUN mv src/client ..
+RUN mv view ..
 RUN npm run build
 
 # Ensure dist/server hierarchy
@@ -26,7 +26,7 @@ RUN mv server dist
 RUN npm run copy:assets
 
 # Re-include client for vite build
-RUN mv ../client src
+RUN mv ../view .
 RUN npm run build:client
 
 # Prep for runtime image
