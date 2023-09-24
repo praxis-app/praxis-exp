@@ -7,6 +7,7 @@ import ServerInvite from '../pages/Invites/ServerInvite';
 import ServerInvites from '../pages/Invites/ServerInvites';
 import Post from '../pages/Posts/Post';
 import Proposal from '../pages/Proposals/Proposal';
+import groupsRouter from './groups.router';
 import signUpRouter from './sign-up.router';
 import usersRouter from './users.router';
 
@@ -43,6 +44,7 @@ const appRouter = createBrowserRouter([
         path: 'groups',
         element: <GroupsIndex />,
       },
+      groupsRouter,
       signUpRouter,
       usersRouter,
     ],
