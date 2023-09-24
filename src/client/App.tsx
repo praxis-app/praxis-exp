@@ -22,6 +22,14 @@ const usersRouter: RouteObject = {
   ],
 };
 
+const signUpRouter: RouteObject = {
+  path: '/signup',
+  children: [
+    { path: '', element: <SignUp /> },
+    { path: ':token', element: <SignUp /> },
+  ],
+};
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,12 +37,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: '/login', element: <Login /> },
-      { path: '/signup', element: <SignUp /> },
-      { path: '/signup/:token', element: <SignUp /> },
       { path: '/invites', element: <ServerInvites /> },
       { path: '/i/:token', element: <ServerInvite /> },
       { path: '/posts/:id', element: <Post /> },
       { path: '/proposals/:id', element: <Proposal /> },
+      signUpRouter,
       usersRouter,
     ],
   },
