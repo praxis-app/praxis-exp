@@ -6,7 +6,7 @@ import { promisify } from 'util';
 const DEFAULT_IMAGES_SIZE = 10;
 const VALID_IMAGE_FORMAT = /(jpe?g|png|gif|webp)$/;
 
-export const getUploadsPath = () => `${__dirname}/../../public/uploads`;
+export const getUploadsPath = () => `${__dirname}/../../../uploads`;
 
 export const saveImage = async (image: Promise<FileUpload>) => {
   const { createReadStream, mimetype } = await image;

@@ -17,7 +17,7 @@ declare global {
 // https://vitejs.dev/config
 export default defineConfig({
   plugins: [react()],
-  root: 'src/client',
+  root: 'view',
   server: {
     port: parseInt(process.env.CLIENT_PORT || '3000'),
     proxy: {
