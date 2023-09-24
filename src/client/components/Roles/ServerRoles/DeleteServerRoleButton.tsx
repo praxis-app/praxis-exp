@@ -21,6 +21,7 @@ const DeleteServerRoleButton = ({ roleId }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = async () => {
+    navigate(NavigationPaths.Roles);
     await deleteRole({
       variables: { id: roleId },
       update(cache) {
@@ -47,7 +48,6 @@ const DeleteServerRoleButton = ({ roleId }: Props) => {
         });
       },
     });
-    navigate(NavigationPaths.Roles);
   };
 
   const handleClickWithConfirm = () =>

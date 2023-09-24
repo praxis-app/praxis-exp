@@ -26,6 +26,7 @@ const DeleteProposalButton = ({ proposalId }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = async () => {
+    navigate(NavigationPaths.Home);
     await deleteProposal({
       variables: { id: proposalId },
       update: removeProposal(proposalId),
@@ -36,7 +37,6 @@ const DeleteProposalButton = ({ proposalId }: Props) => {
         });
       },
     });
-    navigate(NavigationPaths.Home);
   };
 
   const handleClickWithConfirm = () =>

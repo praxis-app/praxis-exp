@@ -106,6 +106,7 @@ const PostForm = ({ editPost, groupId, eventId, ...formProps }: Props) => {
     formValues: Omit<UpdatePostInput, 'id'>,
     editPost: PostFormFragment,
   ) => {
+    navigate(NavigationPaths.Home);
     await updatePost({
       variables: {
         postData: {
@@ -115,7 +116,6 @@ const PostForm = ({ editPost, groupId, eventId, ...formProps }: Props) => {
         },
       },
     });
-    navigate(NavigationPaths.Home);
   };
 
   const handleSubmit = async (

@@ -18,7 +18,7 @@ const DeleteGroupRoleButton = ({ role: { id, group, __typename } }: Props) => {
 
   const handleClick = async () => {
     const groupRolesPath = `${NavigationPaths.Groups}/${group?.name}/roles`;
-    await navigate(groupRolesPath);
+    navigate(groupRolesPath);
 
     await deleteRole({
       variables: { id },

@@ -94,6 +94,9 @@ const ProposalCard = ({ proposal, inModal, ...cardProps }: Props) => {
   };
 
   const handleDelete = async () => {
+    if (isProposalPage) {
+      navigate(NavigationPaths.Home);
+    }
     await deleteProposal({
       variables: { id },
       update: removeProposal(id),
@@ -104,9 +107,6 @@ const ProposalCard = ({ proposal, inModal, ...cardProps }: Props) => {
         });
       },
     });
-    if (isProposalPage) {
-      navigate(NavigationPaths.Home);
-    }
   };
 
   const renderAvatar = () => {

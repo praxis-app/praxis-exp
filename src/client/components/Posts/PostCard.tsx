@@ -85,13 +85,13 @@ const PostCard = ({ post, inModal = false, ...cardProps }: Props) => {
   };
 
   const handleDelete = async () => {
+    if (isPostPage) {
+      navigate(NavigationPaths.Home);
+    }
     await deletePost({
       variables: { id },
       update: removePost(id),
     });
-    if (isPostPage) {
-      navigate(NavigationPaths.Home);
-    }
   };
 
   const renderAvatar = () => {

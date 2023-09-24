@@ -35,6 +35,7 @@ const DeletePostButton = ({ postId }: Props) => {
   const navigate = useNavigate();
 
   const handleClick = async () => {
+    navigate(NavigationPaths.Home);
     await deletePost({
       variables: { id: postId },
       update: removePost(postId),
@@ -45,7 +46,6 @@ const DeletePostButton = ({ postId }: Props) => {
         });
       },
     });
-    navigate(NavigationPaths.Home);
   };
 
   const handleClickWithConfirm = () =>
