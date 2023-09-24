@@ -83,7 +83,10 @@ export const RolesByGroupIdDocument = gql`
  * });
  */
 export function useRolesByGroupIdQuery(
-  baseOptions: Apollo.QueryHookOptions<RolesByGroupIdQuery, RolesByGroupIdQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    RolesByGroupIdQuery,
+    RolesByGroupIdQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<RolesByGroupIdQuery, RolesByGroupIdQueryVariables>(
@@ -92,7 +95,10 @@ export function useRolesByGroupIdQuery(
   );
 }
 export function useRolesByGroupIdLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<RolesByGroupIdQuery, RolesByGroupIdQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    RolesByGroupIdQuery,
+    RolesByGroupIdQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<RolesByGroupIdQuery, RolesByGroupIdQueryVariables>(
@@ -100,8 +106,12 @@ export function useRolesByGroupIdLazyQuery(
     options,
   );
 }
-export type RolesByGroupIdQueryHookResult = ReturnType<typeof useRolesByGroupIdQuery>;
-export type RolesByGroupIdLazyQueryHookResult = ReturnType<typeof useRolesByGroupIdLazyQuery>;
+export type RolesByGroupIdQueryHookResult = ReturnType<
+  typeof useRolesByGroupIdQuery
+>;
+export type RolesByGroupIdLazyQueryHookResult = ReturnType<
+  typeof useRolesByGroupIdLazyQuery
+>;
 export type RolesByGroupIdQueryResult = Apollo.QueryResult<
   RolesByGroupIdQuery,
   RolesByGroupIdQueryVariables

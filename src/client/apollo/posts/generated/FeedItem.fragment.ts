@@ -168,7 +168,9 @@ export type FeedItem_Proposal_Fragment = {
   }>;
 };
 
-export type FeedItemFragment = FeedItem_Post_Fragment | FeedItem_Proposal_Fragment;
+export type FeedItemFragment =
+  | FeedItem_Post_Fragment
+  | FeedItem_Proposal_Fragment;
 
 export const FeedItemFragmentDoc = gql`
   fragment FeedItem on FeedItem {

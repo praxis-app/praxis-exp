@@ -7,7 +7,11 @@ import { RefreshTokensResolver } from './refresh-tokens.resolver';
 import { RefreshTokensService } from './refresh-tokens.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([RefreshToken]), forwardRef(() => AuthModule), UsersModule],
+  imports: [
+    TypeOrmModule.forFeature([RefreshToken]),
+    forwardRef(() => AuthModule),
+    UsersModule,
+  ],
   providers: [RefreshTokensService, RefreshTokensResolver],
   exports: [RefreshTokensService],
 })

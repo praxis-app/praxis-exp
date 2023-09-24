@@ -137,7 +137,10 @@ export type UpdateProposalMutation = {
 };
 
 export const UpdateProposalDocument = gql`
-  mutation UpdateProposal($proposalData: UpdateProposalInput!, $isLoggedIn: Boolean = true) {
+  mutation UpdateProposal(
+    $proposalData: UpdateProposalInput!
+    $isLoggedIn: Boolean = true
+  ) {
     updateProposal(proposalData: $proposalData) {
       proposal {
         ...ProposalCard
@@ -170,16 +173,22 @@ export type UpdateProposalMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useUpdateProposalMutation(
-  baseOptions?: Apollo.MutationHookOptions<UpdateProposalMutation, UpdateProposalMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateProposalMutation,
+    UpdateProposalMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateProposalMutation, UpdateProposalMutationVariables>(
-    UpdateProposalDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    UpdateProposalMutation,
+    UpdateProposalMutationVariables
+  >(UpdateProposalDocument, options);
 }
-export type UpdateProposalMutationHookResult = ReturnType<typeof useUpdateProposalMutation>;
-export type UpdateProposalMutationResult = Apollo.MutationResult<UpdateProposalMutation>;
+export type UpdateProposalMutationHookResult = ReturnType<
+  typeof useUpdateProposalMutation
+>;
+export type UpdateProposalMutationResult =
+  Apollo.MutationResult<UpdateProposalMutation>;
 export type UpdateProposalMutationOptions = Apollo.BaseMutationOptions<
   UpdateProposalMutation,
   UpdateProposalMutationVariables

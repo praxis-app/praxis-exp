@@ -44,7 +44,10 @@ export type DeletePostMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useDeletePostMutation(
-  baseOptions?: Apollo.MutationHookOptions<DeletePostMutation, DeletePostMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    DeletePostMutation,
+    DeletePostMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<DeletePostMutation, DeletePostMutationVariables>(
@@ -52,8 +55,11 @@ export function useDeletePostMutation(
     options,
   );
 }
-export type DeletePostMutationHookResult = ReturnType<typeof useDeletePostMutation>;
-export type DeletePostMutationResult = Apollo.MutationResult<DeletePostMutation>;
+export type DeletePostMutationHookResult = ReturnType<
+  typeof useDeletePostMutation
+>;
+export type DeletePostMutationResult =
+  Apollo.MutationResult<DeletePostMutation>;
 export type DeletePostMutationOptions = Apollo.BaseMutationOptions<
   DeletePostMutation,
   DeletePostMutationVariables

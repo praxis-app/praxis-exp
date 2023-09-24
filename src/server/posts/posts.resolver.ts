@@ -43,18 +43,27 @@ export class PostsResolver {
   }
 
   @ResolveField(() => Int)
-  async commentCount(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: Post) {
+  async commentCount(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: Post,
+  ) {
     return loaders.postCommentCountLoader.load(id);
   }
 
   @ResolveField(() => [Like])
-  async likes(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: Post) {
+  async likes(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: Post,
+  ) {
     return loaders.postLikesLoader.load(id);
   }
 
   // TODO: Rename as likeCount
   @ResolveField(() => Int)
-  async likesCount(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: Post) {
+  async likesCount(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: Post,
+  ) {
     return loaders.postLikeCountLoader.load(id);
   }
 
@@ -71,27 +80,42 @@ export class PostsResolver {
   }
 
   @ResolveField(() => [Image])
-  async images(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: Post) {
+  async images(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: Post,
+  ) {
     return loaders.postImagesLoader.load(id);
   }
 
   @ResolveField(() => User)
-  async user(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { userId }: Post) {
+  async user(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { userId }: Post,
+  ) {
     return loaders.usersLoader.load(userId);
   }
 
   @ResolveField(() => Group)
-  async group(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { groupId }: Post) {
+  async group(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { groupId }: Post,
+  ) {
     return groupId ? loaders.groupsLoader.load(groupId) : null;
   }
 
   @ResolveField(() => Event)
-  async event(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { eventId }: Post) {
+  async event(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { eventId }: Post,
+  ) {
     return eventId ? loaders.eventsLoader.load(eventId) : null;
   }
 
   @Mutation(() => CreatePostPayload)
-  async createPost(@Args('postData') postData: CreatePostInput, @CurrentUser() user: User) {
+  async createPost(
+    @Args('postData') postData: CreatePostInput,
+    @CurrentUser() user: User,
+  ) {
     return this.postsService.createPost(postData, user);
   }
 

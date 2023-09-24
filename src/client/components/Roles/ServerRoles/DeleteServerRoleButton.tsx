@@ -7,7 +7,10 @@ import {
   ServerRolesDocument,
   ServerRolesQuery,
 } from '../../../apollo/roles/generated/ServerRoles.query';
-import { NavigationPaths, TypeNames } from '../../../constants/shared.constants';
+import {
+  NavigationPaths,
+  TypeNames,
+} from '../../../constants/shared.constants';
 import DeleteButton from '../../Shared/DeleteButton';
 
 interface Props {
@@ -25,14 +28,18 @@ const DeleteServerRoleButton = ({ roleId }: Props) => {
     await deleteRole({
       variables: { id: roleId },
       update(cache) {
-        cache.updateQuery<ServerRolesQuery>({ query: ServerRolesDocument }, (rolesData) =>
-          produce(rolesData, (draft) => {
-            if (!draft) {
-              return;
-            }
-            const index = draft.serverRoles.findIndex((role) => role.id === roleId);
-            draft.serverRoles.splice(index, 1);
-          }),
+        cache.updateQuery<ServerRolesQuery>(
+          { query: ServerRolesDocument },
+          (rolesData) =>
+            produce(rolesData, (draft) => {
+              if (!draft) {
+                return;
+              }
+              const index = draft.serverRoles.findIndex(
+                (role) => role.id === roleId,
+              );
+              draft.serverRoles.splice(index, 1);
+            }),
         );
         const cacheId = cache.identify({
           id: roleId,
@@ -51,9 +58,14 @@ const DeleteServerRoleButton = ({ roleId }: Props) => {
   };
 
   const handleClickWithConfirm = () =>
-    window.confirm(t('prompts.deleteItem', { itemType: 'role' })) && handleClick();
+    window.confirm(t('prompts.deleteItem', { itemType: 'role' })) &&
+    handleClick();
 
-  return <DeleteButton onClick={handleClickWithConfirm}>{t('roles.actions.delete')}</DeleteButton>;
+  return (
+    <DeleteButton onClick={handleClickWithConfirm}>
+      {t('roles.actions.delete')}
+    </DeleteButton>
+  );
 };
 
 export default DeleteServerRoleButton;

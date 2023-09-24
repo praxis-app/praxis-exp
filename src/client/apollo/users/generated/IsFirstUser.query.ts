@@ -33,13 +33,22 @@ export const IsFirstUserDocument = gql`
  * });
  */
 export function useIsFirstUserQuery(
-  baseOptions?: Apollo.QueryHookOptions<IsFirstUserQuery, IsFirstUserQueryVariables>,
+  baseOptions?: Apollo.QueryHookOptions<
+    IsFirstUserQuery,
+    IsFirstUserQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<IsFirstUserQuery, IsFirstUserQueryVariables>(IsFirstUserDocument, options);
+  return Apollo.useQuery<IsFirstUserQuery, IsFirstUserQueryVariables>(
+    IsFirstUserDocument,
+    options,
+  );
 }
 export function useIsFirstUserLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<IsFirstUserQuery, IsFirstUserQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    IsFirstUserQuery,
+    IsFirstUserQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<IsFirstUserQuery, IsFirstUserQueryVariables>(
@@ -48,7 +57,9 @@ export function useIsFirstUserLazyQuery(
   );
 }
 export type IsFirstUserQueryHookResult = ReturnType<typeof useIsFirstUserQuery>;
-export type IsFirstUserLazyQueryHookResult = ReturnType<typeof useIsFirstUserLazyQuery>;
+export type IsFirstUserLazyQueryHookResult = ReturnType<
+  typeof useIsFirstUserLazyQuery
+>;
 export type IsFirstUserQueryResult = Apollo.QueryResult<
   IsFirstUserQuery,
   IsFirstUserQueryVariables

@@ -50,13 +50,16 @@ export function useDeleteServerInviteMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteServerInviteMutation, DeleteServerInviteMutationVariables>(
-    DeleteServerInviteDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    DeleteServerInviteMutation,
+    DeleteServerInviteMutationVariables
+  >(DeleteServerInviteDocument, options);
 }
-export type DeleteServerInviteMutationHookResult = ReturnType<typeof useDeleteServerInviteMutation>;
-export type DeleteServerInviteMutationResult = Apollo.MutationResult<DeleteServerInviteMutation>;
+export type DeleteServerInviteMutationHookResult = ReturnType<
+  typeof useDeleteServerInviteMutation
+>;
+export type DeleteServerInviteMutationResult =
+  Apollo.MutationResult<DeleteServerInviteMutation>;
 export type DeleteServerInviteMutationOptions = Apollo.BaseMutationOptions<
   DeleteServerInviteMutation,
   DeleteServerInviteMutationVariables

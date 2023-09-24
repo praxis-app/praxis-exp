@@ -33,17 +33,34 @@ export const AuthCheckDocument = gql`
  * });
  */
 export function useAuthCheckQuery(
-  baseOptions?: Apollo.QueryHookOptions<AuthCheckQuery, AuthCheckQueryVariables>,
+  baseOptions?: Apollo.QueryHookOptions<
+    AuthCheckQuery,
+    AuthCheckQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AuthCheckQuery, AuthCheckQueryVariables>(AuthCheckDocument, options);
+  return Apollo.useQuery<AuthCheckQuery, AuthCheckQueryVariables>(
+    AuthCheckDocument,
+    options,
+  );
 }
 export function useAuthCheckLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<AuthCheckQuery, AuthCheckQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    AuthCheckQuery,
+    AuthCheckQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AuthCheckQuery, AuthCheckQueryVariables>(AuthCheckDocument, options);
+  return Apollo.useLazyQuery<AuthCheckQuery, AuthCheckQueryVariables>(
+    AuthCheckDocument,
+    options,
+  );
 }
 export type AuthCheckQueryHookResult = ReturnType<typeof useAuthCheckQuery>;
-export type AuthCheckLazyQueryHookResult = ReturnType<typeof useAuthCheckLazyQuery>;
-export type AuthCheckQueryResult = Apollo.QueryResult<AuthCheckQuery, AuthCheckQueryVariables>;
+export type AuthCheckLazyQueryHookResult = ReturnType<
+  typeof useAuthCheckLazyQuery
+>;
+export type AuthCheckQueryResult = Apollo.QueryResult<
+  AuthCheckQuery,
+  AuthCheckQueryVariables
+>;

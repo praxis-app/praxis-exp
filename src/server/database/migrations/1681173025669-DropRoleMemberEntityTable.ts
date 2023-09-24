@@ -1,6 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class DropRoleMemberEntityTable1681173025669 implements MigrationInterface {
+export class DropRoleMemberEntityTable1681173025669
+  implements MigrationInterface
+{
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
       `ALTER TABLE "role_member" DROP CONSTRAINT "FK_d8d704a0c5445a41ff5ec5a6f26"`,

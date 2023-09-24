@@ -52,7 +52,9 @@ const RoleMember = ({ roleMember, roleId }: Props) => {
       id: cache.identify({ id: roleId, __typename }),
       fields: {
         members(existingRefs: Reference[], { readField }) {
-          return existingRefs.filter((ref) => readField('id', ref) !== roleMember.id);
+          return existingRefs.filter(
+            (ref) => readField('id', ref) !== roleMember.id,
+          );
         },
         availableUsersToAdd(_, { toReference }) {
           return availableUsersToAdd.map((user) => toReference(user));
@@ -67,7 +69,10 @@ const RoleMember = ({ roleMember, roleId }: Props) => {
   const handleError = (error: ApolloError) =>
     toastVar({
       status: 'error',
-      title: error.message === FORBIDDEN ? t('prompts.permissionDenied') : error.message,
+      title:
+        error.message === FORBIDDEN
+          ? t('prompts.permissionDenied')
+          : error.message,
     });
 
   const handleDeleteServerRoleMember = async () =>
@@ -123,7 +128,8 @@ const RoleMember = ({ roleMember, roleId }: Props) => {
   };
 
   const handleClickWithConfirm = () =>
-    window.confirm(t('prompts.removeItem', { itemType: 'role member' })) && handleDelete();
+    window.confirm(t('prompts.removeItem', { itemType: 'role member' })) &&
+    handleDelete();
 
   return (
     <OuterFlex justifyContent="space-between">

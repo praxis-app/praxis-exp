@@ -50,15 +50,16 @@ export function useDeleteEventAttendeeMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteEventAttendeeMutation, DeleteEventAttendeeMutationVariables>(
-    DeleteEventAttendeeDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    DeleteEventAttendeeMutation,
+    DeleteEventAttendeeMutationVariables
+  >(DeleteEventAttendeeDocument, options);
 }
 export type DeleteEventAttendeeMutationHookResult = ReturnType<
   typeof useDeleteEventAttendeeMutation
 >;
-export type DeleteEventAttendeeMutationResult = Apollo.MutationResult<DeleteEventAttendeeMutation>;
+export type DeleteEventAttendeeMutationResult =
+  Apollo.MutationResult<DeleteEventAttendeeMutation>;
 export type DeleteEventAttendeeMutationOptions = Apollo.BaseMutationOptions<
   DeleteEventAttendeeMutation,
   DeleteEventAttendeeMutationVariables

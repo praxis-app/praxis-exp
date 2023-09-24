@@ -62,14 +62,16 @@ export class GroupsService {
   }
 
   async getPublicGroupsFeed() {
-    const publicGroups = await this.getGroups({ config: { privacy: GroupPrivacy.Public } }, [
-      'posts',
-      'proposals',
-      'events.posts',
-    ]);
+    const publicGroups = await this.getGroups(
+      { config: { privacy: GroupPrivacy.Public } },
+      ['posts', 'proposals', 'events.posts'],
+    );
     const [posts, proposals] = publicGroups.reduce<[Post[], Proposal[]]>(
       (result, { posts, proposals, events }) => {
-        const eventPosts = events.reduce<Post[]>((res, { posts }) => [...res, ...posts], []);
+        const eventPosts = events.reduce<Post[]>(
+          (res, { posts }) => [...res, ...posts],
+          [],
+        );
         result[0].push(...posts, ...eventPosts);
         result[1].push(...proposals);
         return result;
@@ -113,13 +115,16 @@ export class GroupsService {
     });
     return groupIds.map(
       (id) =>
-        groups.find((group: Group) => group.id === id) || new Error(`Could not load group: ${id}`),
+        groups.find((group: Group) => group.id === id) ||
+        new Error(`Could not load group: ${id}`),
     );
   }
 
   async getMyGroupPermissionsBatch(keys: MyGroupsKey[]) {
     const groupIds = keys.map(({ groupId }) => groupId);
-    const { groupPermissions } = await this.usersService.getUserPermissions(keys[0].currentUserId);
+    const { groupPermissions } = await this.usersService.getUserPermissions(
+      keys[0].currentUserId,
+    );
     return groupIds.map((id) => {
       if (!groupPermissions[id]) {
         return initGroupRolePermissions();
@@ -137,7 +142,9 @@ export class GroupsService {
       if (!group) {
         return new Error(`Could not load group: ${groupId}`);
       }
-      return group.members.some((member) => member.id === keys[0].currentUserId);
+      return group.members.some(
+        (member) => member.id === keys[0].currentUserId,
+      );
     });
   }
 
@@ -171,7 +178,10 @@ export class GroupsService {
     });
   }
 
-  async createGroup({ coverPhoto, ...groupData }: CreateGroupInput, userId: number) {
+  async createGroup(
+    { coverPhoto, ...groupData }: CreateGroupInput,
+    userId: number,
+  ) {
     const group = await this.groupRepository.save(groupData);
     await this.createGroupMember(group.id, userId);
 

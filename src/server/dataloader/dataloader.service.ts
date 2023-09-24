@@ -24,7 +24,12 @@ import { User } from '../users/models/user.model';
 import { UsersService } from '../users/users.service';
 import { Vote } from '../votes/models/vote.model';
 import { VotesService } from '../votes/votes.service';
-import { Dataloaders, IsFollowedByMeKey, IsLikedByMeKey, MyGroupsKey } from './dataloader.types';
+import {
+  Dataloaders,
+  IsFollowedByMeKey,
+  IsLikedByMeKey,
+  MyGroupsKey,
+} from './dataloader.types';
 
 @Injectable()
 export class DataloaderService {
@@ -130,14 +135,19 @@ export class DataloaderService {
   }
 
   private _createProposalActionsLoader() {
-    return this._getDataLoader<number, ProposalAction>(async (proposalActionIds) =>
-      this.proposalActionsService.getProposalActionsBatch(proposalActionIds as number[]),
+    return this._getDataLoader<number, ProposalAction>(
+      async (proposalActionIds) =>
+        this.proposalActionsService.getProposalActionsBatch(
+          proposalActionIds as number[],
+        ),
     );
   }
 
   private _createProposalCommentCountLoader() {
     return this._getDataLoader<number, number>(async (proposalIds) =>
-      this.proposalsService.getProposalCommentCountBatch(proposalIds as number[]),
+      this.proposalsService.getProposalCommentCountBatch(
+        proposalIds as number[],
+      ),
     );
   }
 
@@ -147,7 +157,8 @@ export class DataloaderService {
 
   private _createIsPostLikedByMeLoader() {
     return this._getDataLoader<IsLikedByMeKey, boolean, number>(
-      async (keys) => this.postsService.getIsLikedByMeBatch(keys as IsLikedByMeKey[]),
+      async (keys) =>
+        this.postsService.getIsLikedByMeBatch(keys as IsLikedByMeKey[]),
       { cacheKeyFn: (key) => key.postId },
     );
   }
@@ -204,7 +215,9 @@ export class DataloaderService {
 
   private _createMemberRequestCountLoader() {
     return this._getDataLoader<number, number>(async (groupIds) =>
-      this.memberRequestsService.getGroupMemberRequestCountBatch(groupIds as number[]),
+      this.memberRequestsService.getGroupMemberRequestCountBatch(
+        groupIds as number[],
+      ),
     );
   }
 
@@ -222,7 +235,8 @@ export class DataloaderService {
 
   private _createIsJoinedByMeLoader() {
     return this._getDataLoader<MyGroupsKey, boolean, number>(
-      async (keys) => this.groupsService.isJoinedByMeBatch(keys as MyGroupsKey[]),
+      async (keys) =>
+        this.groupsService.isJoinedByMeBatch(keys as MyGroupsKey[]),
       { cacheKeyFn: (key) => key.groupId },
     );
   }
@@ -245,7 +259,8 @@ export class DataloaderService {
 
   private _createIsFollowedByMeLoader() {
     return this._getDataLoader<IsFollowedByMeKey, boolean, number>(
-      async (keys) => this.usersService.getIsFollowedByMeBatch(keys as IsFollowedByMeKey[]),
+      async (keys) =>
+        this.usersService.getIsFollowedByMeBatch(keys as IsFollowedByMeKey[]),
       { cacheKeyFn: (key) => key.followedUserId },
     );
   }
@@ -274,13 +289,16 @@ export class DataloaderService {
 
   private _createServerRoleMemberCountLoader() {
     return this._getDataLoader<number, number>(async (roleIds) =>
-      this.serverRolesService.getServerRoleMemberCountBatch(roleIds as number[]),
+      this.serverRolesService.getServerRoleMemberCountBatch(
+        roleIds as number[],
+      ),
     );
   }
 
   private _createMyGroupPermissionsLoader() {
     return this._getDataLoader<MyGroupsKey, GroupPermissions, number>(
-      async (keys) => this.groupsService.getMyGroupPermissionsBatch(keys as MyGroupsKey[]),
+      async (keys) =>
+        this.groupsService.getMyGroupPermissionsBatch(keys as MyGroupsKey[]),
       { cacheKeyFn: (key) => key.groupId },
     );
   }

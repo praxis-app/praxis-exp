@@ -30,7 +30,10 @@ interface Props {
   groupName: string;
 }
 
-const MemberRequest = ({ memberRequest: { id, user, group, __typename }, groupName }: Props) => {
+const MemberRequest = ({
+  memberRequest: { id, user, group, __typename },
+  groupName,
+}: Props) => {
   const [approve] = useApproveGroupMemberRequestMutation();
   const [deny] = useDenyGroupMemberRequestMutation();
   const { t } = useTranslation();
@@ -94,7 +97,9 @@ const MemberRequest = ({ memberRequest: { id, user, group, __typename }, groupNa
           if (!draft?.group.memberRequests) {
             return;
           }
-          const index = draft.group.memberRequests.findIndex((p) => p.id === id);
+          const index = draft.group.memberRequests.findIndex(
+            (p) => p.id === id,
+          );
           draft.group.memberRequests.splice(index, 1);
         }),
     );
@@ -113,7 +118,10 @@ const MemberRequest = ({ memberRequest: { id, user, group, __typename }, groupNa
       </Link>
 
       <Box>
-        <Button sx={{ color: 'text.primary' }} onClick={handleApproveButtonClick}>
+        <Button
+          sx={{ color: 'text.primary' }}
+          onClick={handleApproveButtonClick}
+        >
           {t('groups.actions.approve')}
         </Button>
         <Button sx={{ color: 'text.primary' }} onClick={handleDenyButtonClick}>

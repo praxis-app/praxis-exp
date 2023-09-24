@@ -44,16 +44,22 @@ export type DeleteProposalMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useDeleteProposalMutation(
-  baseOptions?: Apollo.MutationHookOptions<DeleteProposalMutation, DeleteProposalMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteProposalMutation,
+    DeleteProposalMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteProposalMutation, DeleteProposalMutationVariables>(
-    DeleteProposalDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    DeleteProposalMutation,
+    DeleteProposalMutationVariables
+  >(DeleteProposalDocument, options);
 }
-export type DeleteProposalMutationHookResult = ReturnType<typeof useDeleteProposalMutation>;
-export type DeleteProposalMutationResult = Apollo.MutationResult<DeleteProposalMutation>;
+export type DeleteProposalMutationHookResult = ReturnType<
+  typeof useDeleteProposalMutation
+>;
+export type DeleteProposalMutationResult =
+  Apollo.MutationResult<DeleteProposalMutation>;
 export type DeleteProposalMutationOptions = Apollo.BaseMutationOptions<
   DeleteProposalMutation,
   DeleteProposalMutationVariables

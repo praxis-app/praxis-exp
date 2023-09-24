@@ -15,7 +15,15 @@ interface Props extends AvatarProps {
   withLink?: boolean;
 }
 
-const UserAvatar = ({ imageFile, linkStyles, size, sx, user, withLink, ...avatarProps }: Props) => {
+const UserAvatar = ({
+  imageFile,
+  linkStyles,
+  size,
+  sx,
+  user,
+  withLink,
+  ...avatarProps
+}: Props) => {
   const { data } = useMeQuery({ skip: !!user });
 
   const { t } = useTranslation();

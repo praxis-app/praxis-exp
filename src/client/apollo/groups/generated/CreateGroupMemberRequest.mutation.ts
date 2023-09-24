@@ -86,7 +86,8 @@ export type CreateGroupMemberRequestMutationHookResult = ReturnType<
 >;
 export type CreateGroupMemberRequestMutationResult =
   Apollo.MutationResult<CreateGroupMemberRequestMutation>;
-export type CreateGroupMemberRequestMutationOptions = Apollo.BaseMutationOptions<
-  CreateGroupMemberRequestMutation,
-  CreateGroupMemberRequestMutationVariables
->;
+export type CreateGroupMemberRequestMutationOptions =
+  Apollo.BaseMutationOptions<
+    CreateGroupMemberRequestMutation,
+    CreateGroupMemberRequestMutationVariables
+  >;

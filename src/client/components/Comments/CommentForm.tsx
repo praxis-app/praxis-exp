@@ -1,5 +1,12 @@
 import { Image as ImageIcon, Send } from '@mui/icons-material';
-import { Box, FilledInput, FormGroup, IconButton, Input, SxProps } from '@mui/material';
+import {
+  Box,
+  FilledInput,
+  FormGroup,
+  IconButton,
+  Input,
+  SxProps,
+} from '@mui/material';
 import { Form, Formik, FormikFormProps, FormikHelpers } from 'formik';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +16,11 @@ import { useCreateCommentMutation } from '../../apollo/comments/generated/Create
 import { useUpdateCommentMutation } from '../../apollo/comments/generated/UpdateComment.mutation';
 import { CreateCommentInput, UpdateCommentInput } from '../../apollo/gen';
 import { useDeleteImageMutation } from '../../apollo/images/generated/DeleteImage.mutation';
-import { FieldNames, KeyCodes, TypeNames } from '../../constants/shared.constants';
+import {
+  FieldNames,
+  KeyCodes,
+  TypeNames,
+} from '../../constants/shared.constants';
 import { getRandomString } from '../../utils/shared.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';
 import ImageInput from '../Images/ImageInput';
@@ -151,7 +162,10 @@ const CommentForm = ({
     }
   };
 
-  const handleFilledInputKeyDown = (e: React.KeyboardEvent, submitForm: () => void) => {
+  const handleFilledInputKeyDown = (
+    e: React.KeyboardEvent,
+    submitForm: () => void,
+  ) => {
     if (e.code !== KeyCodes.Enter) {
       return;
     }
@@ -208,7 +222,12 @@ const CommentForm = ({
   }
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit} enableReinitialize {...formProps}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      enableReinitialize
+      {...formProps}
+    >
       {({ handleChange, values, submitForm }) => (
         <Form>
           <FormGroup row>
@@ -242,7 +261,12 @@ const CommentForm = ({
                   multiple
                 />
 
-                <IconButton edge="end" sx={sendButtonStyles} type="submit" disableRipple>
+                <IconButton
+                  edge="end"
+                  sx={sendButtonStyles}
+                  type="submit"
+                  disableRipple
+                >
                   <Send sx={{ fontSize: 20, color: 'text.secondary' }} />
                 </IconButton>
               </Flex>

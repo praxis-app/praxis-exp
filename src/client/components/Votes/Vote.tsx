@@ -1,5 +1,11 @@
 import { PanTool, ThumbDown, ThumbsUpDown, ThumbUp } from '@mui/icons-material';
-import { Box, SvgIconProps, SxProps, Typography, useTheme } from '@mui/material';
+import {
+  Box,
+  SvgIconProps,
+  SxProps,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import { VoteFragment } from '../../apollo/votes/generated/Vote.fragment';
 import { VoteTypes } from '../../constants/vote.constants';
 import { getUserProfilePath } from '../../utils/user.utils';

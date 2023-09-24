@@ -94,7 +94,10 @@ export const EditServerRoleDocument = gql`
  * });
  */
 export function useEditServerRoleQuery(
-  baseOptions: Apollo.QueryHookOptions<EditServerRoleQuery, EditServerRoleQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    EditServerRoleQuery,
+    EditServerRoleQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<EditServerRoleQuery, EditServerRoleQueryVariables>(
@@ -103,7 +106,10 @@ export function useEditServerRoleQuery(
   );
 }
 export function useEditServerRoleLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<EditServerRoleQuery, EditServerRoleQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    EditServerRoleQuery,
+    EditServerRoleQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<EditServerRoleQuery, EditServerRoleQueryVariables>(
@@ -111,8 +117,12 @@ export function useEditServerRoleLazyQuery(
     options,
   );
 }
-export type EditServerRoleQueryHookResult = ReturnType<typeof useEditServerRoleQuery>;
-export type EditServerRoleLazyQueryHookResult = ReturnType<typeof useEditServerRoleLazyQuery>;
+export type EditServerRoleQueryHookResult = ReturnType<
+  typeof useEditServerRoleQuery
+>;
+export type EditServerRoleLazyQueryHookResult = ReturnType<
+  typeof useEditServerRoleLazyQuery
+>;
 export type EditServerRoleQueryResult = Apollo.QueryResult<
   EditServerRoleQuery,
   EditServerRoleQueryVariables

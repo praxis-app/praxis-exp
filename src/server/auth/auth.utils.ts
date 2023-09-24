@@ -37,7 +37,11 @@ export const getJti = (claims: JwtPayload | null) => {
 
 export const getClaims = (req: RequestWithCookies) => {
   const { cookies } = req;
-  const accessTokenClaims = cookies?.auth ? decodeToken(cookies.auth.access_token) : null;
-  const refreshTokenClaims = cookies?.auth ? decodeToken(cookies.auth.refresh_token) : null;
+  const accessTokenClaims = cookies?.auth
+    ? decodeToken(cookies.auth.access_token)
+    : null;
+  const refreshTokenClaims = cookies?.auth
+    ? decodeToken(cookies.auth.refresh_token)
+    : null;
   return { accessTokenClaims, refreshTokenClaims };
 };

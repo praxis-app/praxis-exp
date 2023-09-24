@@ -44,7 +44,8 @@ const GroupEventsTab = ({ groupId }: Props) => {
     group: { futureEvents, pastEvents, myPermissions },
   } = data;
 
-  const showCreateEventButton = myPermissions?.createEvents || myPermissions?.manageEvents;
+  const showCreateEventButton =
+    myPermissions?.createEvents || myPermissions?.manageEvents;
 
   return (
     <>
@@ -59,7 +60,11 @@ const GroupEventsTab = ({ groupId }: Props) => {
 
       <Card>
         <CardHeader
-          title={<Typography variant="h6">{t('events.headers.upcomingEvents')}</Typography>}
+          title={
+            <Typography variant="h6">
+              {t('events.headers.upcomingEvents')}
+            </Typography>
+          }
           action={
             showCreateEventButton && (
               <GhostButton
@@ -84,7 +89,11 @@ const GroupEventsTab = ({ groupId }: Props) => {
           )}
 
           {futureEvents.map((event, index) => (
-            <EventCompact key={event.id} event={event} isLast={index + 1 === futureEvents.length} />
+            <EventCompact
+              key={event.id}
+              event={event}
+              isLast={index + 1 === futureEvents.length}
+            />
           ))}
         </CardContent>
       </Card>
@@ -92,11 +101,19 @@ const GroupEventsTab = ({ groupId }: Props) => {
       {!!pastEvents.length && (
         <Card>
           <CardHeader
-            title={<Typography variant="h6">{t('events.headers.pastEvents')}</Typography>}
+            title={
+              <Typography variant="h6">
+                {t('events.headers.pastEvents')}
+              </Typography>
+            }
           />
           <CardContent>
             {pastEvents.map((event, index) => (
-              <EventCompact key={event.id} event={event} isLast={index + 1 === pastEvents.length} />
+              <EventCompact
+                key={event.id}
+                event={event}
+                isLast={index + 1 === pastEvents.length}
+              />
             ))}
           </CardContent>
         </Card>

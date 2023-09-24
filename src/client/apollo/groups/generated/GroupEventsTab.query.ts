@@ -105,7 +105,10 @@ export const GroupEventsTabDocument = gql`
  * });
  */
 export function useGroupEventsTabQuery(
-  baseOptions: Apollo.QueryHookOptions<GroupEventsTabQuery, GroupEventsTabQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    GroupEventsTabQuery,
+    GroupEventsTabQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GroupEventsTabQuery, GroupEventsTabQueryVariables>(
@@ -114,7 +117,10 @@ export function useGroupEventsTabQuery(
   );
 }
 export function useGroupEventsTabLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GroupEventsTabQuery, GroupEventsTabQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GroupEventsTabQuery,
+    GroupEventsTabQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GroupEventsTabQuery, GroupEventsTabQueryVariables>(
@@ -122,8 +128,12 @@ export function useGroupEventsTabLazyQuery(
     options,
   );
 }
-export type GroupEventsTabQueryHookResult = ReturnType<typeof useGroupEventsTabQuery>;
-export type GroupEventsTabLazyQueryHookResult = ReturnType<typeof useGroupEventsTabLazyQuery>;
+export type GroupEventsTabQueryHookResult = ReturnType<
+  typeof useGroupEventsTabQuery
+>;
+export type GroupEventsTabLazyQueryHookResult = ReturnType<
+  typeof useGroupEventsTabLazyQuery
+>;
 export type GroupEventsTabQueryResult = Apollo.QueryResult<
   GroupEventsTabQuery,
   GroupEventsTabQueryVariables

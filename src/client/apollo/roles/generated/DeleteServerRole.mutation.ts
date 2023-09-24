@@ -50,13 +50,16 @@ export function useDeleteServerRoleMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteServerRoleMutation, DeleteServerRoleMutationVariables>(
-    DeleteServerRoleDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    DeleteServerRoleMutation,
+    DeleteServerRoleMutationVariables
+  >(DeleteServerRoleDocument, options);
 }
-export type DeleteServerRoleMutationHookResult = ReturnType<typeof useDeleteServerRoleMutation>;
-export type DeleteServerRoleMutationResult = Apollo.MutationResult<DeleteServerRoleMutation>;
+export type DeleteServerRoleMutationHookResult = ReturnType<
+  typeof useDeleteServerRoleMutation
+>;
+export type DeleteServerRoleMutationResult =
+  Apollo.MutationResult<DeleteServerRoleMutation>;
 export type DeleteServerRoleMutationOptions = Apollo.BaseMutationOptions<
   DeleteServerRoleMutation,
   DeleteServerRoleMutationVariables

@@ -1,6 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class CleanUpGroupMemberRequestTable1690168731029 implements MigrationInterface {
+export class CleanUpGroupMemberRequestTable1690168731029
+  implements MigrationInterface
+{
   name = 'CleanUpGroupMemberRequestTable1690168731029';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -13,7 +15,9 @@ export class CleanUpGroupMemberRequestTable1690168731029 implements MigrationInt
     await queryRunner.query(
       `ALTER TABLE "group_member_request" ALTER COLUMN "id" SET DEFAULT nextval('"group_member_request_id_seq"')`,
     );
-    await queryRunner.query(`ALTER TABLE "group_member_request" ALTER COLUMN "id" DROP DEFAULT`);
+    await queryRunner.query(
+      `ALTER TABLE "group_member_request" ALTER COLUMN "id" DROP DEFAULT`,
+    );
     await queryRunner.query(`DROP SEQUENCE "group_member_request_id_seq"`);
     await queryRunner.query(
       `ALTER TABLE "group_member_request" ADD CONSTRAINT "FK_a15f4685964a47ecc362c7a0428" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE NO ACTION`,
@@ -36,7 +40,9 @@ export class CleanUpGroupMemberRequestTable1690168731029 implements MigrationInt
     await queryRunner.query(
       `ALTER TABLE "group_member_request" ALTER COLUMN "id" SET DEFAULT nextval('"group_member_request_id_seq"')`,
     );
-    await queryRunner.query(`ALTER TABLE "group_member_request" ALTER COLUMN "id" DROP DEFAULT`);
+    await queryRunner.query(
+      `ALTER TABLE "group_member_request" ALTER COLUMN "id" DROP DEFAULT`,
+    );
     await queryRunner.query(
       `ALTER TABLE "group_member_request" ADD CONSTRAINT "FK_2872a8db74268161aede2556c27" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE CASCADE ON UPDATE NO ACTION`,
     );

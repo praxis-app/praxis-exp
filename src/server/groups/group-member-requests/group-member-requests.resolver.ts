@@ -55,7 +55,10 @@ export class GroupMemberRequestsResolver {
     @Args('groupId', { type: () => Int }) groupId: number,
     @CurrentUser() { id }: User,
   ) {
-    return this.groupMemberRequestsService.createGroupMemberRequest(groupId, id);
+    return this.groupMemberRequestsService.createGroupMemberRequest(
+      groupId,
+      id,
+    );
   }
 
   @Mutation(() => ApproveGroupMemberRequestPayload)

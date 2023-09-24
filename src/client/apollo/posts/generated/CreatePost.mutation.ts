@@ -68,7 +68,10 @@ export type CreatePostMutation = {
 };
 
 export const CreatePostDocument = gql`
-  mutation CreatePost($postData: CreatePostInput!, $isLoggedIn: Boolean = true) {
+  mutation CreatePost(
+    $postData: CreatePostInput!
+    $isLoggedIn: Boolean = true
+  ) {
     createPost(postData: $postData) {
       post {
         ...PostCard
@@ -101,7 +104,10 @@ export type CreatePostMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useCreatePostMutation(
-  baseOptions?: Apollo.MutationHookOptions<CreatePostMutation, CreatePostMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    CreatePostMutation,
+    CreatePostMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<CreatePostMutation, CreatePostMutationVariables>(
@@ -109,8 +115,11 @@ export function useCreatePostMutation(
     options,
   );
 }
-export type CreatePostMutationHookResult = ReturnType<typeof useCreatePostMutation>;
-export type CreatePostMutationResult = Apollo.MutationResult<CreatePostMutation>;
+export type CreatePostMutationHookResult = ReturnType<
+  typeof useCreatePostMutation
+>;
+export type CreatePostMutationResult =
+  Apollo.MutationResult<CreatePostMutation>;
 export type CreatePostMutationOptions = Apollo.BaseMutationOptions<
   CreatePostMutation,
   CreatePostMutationVariables

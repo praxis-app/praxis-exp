@@ -22,7 +22,13 @@ interface Props {
   proposalId?: number;
 }
 
-const Comment = ({ comment, canManageComments, currentUserId, postId, proposalId }: Props) => {
+const Comment = ({
+  comment,
+  canManageComments,
+  currentUserId,
+  postId,
+  proposalId,
+}: Props) => {
   const [menuAnchorEl, setMenuAnchorEl] = useState<HTMLElement | null>(null);
   const [showItemMenu, setShowItemMenu] = useState(false);
   const [showEditForm, setShowEditForm] = useState(false);
@@ -106,7 +112,12 @@ const Comment = ({ comment, canManageComments, currentUserId, postId, proposalId
       onMouseEnter={() => setShowItemMenu(true)}
       onMouseLeave={() => setShowItemMenu(false)}
     >
-      <UserAvatar sx={{ marginRight: 1, marginTop: 0.2 }} user={user} size={35} withLink />
+      <UserAvatar
+        sx={{ marginRight: 1, marginTop: 0.2 }}
+        user={user}
+        size={35}
+        withLink
+      />
 
       <Box
         sx={{ backgroundColor: 'background.secondary' }}

@@ -86,12 +86,23 @@ const EditRoleTabs = ({ role }: Props) => {
 
       {tab === 1 &&
         (isGroupRole ? (
-          <GroupPermissionsForm permissions={role.permissions} roleId={role.id} />
+          <GroupPermissionsForm
+            permissions={role.permissions}
+            roleId={role.id}
+          />
         ) : (
-          <ServerPermissionsForm permissions={role.permissions} roleId={role.id} />
+          <ServerPermissionsForm
+            permissions={role.permissions}
+            roleId={role.id}
+          />
         ))}
 
-      {tab === 2 && <AddRoleMemberTab availableUsersToAdd={role.availableUsersToAdd} role={role} />}
+      {tab === 2 && (
+        <AddRoleMemberTab
+          availableUsersToAdd={role.availableUsersToAdd}
+          role={role}
+        />
+      )}
     </>
   );
 };

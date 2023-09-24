@@ -16,7 +16,10 @@ import { useDeleteProposalMutation } from '../../apollo/proposals/generated/Dele
 import { ProposalCardFragment } from '../../apollo/proposals/generated/ProposalCard.fragment';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
 import { ProposalStage } from '../../constants/proposal.constants';
-import { MIDDOT_WITH_SPACES, NavigationPaths } from '../../constants/shared.constants';
+import {
+  MIDDOT_WITH_SPACES,
+  NavigationPaths,
+} from '../../constants/shared.constants';
 import { getGroupPath } from '../../utils/group.utils';
 import { getProposalActionLabel } from '../../utils/proposal.utils';
 import { timeAgo } from '../../utils/time.utils';
@@ -65,7 +68,8 @@ const ProposalCard = ({ proposal, inModal, ...cardProps }: Props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const { action, body, createdAt, group, id, images, user, voteCount, stage } = proposal;
+  const { action, body, createdAt, group, id, images, user, voteCount, stage } =
+    proposal;
 
   const me = data && data.me;
   const isMe = me?.id === user.id;
@@ -130,7 +134,10 @@ const ProposalCard = ({ proposal, inModal, ...cardProps }: Props) => {
           </Link>
         )}
         <Box fontSize={14} sx={{ color: 'text.secondary' }}>
-          <Link href={userProfilePath} sx={showGroup ? { color: 'inherit' } : undefined}>
+          <Link
+            href={userProfilePath}
+            sx={showGroup ? { color: 'inherit' } : undefined}
+          >
             {user?.name}
           </Link>
           {MIDDOT_WITH_SPACES}
@@ -188,10 +195,15 @@ const ProposalCard = ({ proposal, inModal, ...cardProps }: Props) => {
       <CardContent sx={cardContentStyles}>
         {body && <Typography sx={bodyStyles}>{body}</Typography>}
 
-        <ProposalAction action={action} ratified={stage === ProposalStage.Ratified} />
+        <ProposalAction
+          action={action}
+          ratified={stage === ProposalStage.Ratified}
+        />
 
         <Link href={proposalPath}>
-          {!!images.length && <AttachedImageList images={images} marginBottom={me ? 1.9 : 0} />}
+          {!!images.length && (
+            <AttachedImageList images={images} marginBottom={me ? 1.9 : 0} />
+          )}
         </Link>
       </CardContent>
 

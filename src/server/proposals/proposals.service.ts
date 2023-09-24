@@ -77,7 +77,9 @@ export class ProposalsService {
       .getMany()) as ProposalWithCommentCount[];
 
     return proposalIds.map((id) => {
-      const proposal = proposals.find((proposal: Proposal) => proposal.id === id);
+      const proposal = proposals.find(
+        (proposal: Proposal) => proposal.id === id,
+      );
       if (!proposal) {
         return new Error(`Could not load comment count for proposal: ${id}`);
       }
@@ -122,10 +124,16 @@ export class ProposalsService {
         );
       }
       if (role) {
-        await this.proposalActionRolesService.createProposalActionRole(proposal.action.id, role);
+        await this.proposalActionRolesService.createProposalActionRole(
+          proposal.action.id,
+          role,
+        );
       }
       if (event) {
-        await this.proposalActionEventsService.createProposalActionEvent(proposal.action.id, event);
+        await this.proposalActionEventsService.createProposalActionEvent(
+          proposal.action.id,
+          event,
+        );
       }
     } catch (err) {
       await this.deleteProposal(proposal.id);
@@ -215,12 +223,18 @@ export class ProposalsService {
       return;
     }
     if (actionType === ProposalActionType.ChangeGroupCoverPhoto) {
-      await this.proposalActionsService.implementChangeGroupCoverPhoto(id, groupId);
+      await this.proposalActionsService.implementChangeGroupCoverPhoto(
+        id,
+        groupId,
+      );
     }
   }
 
   async isProposalRatifiable(proposalId: number) {
-    const proposal = await this.getProposal(proposalId, ['group.members', 'votes']);
+    const proposal = await this.getProposal(proposalId, [
+      'group.members',
+      'votes',
+    ]);
     if (
       proposal.stage !== ProposalStage.Voting ||
       proposal.votes.length < MIN_VOTE_COUNT_TO_RATIFY ||
@@ -234,13 +248,19 @@ export class ProposalsService {
       votes,
     } = proposal;
 
-    const ratificationThreshold = DefaultGroupSetting.RatificationThreshold * 0.01;
+    const ratificationThreshold =
+      DefaultGroupSetting.RatificationThreshold * 0.01;
 
     return this.hasConsensus(ratificationThreshold, members, votes);
   }
 
-  async hasConsensus(ratificationThreshold: number, groupMembers: User[], votes: Vote[]) {
-    const { agreements, reservations, standAsides, blocks } = sortConsensusVotesByType(votes);
+  async hasConsensus(
+    ratificationThreshold: number,
+    groupMembers: User[],
+    votes: Vote[],
+  ) {
+    const { agreements, reservations, standAsides, blocks } =
+      sortConsensusVotesByType(votes);
 
     return (
       agreements.length >= groupMembers.length * ratificationThreshold &&

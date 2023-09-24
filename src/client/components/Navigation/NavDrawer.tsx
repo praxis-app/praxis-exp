@@ -127,7 +127,8 @@ const NavDrawer = () => {
     const { me } = meData;
     const userProfilePath = getUserProfilePath(me.name);
 
-    const { removeMembers, manageRoles, createInvites, manageInvites } = me.serverPermissions;
+    const { removeMembers, manageRoles, createInvites, manageInvites } =
+      me.serverPermissions;
 
     return (
       <>
@@ -168,7 +169,9 @@ const NavDrawer = () => {
         {renderDocsButton()}
 
         <ListItemButton
-          onClick={() => window.confirm(t('users.prompts.logOut')) && handleLogOutClick()}
+          onClick={() =>
+            window.confirm(t('users.prompts.logOut')) && handleLogOutClick()
+          }
         >
           <ListItemIcon>
             <SessionIcon />
@@ -180,7 +183,12 @@ const NavDrawer = () => {
   };
 
   return (
-    <Drawer anchor="right" onClick={handleClose} onClose={handleClose} open={open}>
+    <Drawer
+      anchor="right"
+      onClick={handleClose}
+      onClose={handleClose}
+      open={open}
+    >
       <main role="main">
         <Flex flexEnd sx={CLOSE_BUTTON_FLEX_STYLES}>
           <IconButton>

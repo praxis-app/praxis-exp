@@ -67,10 +67,16 @@ export type LikePostMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useLikePostMutation(
-  baseOptions?: Apollo.MutationHookOptions<LikePostMutation, LikePostMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    LikePostMutation,
+    LikePostMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<LikePostMutation, LikePostMutationVariables>(LikePostDocument, options);
+  return Apollo.useMutation<LikePostMutation, LikePostMutationVariables>(
+    LikePostDocument,
+    options,
+  );
 }
 export type LikePostMutationHookResult = ReturnType<typeof useLikePostMutation>;
 export type LikePostMutationResult = Apollo.MutationResult<LikePostMutation>;

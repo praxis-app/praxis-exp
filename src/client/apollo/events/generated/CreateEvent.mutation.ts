@@ -43,7 +43,10 @@ export type CreateEventMutation = {
 };
 
 export const CreateEventDocument = gql`
-  mutation CreateEvent($eventData: CreateEventInput!, $isLoggedIn: Boolean = true) {
+  mutation CreateEvent(
+    $eventData: CreateEventInput!
+    $isLoggedIn: Boolean = true
+  ) {
     createEvent(eventData: $eventData) {
       event {
         ...EventCompact
@@ -76,7 +79,10 @@ export type CreateEventMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useCreateEventMutation(
-  baseOptions?: Apollo.MutationHookOptions<CreateEventMutation, CreateEventMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateEventMutation,
+    CreateEventMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<CreateEventMutation, CreateEventMutationVariables>(
@@ -84,8 +90,11 @@ export function useCreateEventMutation(
     options,
   );
 }
-export type CreateEventMutationHookResult = ReturnType<typeof useCreateEventMutation>;
-export type CreateEventMutationResult = Apollo.MutationResult<CreateEventMutation>;
+export type CreateEventMutationHookResult = ReturnType<
+  typeof useCreateEventMutation
+>;
+export type CreateEventMutationResult =
+  Apollo.MutationResult<CreateEventMutation>;
 export type CreateEventMutationOptions = Apollo.BaseMutationOptions<
   CreateEventMutation,
   CreateEventMutationVariables

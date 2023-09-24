@@ -24,7 +24,10 @@ export class ProposalActionRolesService {
     private proposalActionRoleMemberRepository: Repository<ProposalActionRoleMember>,
   ) {}
 
-  async getProposalActionRole(where: FindOptionsWhere<ProposalActionRole>, relations?: string[]) {
+  async getProposalActionRole(
+    where: FindOptionsWhere<ProposalActionRole>,
+    relations?: string[],
+  ) {
     return this.proposalActionRoleRepository.findOne({
       where,
       relations,
@@ -55,7 +58,10 @@ export class ProposalActionRolesService {
     });
   }
 
-  async updateProposalActionRole(id: number, data: Partial<ProposalActionRole>) {
+  async updateProposalActionRole(
+    id: number,
+    data: Partial<ProposalActionRole>,
+  ) {
     await this.proposalActionRoleRepository.update(id, data);
   }
 }

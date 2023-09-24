@@ -34,8 +34,10 @@ const JoinButton = ({ groupId, currentUserId, isGroupMember }: Props) => {
   const { data, loading } = useGroupMemberRequestQuery({
     variables: { groupId },
   });
-  const [createMemberRequest, { loading: createLoading }] = useCreateGroupMemberRequestMutation();
-  const [cancelMemberRequest, { loading: cancelLoading }] = useCancelGroupMemberRequestMutation();
+  const [createMemberRequest, { loading: createLoading }] =
+    useCreateGroupMemberRequestMutation();
+  const [cancelMemberRequest, { loading: cancelLoading }] =
+    useCancelGroupMemberRequestMutation();
   const [leaveGroup, { loading: leaveGroupLoading }] = useLeaveGroupMutation();
   const [isHovering, setIsHovering] = useState(false);
 
@@ -127,7 +129,9 @@ const JoinButton = ({ groupId, currentUserId, isGroupMember }: Props) => {
           id: cache.identify({ id: groupId, __typename: TypeNames.Group }),
           fields: {
             members(existingRefs: Reference[], { readField }) {
-              return existingRefs.filter((ref) => readField('id', ref) !== currentUserId);
+              return existingRefs.filter(
+                (ref) => readField('id', ref) !== currentUserId,
+              );
             },
             memberCount(existingCount: number) {
               return Math.max(0, existingCount - 1);

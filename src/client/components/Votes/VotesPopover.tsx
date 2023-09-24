@@ -10,7 +10,12 @@ interface Props {
   voteType: string;
 }
 
-const VotesPopover = ({ anchorEl, handlePopoverClose, votes, voteType }: Props) => {
+const VotesPopover = ({
+  anchorEl,
+  handlePopoverClose,
+  votes,
+  voteType,
+}: Props) => {
   const { t } = useTranslation();
 
   const paperProps: PaperProps = {

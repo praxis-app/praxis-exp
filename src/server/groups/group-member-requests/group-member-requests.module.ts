@@ -6,7 +6,10 @@ import { GroupMemberRequestsService } from './group-member-requests.service';
 import { GroupMemberRequest } from './models/group-member-request.model';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([GroupMemberRequest]), forwardRef(() => GroupsModule)],
+  imports: [
+    TypeOrmModule.forFeature([GroupMemberRequest]),
+    forwardRef(() => GroupsModule),
+  ],
   providers: [GroupMemberRequestsResolver, GroupMemberRequestsService],
   exports: [GroupMemberRequestsService],
 })

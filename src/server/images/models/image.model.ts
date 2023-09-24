@@ -95,9 +95,13 @@ export class Image {
   proposalActionId?: number;
 
   @Field(() => ProposalActionEvent, { nullable: true })
-  @ManyToOne(() => ProposalActionEvent, (proposalActionEvent) => proposalActionEvent.images, {
-    onDelete: 'CASCADE',
-  })
+  @ManyToOne(
+    () => ProposalActionEvent,
+    (proposalActionEvent) => proposalActionEvent.images,
+    {
+      onDelete: 'CASCADE',
+    },
+  )
   proposalActionEvent?: ProposalActionEvent;
 
   @Column({ nullable: true })

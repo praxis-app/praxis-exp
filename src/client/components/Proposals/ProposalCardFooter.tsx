@@ -61,7 +61,14 @@ const ProposalCardFooter = ({
         },
       });
     }
-  }, [getProposalComments, groupId, inModal, isLoggedIn, isProposalPage, proposal]);
+  }, [
+    getProposalComments,
+    groupId,
+    inModal,
+    isLoggedIn,
+    isProposalPage,
+    proposal,
+  ]);
 
   const me = data?.me;
   const comments = data?.proposal?.comments;
@@ -72,9 +79,13 @@ const ProposalCardFooter = ({
   const canManageComments = !!(
     group?.myPermissions?.manageComments || me?.serverPermissions.manageComments
   );
-  const voteByCurrentUser = votes.find((vote) => vote.user.id === currentUserId);
+  const voteByCurrentUser = votes.find(
+    (vote) => vote.user.id === currentUserId,
+  );
 
-  const voteButtonLabel = isRatified ? t('proposals.labels.ratified') : t('proposals.actions.vote');
+  const voteButtonLabel = isRatified
+    ? t('proposals.labels.ratified')
+    : t('proposals.actions.vote');
 
   const commentCountStyles: SxProps = {
     '&:hover': { textDecoration: 'underline' },
@@ -83,7 +94,9 @@ const ProposalCardFooter = ({
     height: '24px',
   };
 
-  const handleVoteButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleVoteButtonClick = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     if (!isLoggedIn) {
       toastVar({
         status: 'info',
@@ -181,14 +194,22 @@ const ProposalCardFooter = ({
             <CommentForm proposalId={proposal.id} enableAutoFocus />
           )}
           {group && !group.isJoinedByMe && !comments?.length && (
-            <Typography color="text.secondary" align="center" marginBottom={1.75}>
+            <Typography
+              color="text.secondary"
+              align="center"
+              marginBottom={1.75}
+            >
               {t('comments.prompts.joinToComment')}
             </Typography>
           )}
         </Box>
       )}
 
-      <ProposalModal proposal={proposal} open={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <ProposalModal
+        proposal={proposal}
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
 
       {currentUserId && (
         <VoteMenu

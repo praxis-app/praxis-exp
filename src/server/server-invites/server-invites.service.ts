@@ -42,7 +42,10 @@ export class ServerInvitesService {
     return validServerInvites.slice(0, DEFAULT_PAGE_SIZE);
   }
 
-  async createServerInvite(serverInviteData: CreateServerInviteInput, user: User) {
+  async createServerInvite(
+    serverInviteData: CreateServerInviteInput,
+    user: User,
+  ) {
     const token = cryptoRandomString({ length: 8 });
     const serverInvite = await this.repository.save({
       ...serverInviteData,

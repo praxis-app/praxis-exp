@@ -14,7 +14,10 @@ import { formatDateTime } from '../../../utils/time.utils';
 import { getUserProfilePath } from '../../../utils/user.utils';
 import EventAvatar from '../../Events/EventAvatar';
 import CoverPhoto from '../../Images/CoverPhoto';
-import Accordion, { AccordionDetails, AccordionSummary } from '../../Shared/Accordion';
+import Accordion, {
+  AccordionDetails,
+  AccordionSummary,
+} from '../../Shared/Accordion';
 import ExternalLink from '../../Shared/ExternalLink';
 import Link from '../../Shared/Link';
 
@@ -45,9 +48,19 @@ const ProposalActionEvent = ({ event, coverPhotoFile, preview }: Props) => {
   const isDesktop = useIsDesktop();
   const isAboveSmall = useAboveBreakpoint('sm');
 
-  const { name, description, externalLink, location, online, endsAt, startsAt, coverPhoto } = event;
+  const {
+    name,
+    description,
+    externalLink,
+    location,
+    online,
+    endsAt,
+    startsAt,
+    coverPhoto,
+  } = event;
 
-  const group = 'proposalAction' in event ? event.proposalAction.proposal.group : undefined;
+  const group =
+    'proposalAction' in event ? event.proposalAction.proposal.group : undefined;
   const host = 'id' in event ? event.host : data?.user;
 
   const groupEventsTabPath = getGroupEventsTabPath(group?.name || '');
@@ -101,7 +114,9 @@ const ProposalActionEvent = ({ event, coverPhotoFile, preview }: Props) => {
           <Typography marginRight="0.5ch" fontFamily="Inter Bold">
             {t('proposals.labels.eventProposal')}:
           </Typography>
-          {'id' in event && <EventAvatar event={event} size={15} sx={eventAvatarStyles} />}
+          {'id' in event && (
+            <EventAvatar event={event} size={15} sx={eventAvatarStyles} />
+          )}
           <Typography
             display="inline-block"
             overflow="hidden"
@@ -133,7 +148,12 @@ const ProposalActionEvent = ({ event, coverPhotoFile, preview }: Props) => {
             {isSameDay ? startsAtWithEndsAt : startsAtFormatted}
           </Typography>
 
-          <Typography color="primary" variant="h5" width={getNameTextWidth()} marginBottom={1.3}>
+          <Typography
+            color="primary"
+            variant="h5"
+            width={getNameTextWidth()}
+            marginBottom={1.3}
+          >
             {name}
           </Typography>
 
@@ -177,7 +197,9 @@ const ProposalActionEvent = ({ event, coverPhotoFile, preview }: Props) => {
               {externalLink
                 ? t('events.labels.onlineWithColon') + ' '
                 : t('events.labels.onlineEvent')}
-              {externalLink && <ExternalLink href={externalLink}>{externalLink}</ExternalLink>}
+              {externalLink && (
+                <ExternalLink href={externalLink}>{externalLink}</ExternalLink>
+              )}
             </Typography>
           )}
 

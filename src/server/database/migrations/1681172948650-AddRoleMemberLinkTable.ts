@@ -28,8 +28,12 @@ export class AddRoleMemberLinkTable1681172948650 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "role_members_user" DROP CONSTRAINT "FK_bc4c45c917cd69cef0574dc3c0a"`,
     );
-    await queryRunner.query(`DROP INDEX "public"."IDX_8ebd83d04eb1d0270c6e1d9d62"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_bc4c45c917cd69cef0574dc3c0"`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_8ebd83d04eb1d0270c6e1d9d62"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_bc4c45c917cd69cef0574dc3c0"`,
+    );
     await queryRunner.query(`DROP TABLE "role_members_user"`);
   }
 }

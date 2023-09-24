@@ -84,13 +84,16 @@ export function useCreateGroupRoleMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateGroupRoleMutation, CreateGroupRoleMutationVariables>(
-    CreateGroupRoleDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    CreateGroupRoleMutation,
+    CreateGroupRoleMutationVariables
+  >(CreateGroupRoleDocument, options);
 }
-export type CreateGroupRoleMutationHookResult = ReturnType<typeof useCreateGroupRoleMutation>;
-export type CreateGroupRoleMutationResult = Apollo.MutationResult<CreateGroupRoleMutation>;
+export type CreateGroupRoleMutationHookResult = ReturnType<
+  typeof useCreateGroupRoleMutation
+>;
+export type CreateGroupRoleMutationResult =
+  Apollo.MutationResult<CreateGroupRoleMutation>;
 export type CreateGroupRoleMutationOptions = Apollo.BaseMutationOptions<
   CreateGroupRoleMutation,
   CreateGroupRoleMutationVariables

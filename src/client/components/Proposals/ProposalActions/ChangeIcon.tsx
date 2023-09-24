@@ -32,7 +32,11 @@ const ChangeIcon = ({ changeType, sx, ...boxProps }: Props) => {
 
   return (
     <Box sx={boxStyles} {...boxProps}>
-      {changeType === ChangeType.Remove ? <Remove sx={iconStyles} /> : <Add sx={iconStyles} />}
+      {changeType === ChangeType.Remove ? (
+        <Remove sx={iconStyles} />
+      ) : (
+        <Add sx={iconStyles} />
+      )}
     </Box>
   );
 };

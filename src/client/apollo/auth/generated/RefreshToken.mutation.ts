@@ -43,16 +43,22 @@ export type RefreshTokenMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useRefreshTokenMutation(
-  baseOptions?: Apollo.MutationHookOptions<RefreshTokenMutation, RefreshTokenMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    RefreshTokenMutation,
+    RefreshTokenMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<RefreshTokenMutation, RefreshTokenMutationVariables>(
-    RefreshTokenDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    RefreshTokenMutation,
+    RefreshTokenMutationVariables
+  >(RefreshTokenDocument, options);
 }
-export type RefreshTokenMutationHookResult = ReturnType<typeof useRefreshTokenMutation>;
-export type RefreshTokenMutationResult = Apollo.MutationResult<RefreshTokenMutation>;
+export type RefreshTokenMutationHookResult = ReturnType<
+  typeof useRefreshTokenMutation
+>;
+export type RefreshTokenMutationResult =
+  Apollo.MutationResult<RefreshTokenMutation>;
 export type RefreshTokenMutationOptions = Apollo.BaseMutationOptions<
   RefreshTokenMutation,
   RefreshTokenMutationVariables

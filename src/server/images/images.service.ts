@@ -1,7 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindOptionsWhere, Repository } from 'typeorm';
-import { deleteImageFile, getUploadsPath, randomDefaultImagePath } from './image.utils';
+import {
+  deleteImageFile,
+  getUploadsPath,
+  randomDefaultImagePath,
+} from './image.utils';
 import { Image } from './models/image.model';
 import * as fs from 'fs';
 

@@ -1,6 +1,11 @@
 import { useReactiveVar } from '@apollo/client';
 import { EventNote, Group, Home, Menu } from '@mui/icons-material';
-import { BottomNavigation, BottomNavigationAction, Paper, SxProps } from '@mui/material';
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+  Paper,
+  SxProps,
+} from '@mui/material';
 import { SyntheticEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { isNavDrawerOpenVar } from '../../apollo/cache';
@@ -56,17 +61,30 @@ const BottomNav = () => {
   //   }
   // };
 
-  const handleNavChange = (_: SyntheticEvent<Element, Event>, newValue: number) =>
-    setValue(newValue);
+  const handleNavChange = (
+    _: SyntheticEvent<Element, Event>,
+    newValue: number,
+  ) => setValue(newValue);
 
   return (
     <Paper sx={PAPER_STYLES}>
-      <BottomNavigation onChange={handleNavChange} role="navigation" showLabels value={value}>
+      <BottomNavigation
+        onChange={handleNavChange}
+        role="navigation"
+        showLabels
+        value={value}
+      >
         <BottomNavigationAction icon={<Home />} label={t('navigation.home')} />
 
-        <BottomNavigationAction icon={<EventNote />} label={t('navigation.events')} />
+        <BottomNavigationAction
+          icon={<EventNote />}
+          label={t('navigation.events')}
+        />
 
-        <BottomNavigationAction icon={<Group />} label={t('navigation.groups')} />
+        <BottomNavigationAction
+          icon={<Group />}
+          label={t('navigation.groups')}
+        />
 
         <BottomNavigationAction
           icon={<Menu />}

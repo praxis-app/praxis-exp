@@ -17,7 +17,10 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
 import { UserProfileCardFragment } from '../../apollo/users/generated/UserProfileCard.fragment';
-import { MIDDOT_WITH_SPACES, NavigationPaths } from '../../constants/shared.constants';
+import {
+  MIDDOT_WITH_SPACES,
+  NavigationPaths,
+} from '../../constants/shared.constants';
 import { useIsDesktop } from '../../hooks/shared.hooks';
 import { formatDate } from '../../utils/time.utils';
 import CoverPhoto from '../Images/CoverPhoto';
@@ -60,7 +63,15 @@ const UserProfileCard = ({ user, ...cardProps }: Props) => {
   const isDesktop = useIsDesktop();
   const theme = useTheme();
 
-  const { id, bio, coverPhoto, createdAt, followerCount, followingCount, name } = user;
+  const {
+    id,
+    bio,
+    coverPhoto,
+    createdAt,
+    followerCount,
+    followingCount,
+    name,
+  } = user;
   const me = data && data.me;
   const isMe = me?.id === id;
 
@@ -97,7 +108,13 @@ const UserProfileCard = ({ user, ...cardProps }: Props) => {
             )}
           </>
         }
-        avatar={<UserAvatar size={isDesktop ? 150 : 90} sx={avatarStyles} user={user} />}
+        avatar={
+          <UserAvatar
+            size={isDesktop ? 150 : 90}
+            sx={avatarStyles}
+            user={user}
+          />
+        }
         sx={{ paddingBottom: 0 }}
       />
 
@@ -114,9 +131,13 @@ const UserProfileCard = ({ user, ...cardProps }: Props) => {
         </Typography>
 
         <Box>
-          <Link href={followersPath}>{t('users.labels.followers', { count: followerCount })}</Link>
+          <Link href={followersPath}>
+            {t('users.labels.followers', { count: followerCount })}
+          </Link>
           {MIDDOT_WITH_SPACES}
-          <Link href={followingPath}>{t('users.labels.following', { count: followingCount })}</Link>
+          <Link href={followingPath}>
+            {t('users.labels.following', { count: followingCount })}
+          </Link>
         </Box>
       </CardContent>
     </Card>

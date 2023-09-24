@@ -60,13 +60,22 @@ export const ServerRolesDocument = gql`
  * });
  */
 export function useServerRolesQuery(
-  baseOptions?: Apollo.QueryHookOptions<ServerRolesQuery, ServerRolesQueryVariables>,
+  baseOptions?: Apollo.QueryHookOptions<
+    ServerRolesQuery,
+    ServerRolesQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<ServerRolesQuery, ServerRolesQueryVariables>(ServerRolesDocument, options);
+  return Apollo.useQuery<ServerRolesQuery, ServerRolesQueryVariables>(
+    ServerRolesDocument,
+    options,
+  );
 }
 export function useServerRolesLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<ServerRolesQuery, ServerRolesQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ServerRolesQuery,
+    ServerRolesQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<ServerRolesQuery, ServerRolesQueryVariables>(
@@ -75,7 +84,9 @@ export function useServerRolesLazyQuery(
   );
 }
 export type ServerRolesQueryHookResult = ReturnType<typeof useServerRolesQuery>;
-export type ServerRolesLazyQueryHookResult = ReturnType<typeof useServerRolesLazyQuery>;
+export type ServerRolesLazyQueryHookResult = ReturnType<
+  typeof useServerRolesLazyQuery
+>;
 export type ServerRolesQueryResult = Apollo.QueryResult<
   ServerRolesQuery,
   ServerRolesQueryVariables

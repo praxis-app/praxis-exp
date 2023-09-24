@@ -1,4 +1,11 @@
-import { Args, Context, Mutation, Parent, ResolveField, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Context,
+  Mutation,
+  Parent,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { Dataloaders } from '../dataloader/dataloader.types';
 import { Post } from '../posts/models/post.model';
@@ -18,7 +25,10 @@ export class LikesResolver {
   ) {}
 
   @ResolveField(() => User)
-  async user(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { userId }: Like) {
+  async user(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { userId }: Like,
+  ) {
     return loaders.usersLoader.load(userId);
   }
 
@@ -28,12 +38,18 @@ export class LikesResolver {
   }
 
   @Mutation(() => CreateLikePayload)
-  async createLike(@Args('likeData') likeData: CreateLikeInput, @CurrentUser() user: User) {
+  async createLike(
+    @Args('likeData') likeData: CreateLikeInput,
+    @CurrentUser() user: User,
+  ) {
     return this.likesService.createLike(likeData, user);
   }
 
   @Mutation(() => Boolean)
-  async deleteLike(@Args('likeData') likeData: DeleteLikeInput, @CurrentUser() user: User) {
+  async deleteLike(
+    @Args('likeData') likeData: DeleteLikeInput,
+    @CurrentUser() user: User,
+  ) {
     return this.likesService.deleteLike(likeData, user);
   }
 }

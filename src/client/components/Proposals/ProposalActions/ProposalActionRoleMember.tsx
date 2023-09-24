@@ -16,11 +16,17 @@ interface Props {
   selectedUsers?: UserAvatarFragment[];
 }
 
-const ProposalActionRoleMember = ({ member, actionType, selectedUsers }: Props) => {
+const ProposalActionRoleMember = ({
+  member,
+  actionType,
+  selectedUsers,
+}: Props) => {
   const theme = useTheme();
 
   const user =
-    'userId' in member ? selectedUsers?.find((u) => u.id === member.userId) : member.user;
+    'userId' in member
+      ? selectedUsers?.find((u) => u.id === member.userId)
+      : member.user;
 
   if (!user) {
     return null;

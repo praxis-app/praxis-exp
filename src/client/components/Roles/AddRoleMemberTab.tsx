@@ -38,7 +38,10 @@ interface Props {
   role: AddServerRoleMemberTabFragment | AddGroupRoleMemberTabFragment;
 }
 
-const AddRoleMemberTab = ({ availableUsersToAdd, role: { id, members } }: Props) => {
+const AddRoleMemberTab = ({
+  availableUsersToAdd,
+  role: { id, members },
+}: Props) => {
   const [selectedUserIds, setSelectedUserIds] = useState<number[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -85,7 +88,9 @@ const AddRoleMemberTab = ({ availableUsersToAdd, role: { id, members } }: Props)
           <FlexCardContent>
             <Flex>
               <AddCircle color="primary" sx={addCircleStyles} />
-              <Typography color="primary">{t('roles.actions.addMembers')}</Typography>
+              <Typography color="primary">
+                {t('roles.actions.addMembers')}
+              </Typography>
             </Flex>
             <ArrowForwardIos
               color="primary"

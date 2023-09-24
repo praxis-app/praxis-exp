@@ -69,14 +69,23 @@ export function useEventsQuery(
   baseOptions: Apollo.QueryHookOptions<EventsQuery, EventsQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<EventsQuery, EventsQueryVariables>(EventsDocument, options);
+  return Apollo.useQuery<EventsQuery, EventsQueryVariables>(
+    EventsDocument,
+    options,
+  );
 }
 export function useEventsLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<EventsQuery, EventsQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<EventsQuery, EventsQueryVariables>(EventsDocument, options);
+  return Apollo.useLazyQuery<EventsQuery, EventsQueryVariables>(
+    EventsDocument,
+    options,
+  );
 }
 export type EventsQueryHookResult = ReturnType<typeof useEventsQuery>;
 export type EventsLazyQueryHookResult = ReturnType<typeof useEventsLazyQuery>;
-export type EventsQueryResult = Apollo.QueryResult<EventsQuery, EventsQueryVariables>;
+export type EventsQueryResult = Apollo.QueryResult<
+  EventsQuery,
+  EventsQueryVariables
+>;

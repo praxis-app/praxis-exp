@@ -14,7 +14,9 @@ interface Props {
 }
 
 const GroupRoleForm = ({ editRole, groupId }: Props) => {
-  const [color, setColor] = useState(editRole ? editRole.color : DEFAULT_ROLE_COLOR);
+  const [color, setColor] = useState(
+    editRole ? editRole.color : DEFAULT_ROLE_COLOR,
+  );
   const [colorPickerKey, setColorPickerKey] = useState('');
   const [createRole] = useCreateGroupRoleMutation();
   const [updateRole] = useUpdateGroupRoleMutation();

@@ -46,7 +46,10 @@ export class CommentsService {
     );
   }
 
-  async createComment({ images, ...commentData }: CreateCommentInput, user: User) {
+  async createComment(
+    { images, ...commentData }: CreateCommentInput,
+    user: User,
+  ) {
     if (!commentData.body && !images?.length) {
       throw new Error('Comments must include text or images');
     }

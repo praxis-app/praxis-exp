@@ -65,13 +65,16 @@ export function useCreateServerRoleMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateServerRoleMutation, CreateServerRoleMutationVariables>(
-    CreateServerRoleDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    CreateServerRoleMutation,
+    CreateServerRoleMutationVariables
+  >(CreateServerRoleDocument, options);
 }
-export type CreateServerRoleMutationHookResult = ReturnType<typeof useCreateServerRoleMutation>;
-export type CreateServerRoleMutationResult = Apollo.MutationResult<CreateServerRoleMutation>;
+export type CreateServerRoleMutationHookResult = ReturnType<
+  typeof useCreateServerRoleMutation
+>;
+export type CreateServerRoleMutationResult =
+  Apollo.MutationResult<CreateServerRoleMutation>;
 export type CreateServerRoleMutationOptions = Apollo.BaseMutationOptions<
   CreateServerRoleMutation,
   CreateServerRoleMutationVariables

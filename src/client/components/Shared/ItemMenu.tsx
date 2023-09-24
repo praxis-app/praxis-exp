@@ -79,7 +79,8 @@ const ItemMenu = ({
     handleClose();
   };
 
-  const handleDeleteWithPrompt = () => window.confirm(deletePrompt) && handleDelete();
+  const handleDeleteWithPrompt = () =>
+    window.confirm(deletePrompt) && handleDelete();
 
   return (
     <>

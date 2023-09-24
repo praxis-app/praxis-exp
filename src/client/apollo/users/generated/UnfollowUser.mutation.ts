@@ -44,16 +44,22 @@ export type UnfollowUserMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useUnfollowUserMutation(
-  baseOptions?: Apollo.MutationHookOptions<UnfollowUserMutation, UnfollowUserMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    UnfollowUserMutation,
+    UnfollowUserMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UnfollowUserMutation, UnfollowUserMutationVariables>(
-    UnfollowUserDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    UnfollowUserMutation,
+    UnfollowUserMutationVariables
+  >(UnfollowUserDocument, options);
 }
-export type UnfollowUserMutationHookResult = ReturnType<typeof useUnfollowUserMutation>;
-export type UnfollowUserMutationResult = Apollo.MutationResult<UnfollowUserMutation>;
+export type UnfollowUserMutationHookResult = ReturnType<
+  typeof useUnfollowUserMutation
+>;
+export type UnfollowUserMutationResult =
+  Apollo.MutationResult<UnfollowUserMutation>;
 export type UnfollowUserMutationOptions = Apollo.BaseMutationOptions<
   UnfollowUserMutation,
   UnfollowUserMutationVariables

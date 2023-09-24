@@ -45,7 +45,9 @@ export type DeleteServerRoleMemberMutation = {
 };
 
 export const DeleteServerRoleMemberDocument = gql`
-  mutation DeleteServerRoleMember($serverRoleMemberData: DeleteServerRoleMemberInput!) {
+  mutation DeleteServerRoleMember(
+    $serverRoleMemberData: DeleteServerRoleMemberInput!
+  ) {
     deleteServerRoleMember(serverRoleMemberData: $serverRoleMemberData) {
       serverRole {
         id

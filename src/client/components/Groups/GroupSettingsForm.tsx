@@ -1,5 +1,13 @@
 import { Warning } from '@mui/icons-material';
-import { Box, Divider, FormGroup, MenuItem, Select, Typography, useTheme } from '@mui/material';
+import {
+  Box,
+  Divider,
+  FormGroup,
+  MenuItem,
+  Select,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { toastVar } from '../../apollo/cache';
@@ -24,7 +32,9 @@ const GroupSettingsForm = ({ group }: Props) => {
   const theme = useTheme();
 
   const initialValues: FormValues = {
-    privacy: group.settings.isPublic ? GroupPrivacy.Public : GroupPrivacy.Private,
+    privacy: group.settings.isPublic
+      ? GroupPrivacy.Public
+      : GroupPrivacy.Private,
   };
 
   const handleSubmit = async (
@@ -48,7 +58,11 @@ const GroupSettingsForm = ({ group }: Props) => {
     });
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit} enableReinitialize>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      enableReinitialize
+    >
       {({ dirty, isSubmitting, handleChange, values }) => (
         <Form>
           <FormGroup>
@@ -56,7 +70,10 @@ const GroupSettingsForm = ({ group }: Props) => {
               <Box>
                 <Typography>{t('groups.settings.names.privacy')}</Typography>
 
-                <Typography fontSize={12} sx={{ color: theme.palette.text.secondary }}>
+                <Typography
+                  fontSize={12}
+                  sx={{ color: theme.palette.text.secondary }}
+                >
                   {t('groups.settings.descriptions.privacy')}
                 </Typography>
               </Box>
@@ -69,8 +86,12 @@ const GroupSettingsForm = ({ group }: Props) => {
                 variant="standard"
                 disableUnderline
               >
-                <MenuItem value={GroupPrivacy.Private}>{t('groups.labels.private')}</MenuItem>
-                <MenuItem value={GroupPrivacy.Public}>{t('groups.labels.public')}</MenuItem>
+                <MenuItem value={GroupPrivacy.Private}>
+                  {t('groups.labels.private')}
+                </MenuItem>
+                <MenuItem value={GroupPrivacy.Public}>
+                  {t('groups.labels.public')}
+                </MenuItem>
               </Select>
             </Flex>
 

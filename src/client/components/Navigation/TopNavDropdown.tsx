@@ -3,7 +3,11 @@ import { Menu, MenuItem, SvgIconProps } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useLogOutMutation } from '../../apollo/auth/generated/LogOut.mutation';
-import { isAuthLoadingVar, isLoggedInVar, isRefreshingTokenVar } from '../../apollo/cache';
+import {
+  isAuthLoadingVar,
+  isLoggedInVar,
+  isRefreshingTokenVar,
+} from '../../apollo/cache';
 import { TopNavDropdownFragment } from '../../apollo/users/generated/TopNavDropdown.fragment';
 import { NavigationPaths } from '../../constants/shared.constants';
 import { inDevToast } from '../../utils/shared.utils';
@@ -21,7 +25,11 @@ interface Props {
   user: TopNavDropdownFragment;
 }
 
-const TopNavDropdown = ({ anchorEl, handleClose, user: { name, serverPermissions } }: Props) => {
+const TopNavDropdown = ({
+  anchorEl,
+  handleClose,
+  user: { name, serverPermissions },
+}: Props) => {
   const [logOut] = useLogOutMutation();
 
   const { t } = useTranslation();

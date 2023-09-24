@@ -64,16 +64,22 @@ export type UpdateCommentMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useUpdateCommentMutation(
-  baseOptions?: Apollo.MutationHookOptions<UpdateCommentMutation, UpdateCommentMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateCommentMutation, UpdateCommentMutationVariables>(
-    UpdateCommentDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    UpdateCommentMutation,
+    UpdateCommentMutationVariables
+  >(UpdateCommentDocument, options);
 }
-export type UpdateCommentMutationHookResult = ReturnType<typeof useUpdateCommentMutation>;
-export type UpdateCommentMutationResult = Apollo.MutationResult<UpdateCommentMutation>;
+export type UpdateCommentMutationHookResult = ReturnType<
+  typeof useUpdateCommentMutation
+>;
+export type UpdateCommentMutationResult =
+  Apollo.MutationResult<UpdateCommentMutation>;
 export type UpdateCommentMutationOptions = Apollo.BaseMutationOptions<
   UpdateCommentMutation,
   UpdateCommentMutationVariables

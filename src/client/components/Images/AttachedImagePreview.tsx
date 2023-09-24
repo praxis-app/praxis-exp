@@ -13,7 +13,11 @@ const REMOVE_BUTTON: SxProps = {
 const RemoveButton = ({ onClick }: { onClick(): void }) => {
   const { t } = useTranslation();
   return (
-    <IconButton aria-label={t('images.labels.removeImage')} onClick={onClick} sx={REMOVE_BUTTON}>
+    <IconButton
+      aria-label={t('images.labels.removeImage')}
+      onClick={onClick}
+      sx={REMOVE_BUTTON}
+    >
       <RemoveCircle />
     </IconButton>
   );
@@ -68,7 +72,9 @@ const AttachedImagePreview = ({
       {selectedImages.map((image) => (
         <Box sx={containerStyles} key={image.name}>
           <img alt={image.name} src={URL.createObjectURL(image)} width="100%" />
-          {handleRemove && <RemoveButton onClick={() => handleRemove(image.name)} />}
+          {handleRemove && (
+            <RemoveButton onClick={() => handleRemove(image.name)} />
+          )}
         </Box>
       ))}
     </Box>

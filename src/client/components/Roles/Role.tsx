@@ -1,5 +1,11 @@
 import { ArrowForwardIos, Person } from '@mui/icons-material';
-import { Avatar, Box, CardActionArea, Typography, useTheme } from '@mui/material';
+import {
+  Avatar,
+  Box,
+  CardActionArea,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { GroupRoleFragment } from '../../apollo/groups/generated/GroupRole.fragment';
 import { ServerRoleFragment } from '../../apollo/roles/generated/ServerRole.fragment';

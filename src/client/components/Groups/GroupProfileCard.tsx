@@ -69,7 +69,13 @@ interface Props extends CardProps {
   tab: number;
 }
 
-const GroupProfileCard = ({ currentUserId, group, setTab, tab, ...cardProps }: Props) => {
+const GroupProfileCard = ({
+  currentUserId,
+  group,
+  setTab,
+  tab,
+  ...cardProps
+}: Props) => {
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const [deleteGroup] = useDeleteGroupMutation();
@@ -93,7 +99,15 @@ const GroupProfileCard = ({ currentUserId, group, setTab, tab, ...cardProps }: P
     }
   }, [params.tab, setTab]);
 
-  const { id, name, coverPhoto, memberCount, memberRequestCount, myPermissions, settings } = group;
+  const {
+    id,
+    name,
+    coverPhoto,
+    memberCount,
+    memberRequestCount,
+    myPermissions,
+    settings,
+  } = group;
 
   const canApproveMemberRequests = myPermissions?.approveMemberRequests;
   const showCardHeader = isLoggedIn && isAboveSmall;
@@ -148,7 +162,8 @@ const GroupProfileCard = ({ currentUserId, group, setTab, tab, ...cardProps }: P
     navigate(settingsPath);
   };
 
-  const handleTabsChange = (_: React.SyntheticEvent, newValue: number) => setTab(newValue);
+  const handleTabsChange = (_: React.SyntheticEvent, newValue: number) =>
+    setTab(newValue);
 
   const renderCardActions = () => {
     const canDeleteGroup = myPermissions?.deleteGroup;
@@ -156,11 +171,16 @@ const GroupProfileCard = ({ currentUserId, group, setTab, tab, ...cardProps }: P
     const canManageSettings = myPermissions?.manageSettings;
     const canUpdateGroup = myPermissions?.updateGroup;
 
-    const showMenuButton = canDeleteGroup || canUpdateGroup || canManageRoles || canManageSettings;
+    const showMenuButton =
+      canDeleteGroup || canUpdateGroup || canManageRoles || canManageSettings;
 
     return (
       <>
-        <JoinButton groupId={id} currentUserId={currentUserId} isGroupMember={group.isJoinedByMe} />
+        <JoinButton
+          groupId={id}
+          currentUserId={currentUserId}
+          isGroupMember={group.isJoinedByMe}
+        />
 
         {showMenuButton && (
           <ItemMenu
@@ -222,27 +242,39 @@ const GroupProfileCard = ({ currentUserId, group, setTab, tab, ...cardProps }: P
             {t('groups.labels.members', { count: memberCount })}
           </Link>
 
-          {canApproveMemberRequests && typeof memberRequestCount === 'number' && (
-            <>
-              {MIDDOT_WITH_SPACES}
-              <Link href={memberRequestsPath}>
-                {t('groups.labels.requests', { count: memberRequestCount })}
-              </Link>
-            </>
-          )}
+          {canApproveMemberRequests &&
+            typeof memberRequestCount === 'number' && (
+              <>
+                {MIDDOT_WITH_SPACES}
+                <Link href={memberRequestsPath}>
+                  {t('groups.labels.requests', { count: memberRequestCount })}
+                </Link>
+              </>
+            )}
         </Box>
 
         {isLoggedIn && !isAboveSmall && (
-          <Flex sx={{ justifyContent: 'right', marginTop: 2 }}>{renderCardActions()}</Flex>
+          <Flex sx={{ justifyContent: 'right', marginTop: 2 }}>
+            {renderCardActions()}
+          </Flex>
         )}
       </CardContent>
 
       <Divider sx={{ marginX: '16px', marginBottom: 0.25 }} />
 
       <Tabs onChange={handleTabsChange} textColor="inherit" value={tab}>
-        <Tab label={t('groups.tabs.feed')} onClick={() => navigate(groupPagePath)} />
-        <Tab label={t('groups.tabs.events')} onClick={() => navigate(eventsTabPath)} />
-        <Tab label={t('groups.tabs.about')} onClick={() => navigate(aboutTabPath)} />
+        <Tab
+          label={t('groups.tabs.feed')}
+          onClick={() => navigate(groupPagePath)}
+        />
+        <Tab
+          label={t('groups.tabs.events')}
+          onClick={() => navigate(eventsTabPath)}
+        />
+        <Tab
+          label={t('groups.tabs.about')}
+          onClick={() => navigate(aboutTabPath)}
+        />
       </Tabs>
     </Card>
   );

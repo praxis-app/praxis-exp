@@ -1,6 +1,8 @@
 import { GroupPermissions } from './models/group-permissions.type';
 
-export const initGroupRolePermissions = (enabled = false): GroupPermissions => ({
+export const initGroupRolePermissions = (
+  enabled = false,
+): GroupPermissions => ({
   approveMemberRequests: enabled,
   createEvents: enabled,
   deleteGroup: enabled,

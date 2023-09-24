@@ -18,7 +18,10 @@ import { Post } from '../posts/models/post.model';
 import { PostsService } from '../posts/posts.service';
 import { User } from '../users/models/user.model';
 import { GroupConfigsService } from './group-configs/group-configs.service';
-import { GroupConfig, GroupPrivacy } from './group-configs/models/group-config.model';
+import {
+  GroupConfig,
+  GroupPrivacy,
+} from './group-configs/models/group-config.model';
 import { GroupMemberRequestsService } from './group-member-requests/group-member-requests.service';
 import { GroupMemberRequest } from './group-member-requests/models/group-member-request.model';
 import { GroupRolesService } from './group-roles/group-roles.service';
@@ -78,7 +81,10 @@ export class GroupsResolver {
   }
 
   @ResolveField(() => Image)
-  async coverPhoto(@Parent() { id }: Group, @Context() { loaders }: { loaders: Dataloaders }) {
+  async coverPhoto(
+    @Parent() { id }: Group,
+    @Context() { loaders }: { loaders: Dataloaders },
+  ) {
     return loaders.groupCoverPhotosLoader.load(id);
   }
 
@@ -88,7 +94,10 @@ export class GroupsResolver {
   }
 
   @ResolveField(() => [User])
-  async members(@Parent() { id }: Group, @Context() { loaders }: { loaders: Dataloaders }) {
+  async members(
+    @Parent() { id }: Group,
+    @Context() { loaders }: { loaders: Dataloaders },
+  ) {
     return loaders.groupMembersLoader.load(id);
   }
 
@@ -98,7 +107,10 @@ export class GroupsResolver {
   }
 
   @ResolveField(() => Int)
-  async memberCount(@Parent() { id }: Group, @Context() { loaders }: { loaders: Dataloaders }) {
+  async memberCount(
+    @Parent() { id }: Group,
+    @Context() { loaders }: { loaders: Dataloaders },
+  ) {
     return loaders.groupMemberCountLoader.load(id);
   }
 
@@ -162,7 +174,10 @@ export class GroupsResolver {
   }
 
   @Mutation(() => CreateGroupPayload)
-  async createGroup(@Args('groupData') groupData: CreateGroupInput, @CurrentUser() { id }: User) {
+  async createGroup(
+    @Args('groupData') groupData: CreateGroupInput,
+    @CurrentUser() { id }: User,
+  ) {
     return this.groupsService.createGroup(groupData, id);
   }
 

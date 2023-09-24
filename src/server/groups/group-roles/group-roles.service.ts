@@ -1,9 +1,15 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DeepPartial, FindOptionsWhere, In, Not, Repository } from 'typeorm';
-import { ADMIN_ROLE_NAME, DEFAULT_ROLE_COLOR } from '../../server-roles/server-roles.constants';
+import {
+  ADMIN_ROLE_NAME,
+  DEFAULT_ROLE_COLOR,
+} from '../../server-roles/server-roles.constants';
 import { UsersService } from '../../users/users.service';
-import { cleanGroupPermissions, initGroupRolePermissions } from './group-role.utils';
+import {
+  cleanGroupPermissions,
+  initGroupRolePermissions,
+} from './group-role.utils';
 import { GroupRolePermission } from './models/group-role-permission.model';
 import { GroupRole } from './models/group-role.model';
 import { UpdateGroupRoleInput } from './models/update-group-role.input';
@@ -24,7 +30,10 @@ export class GroupRolesService {
     private usersService: UsersService,
   ) {}
 
-  async getGroupRole(where?: FindOptionsWhere<GroupRole>, relations?: string[]) {
+  async getGroupRole(
+    where?: FindOptionsWhere<GroupRole>,
+    relations?: string[],
+  ) {
     return this.groupRoleRepository.findOneOrFail({ where, relations });
   }
 
@@ -45,7 +54,9 @@ export class GroupRolesService {
     const userIds = role.members.map(({ id }) => id);
 
     if (role.group) {
-      return role.group.members.filter((member) => !userIds.some((userId) => userId === member.id));
+      return role.group.members.filter(
+        (member) => !userIds.some((userId) => userId === member.id),
+      );
     }
     return this.usersService.getUsers({
       id: Not(In(userIds)),
@@ -81,7 +92,10 @@ export class GroupRolesService {
     });
   }
 
-  async createGroupRole(roleData: DeepPartial<GroupRole>, fromProposalAction = false) {
+  async createGroupRole(
+    roleData: DeepPartial<GroupRole>,
+    fromProposalAction = false,
+  ) {
     if (fromProposalAction) {
       const permission = cleanGroupPermissions(roleData.permission);
       return this.groupRoleRepository.save({ ...roleData, permission });
@@ -100,7 +114,10 @@ export class GroupRolesService {
     permissions,
     ...roleData
   }: UpdateGroupRoleInput) {
-    const roleWithRelations = await this.getGroupRole({ id }, ['members', 'permission']);
+    const roleWithRelations = await this.getGroupRole({ id }, [
+      'members',
+      'permission',
+    ]);
     const newMembers = await this.usersService.getUsers({
       id: In(selectedUserIds),
     });
@@ -135,7 +152,9 @@ export class GroupRolesService {
 
   async deleteGroupRoleMember(id: number, userId: number) {
     const groupRole = await this.getGroupRole({ id }, ['members']);
-    groupRole.members = groupRole.members.filter((member) => member.id !== userId);
+    groupRole.members = groupRole.members.filter(
+      (member) => member.id !== userId,
+    );
     await this.groupRoleRepository.save(groupRole);
 
     return { groupRole };
@@ -144,7 +163,9 @@ export class GroupRolesService {
   async deleteGroupRoleMembers(id: number, userIds: number[]) {
     const role = await this.getGroupRole({ id }, ['members']);
 
-    role.members = role.members.filter((member) => !userIds.some((id) => member.id === id));
+    role.members = role.members.filter(
+      (member) => !userIds.some((id) => member.id === id),
+    );
     await this.groupRoleRepository.save(role);
   }
 

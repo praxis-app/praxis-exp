@@ -15,7 +15,9 @@ const EventAvatar = ({ event, withLink, size, sx, ...avatarProps }: Props) => {
   const theme = useTheme();
 
   const eventPagePath = getEventPath(event.id);
-  const imagePath = event.coverPhoto ? getImagePath(event.coverPhoto.id) : undefined;
+  const imagePath = event.coverPhoto
+    ? getImagePath(event.coverPhoto.id)
+    : undefined;
 
   const avatarStyles = {
     backgroundColor: theme.palette.background.paper,
@@ -24,7 +26,12 @@ const EventAvatar = ({ event, withLink, size, sx, ...avatarProps }: Props) => {
   };
 
   const renderAvatar = () => (
-    <Avatar alt={event.name} src={imagePath} sx={avatarStyles} {...avatarProps} />
+    <Avatar
+      alt={event.name}
+      src={imagePath}
+      sx={avatarStyles}
+      {...avatarProps}
+    />
   );
 
   if (withLink) {

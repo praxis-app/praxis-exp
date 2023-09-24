@@ -83,7 +83,9 @@ const ServerInviteRow = ({
 
       <TableCell>{uses + (maxUses ? `/${maxUses}` : '')}</TableCell>
 
-      <TableCell>{expiresAt ? timeFromNow(expiresAt) : t('time.infinity')}</TableCell>
+      <TableCell>
+        {expiresAt ? timeFromNow(expiresAt) : t('time.infinity')}
+      </TableCell>
 
       <TableCell>
         <ItemMenu

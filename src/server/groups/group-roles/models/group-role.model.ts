@@ -49,7 +49,10 @@ export class GroupRole {
   groupId: number;
 
   @Field(() => [ProposalActionRole])
-  @OneToMany(() => ProposalActionRole, (proposalActionRole) => proposalActionRole.groupRole)
+  @OneToMany(
+    () => ProposalActionRole,
+    (proposalActionRole) => proposalActionRole.groupRole,
+  )
   proposalActionRoles: ProposalActionRole[];
 
   @CreateDateColumn()

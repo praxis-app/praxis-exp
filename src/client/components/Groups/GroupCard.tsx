@@ -19,8 +19,15 @@ import {
   useDeleteGroupMutation,
 } from '../../apollo/groups/generated/DeleteGroup.mutation';
 import { GroupCardFragment } from '../../apollo/groups/generated/GroupCard.fragment';
-import { GroupsDocument, GroupsQuery } from '../../apollo/groups/generated/Groups.query';
-import { MIDDOT_WITH_SPACES, NavigationPaths, TypeNames } from '../../constants/shared.constants';
+import {
+  GroupsDocument,
+  GroupsQuery,
+} from '../../apollo/groups/generated/Groups.query';
+import {
+  MIDDOT_WITH_SPACES,
+  NavigationPaths,
+  TypeNames,
+} from '../../constants/shared.constants';
 import {
   getEditGroupPath,
   getGroupMembersPath,
@@ -77,8 +84,15 @@ const GroupCard = ({ group, currentUserId, ...cardProps }: Props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const { id, name, description, isJoinedByMe, memberCount, memberRequestCount, myPermissions } =
-    group;
+  const {
+    id,
+    name,
+    description,
+    isJoinedByMe,
+    memberCount,
+    memberRequestCount,
+    myPermissions,
+  } = group;
 
   const canApproveMemberRequests = myPermissions?.approveMemberRequests;
   const deleteGroupPrompt = t('prompts.deleteItem', { itemType: 'group' });
@@ -109,7 +123,12 @@ const GroupCard = ({ group, currentUserId, ...cardProps }: Props) => {
     const canUpdateGroup = myPermissions?.updateGroup;
     const canManageRoles = myPermissions?.manageRoles;
     const canManageSettings = myPermissions?.manageSettings;
-    if (!canDeleteGroup && !canUpdateGroup && !canManageRoles && !canManageSettings) {
+    if (
+      !canDeleteGroup &&
+      !canUpdateGroup &&
+      !canManageRoles &&
+      !canManageSettings
+    ) {
       return null;
     }
 
@@ -154,18 +173,23 @@ const GroupCard = ({ group, currentUserId, ...cardProps }: Props) => {
             {t('groups.labels.members', { count: memberCount })}
           </Link>
 
-          {canApproveMemberRequests && typeof memberRequestCount === 'number' && (
-            <>
-              {MIDDOT_WITH_SPACES}
-              <Link href={memberRequestsPath}>
-                {t('groups.labels.requests', { count: memberRequestCount })}
-              </Link>
-            </>
-          )}
+          {canApproveMemberRequests &&
+            typeof memberRequestCount === 'number' && (
+              <>
+                {MIDDOT_WITH_SPACES}
+                <Link href={memberRequestsPath}>
+                  {t('groups.labels.requests', { count: memberRequestCount })}
+                </Link>
+              </>
+            )}
         </Box>
 
         {isLoggedIn && (
-          <JoinButton isGroupMember={isJoinedByMe} currentUserId={currentUserId} groupId={id} />
+          <JoinButton
+            isGroupMember={isJoinedByMe}
+            currentUserId={currentUserId}
+            groupId={id}
+          />
         )}
       </CardContent>
     </Card>

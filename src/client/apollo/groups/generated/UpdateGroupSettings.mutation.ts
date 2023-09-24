@@ -94,15 +94,16 @@ export function useUpdateGroupSettingsMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateGroupSettingsMutation, UpdateGroupSettingsMutationVariables>(
-    UpdateGroupSettingsDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    UpdateGroupSettingsMutation,
+    UpdateGroupSettingsMutationVariables
+  >(UpdateGroupSettingsDocument, options);
 }
 export type UpdateGroupSettingsMutationHookResult = ReturnType<
   typeof useUpdateGroupSettingsMutation
 >;
-export type UpdateGroupSettingsMutationResult = Apollo.MutationResult<UpdateGroupSettingsMutation>;
+export type UpdateGroupSettingsMutationResult =
+  Apollo.MutationResult<UpdateGroupSettingsMutation>;
 export type UpdateGroupSettingsMutationOptions = Apollo.BaseMutationOptions<
   UpdateGroupSettingsMutation,
   UpdateGroupSettingsMutationVariables

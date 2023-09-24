@@ -7,21 +7,41 @@ import {
   Select,
   Typography,
 } from '@mui/material';
-import { Form, Formik, FormikErrors, FormikFormProps, FormikHelpers } from 'formik';
+import {
+  Form,
+  Formik,
+  FormikErrors,
+  FormikFormProps,
+  FormikHelpers,
+} from 'formik';
 import { produce } from 'immer';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { toastVar } from '../../apollo/cache';
-import { CreateProposalInput, ProposalActionInput, UpdateProposalInput } from '../../apollo/gen';
+import {
+  CreateProposalInput,
+  ProposalActionInput,
+  UpdateProposalInput,
+} from '../../apollo/gen';
 import { useDeleteImageMutation } from '../../apollo/images/generated/DeleteImage.mutation';
 import { useCreateProposalMutation } from '../../apollo/proposals/generated/CreateProposal.mutation';
 import { ProposalFormFragment } from '../../apollo/proposals/generated/ProposalForm.fragment';
 import { useUpdateProposalMutation } from '../../apollo/proposals/generated/UpdateProposal.mutation';
-import { HomeFeedDocument, HomeFeedQuery } from '../../apollo/users/generated/HomeFeed.query';
+import {
+  HomeFeedDocument,
+  HomeFeedQuery,
+} from '../../apollo/users/generated/HomeFeed.query';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
-import { ProposalActionFieldName, ProposalActionType } from '../../constants/proposal.constants';
-import { FieldNames, NavigationPaths, TypeNames } from '../../constants/shared.constants';
+import {
+  ProposalActionFieldName,
+  ProposalActionType,
+} from '../../constants/proposal.constants';
+import {
+  FieldNames,
+  NavigationPaths,
+  TypeNames,
+} from '../../constants/shared.constants';
 import { getProposalActionTypeOptions } from '../../utils/proposal.utils';
 import { getRandomString } from '../../utils/shared.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';
@@ -46,7 +66,12 @@ interface Props extends FormikFormProps {
   groupId?: number;
 }
 
-const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Props) => {
+const ProposalForm = ({
+  currentUserId,
+  editProposal,
+  groupId,
+  ...formProps
+}: Props) => {
   const [clicked, setClicked] = useState(false);
   const [selectInputsKey, setSelectInputsKey] = useState('');
   const { data } = useMeQuery();
@@ -78,18 +103,28 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
     if (!action.actionType) {
       errors.action.actionType = t('proposals.errors.missingActionType');
     }
-    if (action.actionType === ProposalActionType.ChangeName && !action.groupName) {
+    if (
+      action.actionType === ProposalActionType.ChangeName &&
+      !action.groupName
+    ) {
       errors.action.groupName = t('proposals.errors.missingGroupName');
     }
-    if (action.actionType === ProposalActionType.ChangeDescription && !action.groupDescription) {
-      errors.action.groupDescription = t('proposals.errors.missingGroupDescription');
+    if (
+      action.actionType === ProposalActionType.ChangeDescription &&
+      !action.groupDescription
+    ) {
+      errors.action.groupDescription = t(
+        'proposals.errors.missingGroupDescription',
+      );
     }
     if (
       action.actionType === ProposalActionType.ChangeCoverPhoto &&
       !editProposal?.action.groupCoverPhoto &&
       !action.groupCoverPhoto
     ) {
-      errors.action.groupCoverPhoto = t('proposals.errors.missingGroupCoverPhoto');
+      errors.action.groupCoverPhoto = t(
+        'proposals.errors.missingGroupCoverPhoto',
+      );
     }
     if (
       (action.actionType === ProposalActionType.CreateRole ||
@@ -122,10 +157,12 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
         const {
           createProposal: { proposal },
         } = data;
-        cache.updateQuery<HomeFeedQuery>({ query: HomeFeedDocument }, (homePageData) =>
-          produce(homePageData, (draft) => {
-            draft?.me?.homeFeed.unshift(proposal);
-          }),
+        cache.updateQuery<HomeFeedQuery>(
+          { query: HomeFeedDocument },
+          (homePageData) =>
+            produce(homePageData, (draft) => {
+              draft?.me?.homeFeed.unshift(proposal);
+            }),
         );
         cache.modify({
           id: cache.identify(proposal.user),
@@ -203,7 +240,8 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
   };
 
   const handleImageInputChange =
-    (setFieldValue: (field: string, value: File[]) => void) => (images: File[]) =>
+    (setFieldValue: (field: string, value: File[]) => void) =>
+    (images: File[]) =>
       setFieldValue(FieldNames.Images, images);
 
   const handleRemoveImage =
@@ -253,7 +291,9 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
             {!!(clicked || editProposal || values.body?.length) && (
               <>
                 <FormControl
-                  error={!!errors.action?.actionType && touched.action?.actionType}
+                  error={
+                    !!errors.action?.actionType && touched.action?.actionType
+                  }
                   sx={{ marginBottom: 1 }}
                   variant="standard"
                 >
@@ -297,7 +337,12 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
                       ))}
                     </Select>
                     {!!(errors.groupId && submitCount) && (
-                      <Typography color="error" fontSize="small" marginTop={0.5} gutterBottom>
+                      <Typography
+                        color="error"
+                        fontSize="small"
+                        marginTop={0.5}
+                        gutterBottom
+                      >
                         {t('proposals.errors.missingGroupId')}
                       </Typography>
                     )}
@@ -331,7 +376,12 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
                 )}
 
                 {errors.action?.role && !!submitCount && (
-                  <Typography color="error" fontSize="small" marginTop={0.5} gutterBottom>
+                  <Typography
+                    color="error"
+                    fontSize="small"
+                    marginTop={0.5}
+                    gutterBottom
+                  >
                     {errors.action.role}
                   </Typography>
                 )}
@@ -348,7 +398,10 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
               handleDelete={handleDeleteSavedImage}
               savedImages={editProposal?.images || []}
               selectedImages={values.images || []}
-              handleRemove={handleRemoveImage(setFieldValue, values.images || [])}
+              handleRemove={handleRemoveImage(
+                setFieldValue,
+                values.images || [],
+              )}
             />
           </FormGroup>
 
@@ -367,7 +420,9 @@ const ProposalForm = ({ currentUserId, editProposal, groupId, ...formProps }: Pr
               sx={{ marginTop: 1.5 }}
               type="submit"
             >
-              {editProposal ? t('actions.save') : t('proposals.actions.createProposal')}
+              {editProposal
+                ? t('actions.save')
+                : t('proposals.actions.createProposal')}
             </PrimaryActionButton>
           </Flex>
 

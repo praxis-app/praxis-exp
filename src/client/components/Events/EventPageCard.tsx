@@ -1,5 +1,12 @@
 import { useReactiveVar } from '@apollo/client';
-import { Flag, Group, Language, Person, Place, Timer } from '@mui/icons-material';
+import {
+  Flag,
+  Group,
+  Language,
+  Person,
+  Place,
+  Timer,
+} from '@mui/icons-material';
 import {
   Card,
   CardProps,
@@ -59,7 +66,13 @@ interface Props extends CardProps {
   tab: number;
 }
 
-const EventPageCard = ({ event, canManageAllEvents, setIsDeleting, setTab, tab }: Props) => {
+const EventPageCard = ({
+  event,
+  canManageAllEvents,
+  setIsDeleting,
+  setTab,
+  tab,
+}: Props) => {
   const [menuAnchorEl, setMenuAnchorEl] = useState<null | HTMLElement>(null);
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const [deleteEvent] = useDeleteEventMutation();
@@ -177,7 +190,12 @@ const EventPageCard = ({ event, canManageAllEvents, setIsDeleting, setTab, tab }
         >
           {isSameDay ? startsAtWithEndsAt : startsAtFormatted}
         </Typography>
-        <NameText color="primary" variant="h5" width={getNameTextWidth()} marginTop={0.5}>
+        <NameText
+          color="primary"
+          variant="h5"
+          width={getNameTextWidth()}
+          marginTop={0.5}
+        >
           {name}
         </NameText>
 
@@ -255,16 +273,28 @@ const EventPageCard = ({ event, canManageAllEvents, setIsDeleting, setTab, tab }
             {externalLink
               ? t('events.labels.onlineWithColon') + ' '
               : t('events.labels.onlineEvent')}
-            {externalLink && <ExternalLink href={externalLink}>{externalLink}</ExternalLink>}
+            {externalLink && (
+              <ExternalLink href={externalLink}>{externalLink}</ExternalLink>
+            )}
           </Typography>
         )}
       </CardContent>
 
       <Divider sx={{ marginX: '16px', marginBottom: 0.25 }} />
 
-      <Tabs onChange={(_: any, value: number) => setTab(value)} textColor="inherit" value={tab}>
-        <Tab label={t('events.tabs.about')} onClick={() => navigate(eventPagePath)} />
-        <Tab label={t('events.tabs.discussion')} onClick={() => navigate(discussionTabPath)} />
+      <Tabs
+        onChange={(_: any, value: number) => setTab(value)}
+        textColor="inherit"
+        value={tab}
+      >
+        <Tab
+          label={t('events.tabs.about')}
+          onClick={() => navigate(eventPagePath)}
+        />
+        <Tab
+          label={t('events.tabs.discussion')}
+          onClick={() => navigate(discussionTabPath)}
+        />
       </Tabs>
     </Card>
   );

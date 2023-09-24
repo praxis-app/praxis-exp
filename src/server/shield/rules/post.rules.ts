@@ -12,7 +12,10 @@ export const isOwnPost = rule({ cache: 'strict' })(async (
   if (!user) {
     return UNAUTHORIZED;
   }
-  return usersService.isUsersPost('id' in args ? args.id : args.postData.id, user.id);
+  return usersService.isUsersPost(
+    'id' in args ? args.id : args.postData.id,
+    user.id,
+  );
 });
 
 export const isPublicPost = rule({ cache: 'strict' })(async (
@@ -33,6 +36,8 @@ export const isPublicPostImage = rule({ cache: 'strict' })(async (
   _args,
   { services: { imagesService } }: Context,
 ) => {
-  const image = await imagesService.getImage({ id: parent.id }, ['post.group.config']);
+  const image = await imagesService.getImage({ id: parent.id }, [
+    'post.group.config',
+  ]);
   return image?.post?.group?.config.privacy === GroupPrivacy.Public;
 });

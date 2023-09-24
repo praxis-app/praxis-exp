@@ -28,8 +28,13 @@ export class GroupConfigsService {
     return this.repository.save({ groupId });
   }
 
-  async updateGroupConfig({ groupId, ...groupConfigData }: UpdateGroupConfigInput) {
-    const group = await this.groupsService.getGroup({ id: groupId }, ['config']);
+  async updateGroupConfig({
+    groupId,
+    ...groupConfigData
+  }: UpdateGroupConfigInput) {
+    const group = await this.groupsService.getGroup({ id: groupId }, [
+      'config',
+    ]);
     await this.repository.update(group.config.id, groupConfigData);
     return { group };
   }

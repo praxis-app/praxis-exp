@@ -1,6 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class SetDefaultForGroupMemberRequestTable1690333204053 implements MigrationInterface {
+export class SetDefaultForGroupMemberRequestTable1690333204053
+  implements MigrationInterface
+{
   name = 'SetDefaultForGroupMemberRequestTable1690333204053';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -10,6 +12,8 @@ export class SetDefaultForGroupMemberRequestTable1690333204053 implements Migrat
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`ALTER TABLE "group_member_request" ALTER COLUMN "id" DROP DEFAULT`);
+    await queryRunner.query(
+      `ALTER TABLE "group_member_request" ALTER COLUMN "id" DROP DEFAULT`,
+    );
   }
 }

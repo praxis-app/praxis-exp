@@ -69,14 +69,28 @@ export function useEditGroupQuery(
   baseOptions: Apollo.QueryHookOptions<EditGroupQuery, EditGroupQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<EditGroupQuery, EditGroupQueryVariables>(EditGroupDocument, options);
+  return Apollo.useQuery<EditGroupQuery, EditGroupQueryVariables>(
+    EditGroupDocument,
+    options,
+  );
 }
 export function useEditGroupLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<EditGroupQuery, EditGroupQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    EditGroupQuery,
+    EditGroupQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<EditGroupQuery, EditGroupQueryVariables>(EditGroupDocument, options);
+  return Apollo.useLazyQuery<EditGroupQuery, EditGroupQueryVariables>(
+    EditGroupDocument,
+    options,
+  );
 }
 export type EditGroupQueryHookResult = ReturnType<typeof useEditGroupQuery>;
-export type EditGroupLazyQueryHookResult = ReturnType<typeof useEditGroupLazyQuery>;
-export type EditGroupQueryResult = Apollo.QueryResult<EditGroupQuery, EditGroupQueryVariables>;
+export type EditGroupLazyQueryHookResult = ReturnType<
+  typeof useEditGroupLazyQuery
+>;
+export type EditGroupQueryResult = Apollo.QueryResult<
+  EditGroupQuery,
+  EditGroupQueryVariables
+>;

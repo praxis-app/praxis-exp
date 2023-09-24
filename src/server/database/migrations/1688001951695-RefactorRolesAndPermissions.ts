@@ -1,6 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class RefactorRolesAndPermissions1688001951695 implements MigrationInterface {
+export class RefactorRolesAndPermissions1688001951695
+  implements MigrationInterface
+{
   name = 'RefactorRolesAndPermissions1688001951695';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -40,24 +42,42 @@ export class RefactorRolesAndPermissions1688001951695 implements MigrationInterf
     await queryRunner.query(
       `CREATE INDEX "IDX_f63712bbbf85cf2d7974fea3da" ON "server_role_members_user" ("userId") `,
     );
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" DROP COLUMN "enabled"`);
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" DROP COLUMN "name"`);
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" ADD "manageRoles" boolean`);
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" DROP COLUMN "enabled"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" DROP COLUMN "name"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" ADD "manageRoles" boolean`,
+    );
     await queryRunner.query(
       `ALTER TABLE "proposal_action_permission" ADD "manageSettings" boolean`,
     );
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" ADD "managePosts" boolean`);
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" ADD "managePosts" boolean`,
+    );
     await queryRunner.query(
       `ALTER TABLE "proposal_action_permission" ADD "manageComments" boolean`,
     );
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" ADD "manageEvents" boolean`);
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" ADD "updateGroup" boolean`);
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" ADD "deleteGroup" boolean`);
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" ADD "createEvents" boolean`);
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" ADD "manageEvents" boolean`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" ADD "updateGroup" boolean`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" ADD "deleteGroup" boolean`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" ADD "createEvents" boolean`,
+    );
     await queryRunner.query(
       `ALTER TABLE "proposal_action_permission" ADD "approveMemberRequests" boolean`,
     );
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" ADD "removeMembers" boolean`);
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" ADD "removeMembers" boolean`,
+    );
     await queryRunner.query(
       `ALTER TABLE "proposal_action_permission" DROP CONSTRAINT "FK_d30bc47f532c1ee16830ef03d44"`,
     );
@@ -127,33 +147,55 @@ export class RefactorRolesAndPermissions1688001951695 implements MigrationInterf
     await queryRunner.query(
       `ALTER TABLE "proposal_action_permission" ADD CONSTRAINT "FK_d30bc47f532c1ee16830ef03d44" FOREIGN KEY ("proposalActionRoleId") REFERENCES "proposal_action_role"("id") ON DELETE CASCADE ON UPDATE NO ACTION`,
     );
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" DROP COLUMN "removeMembers"`);
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" DROP COLUMN "removeMembers"`,
+    );
     await queryRunner.query(
       `ALTER TABLE "proposal_action_permission" DROP COLUMN "approveMemberRequests"`,
     );
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" DROP COLUMN "createEvents"`);
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" DROP COLUMN "deleteGroup"`);
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" DROP COLUMN "updateGroup"`);
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" DROP COLUMN "manageEvents"`);
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" DROP COLUMN "createEvents"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" DROP COLUMN "deleteGroup"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" DROP COLUMN "updateGroup"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" DROP COLUMN "manageEvents"`,
+    );
     await queryRunner.query(
       `ALTER TABLE "proposal_action_permission" DROP COLUMN "manageComments"`,
     );
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" DROP COLUMN "managePosts"`);
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" DROP COLUMN "managePosts"`,
+    );
     await queryRunner.query(
       `ALTER TABLE "proposal_action_permission" DROP COLUMN "manageSettings"`,
     );
-    await queryRunner.query(`ALTER TABLE "proposal_action_permission" DROP COLUMN "manageRoles"`);
+    await queryRunner.query(
+      `ALTER TABLE "proposal_action_permission" DROP COLUMN "manageRoles"`,
+    );
     await queryRunner.query(
       `ALTER TABLE "proposal_action_permission" ADD "name" character varying NOT NULL`,
     );
     await queryRunner.query(
       `ALTER TABLE "proposal_action_permission" ADD "enabled" boolean NOT NULL`,
     );
-    await queryRunner.query(`DROP INDEX "public"."IDX_f63712bbbf85cf2d7974fea3da"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_0e81fc759db187afd78c675e37"`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_f63712bbbf85cf2d7974fea3da"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_0e81fc759db187afd78c675e37"`,
+    );
     await queryRunner.query(`DROP TABLE "server_role_members_user"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_ad33c1380ea67144e74080747c"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_921a4c0b23e5efded8e7d9f725"`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_ad33c1380ea67144e74080747c"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_921a4c0b23e5efded8e7d9f725"`,
+    );
     await queryRunner.query(`DROP TABLE "group_role_members_user"`);
     await queryRunner.query(`DROP TABLE "server_role"`);
     await queryRunner.query(`DROP TABLE "server_role_permission"`);

@@ -43,7 +43,9 @@ const ServerInvites = () => {
 
   return (
     <>
-      <LevelOneHeading header>{t('invites.headers.serverInvites')}</LevelOneHeading>
+      <LevelOneHeading header>
+        {t('invites.headers.serverInvites')}
+      </LevelOneHeading>
 
       <ServerInviteForm />
       {renderInvites()}

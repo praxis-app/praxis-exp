@@ -38,7 +38,11 @@ const ServerInviteTable = ({ serverInvites, me }: Props) => {
         </TableHead>
         <TableBody>
           {serverInvites.map((serverInvite) => (
-            <ServerInviteRow key={serverInvite.id} serverInvite={serverInvite} me={me} />
+            <ServerInviteRow
+              key={serverInvite.id}
+              serverInvite={serverInvite}
+              me={me}
+            />
           ))}
         </TableBody>
       </Table>

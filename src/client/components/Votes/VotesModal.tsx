@@ -1,4 +1,10 @@
-import { PanTool, SvgIconComponent, ThumbDown, ThumbsUpDown, ThumbUp } from '@mui/icons-material';
+import {
+  PanTool,
+  SvgIconComponent,
+  ThumbDown,
+  ThumbsUpDown,
+  ThumbUp,
+} from '@mui/icons-material';
 import { Box, styled, Tab as MuiTab, Tabs } from '@mui/material';
 import { SyntheticEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -36,17 +42,26 @@ const VotesModal = ({
   const { t } = useTranslation();
   const isDesktop = useIsDesktop();
 
-  const handleTabChange = (_: SyntheticEvent<Element, Event>, value: number) => setTab(value);
+  const handleTabChange = (_: SyntheticEvent<Element, Event>, value: number) =>
+    setTab(value);
 
   const renderTabLabel = (Icon: SvgIconComponent, voteCount: number) => (
     <Box sx={{ transform: 'translateY(-1px)' }}>
-      <Icon color="inherit" sx={{ marginRight: 1, transform: 'translateY(4px)', fontSize: 18 }} />
+      <Icon
+        color="inherit"
+        sx={{ marginRight: 1, transform: 'translateY(4px)', fontSize: 18 }}
+      />
       {voteCount}
     </Box>
   );
 
   const renderAppBarContent = () => (
-    <Tabs onChange={handleTabChange} scrollButtons="auto" value={tab} variant="scrollable">
+    <Tabs
+      onChange={handleTabChange}
+      scrollButtons="auto"
+      value={tab}
+      variant="scrollable"
+    >
       <Tab label={t('labels.all')} />
       <Tab
         label={renderTabLabel(ThumbUp, agreements.length)}

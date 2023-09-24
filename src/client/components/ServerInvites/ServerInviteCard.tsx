@@ -30,14 +30,16 @@ import ItemMenu from '../Shared/ItemMenu';
 import UserAvatar from '../Users/UserAvatar';
 
 export const removeServerInvite = (id: number) => (cache: ApolloCache<any>) => {
-  cache.updateQuery<ServerInvitesQuery>({ query: ServerInvitesDocument }, (invitesData) =>
-    produce(invitesData, (draft) => {
-      if (!draft) {
-        return;
-      }
-      const index = draft.serverInvites.findIndex((p) => p.id === id);
-      draft.serverInvites.splice(index, 1);
-    }),
+  cache.updateQuery<ServerInvitesQuery>(
+    { query: ServerInvitesDocument },
+    (invitesData) =>
+      produce(invitesData, (draft) => {
+        if (!draft) {
+          return;
+        }
+        const index = draft.serverInvites.findIndex((p) => p.id === id);
+        draft.serverInvites.splice(index, 1);
+      }),
   );
   const cacheId = cache.identify({ id, __typename: TypeNames.ServerInvite });
   cache.evict({ id: cacheId });
@@ -67,7 +69,9 @@ const ServerInviteCard = ({
 
   const { t } = useTranslation();
 
-  const usesText = `${t('invites.labels.usesWithColon')} ${uses + (maxUses ? `/${maxUses}` : '')}`;
+  const usesText = `${t('invites.labels.usesWithColon')} ${
+    uses + (maxUses ? `/${maxUses}` : '')
+  }`;
   const deleteInvitePrompt = t('prompts.deleteItem', {
     itemType: 'invite link',
   });
@@ -133,8 +137,15 @@ const ServerInviteCard = ({
         }
       />
       <CardContent>
-        <Link href={getUserProfilePath(user.name)} sx={{ display: 'flex', textDecoration: 'none' }}>
-          <UserAvatar user={user} size={24} sx={{ marginRight: 1.5, marginBottom: 0.25 }} />
+        <Link
+          href={getUserProfilePath(user.name)}
+          sx={{ display: 'flex', textDecoration: 'none' }}
+        >
+          <UserAvatar
+            user={user}
+            size={24}
+            sx={{ marginRight: 1.5, marginBottom: 0.25 }}
+          />
           <Box>{user.name}</Box>
         </Link>
 

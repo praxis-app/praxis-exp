@@ -33,7 +33,9 @@ interface Props extends ButtonProps {
 
 const PrimaryActionButton = ({ isLoading, children, ...props }: Props) => (
   <Button {...props}>
-    {isLoading && <Spinner size={10} color="inherit" sx={{ marginRight: 0.75 }} />}
+    {isLoading && (
+      <Spinner size={10} color="inherit" sx={{ marginRight: 0.75 }} />
+    )}
     {children}
   </Button>
 );

@@ -1,4 +1,10 @@
-import { Card, CardProps, FormGroup, CardContent as MuiCardContent, styled } from '@mui/material';
+import {
+  Card,
+  CardProps,
+  FormGroup,
+  CardContent as MuiCardContent,
+  styled,
+} from '@mui/material';
 import { Form, Formik, FormikHelpers } from 'formik';
 import { produce } from 'immer';
 import { useState } from 'react';
@@ -8,7 +14,10 @@ import { toastVar } from '../../apollo/cache';
 import { CreateGroupInput, UpdateGroupInput } from '../../apollo/gen';
 import { useCreateGroupMutation } from '../../apollo/groups/generated/CreateGroup.mutation';
 import { GroupFormFragment } from '../../apollo/groups/generated/GroupForm.fragment';
-import { GroupsDocument, GroupsQuery } from '../../apollo/groups/generated/Groups.query';
+import {
+  GroupsDocument,
+  GroupsQuery,
+} from '../../apollo/groups/generated/Groups.query';
 import { useUpdateGroupMutation } from '../../apollo/groups/generated/UpdateGroup.mutation';
 import { FieldNames } from '../../constants/shared.constants';
 import { getGroupPath } from '../../utils/group.utils';
@@ -59,15 +68,17 @@ const GroupForm = ({ editGroup, ...cardProps }: Props) => {
           return;
         }
         const { createGroup } = data;
-        cache.updateQuery<GroupsQuery>({ query: GroupsDocument }, (groupsData) =>
-          produce(groupsData, (draft) => {
-            draft?.groups.unshift({
-              ...createGroup.group,
-              isJoinedByMe: true,
-              memberCount: 1,
-              memberRequestCount: 0,
-            });
-          }),
+        cache.updateQuery<GroupsQuery>(
+          { query: GroupsDocument },
+          (groupsData) =>
+            produce(groupsData, (draft) => {
+              draft?.groups.unshift({
+                ...createGroup.group,
+                isJoinedByMe: true,
+                memberCount: 1,
+                memberRequestCount: 0,
+              });
+            }),
         );
       },
       onCompleted() {
@@ -154,7 +165,10 @@ const GroupForm = ({ editGroup, ...cardProps }: Props) => {
               </FormGroup>
 
               <Flex sx={{ justifyContent: 'space-between' }}>
-                <ImageInput refreshKey={imageInputKey} setImage={setCoverPhoto} />
+                <ImageInput
+                  refreshKey={imageInputKey}
+                  setImage={setCoverPhoto}
+                />
                 <PrimaryActionButton
                   disabled={isSubmitting || (!dirty && !coverPhoto)}
                   isLoading={isSubmitting}

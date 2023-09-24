@@ -15,7 +15,10 @@ import {
   UpdateVoteMutation,
   useUpdateVoteMutation,
 } from '../../apollo/votes/generated/UpdateVote.mutation';
-import { ProposalActionType, ProposalStage } from '../../constants/proposal.constants';
+import {
+  ProposalActionType,
+  ProposalStage,
+} from '../../constants/proposal.constants';
 import { NavigationPaths } from '../../constants/shared.constants';
 import { VoteTypes } from '../../constants/vote.constants';
 import { Blurple } from '../../styles/theme';
@@ -44,7 +47,9 @@ const VoteMenu = ({ anchorEl, onClose, currentUserId, proposal }: Props) => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const voteByCurrentUser = proposal.votes.find((vote) => vote.user.id === currentUserId);
+  const voteByCurrentUser = proposal.votes.find(
+    (vote) => vote.user.id === currentUserId,
+  );
 
   const getMenuItemStyles = (voteType: string) => {
     if (!voteByCurrentUser || voteByCurrentUser.voteType !== voteType) {
@@ -53,7 +58,9 @@ const VoteMenu = ({ anchorEl, onClose, currentUserId, proposal }: Props) => {
     return { color: Blurple.Marina };
   };
 
-  const handleCompleted = async (data: CreateVoteMutation | UpdateVoteMutation) => {
+  const handleCompleted = async (
+    data: CreateVoteMutation | UpdateVoteMutation,
+  ) => {
     const {
       vote: {
         proposal: {
@@ -149,7 +156,9 @@ const VoteMenu = ({ anchorEl, onClose, currentUserId, proposal }: Props) => {
           id: cache.identify(proposal),
           fields: {
             votes(existingVoteRefs: Reference[], { readField }) {
-              return existingVoteRefs.filter((ref) => readField('id', ref) !== id);
+              return existingVoteRefs.filter(
+                (ref) => readField('id', ref) !== id,
+              );
             },
             voteCount(existingCount: number) {
               return Math.max(0, existingCount - 1);
@@ -218,7 +227,10 @@ const VoteMenu = ({ anchorEl, onClose, currentUserId, proposal }: Props) => {
         {t('votes.actions.reservations')}
       </MenuItem>
 
-      <MenuItem onClick={handleClick(VoteTypes.Block)} sx={getMenuItemStyles(VoteTypes.Block)}>
+      <MenuItem
+        onClick={handleClick(VoteTypes.Block)}
+        sx={getMenuItemStyles(VoteTypes.Block)}
+      >
         <PanTool sx={ICON_STYLES} />
         {t('votes.actions.block')}
       </MenuItem>

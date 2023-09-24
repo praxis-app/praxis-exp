@@ -8,7 +8,13 @@ import {
   Typography,
 } from '@mui/material';
 import { Form, Formik } from 'formik';
-import { ChangeEvent, ReactNode, SyntheticEvent, useEffect, useState } from 'react';
+import {
+  ChangeEvent,
+  ReactNode,
+  SyntheticEvent,
+  useEffect,
+  useState,
+} from 'react';
 import { ColorResult } from 'react-color';
 import { useTranslation } from 'react-i18next';
 import {
@@ -25,9 +31,15 @@ import {
   ProposalActionType,
   ProposeRoleModalFieldName,
 } from '../../../constants/proposal.constants';
-import { DEFAULT_ROLE_COLOR, GROUP_PERMISSION_NAMES } from '../../../constants/role.constants';
+import {
+  DEFAULT_ROLE_COLOR,
+  GROUP_PERMISSION_NAMES,
+} from '../../../constants/role.constants';
 import { initGroupRolePermissions } from '../../../utils/role.utils';
-import Accordion, { AccordionDetails, AccordionSummary } from '../../Shared/Accordion';
+import Accordion, {
+  AccordionDetails,
+  AccordionSummary,
+} from '../../Shared/Accordion';
 import ColorPicker from '../../Shared/ColorPicker';
 import Flex from '../../Shared/Flex';
 import Modal from '../../Shared/Modal';
@@ -46,31 +58,53 @@ export interface ProposeRoleModalValues {
 interface Props {
   actionType?: string;
   groupId?: number | null;
-  setFieldValue: (field: ProposalActionFieldName, value: ProposalActionRoleInput) => void;
+  setFieldValue: (
+    field: ProposalActionFieldName,
+    value: ProposalActionRoleInput,
+  ) => void;
   onClose(): void;
 }
 
-const ProposeRoleModal = ({ groupId, actionType, setFieldValue, onClose }: Props) => {
+const ProposeRoleModal = ({
+  groupId,
+  actionType,
+  setFieldValue,
+  onClose,
+}: Props) => {
   const [open, setOpen] = useState(false);
   const [showMembers, setShowMembers] = useState(false);
   const [showPermissions, setShowPermissions] = useState(true);
 
   const [color, setColor] = useState(DEFAULT_ROLE_COLOR);
-  const [selectedMembers, setSelectedMembers] = useState<ProposalActionRoleMemberInput[]>([]);
+  const [selectedMembers, setSelectedMembers] = useState<
+    ProposalActionRoleMemberInput[]
+  >([]);
 
   const [
     getGroupMembers,
-    { data: groupMembersData, loading: groupMembersLoading, error: groupMembersError },
+    {
+      data: groupMembersData,
+      loading: groupMembersLoading,
+      error: groupMembersError,
+    },
   ] = useGroupMembersByGroupIdLazyQuery();
 
   const [
     getGroupRoles,
-    { data: groupRolesData, loading: groupRolesLoading, error: groupRolesError },
+    {
+      data: groupRolesData,
+      loading: groupRolesLoading,
+      error: groupRolesError,
+    },
   ] = useGroupRolesByGroupIdLazyQuery();
 
   const [
     getSelectedRole,
-    { data: selectedRoleData, loading: selectedRoleLoading, error: selectedRoleError },
+    {
+      data: selectedRoleData,
+      loading: selectedRoleLoading,
+      error: selectedRoleError,
+    },
   ] = useGroupRoleByRoleIdLazyQuery();
 
   const { t } = useTranslation();
@@ -100,8 +134,10 @@ const ProposeRoleModal = ({ groupId, actionType, setFieldValue, onClose }: Props
     ? [...selectedRole.members, ...selectedRole.availableUsersToAdd]
     : groupMembersData?.group.members || [];
 
-  const membersLoading = groupMembersLoading || groupRolesLoading || selectedRoleLoading;
-  const membersError = groupMembersError || groupRolesError || selectedRoleError;
+  const membersLoading =
+    groupMembersLoading || groupRolesLoading || selectedRoleLoading;
+  const membersError =
+    groupMembersError || groupRolesError || selectedRoleError;
 
   const initialValues: ProposalActionRoleInput = {
     name: '',
@@ -112,7 +148,10 @@ const ProposeRoleModal = ({ groupId, actionType, setFieldValue, onClose }: Props
     ? t('proposals.actions.createGroupRole')
     : t('proposals.actions.changeGroupRole');
 
-  const isSubmitButtonDisabled = (values: ProposalActionRoleInput, isSubmitting: boolean) => {
+  const isSubmitButtonDisabled = (
+    values: ProposalActionRoleInput,
+    isSubmitting: boolean,
+  ) => {
     if (isSubmitting) {
       return true;
     }
@@ -122,7 +161,9 @@ const ProposeRoleModal = ({ groupId, actionType, setFieldValue, onClose }: Props
       }
       const includesPermissions =
         values.permissions &&
-        Object.values(values.permissions).some((value) => typeof value === 'boolean');
+        Object.values(values.permissions).some(
+          (value) => typeof value === 'boolean',
+        );
       const dirty =
         includesPermissions ||
         selectedMembers.length ||
@@ -134,7 +175,10 @@ const ProposeRoleModal = ({ groupId, actionType, setFieldValue, onClose }: Props
   };
 
   const handleSelectRoleChange =
-    (handleChange: (e: ChangeEvent) => void, setFieldValue: (field: string, value: any) => void) =>
+    (
+      handleChange: (e: ChangeEvent) => void,
+      setFieldValue: (field: string, value: any) => void,
+    ) =>
     (event: SelectChangeEvent<number>, _: ReactNode) => {
       getSelectedRole({
         variables: { id: +event.target.value },
@@ -147,7 +191,8 @@ const ProposeRoleModal = ({ groupId, actionType, setFieldValue, onClose }: Props
     };
 
   const handleAccordionChange =
-    (panel: 'permissions' | 'members') => (_: SyntheticEvent, newExpanded: boolean) => {
+    (panel: 'permissions' | 'members') =>
+    (_: SyntheticEvent, newExpanded: boolean) => {
       if (panel === 'permissions') {
         setShowPermissions(newExpanded);
         return;
@@ -182,10 +227,15 @@ const ProposeRoleModal = ({ groupId, actionType, setFieldValue, onClose }: Props
             <FormGroup>
               {isChangeRole && roles && (
                 <FormControl variant="standard" sx={{ marginBottom: 1 }}>
-                  <InputLabel>{t('proposals.labels.selectRoleToChange')}</InputLabel>
+                  <InputLabel>
+                    {t('proposals.labels.selectRoleToChange')}
+                  </InputLabel>
                   <Select
                     name={ProposeRoleModalFieldName.RoleToUpdateId}
-                    onChange={handleSelectRoleChange(handleChange, setFieldValue)}
+                    onChange={handleSelectRoleChange(
+                      handleChange,
+                      setFieldValue,
+                    )}
                     value={values.roleToUpdateId || ''}
                   >
                     {roles.map((role) => (
@@ -217,7 +267,9 @@ const ProposeRoleModal = ({ groupId, actionType, setFieldValue, onClose }: Props
                     onChange={handleAccordionChange('permissions')}
                   >
                     <AccordionSummary>
-                      <Typography>{t('permissions.labels.permissions')}</Typography>
+                      <Typography>
+                        {t('permissions.labels.permissions')}
+                      </Typography>
                     </AccordionSummary>
 
                     <AccordionDetails>
@@ -233,7 +285,10 @@ const ProposeRoleModal = ({ groupId, actionType, setFieldValue, onClose }: Props
                     </AccordionDetails>
                   </Accordion>
 
-                  <Accordion expanded={showMembers} onChange={handleAccordionChange('members')}>
+                  <Accordion
+                    expanded={showMembers}
+                    onChange={handleAccordionChange('members')}
+                  >
                     <AccordionSummary>
                       <Typography>{t('roles.labels.members')}</Typography>
                     </AccordionSummary>
@@ -242,7 +297,9 @@ const ProposeRoleModal = ({ groupId, actionType, setFieldValue, onClose }: Props
                       {membersLoading && <ProgressBar />}
 
                       {membersError && (
-                        <Typography marginTop={1}>{t('errors.somethingWentWrong')}</Typography>
+                        <Typography marginTop={1}>
+                          {t('errors.somethingWentWrong')}
+                        </Typography>
                       )}
 
                       {members.length &&

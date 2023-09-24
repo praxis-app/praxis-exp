@@ -16,11 +16,17 @@ export class EventAttendeesService {
     private eventService: EventsService,
   ) {}
 
-  async getEventAttendee(where: FindOptionsWhere<EventAttendee>, relations?: string[]) {
+  async getEventAttendee(
+    where: FindOptionsWhere<EventAttendee>,
+    relations?: string[],
+  ) {
     return this.eventAttendeeRepository.findOne({ where, relations });
   }
 
-  async getEventAttendees(where?: FindOptionsWhere<EventAttendee>, relations?: string[]) {
+  async getEventAttendees(
+    where?: FindOptionsWhere<EventAttendee>,
+    relations?: string[],
+  ) {
     return this.eventAttendeeRepository.find({
       order: { updatedAt: 'DESC' },
       relations,
@@ -28,7 +34,10 @@ export class EventAttendeesService {
     });
   }
 
-  async createEventAttendee(eventAttendeeData: CreateEventAttendeeInput, userId: number) {
+  async createEventAttendee(
+    eventAttendeeData: CreateEventAttendeeInput,
+    userId: number,
+  ) {
     const eventAttendee = await this.eventAttendeeRepository.save({
       ...eventAttendeeData,
       userId,
@@ -39,7 +48,10 @@ export class EventAttendeesService {
     return { event };
   }
 
-  async updateEventAttendee({ eventId, ...eventData }: UpdateEventAttendeeInput, userId: number) {
+  async updateEventAttendee(
+    { eventId, ...eventData }: UpdateEventAttendeeInput,
+    userId: number,
+  ) {
     await this.eventAttendeeRepository.update({ eventId, userId }, eventData);
     const event = await this.eventService.getEvent({ id: eventId });
     return { event };

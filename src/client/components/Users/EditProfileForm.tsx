@@ -61,22 +61,34 @@ const EditProfileForm = ({ user, submitButtonText }: Props) => {
       {({ isSubmitting, dirty }) => (
         <Form>
           <Flex sx={{ justifyContent: 'space-between', marginBottom: 2 }}>
-            <Typography color="primary">{t('users.form.profilePicture')}</Typography>
+            <Typography color="primary">
+              {t('users.form.profilePicture')}
+            </Typography>
             <ImageInput setImage={setProfilePicture}>
-              <CompactButton sx={{ marginTop: -0.5 }}>{t('actions.edit')}</CompactButton>
+              <CompactButton sx={{ marginTop: -0.5 }}>
+                {t('actions.edit')}
+              </CompactButton>
             </ImageInput>
           </Flex>
 
           <Center sx={{ marginBottom: 3 }}>
-            <UserAvatar imageFile={profilePicture} sx={{ width: 140, height: 140 }} user={user} />
+            <UserAvatar
+              imageFile={profilePicture}
+              sx={{ width: 140, height: 140 }}
+              user={user}
+            />
           </Center>
 
           <Divider sx={{ marginBottom: 1.5 }} />
 
           <Flex sx={{ justifyContent: 'space-between', marginBottom: 1.25 }}>
-            <Typography color="primary">{t('users.form.coverPhoto')}</Typography>
+            <Typography color="primary">
+              {t('users.form.coverPhoto')}
+            </Typography>
             <ImageInput setImage={setCoverPhoto}>
-              <CompactButton sx={{ marginTop: -0.5 }}>{t('actions.edit')}</CompactButton>
+              <CompactButton sx={{ marginTop: -0.5 }}>
+                {t('actions.edit')}
+              </CompactButton>
             </ImageInput>
           </Flex>
 
@@ -90,13 +102,23 @@ const EditProfileForm = ({ user, submitButtonText }: Props) => {
           <Divider sx={{ marginBottom: 3 }} />
 
           <FormGroup>
-            <TextField autoComplete="off" label={t('users.form.name')} name={UserFieldNames.Name} />
-            <TextField autoComplete="off" label={t('users.form.bio')} name={UserFieldNames.Bio} />
+            <TextField
+              autoComplete="off"
+              label={t('users.form.name')}
+              name={UserFieldNames.Name}
+            />
+            <TextField
+              autoComplete="off"
+              label={t('users.form.bio')}
+              name={UserFieldNames.Bio}
+            />
           </FormGroup>
 
           <Flex flexEnd>
             <PrimaryActionButton
-              disabled={isSubmitting || (!dirty && !profilePicture && !coverPhoto)}
+              disabled={
+                isSubmitting || (!dirty && !profilePicture && !coverPhoto)
+              }
               isLoading={isSubmitting}
               type="submit"
             >

@@ -74,11 +74,15 @@ export class AuthService {
 
   async generateAuthTokens(userId: number): Promise<AuthTokens> {
     const access_token = await this.generateAccessToken(userId);
-    const { refresh_token } = await this.refreshTokensService.generateRefreshToken(userId);
+    const { refresh_token } =
+      await this.refreshTokensService.generateRefreshToken(userId);
     return { access_token, refresh_token };
   }
 
-  async validateUser(email: string, password: string): Promise<Omit<User, 'password'>> {
+  async validateUser(
+    email: string,
+    password: string,
+  ): Promise<Omit<User, 'password'>> {
     try {
       const user = await this.usersService.getUser({ email });
       if (!user) {

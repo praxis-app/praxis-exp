@@ -211,7 +211,10 @@ export const PublicGroupsFeedDocument = gql`
  * });
  */
 export function usePublicGroupsFeedQuery(
-  baseOptions?: Apollo.QueryHookOptions<PublicGroupsFeedQuery, PublicGroupsFeedQueryVariables>,
+  baseOptions?: Apollo.QueryHookOptions<
+    PublicGroupsFeedQuery,
+    PublicGroupsFeedQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<PublicGroupsFeedQuery, PublicGroupsFeedQueryVariables>(
@@ -220,16 +223,23 @@ export function usePublicGroupsFeedQuery(
   );
 }
 export function usePublicGroupsFeedLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<PublicGroupsFeedQuery, PublicGroupsFeedQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PublicGroupsFeedQuery,
+    PublicGroupsFeedQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<PublicGroupsFeedQuery, PublicGroupsFeedQueryVariables>(
-    PublicGroupsFeedDocument,
-    options,
-  );
+  return Apollo.useLazyQuery<
+    PublicGroupsFeedQuery,
+    PublicGroupsFeedQueryVariables
+  >(PublicGroupsFeedDocument, options);
 }
-export type PublicGroupsFeedQueryHookResult = ReturnType<typeof usePublicGroupsFeedQuery>;
-export type PublicGroupsFeedLazyQueryHookResult = ReturnType<typeof usePublicGroupsFeedLazyQuery>;
+export type PublicGroupsFeedQueryHookResult = ReturnType<
+  typeof usePublicGroupsFeedQuery
+>;
+export type PublicGroupsFeedLazyQueryHookResult = ReturnType<
+  typeof usePublicGroupsFeedLazyQuery
+>;
 export type PublicGroupsFeedQueryResult = Apollo.QueryResult<
   PublicGroupsFeedQuery,
   PublicGroupsFeedQueryVariables

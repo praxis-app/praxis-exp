@@ -1,4 +1,10 @@
-import { Card, CardContent as MuiCardContent, CardProps, FormGroup, styled } from '@mui/material';
+import {
+  Card,
+  CardContent as MuiCardContent,
+  CardProps,
+  FormGroup,
+  styled,
+} from '@mui/material';
 import { Form, Formik, FormikHelpers, FormikProps } from 'formik';
 import { ColorResult } from 'react-color';
 import { useTranslation } from 'react-i18next';
@@ -54,7 +60,10 @@ const RoleForm = ({
     return editRole.color !== color;
   };
 
-  const isSubmitButtonDisabled = ({ dirty, isSubmitting }: FormikProps<InitialValues>) => {
+  const isSubmitButtonDisabled = ({
+    dirty,
+    isSubmitting,
+  }: FormikProps<InitialValues>) => {
     if (isSubmitting) {
       return true;
     }

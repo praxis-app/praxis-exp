@@ -6,7 +6,10 @@ import { EventAttendeesService } from './event-attendees.service';
 import { EventAttendee } from './models/event-attendee.model';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([EventAttendee]), forwardRef(() => EventsModule)],
+  imports: [
+    TypeOrmModule.forFeature([EventAttendee]),
+    forwardRef(() => EventsModule),
+  ],
   providers: [EventAttendeesService, EventAttendeesResolver],
   exports: [EventAttendeesService, TypeOrmModule],
 })

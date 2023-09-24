@@ -125,13 +125,16 @@ export function useUpdateServerRoleMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateServerRoleMutation, UpdateServerRoleMutationVariables>(
-    UpdateServerRoleDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    UpdateServerRoleMutation,
+    UpdateServerRoleMutationVariables
+  >(UpdateServerRoleDocument, options);
 }
-export type UpdateServerRoleMutationHookResult = ReturnType<typeof useUpdateServerRoleMutation>;
-export type UpdateServerRoleMutationResult = Apollo.MutationResult<UpdateServerRoleMutation>;
+export type UpdateServerRoleMutationHookResult = ReturnType<
+  typeof useUpdateServerRoleMutation
+>;
+export type UpdateServerRoleMutationResult =
+  Apollo.MutationResult<UpdateServerRoleMutation>;
 export type UpdateServerRoleMutationOptions = Apollo.BaseMutationOptions<
   UpdateServerRoleMutation,
   UpdateServerRoleMutationVariables

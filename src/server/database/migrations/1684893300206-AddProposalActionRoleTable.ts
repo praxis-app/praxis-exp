@@ -1,6 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class AddProposalActionRoleTable1684893300206 implements MigrationInterface {
+export class AddProposalActionRoleTable1684893300206
+  implements MigrationInterface
+{
   name = 'AddProposalActionRoleTable1684893300206';
 
   public async up(queryRunner: QueryRunner): Promise<void> {

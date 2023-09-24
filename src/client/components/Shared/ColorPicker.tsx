@@ -41,7 +41,10 @@ const ColorPicker = ({ label, color, onChange, sx }: Props) => {
         <Flex>
           <Box sx={colorBoxStyles}></Box>
           <Typography marginRight={1.25}>{color}</Typography>
-          <ArrowForwardIos fontSize="small" sx={{ transform: 'translateY(2px)' }} />
+          <ArrowForwardIos
+            fontSize="small"
+            sx={{ transform: 'translateY(2px)' }}
+          />
         </Flex>
       </Flex>
 

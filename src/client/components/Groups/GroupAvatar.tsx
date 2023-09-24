@@ -10,7 +10,9 @@ interface Props extends AvatarProps {
 
 const GroupAvatar = ({ group }: Props) => {
   const groupPagePath = getGroupPath(group.name);
-  const imagePath = group.coverPhoto ? getImagePath(group.coverPhoto.id) : undefined;
+  const imagePath = group.coverPhoto
+    ? getImagePath(group.coverPhoto.id)
+    : undefined;
 
   return (
     <Link href={groupPagePath}>

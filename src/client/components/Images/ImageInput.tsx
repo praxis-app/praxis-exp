@@ -52,7 +52,11 @@ const ImageInput = ({
       return children;
     }
     return (
-      <IconButton aria-label={t('images.labels.attachImages')} disableRipple edge="start">
+      <IconButton
+        aria-label={t('images.labels.attachImages')}
+        disableRipple
+        edge="start"
+      >
         <Image sx={{ fontSize: 40, ...iconStyles }} />
       </IconButton>
     );

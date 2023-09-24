@@ -51,7 +51,9 @@ const TopNavDesktop = () => {
   const me = meData?.me;
   const isFirstUser = isFirstUserData?.isFirstUser;
   const userProfilePath = getUserProfilePath(me?.name);
-  const signUpPath = isFirstUser ? NavigationPaths.SignUp : `/signup/${inviteToken}`;
+  const signUpPath = isFirstUser
+    ? NavigationPaths.SignUp
+    : `/signup/${inviteToken}`;
 
   const handleMenuButtonClick = (event: MouseEvent<HTMLButtonElement>) =>
     setMenuAnchorEl(event.currentTarget);
@@ -65,7 +67,10 @@ const TopNavDesktop = () => {
       {me && (
         <Flex>
           <Link href={userProfilePath}>
-            <Button aria-label={t('navigation.profile')} sx={PROFILE_BTN_STYLES}>
+            <Button
+              aria-label={t('navigation.profile')}
+              sx={PROFILE_BTN_STYLES}
+            >
               <UserAvatar user={me} sx={USER_AVATAR_STYLES} />
               {me.name}
             </Button>
@@ -79,18 +84,28 @@ const TopNavDesktop = () => {
             <ArrowDropDown sx={{ color: 'text.primary' }} />
           </IconButton>
 
-          <TopNavDropdown anchorEl={menuAnchorEl} handleClose={handleClose} user={me} />
+          <TopNavDropdown
+            anchorEl={menuAnchorEl}
+            handleClose={handleClose}
+            user={me}
+          />
         </Flex>
       )}
 
       {!isLoggedIn && (
         <Flex>
-          <Button onClick={() => navigate(NavigationPaths.LogIn)} sx={{ color: 'text.primary' }}>
+          <Button
+            onClick={() => navigate(NavigationPaths.LogIn)}
+            sx={{ color: 'text.primary' }}
+          >
             {t('users.actions.logIn')}
           </Button>
 
           {(inviteToken || isFirstUser) && (
-            <Button onClick={() => navigate(signUpPath)} sx={{ color: 'text.primary' }}>
+            <Button
+              onClick={() => navigate(signUpPath)}
+              sx={{ color: 'text.primary' }}
+            >
               {t('users.actions.signUp')}
             </Button>
           )}

@@ -1,5 +1,12 @@
 import { Search as SearchIcon } from '@mui/icons-material';
-import { AppBar, AppBarProps, IconButton, SxProps, Toolbar, useTheme } from '@mui/material';
+import {
+  AppBar,
+  AppBarProps,
+  IconButton,
+  SxProps,
+  Toolbar,
+  useTheme,
+} from '@mui/material';
 import { CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 import { NavigationPaths } from '../../constants/shared.constants';
@@ -75,7 +82,12 @@ const TopNav = ({ appBarProps }: Props) => {
         {isDesktop ? (
           <TopNavDesktop />
         ) : (
-          <IconButton aria-label={t('labels.menu')} edge="end" onClick={inDevToast} size="large">
+          <IconButton
+            aria-label={t('labels.menu')}
+            edge="end"
+            onClick={inDevToast}
+            size="large"
+          >
             <SearchIcon />
           </IconButton>
         )}

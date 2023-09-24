@@ -8,7 +8,9 @@ export class ShieldService {
   constructor(private eventsService: EventsService) {}
 
   async getGroupIdFromEventArgs(
-    eventArgs: { eventData: CreateEventInput | UpdateEventInput } | { id: number },
+    eventArgs:
+      | { eventData: CreateEventInput | UpdateEventInput }
+      | { id: number },
   ) {
     if ('id' in eventArgs) {
       const event = await this.eventsService.getEvent({ id: eventArgs.id });

@@ -58,9 +58,13 @@ export class ProposalActionPermission {
   removeMembers?: boolean;
 
   @Field(() => ProposalActionRole, { name: 'role' })
-  @OneToOne(() => ProposalActionRole, (proposalActionRole) => proposalActionRole.permission, {
-    onDelete: 'CASCADE',
-  })
+  @OneToOne(
+    () => ProposalActionRole,
+    (proposalActionRole) => proposalActionRole.permission,
+    {
+      onDelete: 'CASCADE',
+    },
+  )
   @JoinColumn()
   proposalActionRole: ProposalActionRole;
 

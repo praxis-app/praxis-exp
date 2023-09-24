@@ -53,23 +53,26 @@ const EventAttendeeButtons = ({
   const isHosting = event.attendingStatus === EventAttendeeStatus.Host;
   const isInterested = event.attendingStatus === EventAttendeeStatus.Interested;
 
-  const isLoading = createAttendeeLoading || updateAttendeeLoading || deleteAttendeeLoading;
+  const isLoading =
+    createAttendeeLoading || updateAttendeeLoading || deleteAttendeeLoading;
 
-  const isDisabled = isLoading || isHosting || !!(event.group && !event.group.isJoinedByMe);
+  const isDisabled =
+    isLoading || isHosting || !!(event.group && !event.group.isJoinedByMe);
 
   const GoingButton = isGoing ? PrimaryButton : GhostButton;
   const InterestedButton = isInterested ? PrimaryButton : GhostButton;
 
-  const removeAttendee = (status: 'going' | 'interested') => (cache: ApolloCache<any>) => {
-    cache.modify({
-      id: cache.identify(event),
-      fields: {
-        attendingStatus: () => null,
-        goingCount: (c: number) => (status === 'going' ? c - 1 : c),
-        interestedCount: (c: number) => (status === 'interested' ? c - 1 : c),
-      },
-    });
-  };
+  const removeAttendee =
+    (status: 'going' | 'interested') => (cache: ApolloCache<any>) => {
+      cache.modify({
+        id: cache.identify(event),
+        fields: {
+          attendingStatus: () => null,
+          goingCount: (c: number) => (status === 'going' ? c - 1 : c),
+          interestedCount: (c: number) => (status === 'interested' ? c - 1 : c),
+        },
+      });
+    };
 
   const handleInterestedButtonClick = async () => {
     if (isInterested) {
@@ -121,14 +124,23 @@ const EventAttendeeButtons = ({
 
   if (!withGoingButton) {
     return (
-      <InterestedButton fullWidth={!withGoingButton && !isDesktop} {...interestedButtonProps}>
+      <InterestedButton
+        fullWidth={!withGoingButton && !isDesktop}
+        {...interestedButtonProps}
+      >
         {t('events.labels.interested')}
       </InterestedButton>
     );
   }
 
   return (
-    <Stack direction="row" marginBottom={2} marginTop={1.5} spacing={1} {...stackProps}>
+    <Stack
+      direction="row"
+      marginBottom={2}
+      marginTop={1.5}
+      spacing={1}
+      {...stackProps}
+    >
       <InterestedButton {...interestedButtonProps}>
         {t('events.labels.interested')}
       </InterestedButton>

@@ -46,7 +46,12 @@ const VoteBadges = ({ proposal: { votes, voteCount } }: Props) => {
     voteType: VoteTypes.Block,
   };
 
-  const badges = [agreementsBadge, standAsidesBadge, reservationsBadge, blocksBadge]
+  const badges = [
+    agreementsBadge,
+    standAsidesBadge,
+    reservationsBadge,
+    blocksBadge,
+  ]
     .filter((badge) => badge.votes.length)
     .sort((a, b) => b.votes.length - a.votes.length);
 
@@ -58,7 +63,11 @@ const VoteBadges = ({ proposal: { votes, voteCount } }: Props) => {
       <Flex sx={{ cursor: 'pointer', height: '24px' }} onClick={handleClick}>
         <Flex paddingRight={1}>
           {badges.map((badge, index) => (
-            <VoteBadge {...badge} key={badge.voteType} sx={{ zIndex: badges.length - index }} />
+            <VoteBadge
+              {...badge}
+              key={badge.voteType}
+              sx={{ zIndex: badges.length - index }}
+            />
           ))}
         </Flex>
 

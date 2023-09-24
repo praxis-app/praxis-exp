@@ -90,7 +90,9 @@ export const PostDocument = gql`
  *   },
  * });
  */
-export function usePostQuery(baseOptions: Apollo.QueryHookOptions<PostQuery, PostQueryVariables>) {
+export function usePostQuery(
+  baseOptions: Apollo.QueryHookOptions<PostQuery, PostQueryVariables>,
+) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<PostQuery, PostQueryVariables>(PostDocument, options);
 }
@@ -98,7 +100,10 @@ export function usePostLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<PostQuery, PostQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<PostQuery, PostQueryVariables>(PostDocument, options);
+  return Apollo.useLazyQuery<PostQuery, PostQueryVariables>(
+    PostDocument,
+    options,
+  );
 }
 export type PostQueryHookResult = ReturnType<typeof usePostQuery>;
 export type PostLazyQueryHookResult = ReturnType<typeof usePostLazyQuery>;
