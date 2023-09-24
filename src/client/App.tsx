@@ -17,16 +17,28 @@ import UserProfile from './pages/Users/UserProfile';
 const usersRouter: RouteObject = {
   path: '/users',
   children: [
-    { path: ':name', element: <UserProfile /> },
-    { path: ':name/edit', element: <EditUserProfile /> },
+    {
+      path: ':name',
+      element: <UserProfile />,
+    },
+    {
+      path: ':name/edit',
+      element: <EditUserProfile />,
+    },
   ],
 };
 
 const signUpRouter: RouteObject = {
   path: '/signup',
   children: [
-    { path: '', element: <SignUp /> },
-    { path: ':token', element: <SignUp /> },
+    {
+      path: '',
+      element: <SignUp />,
+    },
+    {
+      path: ':token',
+      element: <SignUp />,
+    },
   ],
 };
 
@@ -35,12 +47,30 @@ const router = createBrowserRouter([
     path: '/',
     element: <Layout />,
     children: [
-      { index: true, element: <Home /> },
-      { path: '/login', element: <Login /> },
-      { path: '/invites', element: <ServerInvites /> },
-      { path: '/i/:token', element: <ServerInvite /> },
-      { path: '/posts/:id', element: <Post /> },
-      { path: '/proposals/:id', element: <Proposal /> },
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+      },
+      {
+        path: '/invites',
+        element: <ServerInvites />,
+      },
+      {
+        path: '/i/:token',
+        element: <ServerInvite />,
+      },
+      {
+        path: '/posts/:id',
+        element: <Post />,
+      },
+      {
+        path: '/proposals/:id',
+        element: <Proposal />,
+      },
       signUpRouter,
       usersRouter,
     ],
