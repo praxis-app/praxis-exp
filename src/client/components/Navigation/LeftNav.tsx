@@ -92,7 +92,10 @@ const LeftNav = () => {
           <ListItemIcon>
             <HomeIcon sx={getIconStyle(NavigationPaths.Home)} />
           </ListItemIcon>
-          <ListItemText isActive={isActive(NavigationPaths.Home)} primary={t('navigation.home')} />
+          <ListItemText
+            isActive={isActive(NavigationPaths.Home)}
+            primary={t('navigation.home')}
+          />
         </ListItemButton>
       </Link>
 
@@ -167,7 +170,10 @@ const LeftNav = () => {
           <ListItemIcon>
             <DocsIcon sx={getIconStyle(NavigationPaths.Docs)} />
           </ListItemIcon>
-          <ListItemText isActive={isActive(NavigationPaths.Docs)} primary={t('navigation.docs')} />
+          <ListItemText
+            isActive={isActive(NavigationPaths.Docs)}
+            primary={t('navigation.docs')}
+          />
         </ListItemButton>
       </Link>
     </List>

@@ -17,7 +17,10 @@ export const isAuthenticated = rule({ cache: 'contextual' })(async (
 export const hasValidRefreshToken = rule({ cache: 'contextual' })(async (
   _parent,
   _args,
-  { claims: { refreshTokenClaims }, services: { refreshTokensService } }: Context,
+  {
+    claims: { refreshTokenClaims },
+    services: { refreshTokensService },
+  }: Context,
 ) => {
   const jti = getJti(refreshTokenClaims);
   const sub = getSub(refreshTokenClaims);

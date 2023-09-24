@@ -287,7 +287,10 @@ export type FollowUserMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useFollowUserMutation(
-  baseOptions?: Apollo.MutationHookOptions<FollowUserMutation, FollowUserMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    FollowUserMutation,
+    FollowUserMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<FollowUserMutation, FollowUserMutationVariables>(
@@ -295,8 +298,11 @@ export function useFollowUserMutation(
     options,
   );
 }
-export type FollowUserMutationHookResult = ReturnType<typeof useFollowUserMutation>;
-export type FollowUserMutationResult = Apollo.MutationResult<FollowUserMutation>;
+export type FollowUserMutationHookResult = ReturnType<
+  typeof useFollowUserMutation
+>;
+export type FollowUserMutationResult =
+  Apollo.MutationResult<FollowUserMutation>;
 export type FollowUserMutationOptions = Apollo.BaseMutationOptions<
   FollowUserMutation,
   FollowUserMutationVariables

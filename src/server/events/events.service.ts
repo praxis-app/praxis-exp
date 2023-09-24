@@ -1,14 +1,24 @@
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FileUpload } from 'graphql-upload';
-import { Between, FindOptionsWhere, In, LessThan, MoreThan, Repository } from 'typeorm';
+import {
+  Between,
+  FindOptionsWhere,
+  In,
+  LessThan,
+  MoreThan,
+  Repository,
+} from 'typeorm';
 import { DEFAULT_PAGE_SIZE } from '../shared/shared.constants';
 import { GroupPrivacy } from '../groups/group-configs/models/group-config.model';
 import { saveImage } from '../images/image.utils';
 import { ImagesService, ImageTypes } from '../images/images.service';
 import { Image } from '../images/models/image.model';
 import { EventAttendeesService } from './event-attendees/event-attendees.service';
-import { EventAttendee, EventAttendeeStatus } from './event-attendees/models/event-attendee.model';
+import {
+  EventAttendee,
+  EventAttendeeStatus,
+} from './event-attendees/models/event-attendee.model';
 import { CreateEventInput } from './models/create-event.input';
 import { Event } from './models/event.model';
 import { EventsInput, EventTimeFrame } from './models/events.input';
@@ -66,7 +76,9 @@ export class EventsService {
       order: { updatedAt: 'DESC' },
       where,
     });
-    const sortedEvents = events.sort((a, b) => a.startsAt.getTime() - b.startsAt.getTime());
+    const sortedEvents = events.sort(
+      (a, b) => a.startsAt.getTime() - b.startsAt.getTime(),
+    );
     return sortedEvents.slice(0, DEFAULT_PAGE_SIZE);
   }
 
@@ -103,7 +115,8 @@ export class EventsService {
     });
     return eventIds.map(
       (id) =>
-        events.find((event: Event) => event.id === id) || new Error(`Could not load event: ${id}`),
+        events.find((event: Event) => event.id === id) ||
+        new Error(`Could not load event: ${id}`),
     );
   }
 
@@ -123,10 +136,14 @@ export class EventsService {
   async getInterestedCountBatch(eventIds: number[]) {
     const events = (await this.eventRepository
       .createQueryBuilder('event')
-      .loadRelationCountAndMap('event.interestedCount', 'event.attendees', 'eventAttendee', (qb) =>
-        qb.where('eventAttendee.status = :status', {
-          status: EventAttendeeStatus.Interested,
-        }),
+      .loadRelationCountAndMap(
+        'event.interestedCount',
+        'event.attendees',
+        'eventAttendee',
+        (qb) =>
+          qb.where('eventAttendee.status = :status', {
+            status: EventAttendeeStatus.Interested,
+          }),
       )
       .select(['event.id'])
       .whereInIds(eventIds)
@@ -144,10 +161,14 @@ export class EventsService {
   async getGoingCountBatch(eventIds: number[]) {
     const events = (await this.eventRepository
       .createQueryBuilder('event')
-      .loadRelationCountAndMap('event.goingCount', 'event.attendees', 'eventAttendee', (qb) =>
-        qb.where('eventAttendee.status = :status', {
-          status: EventAttendeeStatus.Going,
-        }),
+      .loadRelationCountAndMap(
+        'event.goingCount',
+        'event.attendees',
+        'eventAttendee',
+        (qb) =>
+          qb.where('eventAttendee.status = :status', {
+            status: EventAttendeeStatus.Going,
+          }),
       )
       .select(['event.id'])
       .whereInIds(eventIds)

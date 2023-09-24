@@ -241,13 +241,22 @@ export const UserProfileDocument = gql`
  * });
  */
 export function useUserProfileQuery(
-  baseOptions?: Apollo.QueryHookOptions<UserProfileQuery, UserProfileQueryVariables>,
+  baseOptions?: Apollo.QueryHookOptions<
+    UserProfileQuery,
+    UserProfileQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<UserProfileQuery, UserProfileQueryVariables>(UserProfileDocument, options);
+  return Apollo.useQuery<UserProfileQuery, UserProfileQueryVariables>(
+    UserProfileDocument,
+    options,
+  );
 }
 export function useUserProfileLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<UserProfileQuery, UserProfileQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    UserProfileQuery,
+    UserProfileQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<UserProfileQuery, UserProfileQueryVariables>(
@@ -256,7 +265,9 @@ export function useUserProfileLazyQuery(
   );
 }
 export type UserProfileQueryHookResult = ReturnType<typeof useUserProfileQuery>;
-export type UserProfileLazyQueryHookResult = ReturnType<typeof useUserProfileLazyQuery>;
+export type UserProfileLazyQueryHookResult = ReturnType<
+  typeof useUserProfileLazyQuery
+>;
 export type UserProfileQueryResult = Apollo.QueryResult<
   UserProfileQuery,
   UserProfileQueryVariables

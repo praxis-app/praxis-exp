@@ -54,7 +54,8 @@ const ToggleForms = ({ groupId, me }: Props) => {
   const { joinedGroups } = me;
   const hasGroups = !!joinedGroups.length;
 
-  const handleChange = (_: MouseEvent<HTMLElement>, value: boolean) => setShowProposalForm(value);
+  const handleChange = (_: MouseEvent<HTMLElement>, value: boolean) =>
+    setShowProposalForm(value);
 
   return (
     <Card sx={{ position: 'relative' }}>
@@ -64,7 +65,12 @@ const ToggleForms = ({ groupId, me }: Props) => {
         <PostForm groupId={groupId} />
       )}
 
-      <ToggleButtonGroup disabled={!hasGroups} exclusive onChange={handleChange} size="small">
+      <ToggleButtonGroup
+        disabled={!hasGroups}
+        exclusive
+        onChange={handleChange}
+        size="small"
+      >
         <ToggleButton
           sx={showProposalForm ? {} : ACTIVE_STYLES}
           aria-label={t('labels.toggleButton')}

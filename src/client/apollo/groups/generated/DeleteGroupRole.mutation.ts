@@ -50,13 +50,16 @@ export function useDeleteGroupRoleMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteGroupRoleMutation, DeleteGroupRoleMutationVariables>(
-    DeleteGroupRoleDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    DeleteGroupRoleMutation,
+    DeleteGroupRoleMutationVariables
+  >(DeleteGroupRoleDocument, options);
 }
-export type DeleteGroupRoleMutationHookResult = ReturnType<typeof useDeleteGroupRoleMutation>;
-export type DeleteGroupRoleMutationResult = Apollo.MutationResult<DeleteGroupRoleMutation>;
+export type DeleteGroupRoleMutationHookResult = ReturnType<
+  typeof useDeleteGroupRoleMutation
+>;
+export type DeleteGroupRoleMutationResult =
+  Apollo.MutationResult<DeleteGroupRoleMutation>;
 export type DeleteGroupRoleMutationOptions = Apollo.BaseMutationOptions<
   DeleteGroupRoleMutation,
   DeleteGroupRoleMutationVariables

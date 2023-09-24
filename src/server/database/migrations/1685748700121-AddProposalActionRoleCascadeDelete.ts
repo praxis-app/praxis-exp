@@ -1,6 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class AddProposalActionRoleCascadeDelete1685748700121 implements MigrationInterface {
+export class AddProposalActionRoleCascadeDelete1685748700121
+  implements MigrationInterface
+{
   name = 'AddProposalActionRoleCascadeDelete1685748700121';
 
   public async up(queryRunner: QueryRunner): Promise<void> {

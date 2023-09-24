@@ -18,7 +18,9 @@ export class UpdateVoteValidationPipe implements PipeTransform {
   async validateProposalStage(value: UpdateVoteInput) {
     const vote = await this.votesService.getVote(value.id, ['proposal']);
     if (vote.proposal.stage === ProposalStage.Ratified) {
-      throw new ValidationError('Proposal has been ratified and can no longer be voted on');
+      throw new ValidationError(
+        'Proposal has been ratified and can no longer be voted on',
+      );
     }
   }
 }

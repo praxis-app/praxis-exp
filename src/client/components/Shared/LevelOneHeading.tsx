@@ -4,7 +4,12 @@ interface Props extends TypographyProps {
   header?: boolean;
 }
 
-const LevelOneHeading = ({ children, header, sx, ...typographyProps }: Props) => {
+const LevelOneHeading = ({
+  children,
+  header,
+  sx,
+  ...typographyProps
+}: Props) => {
   const getStyles = () => {
     const defaultStyles = {
       fontSize: 16,

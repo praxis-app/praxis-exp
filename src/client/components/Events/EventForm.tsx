@@ -70,7 +70,8 @@ const EventForm = ({ editEvent, groupId }: Props) => {
   const [coverPhoto, setCoverPhoto] = useState<File>();
   const [showEndsAt, setShowEndsAt] = useState(!!editEvent?.endsAt);
 
-  const [getGroupMembers, { data, loading }] = useGroupMembersByGroupIdLazyQuery();
+  const [getGroupMembers, { data, loading }] =
+    useGroupMembersByGroupIdLazyQuery();
 
   const [createEvent] = useCreateEventMutation();
   const [updateEvent] = useUpdateEventMutation();
@@ -181,16 +182,23 @@ const EventForm = ({ editEvent, groupId }: Props) => {
   };
 
   const handleStartsAtChange =
-    (setFieldValue: (field: string, value: Dayjs | null) => void) => (value: Dayjs | null) => {
+    (setFieldValue: (field: string, value: Dayjs | null) => void) =>
+    (value: Dayjs | null) => {
       setFieldValue(EventFormFieldName.StartsAt, value);
 
       if (showEndsAt) {
-        setFieldValue(EventFormFieldName.EndsAt, dayjs(value).add(1, 'hour').startOf('hour'));
+        setFieldValue(
+          EventFormFieldName.EndsAt,
+          dayjs(value).add(1, 'hour').startOf('hour'),
+        );
       }
     };
 
   const handleShowEndsAtButtonClick =
-    (values: CreateEventInput, setFieldValue: (field: string, value: Dayjs | null) => void) =>
+    (
+      values: CreateEventInput,
+      setFieldValue: (field: string, value: Dayjs | null) => void,
+    ) =>
     () => {
       if (!showEndsAt) {
         setFieldValue(
@@ -234,8 +242,20 @@ const EventForm = ({ editEvent, groupId }: Props) => {
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit} validate={validate}>
-      {({ dirty, errors, handleChange, isSubmitting, setFieldValue, submitCount, values }) => (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validate={validate}
+    >
+      {({
+        dirty,
+        errors,
+        handleChange,
+        isSubmitting,
+        setFieldValue,
+        submitCount,
+        values,
+      }) => (
         <Form>
           <FormGroup sx={{ marginBottom: 2 }}>
             <TextField
@@ -258,7 +278,9 @@ const EventForm = ({ editEvent, groupId }: Props) => {
             {showEndsAt && (
               <DateTimePicker
                 label={t('events.form.endDateAndTime')}
-                onChange={(value: Dayjs | null) => setFieldValue(EventFormFieldName.EndsAt, value)}
+                onChange={(value: Dayjs | null) =>
+                  setFieldValue(EventFormFieldName.EndsAt, value)
+                }
                 value={values.endsAt}
               />
             )}
@@ -307,7 +329,9 @@ const EventForm = ({ editEvent, groupId }: Props) => {
               <Select
                 value={values.online === null ? '' : Number(!!values.online)}
                 name={EventFormFieldName.Online}
-                onChange={(e) => setFieldValue(EventFormFieldName.Online, !!e.target.value)}
+                onChange={(e) =>
+                  setFieldValue(EventFormFieldName.Online, !!e.target.value)
+                }
               >
                 <MenuItem value={0}>{t('events.form.inPerson')}</MenuItem>
                 <MenuItem value={1}>{t('events.form.virtual')}</MenuItem>

@@ -1,5 +1,13 @@
 import { UsePipes } from '@nestjs/common';
-import { Args, Context, Int, Mutation, Parent, ResolveField, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Context,
+  Int,
+  Mutation,
+  Parent,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { Dataloaders } from '../dataloader/dataloader.types';
 import { Proposal } from '../proposals/models/proposal.model';
@@ -28,13 +36,19 @@ export class VotesResolver {
   }
 
   @ResolveField(() => User)
-  async user(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { userId }: Vote) {
+  async user(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { userId }: Vote,
+  ) {
     return loaders.usersLoader.load(userId);
   }
 
   @Mutation(() => CreateVotePayload)
   @UsePipes(CreateVoteValidationPipe)
-  async createVote(@Args('voteData') voteData: CreateVoteInput, @CurrentUser() user: User) {
+  async createVote(
+    @Args('voteData') voteData: CreateVoteInput,
+    @CurrentUser() user: User,
+  ) {
     return this.votesService.createVote(voteData, user.id);
   }
 

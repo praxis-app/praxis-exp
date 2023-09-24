@@ -47,7 +47,10 @@ export type UpdateEventMutation = {
 };
 
 export const UpdateEventDocument = gql`
-  mutation UpdateEvent($eventData: UpdateEventInput!, $isLoggedIn: Boolean = true) {
+  mutation UpdateEvent(
+    $eventData: UpdateEventInput!
+    $isLoggedIn: Boolean = true
+  ) {
     updateEvent(eventData: $eventData) {
       event {
         ...EventPageCard
@@ -80,7 +83,10 @@ export type UpdateEventMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useUpdateEventMutation(
-  baseOptions?: Apollo.MutationHookOptions<UpdateEventMutation, UpdateEventMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateEventMutation,
+    UpdateEventMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<UpdateEventMutation, UpdateEventMutationVariables>(
@@ -88,8 +94,11 @@ export function useUpdateEventMutation(
     options,
   );
 }
-export type UpdateEventMutationHookResult = ReturnType<typeof useUpdateEventMutation>;
-export type UpdateEventMutationResult = Apollo.MutationResult<UpdateEventMutation>;
+export type UpdateEventMutationHookResult = ReturnType<
+  typeof useUpdateEventMutation
+>;
+export type UpdateEventMutationResult =
+  Apollo.MutationResult<UpdateEventMutation>;
 export type UpdateEventMutationOptions = Apollo.BaseMutationOptions<
   UpdateEventMutation,
   UpdateEventMutationVariables

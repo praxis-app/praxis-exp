@@ -70,7 +70,10 @@ const GroupPermissionsForm = ({ permissions, roleId, ...boxProps }: Props) => {
               />
             ))}
             <Flex justifyContent="end" sx={{ marginTop: 6 }}>
-              <PrimaryActionButton disabled={isSubmitting || !dirty} type="submit">
+              <PrimaryActionButton
+                disabled={isSubmitting || !dirty}
+                type="submit"
+              >
                 {t('actions.save')}
               </PrimaryActionButton>
             </Flex>

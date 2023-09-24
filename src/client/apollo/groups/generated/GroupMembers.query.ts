@@ -60,7 +60,10 @@ export const GroupMembersDocument = gql`
  * });
  */
 export function useGroupMembersQuery(
-  baseOptions: Apollo.QueryHookOptions<GroupMembersQuery, GroupMembersQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    GroupMembersQuery,
+    GroupMembersQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GroupMembersQuery, GroupMembersQueryVariables>(
@@ -69,7 +72,10 @@ export function useGroupMembersQuery(
   );
 }
 export function useGroupMembersLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GroupMembersQuery, GroupMembersQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GroupMembersQuery,
+    GroupMembersQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GroupMembersQuery, GroupMembersQueryVariables>(
@@ -77,8 +83,12 @@ export function useGroupMembersLazyQuery(
     options,
   );
 }
-export type GroupMembersQueryHookResult = ReturnType<typeof useGroupMembersQuery>;
-export type GroupMembersLazyQueryHookResult = ReturnType<typeof useGroupMembersLazyQuery>;
+export type GroupMembersQueryHookResult = ReturnType<
+  typeof useGroupMembersQuery
+>;
+export type GroupMembersLazyQueryHookResult = ReturnType<
+  typeof useGroupMembersLazyQuery
+>;
 export type GroupMembersQueryResult = Apollo.QueryResult<
   GroupMembersQuery,
   GroupMembersQueryVariables

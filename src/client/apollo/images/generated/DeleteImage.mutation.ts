@@ -44,7 +44,10 @@ export type DeleteImageMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useDeleteImageMutation(
-  baseOptions?: Apollo.MutationHookOptions<DeleteImageMutation, DeleteImageMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteImageMutation,
+    DeleteImageMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<DeleteImageMutation, DeleteImageMutationVariables>(
@@ -52,8 +55,11 @@ export function useDeleteImageMutation(
     options,
   );
 }
-export type DeleteImageMutationHookResult = ReturnType<typeof useDeleteImageMutation>;
-export type DeleteImageMutationResult = Apollo.MutationResult<DeleteImageMutation>;
+export type DeleteImageMutationHookResult = ReturnType<
+  typeof useDeleteImageMutation
+>;
+export type DeleteImageMutationResult =
+  Apollo.MutationResult<DeleteImageMutation>;
 export type DeleteImageMutationOptions = Apollo.BaseMutationOptions<
   DeleteImageMutation,
   DeleteImageMutationVariables

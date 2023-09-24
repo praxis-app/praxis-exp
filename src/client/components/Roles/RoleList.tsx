@@ -18,7 +18,11 @@ const RoleList = ({ roles }: Props) => (
   <Card>
     <CardContent>
       {roles.map((role, index) => (
-        <Role gutterBottom={index + 1 !== roles.length} key={role.id} role={role} />
+        <Role
+          gutterBottom={index + 1 !== roles.length}
+          key={role.id}
+          role={role}
+        />
       ))}
     </CardContent>
   </Card>

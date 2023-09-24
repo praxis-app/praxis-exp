@@ -91,7 +91,10 @@ export class RefreshTokensService {
     );
   }
 
-  async revokeAllOtherRefreshTokensForUser(refreshTokenId: number, userId: number) {
+  async revokeAllOtherRefreshTokensForUser(
+    refreshTokenId: number,
+    userId: number,
+  ) {
     await this.repository.update(
       { id: Not(refreshTokenId), userId },
       {

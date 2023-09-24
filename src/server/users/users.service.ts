@@ -6,7 +6,11 @@ import { FileUpload } from 'graphql-upload';
 import { FindOptionsWhere, In, Repository } from 'typeorm';
 import { IsFollowedByMeKey } from '../dataloader/dataloader.types';
 import { GroupPermissionsMap } from '../groups/group-roles/models/group-permissions.type';
-import { getUploadsPath, randomDefaultImagePath, saveImage } from '../images/image.utils';
+import {
+  getUploadsPath,
+  randomDefaultImagePath,
+  saveImage,
+} from '../images/image.utils';
 import { ImagesService, ImageTypes } from '../images/images.service';
 import { Image } from '../images/models/image.model';
 import { Post } from '../posts/models/post.model';
@@ -72,12 +76,16 @@ export class UsersService {
       result[post.id] = post;
       return result;
     }, {});
-    const proposalMap = proposals.reduce<Record<number, Proposal>>((result, proposal) => {
-      result[proposal.id] = proposal;
-      return result;
-    }, {});
+    const proposalMap = proposals.reduce<Record<number, Proposal>>(
+      (result, proposal) => {
+        result[proposal.id] = proposal;
+        return result;
+      },
+      {},
+    );
 
-    const extractPosts = (items: { posts: Post[] }[]) => items.flatMap((item) => item.posts);
+    const extractPosts = (items: { posts: Post[] }[]) =>
+      items.flatMap((item) => item.posts);
 
     // Insert remaining posts from joined groups and followed users
     const remainingPosts = [
@@ -95,9 +103,10 @@ export class UsersService {
       proposalMap[proposal.id] = proposal;
     }
 
-    const sortedFeed = [...Object.values(postMap), ...Object.values(proposalMap)].sort(
-      (a, b) => b.createdAt.getTime() - a.createdAt.getTime(),
-    );
+    const sortedFeed = [
+      ...Object.values(postMap),
+      ...Object.values(proposalMap),
+    ].sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
 
     // TODO: Update once pagination has been implemented
     return sortedFeed.slice(0, DEFAULT_PAGE_SIZE);
@@ -117,7 +126,10 @@ export class UsersService {
   }
 
   async getUserPermissions(id: number) {
-    const user = await this.getUser({ id }, ['serverRoles.permission', 'groupRoles.permission']);
+    const user = await this.getUser({ id }, [
+      'serverRoles.permission',
+      'groupRoles.permission',
+    ]);
     if (!user) {
       throw new UserInputError('User not found');
     }
@@ -186,7 +198,9 @@ export class UsersService {
       id: In(userIds),
     });
     return userIds.map(
-      (id) => users.find((user: User) => user.id === id) || new Error(`Could not load user: ${id}`),
+      (id) =>
+        users.find((user: User) => user.id === id) ||
+        new Error(`Could not load user: ${id}`),
     );
   }
 
@@ -197,8 +211,9 @@ export class UsersService {
     });
     return userIds.map(
       (id) =>
-        profilePictures.find((profilePicture: Image) => profilePicture.userId === id) ||
-        new Error(`Could not load profile picture: ${id}`),
+        profilePictures.find(
+          (profilePicture: Image) => profilePicture.userId === id,
+        ) || new Error(`Could not load profile picture: ${id}`),
     );
   }
 
@@ -243,7 +258,9 @@ export class UsersService {
     const following = await this.getFollowing(keys[0].currentUserId);
 
     return followedUserIds.map((followedUserId) =>
-      following.some((followedUser: User) => followedUser.id === followedUserId),
+      following.some(
+        (followedUser: User) => followedUser.id === followedUserId,
+      ),
     );
   }
 
@@ -263,7 +280,12 @@ export class UsersService {
     return user;
   }
 
-  async updateUser({ id, coverPhoto, profilePicture, ...userData }: UpdateUserInput) {
+  async updateUser({
+    id,
+    coverPhoto,
+    profilePicture,
+    ...userData
+  }: UpdateUserInput) {
     await this.repository.update(id, userData);
     const user = await this.getUser({ id });
 
@@ -305,7 +327,10 @@ export class UsersService {
     return true;
   }
 
-  async saveProfilePicture(userId: number, profilePicture: Promise<FileUpload>) {
+  async saveProfilePicture(
+    userId: number,
+    profilePicture: Promise<FileUpload>,
+  ) {
     const filename = await saveImage(profilePicture);
     const imageData = { imageType: ImageTypes.ProfilePicture, userId };
     await this.imagesService.deleteImage(imageData);

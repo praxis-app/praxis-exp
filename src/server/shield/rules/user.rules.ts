@@ -13,7 +13,9 @@ export const isUserInPublicGroups = rule({ cache: 'strict' })(async (
   if (!user) {
     return false;
   }
-  return user.groups.some((group) => group.config.privacy === GroupPrivacy.Public);
+  return user.groups.some(
+    (group) => group.config.privacy === GroupPrivacy.Public,
+  );
 });
 
 export const isPublicUserAvatar = rule({ cache: 'strict' })(async (
@@ -21,9 +23,13 @@ export const isPublicUserAvatar = rule({ cache: 'strict' })(async (
   _args,
   { services: { imagesService } }: Context,
 ) => {
-  const image = await imagesService.getImage({ id: parent.id }, ['user.groups.config']);
+  const image = await imagesService.getImage({ id: parent.id }, [
+    'user.groups.config',
+  ]);
   if (!image?.user) {
     return false;
   }
-  return image.user.groups.some((group) => group.config.privacy === GroupPrivacy.Public);
+  return image.user.groups.some(
+    (group) => group.config.privacy === GroupPrivacy.Public,
+  );
 });

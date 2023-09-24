@@ -25,7 +25,10 @@ export class ServerRolesService {
     private usersService: UsersService,
   ) {}
 
-  async getServerRole(where?: FindOptionsWhere<ServerRole>, relations?: string[]) {
+  async getServerRole(
+    where?: FindOptionsWhere<ServerRole>,
+    relations?: string[],
+  ) {
     return this.serverRoleRepository.findOneOrFail({ where, relations });
   }
 
@@ -77,7 +80,10 @@ export class ServerRolesService {
     });
   }
 
-  async createServerRole(roleData: DeepPartial<ServerRole>, fromProposalAction = false) {
+  async createServerRole(
+    roleData: DeepPartial<ServerRole>,
+    fromProposalAction = false,
+  ) {
     if (fromProposalAction) {
       return this.serverRoleRepository.save(roleData);
     }
@@ -90,10 +96,18 @@ export class ServerRolesService {
   }
 
   async updateServerRole(
-    { id, selectedUserIds = [], permissions, ...roleData }: UpdateServerRoleInput,
+    {
+      id,
+      selectedUserIds = [],
+      permissions,
+      ...roleData
+    }: UpdateServerRoleInput,
     me: User,
   ) {
-    const roleWithRelations = await this.getServerRole({ id }, ['members', 'permission']);
+    const roleWithRelations = await this.getServerRole({ id }, [
+      'members',
+      'permission',
+    ]);
     const newMembers = await this.usersService.getUsers({
       id: In(selectedUserIds),
     });
@@ -126,7 +140,9 @@ export class ServerRolesService {
 
   async deleteServerRoleMember(id: number, userId: number, me: User) {
     const serverRole = await this.getServerRole({ id }, ['members']);
-    serverRole.members = serverRole.members.filter((member) => member.id !== userId);
+    serverRole.members = serverRole.members.filter(
+      (member) => member.id !== userId,
+    );
     await this.serverRoleRepository.save(serverRole);
 
     return { serverRole, me };

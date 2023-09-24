@@ -3,7 +3,11 @@ import { Card, CardContent, FormGroup } from '@mui/material';
 import { Form, Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useLoginMutation } from '../../apollo/auth/generated/Login.mutation';
-import { isLoggedInVar, isNavDrawerOpenVar, toastVar } from '../../apollo/cache';
+import {
+  isLoggedInVar,
+  isNavDrawerOpenVar,
+  toastVar,
+} from '../../apollo/cache';
 import { LoginInput } from '../../apollo/gen';
 import Flex from '../../components/Shared/Flex';
 import LevelOneHeading from '../../components/Shared/LevelOneHeading';
@@ -47,7 +51,10 @@ const LoginForm = () => {
           {({ dirty, isSubmitting }) => (
             <Form hidden={isNavDrawerOpen}>
               <FormGroup>
-                <TextField label={t('users.form.email')} name={UserFieldNames.Email} />
+                <TextField
+                  label={t('users.form.email')}
+                  name={UserFieldNames.Email}
+                />
 
                 <TextField
                   label={t('users.form.password')}

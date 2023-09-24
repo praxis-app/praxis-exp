@@ -75,7 +75,8 @@ export type ApproveGroupMemberRequestMutationHookResult = ReturnType<
 >;
 export type ApproveGroupMemberRequestMutationResult =
   Apollo.MutationResult<ApproveGroupMemberRequestMutation>;
-export type ApproveGroupMemberRequestMutationOptions = Apollo.BaseMutationOptions<
-  ApproveGroupMemberRequestMutation,
-  ApproveGroupMemberRequestMutationVariables
->;
+export type ApproveGroupMemberRequestMutationOptions =
+  Apollo.BaseMutationOptions<
+    ApproveGroupMemberRequestMutation,
+    ApproveGroupMemberRequestMutationVariables
+  >;

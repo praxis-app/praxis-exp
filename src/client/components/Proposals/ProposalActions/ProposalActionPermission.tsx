@@ -19,7 +19,11 @@ interface Props {
   permissions: ProposalActionPermissionFragment | GroupRolePermissionInput;
 }
 
-const ProposalActionPermission = ({ permissionName, permissions, actionType }: Props) => {
+const ProposalActionPermission = ({
+  permissionName,
+  permissions,
+  actionType,
+}: Props) => {
   const theme = useTheme();
 
   const { displayName } = getPermissionText(permissionName);
@@ -39,7 +43,10 @@ const ProposalActionPermission = ({ permissionName, permissions, actionType }: P
   };
 
   return (
-    <Typography color={isChangingRole ? 'primary' : undefined} sx={permissionStyles}>
+    <Typography
+      color={isChangingRole ? 'primary' : undefined}
+      sx={permissionStyles}
+    >
       {isChangingRole ? (
         <ChangeIcon
           changeType={isEnabled ? ChangeType.Add : ChangeType.Remove}

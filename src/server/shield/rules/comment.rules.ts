@@ -13,7 +13,9 @@ export const isOwnComment = rule({ cache: 'strict' })(async (
   if (!user) {
     return UNAUTHORIZED;
   }
-  const { userId } = await commentsService.getComment('id' in args ? args.id : args.commentData.id);
+  const { userId } = await commentsService.getComment(
+    'id' in args ? args.id : args.commentData.id,
+  );
   return userId === user.id;
 });
 
@@ -25,7 +27,10 @@ export const isPublicComment = rule({ cache: 'strict' })(async (
   const releations = parent.proposalId
     ? ['proposal.group.config']
     : ['post.group.config', 'post.event.group.config'];
-  const { post, proposal } = await commentsService.getComment(parent.id, releations);
+  const { post, proposal } = await commentsService.getComment(
+    parent.id,
+    releations,
+  );
   return (
     post?.group?.config.privacy === GroupPrivacy.Public ||
     post?.event?.group?.config.privacy === GroupPrivacy.Public ||

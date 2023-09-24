@@ -31,7 +31,10 @@ export class ServerInvitesResolver {
   }
 
   @ResolveField(() => User)
-  async user(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { userId }: ServerInvite) {
+  async user(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { userId }: ServerInvite,
+  ) {
     return loaders.usersLoader.load(userId);
   }
 

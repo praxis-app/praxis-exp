@@ -42,7 +42,10 @@ export const ServerInviteDocument = gql`
  * });
  */
 export function useServerInviteQuery(
-  baseOptions: Apollo.QueryHookOptions<ServerInviteQuery, ServerInviteQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    ServerInviteQuery,
+    ServerInviteQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<ServerInviteQuery, ServerInviteQueryVariables>(
@@ -51,7 +54,10 @@ export function useServerInviteQuery(
   );
 }
 export function useServerInviteLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<ServerInviteQuery, ServerInviteQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ServerInviteQuery,
+    ServerInviteQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<ServerInviteQuery, ServerInviteQueryVariables>(
@@ -59,8 +65,12 @@ export function useServerInviteLazyQuery(
     options,
   );
 }
-export type ServerInviteQueryHookResult = ReturnType<typeof useServerInviteQuery>;
-export type ServerInviteLazyQueryHookResult = ReturnType<typeof useServerInviteLazyQuery>;
+export type ServerInviteQueryHookResult = ReturnType<
+  typeof useServerInviteQuery
+>;
+export type ServerInviteLazyQueryHookResult = ReturnType<
+  typeof useServerInviteLazyQuery
+>;
 export type ServerInviteQueryResult = Apollo.QueryResult<
   ServerInviteQuery,
   ServerInviteQueryVariables

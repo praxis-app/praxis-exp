@@ -37,10 +37,14 @@ export class ProposalAction {
   images: Image[];
 
   @Field(() => ProposalActionRole, { nullable: true })
-  @OneToOne(() => ProposalActionRole, (proposedRole) => proposedRole.proposalAction, {
-    cascade: true,
-    nullable: true,
-  })
+  @OneToOne(
+    () => ProposalActionRole,
+    (proposedRole) => proposedRole.proposalAction,
+    {
+      cascade: true,
+      nullable: true,
+    },
+  )
   role?: ProposalActionRole;
 
   @Field(() => ProposalActionEvent, { nullable: true })

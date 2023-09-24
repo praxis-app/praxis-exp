@@ -1,6 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class AddGroupMemberLinkTable1681010227367 implements MigrationInterface {
+export class AddGroupMemberLinkTable1681010227367
+  implements MigrationInterface
+{
   name = 'AddGroupMemberLinkTable1681010227367';
 
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -28,8 +30,12 @@ export class AddGroupMemberLinkTable1681010227367 implements MigrationInterface 
     await queryRunner.query(
       `ALTER TABLE "group_members_user" DROP CONSTRAINT "FK_bfa303089d367a2e3c02b002b8f"`,
     );
-    await queryRunner.query(`DROP INDEX "public"."IDX_427107c650638bcb2f1e167d2e"`);
-    await queryRunner.query(`DROP INDEX "public"."IDX_bfa303089d367a2e3c02b002b8"`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_427107c650638bcb2f1e167d2e"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_bfa303089d367a2e3c02b002b8"`,
+    );
     await queryRunner.query(`DROP TABLE "group_members_user"`);
   }
 }

@@ -82,7 +82,10 @@ export type CreateGroupMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useCreateGroupMutation(
-  baseOptions?: Apollo.MutationHookOptions<CreateGroupMutation, CreateGroupMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateGroupMutation,
+    CreateGroupMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<CreateGroupMutation, CreateGroupMutationVariables>(
@@ -90,8 +93,11 @@ export function useCreateGroupMutation(
     options,
   );
 }
-export type CreateGroupMutationHookResult = ReturnType<typeof useCreateGroupMutation>;
-export type CreateGroupMutationResult = Apollo.MutationResult<CreateGroupMutation>;
+export type CreateGroupMutationHookResult = ReturnType<
+  typeof useCreateGroupMutation
+>;
+export type CreateGroupMutationResult =
+  Apollo.MutationResult<CreateGroupMutation>;
 export type CreateGroupMutationOptions = Apollo.BaseMutationOptions<
   CreateGroupMutation,
   CreateGroupMutationVariables

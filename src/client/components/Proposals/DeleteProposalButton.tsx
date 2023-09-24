@@ -6,14 +6,15 @@ import { toastVar } from '../../apollo/cache';
 import { useDeleteProposalMutation } from '../../apollo/proposals/generated/DeleteProposal.mutation';
 import { NavigationPaths, TypeNames } from '../../constants/shared.constants';
 
-export const removeProposal = (proposalId: number) => (cache: ApolloCache<any>) => {
-  const proposalCacheId = cache.identify({
-    __typename: TypeNames.Proposal,
-    id: proposalId,
-  });
-  cache.evict({ id: proposalCacheId });
-  cache.gc();
-};
+export const removeProposal =
+  (proposalId: number) => (cache: ApolloCache<any>) => {
+    const proposalCacheId = cache.identify({
+      __typename: TypeNames.Proposal,
+      id: proposalId,
+    });
+    cache.evict({ id: proposalCacheId });
+    cache.gc();
+  };
 
 interface Props {
   proposalId: number;
@@ -40,7 +41,8 @@ const DeleteProposalButton = ({ proposalId }: Props) => {
   };
 
   const handleClickWithConfirm = () =>
-    window.confirm(t('prompts.deleteItem', { itemType: 'proposal' })) && handleClick();
+    window.confirm(t('prompts.deleteItem', { itemType: 'proposal' })) &&
+    handleClick();
 
   return (
     <Button

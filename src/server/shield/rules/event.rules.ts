@@ -38,6 +38,8 @@ export const isPublicEventImage = rule({ cache: 'strict' })(async (
     'proposalActionEvent.proposalAction.proposal.group.config',
     'event.group.config',
   ]);
-  const group = image?.proposalActionEvent?.proposalAction?.proposal?.group || image?.event?.group;
+  const group =
+    image?.proposalActionEvent?.proposalAction?.proposal?.group ||
+    image?.event?.group;
   return group?.config.privacy === GroupPrivacy.Public;
 });

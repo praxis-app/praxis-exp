@@ -65,7 +65,9 @@ export const MeDocument = gql`
  *   },
  * });
  */
-export function useMeQuery(baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>) {
+export function useMeQuery(
+  baseOptions?: Apollo.QueryHookOptions<MeQuery, MeQueryVariables>,
+) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<MeQuery, MeQueryVariables>(MeDocument, options);
 }

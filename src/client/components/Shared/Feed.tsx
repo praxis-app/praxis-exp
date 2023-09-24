@@ -1,4 +1,11 @@
-import { Box, BoxProps, Card, CardContent, SxProps, Typography } from '@mui/material';
+import {
+  Box,
+  BoxProps,
+  Card,
+  CardContent,
+  SxProps,
+  Typography,
+} from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { FeedItemFragment } from '../../apollo/posts/generated/FeedItem.fragment';
 import PostCard from '../Posts/PostCard';

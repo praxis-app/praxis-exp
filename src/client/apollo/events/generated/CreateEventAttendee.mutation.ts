@@ -66,15 +66,16 @@ export function useCreateEventAttendeeMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateEventAttendeeMutation, CreateEventAttendeeMutationVariables>(
-    CreateEventAttendeeDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    CreateEventAttendeeMutation,
+    CreateEventAttendeeMutationVariables
+  >(CreateEventAttendeeDocument, options);
 }
 export type CreateEventAttendeeMutationHookResult = ReturnType<
   typeof useCreateEventAttendeeMutation
 >;
-export type CreateEventAttendeeMutationResult = Apollo.MutationResult<CreateEventAttendeeMutation>;
+export type CreateEventAttendeeMutationResult =
+  Apollo.MutationResult<CreateEventAttendeeMutation>;
 export type CreateEventAttendeeMutationOptions = Apollo.BaseMutationOptions<
   CreateEventAttendeeMutation,
   CreateEventAttendeeMutationVariables

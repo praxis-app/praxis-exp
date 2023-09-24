@@ -41,12 +41,18 @@ export class ProposalsResolver {
   }
 
   @ResolveField(() => [Vote])
-  async votes(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: Proposal) {
+  async votes(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: Proposal,
+  ) {
     return loaders.proposalVotesLoader.load(id);
   }
 
   @ResolveField(() => Int)
-  async voteCount(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: Proposal) {
+  async voteCount(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: Proposal,
+  ) {
     return loaders.proposalVoteCountLoader.load(id);
   }
 
@@ -56,27 +62,42 @@ export class ProposalsResolver {
   }
 
   @ResolveField(() => Int)
-  async commentCount(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: Proposal) {
+  async commentCount(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: Proposal,
+  ) {
     return loaders.proposalCommentCountLoader.load(id);
   }
 
   @ResolveField(() => [Image])
-  async images(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: Proposal) {
+  async images(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: Proposal,
+  ) {
     return loaders.proposalImagesLoader.load(id);
   }
 
   @ResolveField(() => ProposalAction)
-  async action(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: Proposal) {
+  async action(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: Proposal,
+  ) {
     return loaders.proposalActionsLoader.load(id);
   }
 
   @ResolveField(() => User)
-  async user(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { userId }: Proposal) {
+  async user(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { userId }: Proposal,
+  ) {
     return loaders.usersLoader.load(userId);
   }
 
   @ResolveField(() => Group)
-  async group(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { groupId }: Proposal) {
+  async group(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { groupId }: Proposal,
+  ) {
     return loaders.groupsLoader.load(groupId);
   }
 
@@ -91,7 +112,9 @@ export class ProposalsResolver {
 
   @Mutation(() => UpdateProposalPayload)
   @UsePipes(UpdateProposalValidationPipe)
-  async updateProposal(@Args('proposalData') proposalData: UpdateProposalInput) {
+  async updateProposal(
+    @Args('proposalData') proposalData: UpdateProposalInput,
+  ) {
     return this.proposalsService.updateProposal(proposalData);
   }
 

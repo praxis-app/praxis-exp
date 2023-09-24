@@ -2,7 +2,10 @@ import { rule } from 'graphql-shield';
 import { FindOptionsWhere } from 'typeorm';
 import { UNAUTHORIZED } from '../../shared/shared.constants';
 import { Context } from '../../context/context.types';
-import { GroupConfig, GroupPrivacy } from '../../groups/group-configs/models/group-config.model';
+import {
+  GroupConfig,
+  GroupPrivacy,
+} from '../../groups/group-configs/models/group-config.model';
 import { UpdateGroupConfigInput } from '../../groups/group-configs/models/update-group-config.input';
 import { CreateGroupRoleInput } from '../../groups/group-roles/models/create-group-role.input';
 import { DeleteGroupRoleMemberInput } from '../../groups/group-roles/models/delete-group-role-member.input';
@@ -24,7 +27,10 @@ export const canManageGroupRoles = rule()(async (
   let groupId: number | undefined;
 
   if ('groupRoleData' in args) {
-    if (info.fieldName === 'createGroupRole' && 'groupId' in args.groupRoleData) {
+    if (
+      info.fieldName === 'createGroupRole' &&
+      'groupId' in args.groupRoleData
+    ) {
       groupId = args.groupRoleData.groupId;
     }
     if (info.fieldName === 'updateGroupRole' && 'id' in args.groupRoleData) {
@@ -62,9 +68,10 @@ export const canApproveGroupMemberRequests = rule({ cache: 'strict' })(async (
   let groupId: number | undefined;
 
   if (info.fieldName === 'approveGroupMemberRequest') {
-    const memberRequest = await groupMemberRequestsService.getGroupMemberRequest({ id: args.id }, [
-      'group',
-    ]);
+    const memberRequest =
+      await groupMemberRequestsService.getGroupMemberRequest({ id: args.id }, [
+        'group',
+      ]);
     groupId = memberRequest?.group.id;
   }
   if (
@@ -82,8 +89,11 @@ export const canApproveGroupMemberRequests = rule({ cache: 'strict' })(async (
 });
 
 export const canUpdateGroup = rule()(
-  async (_parent, { groupData }: { groupData: UpdateGroupInput }, { permissions }: Context) =>
-    hasGroupPermission(permissions, 'updateGroup', groupData.id),
+  async (
+    _parent,
+    { groupData }: { groupData: UpdateGroupInput },
+    { permissions }: Context,
+  ) => hasGroupPermission(permissions, 'updateGroup', groupData.id),
 );
 
 export const canDeleteGroup = rule()(
@@ -118,8 +128,16 @@ export const canManageGroupComments = rule({ cache: 'strict' })(async (
 });
 
 export const canManageGroupSettings = rule()(
-  async (_parent, args: { groupConfigData: UpdateGroupConfigInput }, { permissions }: Context) =>
-    hasGroupPermission(permissions, 'manageSettings', args.groupConfigData.groupId),
+  async (
+    _parent,
+    args: { groupConfigData: UpdateGroupConfigInput },
+    { permissions }: Context,
+  ) =>
+    hasGroupPermission(
+      permissions,
+      'manageSettings',
+      args.groupConfigData.groupId,
+    ),
 );
 
 export const canCreateGroupEvents = rule()(async (
@@ -189,7 +207,9 @@ export const isPublicGroupRole = rule({ cache: 'strict' })(async (
   _args,
   { services: { groupsService } }: Context,
 ) => {
-  const group = await groupsService.getGroup({ id: parent.groupId }, ['config']);
+  const group = await groupsService.getGroup({ id: parent.groupId }, [
+    'config',
+  ]);
   return group.config.privacy === GroupPrivacy.Public;
 });
 
@@ -198,7 +218,9 @@ export const isPublicGroupImage = rule({ cache: 'strict' })(async (
   _args,
   { services: { imagesService } }: Context,
 ) => {
-  const image = await imagesService.getImage({ id: parent.id }, ['group.config']);
+  const image = await imagesService.getImage({ id: parent.id }, [
+    'group.config',
+  ]);
   return image?.group?.config.privacy === GroupPrivacy.Public;
 });
 
@@ -210,7 +232,9 @@ export const isProposalGroupJoinedByMe = rule({ cache: 'strict' })(async (
   if (!user) {
     return UNAUTHORIZED;
   }
-  const { group } = await proposalsService.getProposal(voteData.proposalId, ['group']);
+  const { group } = await proposalsService.getProposal(voteData.proposalId, [
+    'group',
+  ]);
   if (group) {
     const isJoinedByUser = await groupsService.isGroupMember(group.id, user.id);
     if (!isJoinedByUser) {

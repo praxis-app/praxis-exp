@@ -1,4 +1,12 @@
-import { Args, Context, Int, Mutation, Parent, ResolveField, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Context,
+  Int,
+  Mutation,
+  Parent,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { Dataloaders } from '../dataloader/dataloader.types';
 import { Post } from '../posts/models/post.model';
@@ -22,7 +30,10 @@ export class CommentsResolver {
   ) {}
 
   @ResolveField(() => User)
-  async user(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { userId }: Comment) {
+  async user(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { userId }: Comment,
+  ) {
     return loaders.usersLoader.load(userId);
   }
 
@@ -37,7 +48,10 @@ export class CommentsResolver {
   }
 
   @ResolveField(() => [Image])
-  async images(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: Comment) {
+  async images(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: Comment,
+  ) {
     return loaders.commentImagesLoader.load(id);
   }
 

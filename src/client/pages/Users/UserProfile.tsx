@@ -34,13 +34,19 @@ const UserProfile = () => {
           Please{' '}
           {inviteToken && (
             <>
-              <Link href={`/signup/${inviteToken}`} sx={{ marginRight: '0.5ch' }}>
+              <Link
+                href={`/signup/${inviteToken}`}
+                sx={{ marginRight: '0.5ch' }}
+              >
                 {t('users.actions.signUp')}
               </Link>
               or
             </>
           )}
-          <Link href={NavigationPaths.LogIn} sx={{ marginLeft: inviteToken ? '0.5ch' : 0 }}>
+          <Link
+            href={NavigationPaths.LogIn}
+            sx={{ marginLeft: inviteToken ? '0.5ch' : 0 }}
+          >
             {t('users.actions.logIn')}
           </Link>{' '}
           to view user profiles.

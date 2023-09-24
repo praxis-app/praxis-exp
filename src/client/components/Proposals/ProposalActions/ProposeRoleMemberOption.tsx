@@ -18,10 +18,12 @@ const ProposeRoleMemberOption = ({
   currentRoleMembers,
 }: Props) => {
   const isSelectedToAdd = selectedMembers.some(
-    ({ userId, changeType }) => userId === member.id && changeType === ChangeType.Add,
+    ({ userId, changeType }) =>
+      userId === member.id && changeType === ChangeType.Add,
   );
   const isSelectedToRemove = selectedMembers.some(
-    ({ userId, changeType }) => userId === member.id && changeType === ChangeType.Remove,
+    ({ userId, changeType }) =>
+      userId === member.id && changeType === ChangeType.Remove,
   );
   const isAlreadyAdded = currentRoleMembers?.some(({ id }) => id === member.id);
 
@@ -29,14 +31,23 @@ const ProposeRoleMemberOption = ({
 
   const handleChange = () => {
     if ((!isAlreadyAdded && checked) || (isAlreadyAdded && !checked)) {
-      setSelectedMembers(selectedMembers.filter(({ userId }) => userId !== member.id));
+      setSelectedMembers(
+        selectedMembers.filter(({ userId }) => userId !== member.id),
+      );
       return;
     }
-    const changeType = isAlreadyAdded && checked ? ChangeType.Remove : ChangeType.Add;
+    const changeType =
+      isAlreadyAdded && checked ? ChangeType.Remove : ChangeType.Add;
     setSelectedMembers([...selectedMembers, { changeType, userId: member.id }]);
   };
 
-  return <RoleMemberOption handleChange={handleChange} checked={checked} user={member} />;
+  return (
+    <RoleMemberOption
+      handleChange={handleChange}
+      checked={checked}
+      user={member}
+    />
+  );
 };
 
 export default ProposeRoleMemberOption;

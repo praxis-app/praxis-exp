@@ -27,7 +27,9 @@ const GroupMember = ({ member, currentUserId }: Props) => (
       </Flex>
     </Link>
 
-    {currentUserId !== member.id && <FollowButton user={member} currentUserId={currentUserId} />}
+    {currentUserId !== member.id && (
+      <FollowButton user={member} currentUserId={currentUserId} />
+    )}
   </Flex>
 );
 

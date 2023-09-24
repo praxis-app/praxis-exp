@@ -44,7 +44,10 @@ export type DeleteVoteMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useDeleteVoteMutation(
-  baseOptions?: Apollo.MutationHookOptions<DeleteVoteMutation, DeleteVoteMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteVoteMutation,
+    DeleteVoteMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<DeleteVoteMutation, DeleteVoteMutationVariables>(
@@ -52,8 +55,11 @@ export function useDeleteVoteMutation(
     options,
   );
 }
-export type DeleteVoteMutationHookResult = ReturnType<typeof useDeleteVoteMutation>;
-export type DeleteVoteMutationResult = Apollo.MutationResult<DeleteVoteMutation>;
+export type DeleteVoteMutationHookResult = ReturnType<
+  typeof useDeleteVoteMutation
+>;
+export type DeleteVoteMutationResult =
+  Apollo.MutationResult<DeleteVoteMutation>;
 export type DeleteVoteMutationOptions = Apollo.BaseMutationOptions<
   DeleteVoteMutation,
   DeleteVoteMutationVariables

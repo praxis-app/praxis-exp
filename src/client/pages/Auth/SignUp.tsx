@@ -19,8 +19,10 @@ const SignUp = () => {
   const { token } = useParams();
   const navigate = useNavigate();
 
-  const [getServerInvite, { loading: serverInviteLoading, error: serverInviteError }] =
-    useServerInviteLazyQuery();
+  const [
+    getServerInvite,
+    { loading: serverInviteLoading, error: serverInviteError },
+  ] = useServerInviteLazyQuery();
 
   const {
     data,

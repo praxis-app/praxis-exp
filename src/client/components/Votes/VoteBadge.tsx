@@ -44,8 +44,9 @@ const VoteBadge = ({ Icon, voteType, sx, votes }: Props) => {
     transform: voteType === VoteTypes.Block ? 'translateX(-1px)' : null,
   };
 
-  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement, MouseEvent>) =>
-    setAnchorEl(event.currentTarget);
+  const handlePopoverOpen = (
+    event: React.MouseEvent<HTMLElement, MouseEvent>,
+  ) => setAnchorEl(event.currentTarget);
 
   const handlePopoverClose = () => setAnchorEl(null);
 

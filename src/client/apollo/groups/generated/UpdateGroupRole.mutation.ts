@@ -132,13 +132,16 @@ export function useUpdateGroupRoleMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<UpdateGroupRoleMutation, UpdateGroupRoleMutationVariables>(
-    UpdateGroupRoleDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    UpdateGroupRoleMutation,
+    UpdateGroupRoleMutationVariables
+  >(UpdateGroupRoleDocument, options);
 }
-export type UpdateGroupRoleMutationHookResult = ReturnType<typeof useUpdateGroupRoleMutation>;
-export type UpdateGroupRoleMutationResult = Apollo.MutationResult<UpdateGroupRoleMutation>;
+export type UpdateGroupRoleMutationHookResult = ReturnType<
+  typeof useUpdateGroupRoleMutation
+>;
+export type UpdateGroupRoleMutationResult =
+  Apollo.MutationResult<UpdateGroupRoleMutation>;
 export type UpdateGroupRoleMutationOptions = Apollo.BaseMutationOptions<
   UpdateGroupRoleMutation,
   UpdateGroupRoleMutationVariables

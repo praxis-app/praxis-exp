@@ -44,7 +44,10 @@ export type DeleteGroupMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useDeleteGroupMutation(
-  baseOptions?: Apollo.MutationHookOptions<DeleteGroupMutation, DeleteGroupMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteGroupMutation,
+    DeleteGroupMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<DeleteGroupMutation, DeleteGroupMutationVariables>(
@@ -52,8 +55,11 @@ export function useDeleteGroupMutation(
     options,
   );
 }
-export type DeleteGroupMutationHookResult = ReturnType<typeof useDeleteGroupMutation>;
-export type DeleteGroupMutationResult = Apollo.MutationResult<DeleteGroupMutation>;
+export type DeleteGroupMutationHookResult = ReturnType<
+  typeof useDeleteGroupMutation
+>;
+export type DeleteGroupMutationResult =
+  Apollo.MutationResult<DeleteGroupMutation>;
 export type DeleteGroupMutationOptions = Apollo.BaseMutationOptions<
   DeleteGroupMutation,
   DeleteGroupMutationVariables

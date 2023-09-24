@@ -6,7 +6,10 @@ import { VotesResolver } from './votes.resolver';
 import { VotesService } from './votes.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Vote]), forwardRef(() => ProposalsModule)],
+  imports: [
+    TypeOrmModule.forFeature([Vote]),
+    forwardRef(() => ProposalsModule),
+  ],
   providers: [VotesService, VotesResolver],
   exports: [VotesService],
 })

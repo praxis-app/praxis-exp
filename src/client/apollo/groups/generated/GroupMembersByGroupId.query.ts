@@ -62,10 +62,10 @@ export function useGroupMembersByGroupIdQuery(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GroupMembersByGroupIdQuery, GroupMembersByGroupIdQueryVariables>(
-    GroupMembersByGroupIdDocument,
-    options,
-  );
+  return Apollo.useQuery<
+    GroupMembersByGroupIdQuery,
+    GroupMembersByGroupIdQueryVariables
+  >(GroupMembersByGroupIdDocument, options);
 }
 export function useGroupMembersByGroupIdLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
@@ -74,12 +74,14 @@ export function useGroupMembersByGroupIdLazyQuery(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GroupMembersByGroupIdQuery, GroupMembersByGroupIdQueryVariables>(
-    GroupMembersByGroupIdDocument,
-    options,
-  );
+  return Apollo.useLazyQuery<
+    GroupMembersByGroupIdQuery,
+    GroupMembersByGroupIdQueryVariables
+  >(GroupMembersByGroupIdDocument, options);
 }
-export type GroupMembersByGroupIdQueryHookResult = ReturnType<typeof useGroupMembersByGroupIdQuery>;
+export type GroupMembersByGroupIdQueryHookResult = ReturnType<
+  typeof useGroupMembersByGroupIdQuery
+>;
 export type GroupMembersByGroupIdLazyQueryHookResult = ReturnType<
   typeof useGroupMembersByGroupIdLazyQuery
 >;

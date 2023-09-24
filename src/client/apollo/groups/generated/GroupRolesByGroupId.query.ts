@@ -49,13 +49,16 @@ export const GroupRolesByGroupIdDocument = gql`
  * });
  */
 export function useGroupRolesByGroupIdQuery(
-  baseOptions: Apollo.QueryHookOptions<GroupRolesByGroupIdQuery, GroupRolesByGroupIdQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    GroupRolesByGroupIdQuery,
+    GroupRolesByGroupIdQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<GroupRolesByGroupIdQuery, GroupRolesByGroupIdQueryVariables>(
-    GroupRolesByGroupIdDocument,
-    options,
-  );
+  return Apollo.useQuery<
+    GroupRolesByGroupIdQuery,
+    GroupRolesByGroupIdQueryVariables
+  >(GroupRolesByGroupIdDocument, options);
 }
 export function useGroupRolesByGroupIdLazyQuery(
   baseOptions?: Apollo.LazyQueryHookOptions<
@@ -64,12 +67,14 @@ export function useGroupRolesByGroupIdLazyQuery(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<GroupRolesByGroupIdQuery, GroupRolesByGroupIdQueryVariables>(
-    GroupRolesByGroupIdDocument,
-    options,
-  );
+  return Apollo.useLazyQuery<
+    GroupRolesByGroupIdQuery,
+    GroupRolesByGroupIdQueryVariables
+  >(GroupRolesByGroupIdDocument, options);
 }
-export type GroupRolesByGroupIdQueryHookResult = ReturnType<typeof useGroupRolesByGroupIdQuery>;
+export type GroupRolesByGroupIdQueryHookResult = ReturnType<
+  typeof useGroupRolesByGroupIdQuery
+>;
 export type GroupRolesByGroupIdLazyQueryHookResult = ReturnType<
   typeof useGroupRolesByGroupIdLazyQuery
 >;

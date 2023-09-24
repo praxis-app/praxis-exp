@@ -59,7 +59,9 @@ export class ServerRolesResolver {
   }
 
   @Mutation(() => CreateServerRolePayload)
-  async createServerRole(@Args('serverRoleData') serverRoleData: CreateServerRoleInput) {
+  async createServerRole(
+    @Args('serverRoleData') serverRoleData: CreateServerRoleInput,
+  ) {
     return this.serverRolesService.createServerRole(serverRoleData);
   }
 
@@ -82,6 +84,10 @@ export class ServerRolesResolver {
     { serverRoleId, userId }: DeleteServerRoleMemberInput,
     @CurrentUser() user: User,
   ) {
-    return this.serverRolesService.deleteServerRoleMember(serverRoleId, userId, user);
+    return this.serverRolesService.deleteServerRoleMember(
+      serverRoleId,
+      userId,
+      user,
+    );
   }
 }

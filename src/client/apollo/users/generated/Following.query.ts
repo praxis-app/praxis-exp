@@ -65,14 +65,28 @@ export function useFollowingQuery(
   baseOptions: Apollo.QueryHookOptions<FollowingQuery, FollowingQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<FollowingQuery, FollowingQueryVariables>(FollowingDocument, options);
+  return Apollo.useQuery<FollowingQuery, FollowingQueryVariables>(
+    FollowingDocument,
+    options,
+  );
 }
 export function useFollowingLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<FollowingQuery, FollowingQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    FollowingQuery,
+    FollowingQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<FollowingQuery, FollowingQueryVariables>(FollowingDocument, options);
+  return Apollo.useLazyQuery<FollowingQuery, FollowingQueryVariables>(
+    FollowingDocument,
+    options,
+  );
 }
 export type FollowingQueryHookResult = ReturnType<typeof useFollowingQuery>;
-export type FollowingLazyQueryHookResult = ReturnType<typeof useFollowingLazyQuery>;
-export type FollowingQueryResult = Apollo.QueryResult<FollowingQuery, FollowingQueryVariables>;
+export type FollowingLazyQueryHookResult = ReturnType<
+  typeof useFollowingLazyQuery
+>;
+export type FollowingQueryResult = Apollo.QueryResult<
+  FollowingQuery,
+  FollowingQueryVariables
+>;

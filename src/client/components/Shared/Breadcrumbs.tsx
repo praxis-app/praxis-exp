@@ -1,4 +1,9 @@
-import { Breadcrumbs as MuiBreadcrumbs, SxProps, Typography, useTheme } from '@mui/material';
+import {
+  Breadcrumbs as MuiBreadcrumbs,
+  SxProps,
+  Typography,
+  useTheme,
+} from '@mui/material';
 import Link from './Link';
 
 interface Breadcrumb {
@@ -19,7 +24,11 @@ const Breadcrumbs = ({ breadcrumbs, sx }: Props) => {
       {breadcrumbs.map(({ label, href }) => {
         if (href) {
           return (
-            <Link href={href} key={href} sx={{ color: theme.palette.text.secondary }}>
+            <Link
+              href={href}
+              key={href}
+              sx={{ color: theme.palette.text.secondary }}
+            >
               <Typography>{label}</Typography>
             </Link>
           );

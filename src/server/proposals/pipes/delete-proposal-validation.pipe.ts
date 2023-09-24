@@ -14,7 +14,9 @@ export class DeleteProposalValidationPipe implements PipeTransform {
   async validateVotesReceived(value: number) {
     const votes = await this.votesService.getVotes({ proposalId: value });
     if (votes.length) {
-      throw new ValidationError('Proposals cannot be deleted after receiving votes');
+      throw new ValidationError(
+        'Proposals cannot be deleted after receiving votes',
+      );
     }
   }
 }

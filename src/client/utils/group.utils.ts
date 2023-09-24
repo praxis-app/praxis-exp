@@ -1,7 +1,11 @@
 import { GroupTabs } from '../components/Groups/GroupProfileCard';
-import { NavigationPaths, TAB_QUERY_PARAM } from '../constants/shared.constants';
+import {
+  NavigationPaths,
+  TAB_QUERY_PARAM,
+} from '../constants/shared.constants';
 
-export const getGroupPath = (groupName: string) => `${NavigationPaths.Groups}/${groupName}`;
+export const getGroupPath = (groupName: string) =>
+  `${NavigationPaths.Groups}/${groupName}`;
 
 export const getGroupEventsTabPath = (groupName: string) => {
   const groupPath = getGroupPath(groupName);

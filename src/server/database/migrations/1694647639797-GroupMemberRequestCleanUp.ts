@@ -1,6 +1,8 @@
 import { MigrationInterface, QueryRunner } from 'typeorm';
 
-export class GroupMemberRequestCleanUp1694647639797 implements MigrationInterface {
+export class GroupMemberRequestCleanUp1694647639797
+  implements MigrationInterface
+{
   name = 'GroupMemberRequestCleanUp1694647639797';
 
   public async up(queryRunner: QueryRunner): Promise<void> {

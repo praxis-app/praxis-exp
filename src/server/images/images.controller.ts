@@ -8,7 +8,10 @@ export class ImagesController {
   constructor(private service: ImagesService) {}
 
   @Get(':id/view')
-  async getImageFile(@Param('id', ParseIntPipe) id: number, @Res() res: Response) {
+  async getImageFile(
+    @Param('id', ParseIntPipe) id: number,
+    @Res() res: Response,
+  ) {
     const image = await this.service.getImage({ id });
     if (!image) {
       throw new Error('Image not found');

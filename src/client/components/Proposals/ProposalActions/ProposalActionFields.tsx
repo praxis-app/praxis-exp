@@ -3,7 +3,10 @@ import { Box, Typography } from '@mui/material';
 import { FormikErrors, FormikTouched } from 'formik';
 import { CreateProposalInput } from '../../../apollo/gen';
 import { ProposalFormFragment } from '../../../apollo/proposals/generated/ProposalForm.fragment';
-import { ProposalActionFieldName, ProposalActionType } from '../../../constants/proposal.constants';
+import {
+  ProposalActionFieldName,
+  ProposalActionType,
+} from '../../../constants/proposal.constants';
 import AttachedImagePreview from '../../Images/AttachedImagePreview';
 import ImageInput from '../../Images/ImageInput';
 import { TextField } from '../../Shared/TextField';
@@ -41,7 +44,8 @@ const ProposalActionFields = ({
   }
 
   if (values.action.actionType === ProposalActionType.ChangeDescription) {
-    const isInvalid = !!errors.action?.groupDescription && touched.action?.groupDescription;
+    const isInvalid =
+      !!errors.action?.groupDescription && touched.action?.groupDescription;
     return (
       <TextField
         autoComplete="off"
@@ -67,7 +71,9 @@ const ProposalActionFields = ({
         <AttachedImagePreview
           imageContainerStyles={{ marginBottom: 1 }}
           savedImages={savedImage}
-          selectedImages={values.action.groupCoverPhoto ? [values.action.groupCoverPhoto] : []}
+          selectedImages={
+            values.action.groupCoverPhoto ? [values.action.groupCoverPhoto] : []
+          }
           sx={{ marginTop: 1 }}
         />
 

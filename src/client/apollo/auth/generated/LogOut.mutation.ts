@@ -16,7 +16,10 @@ export const LogOutDocument = gql`
     logOut
   }
 `;
-export type LogOutMutationFn = Apollo.MutationFunction<LogOutMutation, LogOutMutationVariables>;
+export type LogOutMutationFn = Apollo.MutationFunction<
+  LogOutMutation,
+  LogOutMutationVariables
+>;
 
 /**
  * __useLogOutMutation__
@@ -35,10 +38,16 @@ export type LogOutMutationFn = Apollo.MutationFunction<LogOutMutation, LogOutMut
  * });
  */
 export function useLogOutMutation(
-  baseOptions?: Apollo.MutationHookOptions<LogOutMutation, LogOutMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    LogOutMutation,
+    LogOutMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<LogOutMutation, LogOutMutationVariables>(LogOutDocument, options);
+  return Apollo.useMutation<LogOutMutation, LogOutMutationVariables>(
+    LogOutDocument,
+    options,
+  );
 }
 export type LogOutMutationHookResult = ReturnType<typeof useLogOutMutation>;
 export type LogOutMutationResult = Apollo.MutationResult<LogOutMutation>;

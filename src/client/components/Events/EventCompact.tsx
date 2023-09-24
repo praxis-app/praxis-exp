@@ -28,8 +28,17 @@ const EventCompact = ({ event, isLast }: Props) => {
   const { t } = useTranslation();
   const isDesktop = useIsDesktop();
 
-  const { id, coverPhoto, startsAt, name, group, interestedCount, goingCount, online, location } =
-    event;
+  const {
+    id,
+    coverPhoto,
+    startsAt,
+    name,
+    group,
+    interestedCount,
+    goingCount,
+    online,
+    location,
+  } = event;
   const canManageEvents = group?.myPermissions?.manageEvents;
 
   const imageSrc = getImagePath(coverPhoto.id);
@@ -45,7 +54,8 @@ const EventCompact = ({ event, isLast }: Props) => {
       isDesktop);
 
   const showGoingCount =
-    !!goingCount && (goingCount > interestedCount || interestedCount === 0 || isDesktop);
+    !!goingCount &&
+    (goingCount > interestedCount || interestedCount === 0 || isDesktop);
 
   const deletePrompt = t('prompts.deleteItem', {
     itemType: 'event',
@@ -115,10 +125,19 @@ const EventCompact = ({ event, isLast }: Props) => {
 
           <Box marginTop={-0.5} width="100%">
             <Link href={eventPagePath}>
-              <Typography fontFamily="Inter Bold" fontSize={13} lineHeight={1} variant="overline">
+              <Typography
+                fontFamily="Inter Bold"
+                fontSize={13}
+                lineHeight={1}
+                variant="overline"
+              >
                 {startDate}
               </Typography>
-              <Typography fontFamily="Inter Bold" fontSize={20} lineHeight={1.2}>
+              <Typography
+                fontFamily="Inter Bold"
+                fontSize={20}
+                lineHeight={1.2}
+              >
                 {name}
               </Typography>
             </Link>

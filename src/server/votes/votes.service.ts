@@ -40,7 +40,9 @@ export class VotesService {
       .getMany()) as ProposalWithVoteCount[];
 
     return proposalIds.map((id) => {
-      const proposal = proposals.find((proposal: Proposal) => proposal.id === id);
+      const proposal = proposals.find(
+        (proposal: Proposal) => proposal.id === id,
+      );
       if (!proposal) {
         return new Error(`Could not load vote count for proposal: ${id}`);
       }
@@ -53,7 +55,8 @@ export class VotesService {
       ...voteData,
       userId,
     });
-    const isProposalRatifiable = await this.proposalsService.isProposalRatifiable(vote.proposalId);
+    const isProposalRatifiable =
+      await this.proposalsService.isProposalRatifiable(vote.proposalId);
     if (isProposalRatifiable) {
       await this.proposalsService.ratifyProposal(vote.proposalId);
     }

@@ -51,14 +51,28 @@ export function useEditPostQuery(
   baseOptions: Apollo.QueryHookOptions<EditPostQuery, EditPostQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<EditPostQuery, EditPostQueryVariables>(EditPostDocument, options);
+  return Apollo.useQuery<EditPostQuery, EditPostQueryVariables>(
+    EditPostDocument,
+    options,
+  );
 }
 export function useEditPostLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<EditPostQuery, EditPostQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    EditPostQuery,
+    EditPostQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<EditPostQuery, EditPostQueryVariables>(EditPostDocument, options);
+  return Apollo.useLazyQuery<EditPostQuery, EditPostQueryVariables>(
+    EditPostDocument,
+    options,
+  );
 }
 export type EditPostQueryHookResult = ReturnType<typeof useEditPostQuery>;
-export type EditPostLazyQueryHookResult = ReturnType<typeof useEditPostLazyQuery>;
-export type EditPostQueryResult = Apollo.QueryResult<EditPostQuery, EditPostQueryVariables>;
+export type EditPostLazyQueryHookResult = ReturnType<
+  typeof useEditPostLazyQuery
+>;
+export type EditPostQueryResult = Apollo.QueryResult<
+  EditPostQuery,
+  EditPostQueryVariables
+>;

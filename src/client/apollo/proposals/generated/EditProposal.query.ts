@@ -61,7 +61,10 @@ export const EditProposalDocument = gql`
  * });
  */
 export function useEditProposalQuery(
-  baseOptions: Apollo.QueryHookOptions<EditProposalQuery, EditProposalQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    EditProposalQuery,
+    EditProposalQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<EditProposalQuery, EditProposalQueryVariables>(
@@ -70,7 +73,10 @@ export function useEditProposalQuery(
   );
 }
 export function useEditProposalLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<EditProposalQuery, EditProposalQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    EditProposalQuery,
+    EditProposalQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<EditProposalQuery, EditProposalQueryVariables>(
@@ -78,8 +84,12 @@ export function useEditProposalLazyQuery(
     options,
   );
 }
-export type EditProposalQueryHookResult = ReturnType<typeof useEditProposalQuery>;
-export type EditProposalLazyQueryHookResult = ReturnType<typeof useEditProposalLazyQuery>;
+export type EditProposalQueryHookResult = ReturnType<
+  typeof useEditProposalQuery
+>;
+export type EditProposalLazyQueryHookResult = ReturnType<
+  typeof useEditProposalLazyQuery
+>;
 export type EditProposalQueryResult = Apollo.QueryResult<
   EditProposalQuery,
   EditProposalQueryVariables

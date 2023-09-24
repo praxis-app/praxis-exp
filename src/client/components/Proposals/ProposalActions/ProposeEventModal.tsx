@@ -14,10 +14,16 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ProposalActionEventInput } from '../../../apollo/gen';
 import { useGroupMembersByGroupIdLazyQuery } from '../../../apollo/groups/generated/GroupMembersByGroupId.query';
-import { ProposalActionFieldName, ProposalActionType } from '../../../constants/proposal.constants';
+import {
+  ProposalActionFieldName,
+  ProposalActionType,
+} from '../../../constants/proposal.constants';
 import { getRandomString, isValidUrl } from '../../../utils/shared.utils';
 import { startOfNextHour } from '../../../utils/time.utils';
-import { EventFormFieldName, SHOW_ENDS_AT_BUTTON_STYLES } from '../../Events/EventForm';
+import {
+  EventFormFieldName,
+  SHOW_ENDS_AT_BUTTON_STYLES,
+} from '../../Events/EventForm';
 import AttachedImagePreview from '../../Images/AttachedImagePreview';
 import ImageInput from '../../Images/ImageInput';
 import DateTimePicker from '../../Shared/DateTimePicker';
@@ -31,17 +37,26 @@ interface Props {
   actionType?: string;
   groupId?: number | null;
   currentUserId: number;
-  setFieldValue: (field: ProposalActionFieldName, value: ProposalActionEventInput) => void;
+  setFieldValue: (
+    field: ProposalActionFieldName,
+    value: ProposalActionEventInput,
+  ) => void;
   onClose(): void;
 }
 
-const ProposeEventModal = ({ actionType, groupId, onClose, setFieldValue }: Props) => {
+const ProposeEventModal = ({
+  actionType,
+  groupId,
+  onClose,
+  setFieldValue,
+}: Props) => {
   const [coverPhoto, setCoverPhoto] = useState<File>();
   const [imageInputKey, setImageInputKey] = useState('');
   const [showEndsAt, setShowEndsAt] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const [getGroupMembers, { data, loading }] = useGroupMembersByGroupIdLazyQuery();
+  const [getGroupMembers, { data, loading }] =
+    useGroupMembersByGroupIdLazyQuery();
 
   const { t } = useTranslation();
 
@@ -83,11 +98,15 @@ const ProposeEventModal = ({ actionType, groupId, onClose, setFieldValue }: Prop
   };
 
   const handleStartsAtChange =
-    (setFieldValue: (field: string, value: Dayjs | null) => void) => (value: Dayjs | null) => {
+    (setFieldValue: (field: string, value: Dayjs | null) => void) =>
+    (value: Dayjs | null) => {
       setFieldValue(EventFormFieldName.StartsAt, value);
 
       if (showEndsAt) {
-        setFieldValue(EventFormFieldName.EndsAt, dayjs(value).add(1, 'hour').startOf('hour'));
+        setFieldValue(
+          EventFormFieldName.EndsAt,
+          dayjs(value).add(1, 'hour').startOf('hour'),
+        );
       }
     };
 
@@ -150,8 +169,19 @@ const ProposeEventModal = ({ actionType, groupId, onClose, setFieldValue }: Prop
       title={t('proposals.actionTypes.planEvent')}
       centeredTitle
     >
-      <Formik initialValues={initialValues} onSubmit={handleSubmit} validate={validate}>
-        {({ errors, handleChange, isSubmitting, setFieldValue, submitCount, values }) => (
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validate={validate}
+      >
+        {({
+          errors,
+          handleChange,
+          isSubmitting,
+          setFieldValue,
+          submitCount,
+          values,
+        }) => (
           <Form>
             <FormGroup>
               <TextField
@@ -225,7 +255,9 @@ const ProposeEventModal = ({ actionType, groupId, onClose, setFieldValue }: Prop
                 <Select
                   value={values.online === null ? '' : Number(!!values.online)}
                   name={EventFormFieldName.Online}
-                  onChange={(e) => setFieldValue(EventFormFieldName.Online, !!e.target.value)}
+                  onChange={(e) =>
+                    setFieldValue(EventFormFieldName.Online, !!e.target.value)
+                  }
                 >
                   <MenuItem value={0}>{t('events.form.inPerson')}</MenuItem>
                   <MenuItem value={1}>{t('events.form.virtual')}</MenuItem>
@@ -263,7 +295,11 @@ const ProposeEventModal = ({ actionType, groupId, onClose, setFieldValue }: Prop
 
             <Flex justifyContent="space-between">
               <ImageInput refreshKey={imageInputKey} setImage={setCoverPhoto} />
-              <PrimaryActionButton isLoading={isSubmitting} sx={{ marginTop: 1.5 }} type="submit">
+              <PrimaryActionButton
+                isLoading={isSubmitting}
+                sx={{ marginTop: 1.5 }}
+                type="submit"
+              >
                 {t('actions.confirm')}
               </PrimaryActionButton>
             </Flex>

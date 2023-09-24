@@ -19,7 +19,9 @@ interface Props {
 }
 
 const ServerRoleForm = ({ editRole }: Props) => {
-  const [color, setColor] = useState(editRole ? editRole.color : DEFAULT_ROLE_COLOR);
+  const [color, setColor] = useState(
+    editRole ? editRole.color : DEFAULT_ROLE_COLOR,
+  );
   const [colorPickerKey, setColorPickerKey] = useState('');
   const [createRole] = useCreateServerRoleMutation();
   const [updateRole] = useUpdateServerRoleMutation();
@@ -30,7 +32,10 @@ const ServerRoleForm = ({ editRole }: Props) => {
 
   const handleCreate = async (
     formValues: Omit<CreateServerRoleInput, 'color'>,
-    { setSubmitting, resetForm }: FormikHelpers<Omit<CreateServerRoleInput, 'color'>>,
+    {
+      setSubmitting,
+      resetForm,
+    }: FormikHelpers<Omit<CreateServerRoleInput, 'color'>>,
   ) =>
     await createRole({
       variables: {
@@ -43,10 +48,12 @@ const ServerRoleForm = ({ editRole }: Props) => {
         const {
           createServerRole: { serverRole },
         } = data;
-        cache.updateQuery<ServerRolesQuery>({ query: ServerRolesDocument }, (postsData) =>
-          produce(postsData, (draft) => {
-            draft?.serverRoles.unshift(serverRole);
-          }),
+        cache.updateQuery<ServerRolesQuery>(
+          { query: ServerRolesDocument },
+          (postsData) =>
+            produce(postsData, (draft) => {
+              draft?.serverRoles.unshift(serverRole);
+            }),
         );
       },
       onCompleted() {

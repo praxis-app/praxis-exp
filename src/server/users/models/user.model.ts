@@ -101,9 +101,13 @@ export class User {
   @ManyToMany(() => Group, (group) => group.members)
   groups: Group[];
 
-  @OneToMany(() => GroupMemberRequest, (groupMemberRequest) => groupMemberRequest.user, {
-    cascade: true,
-  })
+  @OneToMany(
+    () => GroupMemberRequest,
+    (groupMemberRequest) => groupMemberRequest.user,
+    {
+      cascade: true,
+    },
+  )
   groupMemberRequests: GroupMemberRequest[];
 
   @ManyToMany(() => ServerRole, (serverRole) => serverRole.members)

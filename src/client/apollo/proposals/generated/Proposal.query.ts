@@ -163,14 +163,28 @@ export function useProposalQuery(
   baseOptions: Apollo.QueryHookOptions<ProposalQuery, ProposalQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<ProposalQuery, ProposalQueryVariables>(ProposalDocument, options);
+  return Apollo.useQuery<ProposalQuery, ProposalQueryVariables>(
+    ProposalDocument,
+    options,
+  );
 }
 export function useProposalLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<ProposalQuery, ProposalQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ProposalQuery,
+    ProposalQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<ProposalQuery, ProposalQueryVariables>(ProposalDocument, options);
+  return Apollo.useLazyQuery<ProposalQuery, ProposalQueryVariables>(
+    ProposalDocument,
+    options,
+  );
 }
 export type ProposalQueryHookResult = ReturnType<typeof useProposalQuery>;
-export type ProposalLazyQueryHookResult = ReturnType<typeof useProposalLazyQuery>;
-export type ProposalQueryResult = Apollo.QueryResult<ProposalQuery, ProposalQueryVariables>;
+export type ProposalLazyQueryHookResult = ReturnType<
+  typeof useProposalLazyQuery
+>;
+export type ProposalQueryResult = Apollo.QueryResult<
+  ProposalQuery,
+  ProposalQueryVariables
+>;

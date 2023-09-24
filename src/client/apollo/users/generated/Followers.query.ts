@@ -65,14 +65,28 @@ export function useFollowersQuery(
   baseOptions: Apollo.QueryHookOptions<FollowersQuery, FollowersQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, options);
+  return Apollo.useQuery<FollowersQuery, FollowersQueryVariables>(
+    FollowersDocument,
+    options,
+  );
 }
 export function useFollowersLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<FollowersQuery, FollowersQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    FollowersQuery,
+    FollowersQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<FollowersQuery, FollowersQueryVariables>(FollowersDocument, options);
+  return Apollo.useLazyQuery<FollowersQuery, FollowersQueryVariables>(
+    FollowersDocument,
+    options,
+  );
 }
 export type FollowersQueryHookResult = ReturnType<typeof useFollowersQuery>;
-export type FollowersLazyQueryHookResult = ReturnType<typeof useFollowersLazyQuery>;
-export type FollowersQueryResult = Apollo.QueryResult<FollowersQuery, FollowersQueryVariables>;
+export type FollowersLazyQueryHookResult = ReturnType<
+  typeof useFollowersLazyQuery
+>;
+export type FollowersQueryResult = Apollo.QueryResult<
+  FollowersQuery,
+  FollowersQueryVariables
+>;

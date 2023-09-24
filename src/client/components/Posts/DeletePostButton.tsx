@@ -49,10 +49,13 @@ const DeletePostButton = ({ postId }: Props) => {
   };
 
   const handleClickWithConfirm = () =>
-    window.confirm(t('prompts.deleteItem', { itemType: 'post' })) && handleClick();
+    window.confirm(t('prompts.deleteItem', { itemType: 'post' })) &&
+    handleClick();
 
   return (
-    <DeleteButton onClick={handleClickWithConfirm}>{t('posts.actions.deletePost')}</DeleteButton>
+    <DeleteButton onClick={handleClickWithConfirm}>
+      {t('posts.actions.deletePost')}
+    </DeleteButton>
   );
 };
 

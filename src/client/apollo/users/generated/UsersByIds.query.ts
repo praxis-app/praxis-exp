@@ -49,13 +49,22 @@ export const UsersByIdsDocument = gql`
  * });
  */
 export function useUsersByIdsQuery(
-  baseOptions: Apollo.QueryHookOptions<UsersByIdsQuery, UsersByIdsQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    UsersByIdsQuery,
+    UsersByIdsQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<UsersByIdsQuery, UsersByIdsQueryVariables>(UsersByIdsDocument, options);
+  return Apollo.useQuery<UsersByIdsQuery, UsersByIdsQueryVariables>(
+    UsersByIdsDocument,
+    options,
+  );
 }
 export function useUsersByIdsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<UsersByIdsQuery, UsersByIdsQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    UsersByIdsQuery,
+    UsersByIdsQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<UsersByIdsQuery, UsersByIdsQueryVariables>(
@@ -64,5 +73,10 @@ export function useUsersByIdsLazyQuery(
   );
 }
 export type UsersByIdsQueryHookResult = ReturnType<typeof useUsersByIdsQuery>;
-export type UsersByIdsLazyQueryHookResult = ReturnType<typeof useUsersByIdsLazyQuery>;
-export type UsersByIdsQueryResult = Apollo.QueryResult<UsersByIdsQuery, UsersByIdsQueryVariables>;
+export type UsersByIdsLazyQueryHookResult = ReturnType<
+  typeof useUsersByIdsLazyQuery
+>;
+export type UsersByIdsQueryResult = Apollo.QueryResult<
+  UsersByIdsQuery,
+  UsersByIdsQueryVariables
+>;

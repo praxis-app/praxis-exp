@@ -137,7 +137,10 @@ export type CreateProposalMutation = {
 };
 
 export const CreateProposalDocument = gql`
-  mutation CreateProposal($proposalData: CreateProposalInput!, $isLoggedIn: Boolean = true) {
+  mutation CreateProposal(
+    $proposalData: CreateProposalInput!
+    $isLoggedIn: Boolean = true
+  ) {
     createProposal(proposalData: $proposalData) {
       proposal {
         ...ProposalCard
@@ -170,16 +173,22 @@ export type CreateProposalMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useCreateProposalMutation(
-  baseOptions?: Apollo.MutationHookOptions<CreateProposalMutation, CreateProposalMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateProposalMutation,
+    CreateProposalMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateProposalMutation, CreateProposalMutationVariables>(
-    CreateProposalDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    CreateProposalMutation,
+    CreateProposalMutationVariables
+  >(CreateProposalDocument, options);
 }
-export type CreateProposalMutationHookResult = ReturnType<typeof useCreateProposalMutation>;
-export type CreateProposalMutationResult = Apollo.MutationResult<CreateProposalMutation>;
+export type CreateProposalMutationHookResult = ReturnType<
+  typeof useCreateProposalMutation
+>;
+export type CreateProposalMutationResult =
+  Apollo.MutationResult<CreateProposalMutation>;
 export type CreateProposalMutationOptions = Apollo.BaseMutationOptions<
   CreateProposalMutation,
   CreateProposalMutationVariables

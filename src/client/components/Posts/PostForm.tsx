@@ -12,8 +12,15 @@ import { useDeleteImageMutation } from '../../apollo/images/generated/DeleteImag
 import { useCreatePostMutation } from '../../apollo/posts/generated/CreatePost.mutation';
 import { PostFormFragment } from '../../apollo/posts/generated/PostForm.fragment';
 import { useUpdatePostMutation } from '../../apollo/posts/generated/UpdatePost.mutation';
-import { HomeFeedDocument, HomeFeedQuery } from '../../apollo/users/generated/HomeFeed.query';
-import { FieldNames, NavigationPaths, TypeNames } from '../../constants/shared.constants';
+import {
+  HomeFeedDocument,
+  HomeFeedQuery,
+} from '../../apollo/users/generated/HomeFeed.query';
+import {
+  FieldNames,
+  NavigationPaths,
+  TypeNames,
+} from '../../constants/shared.constants';
 import { getRandomString } from '../../utils/shared.utils';
 import AttachedImagePreview from '../Images/AttachedImagePreview';
 import ImageInput from '../Images/ImageInput';
@@ -57,10 +64,12 @@ const PostForm = ({ editPost, groupId, eventId, ...formProps }: Props) => {
         const {
           createPost: { post },
         } = data;
-        cache.updateQuery<HomeFeedQuery>({ query: HomeFeedDocument }, (homePageData) =>
-          produce(homePageData, (draft) => {
-            draft?.me?.homeFeed.unshift(post);
-          }),
+        cache.updateQuery<HomeFeedQuery>(
+          { query: HomeFeedDocument },
+          (homePageData) =>
+            produce(homePageData, (draft) => {
+              draft?.me?.homeFeed.unshift(post);
+            }),
         );
         cache.modify({
           id: cache.identify(post.user),
@@ -156,7 +165,12 @@ const PostForm = ({ editPost, groupId, eventId, ...formProps }: Props) => {
   };
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit} enableReinitialize {...formProps}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      enableReinitialize
+      {...formProps}
+    >
       {({ isSubmitting, dirty, handleChange, values }) => (
         <Form>
           <FormGroup>
@@ -180,7 +194,11 @@ const PostForm = ({ editPost, groupId, eventId, ...formProps }: Props) => {
           <Divider sx={{ marginBottom: 1.3 }} />
 
           <Flex sx={{ justifyContent: 'space-between' }}>
-            <ImageInput refreshKey={imagesInputKey} setImages={setImages} multiple />
+            <ImageInput
+              refreshKey={imagesInputKey}
+              setImages={setImages}
+              multiple
+            />
 
             <PrimaryActionButton
               disabled={isSubmitting || (!dirty && !images.length)}

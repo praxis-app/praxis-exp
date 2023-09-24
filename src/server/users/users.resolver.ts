@@ -74,7 +74,10 @@ export class UsersResolver {
   }
 
   @ResolveField(() => Image)
-  async profilePicture(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: User) {
+  async profilePicture(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: User,
+  ) {
     return loaders.profilePicturesLoader.load(id);
   }
 
@@ -94,12 +97,18 @@ export class UsersResolver {
   }
 
   @ResolveField(() => Int)
-  async followerCount(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: User) {
+  async followerCount(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: User,
+  ) {
     return loaders.followerCountLoader.load(id);
   }
 
   @ResolveField(() => Int)
-  async followingCount(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { id }: User) {
+  async followingCount(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { id }: User,
+  ) {
     return loaders.followingCountLoader.load(id);
   }
 
@@ -122,7 +131,8 @@ export class UsersResolver {
 
   @ResolveField(() => ServerPermissions)
   async serverPermissions(@Parent() { id }: User) {
-    const { serverPermissions } = await this.usersService.getUserPermissions(id);
+    const { serverPermissions } =
+      await this.usersService.getUserPermissions(id);
     return serverPermissions;
   }
 
@@ -137,12 +147,18 @@ export class UsersResolver {
   }
 
   @Mutation(() => FollowUserPayload)
-  async followUser(@Args('id', { type: () => Int }) id: number, @CurrentUser() user: User) {
+  async followUser(
+    @Args('id', { type: () => Int }) id: number,
+    @CurrentUser() user: User,
+  ) {
     return this.usersService.followUser(id, user.id);
   }
 
   @Mutation(() => Boolean)
-  async unfollowUser(@Args('id', { type: () => Int }) id: number, @CurrentUser() user: User) {
+  async unfollowUser(
+    @Args('id', { type: () => Int }) id: number,
+    @CurrentUser() user: User,
+  ) {
     return this.usersService.unfollowUser(id, user.id);
   }
 }

@@ -254,7 +254,10 @@ export const GroupProfileDocument = gql`
  * });
  */
 export function useGroupProfileQuery(
-  baseOptions: Apollo.QueryHookOptions<GroupProfileQuery, GroupProfileQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    GroupProfileQuery,
+    GroupProfileQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<GroupProfileQuery, GroupProfileQueryVariables>(
@@ -263,7 +266,10 @@ export function useGroupProfileQuery(
   );
 }
 export function useGroupProfileLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<GroupProfileQuery, GroupProfileQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GroupProfileQuery,
+    GroupProfileQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<GroupProfileQuery, GroupProfileQueryVariables>(
@@ -271,8 +277,12 @@ export function useGroupProfileLazyQuery(
     options,
   );
 }
-export type GroupProfileQueryHookResult = ReturnType<typeof useGroupProfileQuery>;
-export type GroupProfileLazyQueryHookResult = ReturnType<typeof useGroupProfileLazyQuery>;
+export type GroupProfileQueryHookResult = ReturnType<
+  typeof useGroupProfileQuery
+>;
+export type GroupProfileLazyQueryHookResult = ReturnType<
+  typeof useGroupProfileLazyQuery
+>;
 export type GroupProfileQueryResult = Apollo.QueryResult<
   GroupProfileQuery,
   GroupProfileQueryVariables

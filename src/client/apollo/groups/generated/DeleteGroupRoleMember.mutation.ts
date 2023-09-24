@@ -48,7 +48,9 @@ export type DeleteGroupRoleMemberMutation = {
 };
 
 export const DeleteGroupRoleMemberDocument = gql`
-  mutation DeleteGroupRoleMember($groupRoleMemberData: DeleteGroupRoleMemberInput!) {
+  mutation DeleteGroupRoleMember(
+    $groupRoleMemberData: DeleteGroupRoleMemberInput!
+  ) {
     deleteGroupRoleMember(groupRoleMemberData: $groupRoleMemberData) {
       groupRole {
         id
@@ -96,10 +98,10 @@ export function useDeleteGroupRoleMemberMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<DeleteGroupRoleMemberMutation, DeleteGroupRoleMemberMutationVariables>(
-    DeleteGroupRoleMemberDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    DeleteGroupRoleMemberMutation,
+    DeleteGroupRoleMemberMutationVariables
+  >(DeleteGroupRoleMemberDocument, options);
 }
 export type DeleteGroupRoleMemberMutationHookResult = ReturnType<
   typeof useDeleteGroupRoleMemberMutation

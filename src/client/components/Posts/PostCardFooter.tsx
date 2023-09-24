@@ -41,12 +41,19 @@ interface Props {
   eventId?: number;
 }
 
-const PostCardFooter = ({ post, inModal, isPostPage, groupId, eventId }: Props) => {
+const PostCardFooter = ({
+  post,
+  inModal,
+  isPostPage,
+  groupId,
+  eventId,
+}: Props) => {
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showComments, setShowComments] = useState(inModal || isPostPage);
 
-  const [getPostComments, { data: postCommentsData }] = usePostCommentsLazyQuery();
+  const [getPostComments, { data: postCommentsData }] =
+    usePostCommentsLazyQuery();
 
   const { t } = useTranslation();
 
@@ -63,7 +70,15 @@ const PostCardFooter = ({ post, inModal, isPostPage, groupId, eventId }: Props) 
         },
       });
     }
-  }, [eventId, getPostComments, groupId, inModal, isLoggedIn, isPostPage, post]);
+  }, [
+    eventId,
+    getPostComments,
+    groupId,
+    inModal,
+    isLoggedIn,
+    isPostPage,
+    post,
+  ]);
 
   const { id, likesCount, commentCount, isLikedByMe } = post;
   const comments = postCommentsData?.post.comments;
@@ -128,7 +143,10 @@ const PostCardFooter = ({ post, inModal, isPostPage, groupId, eventId }: Props) 
           {!!likesCount && (
             <Flex>
               <Box sx={BADGE_STYLES}>
-                <LikeIcon color="primary" sx={{ fontSize: 13, marginTop: 0.65 }} />
+                <LikeIcon
+                  color="primary"
+                  sx={{ fontSize: 13, marginTop: 0.65 }}
+                />
               </Box>
               {likesCount}
             </Flex>
@@ -180,14 +198,22 @@ const PostCardFooter = ({ post, inModal, isPostPage, groupId, eventId }: Props) 
           {renderCommentForm()}
 
           {group && !group.isJoinedByMe && !comments?.length && (
-            <Typography color="text.secondary" align="center" marginBottom={1.75}>
+            <Typography
+              color="text.secondary"
+              align="center"
+              marginBottom={1.75}
+            >
               {t('comments.prompts.joinToComment')}
             </Typography>
           )}
         </Box>
       )}
 
-      <PostModal post={post} open={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <PostModal
+        post={post}
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </Box>
   );
 };

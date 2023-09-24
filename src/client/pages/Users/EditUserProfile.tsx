@@ -29,7 +29,10 @@ const EditUserProfile = () => {
   return (
     <Card>
       <CardContent>
-        <EditProfileForm submitButtonText={t('actions.save')} user={data.user} />
+        <EditProfileForm
+          submitButtonText={t('actions.save')}
+          user={data.user}
+        />
       </CardContent>
     </Card>
   );

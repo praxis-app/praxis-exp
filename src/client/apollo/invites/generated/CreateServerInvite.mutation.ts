@@ -72,13 +72,16 @@ export function useCreateServerInviteMutation(
   >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useMutation<CreateServerInviteMutation, CreateServerInviteMutationVariables>(
-    CreateServerInviteDocument,
-    options,
-  );
+  return Apollo.useMutation<
+    CreateServerInviteMutation,
+    CreateServerInviteMutationVariables
+  >(CreateServerInviteDocument, options);
 }
-export type CreateServerInviteMutationHookResult = ReturnType<typeof useCreateServerInviteMutation>;
-export type CreateServerInviteMutationResult = Apollo.MutationResult<CreateServerInviteMutation>;
+export type CreateServerInviteMutationHookResult = ReturnType<
+  typeof useCreateServerInviteMutation
+>;
+export type CreateServerInviteMutationResult =
+  Apollo.MutationResult<CreateServerInviteMutation>;
 export type CreateServerInviteMutationOptions = Apollo.BaseMutationOptions<
   CreateServerInviteMutation,
   CreateServerInviteMutationVariables

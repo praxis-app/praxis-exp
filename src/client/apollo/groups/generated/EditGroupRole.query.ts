@@ -101,7 +101,10 @@ export const EditGroupRoleDocument = gql`
  * });
  */
 export function useEditGroupRoleQuery(
-  baseOptions: Apollo.QueryHookOptions<EditGroupRoleQuery, EditGroupRoleQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    EditGroupRoleQuery,
+    EditGroupRoleQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<EditGroupRoleQuery, EditGroupRoleQueryVariables>(
@@ -110,7 +113,10 @@ export function useEditGroupRoleQuery(
   );
 }
 export function useEditGroupRoleLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<EditGroupRoleQuery, EditGroupRoleQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    EditGroupRoleQuery,
+    EditGroupRoleQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<EditGroupRoleQuery, EditGroupRoleQueryVariables>(
@@ -118,8 +124,12 @@ export function useEditGroupRoleLazyQuery(
     options,
   );
 }
-export type EditGroupRoleQueryHookResult = ReturnType<typeof useEditGroupRoleQuery>;
-export type EditGroupRoleLazyQueryHookResult = ReturnType<typeof useEditGroupRoleLazyQuery>;
+export type EditGroupRoleQueryHookResult = ReturnType<
+  typeof useEditGroupRoleQuery
+>;
+export type EditGroupRoleLazyQueryHookResult = ReturnType<
+  typeof useEditGroupRoleLazyQuery
+>;
 export type EditGroupRoleQueryResult = Apollo.QueryResult<
   EditGroupRoleQuery,
   EditGroupRoleQueryVariables

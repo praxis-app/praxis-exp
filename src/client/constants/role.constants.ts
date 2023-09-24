@@ -1,4 +1,7 @@
-import { GroupRolePermissionInput, ServerRolePermissionInput } from '../apollo/gen';
+import {
+  GroupRolePermissionInput,
+  ServerRolePermissionInput,
+} from '../apollo/gen';
 
 export const DEFAULT_ROLE_COLOR = '#f44336';
 

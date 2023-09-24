@@ -3,7 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { FindOptionsWhere, Repository } from 'typeorm';
 import { GroupsService } from '../groups.service';
 import { Group } from '../models/group.model';
-import { GroupMemberRequest, GroupMemberRequestStatus } from './models/group-member-request.model';
+import {
+  GroupMemberRequest,
+  GroupMemberRequestStatus,
+} from './models/group-member-request.model';
 
 type GroupWithMemberRequestCount = Group & { memberRequestCount: number };
 
@@ -20,7 +23,10 @@ export class GroupMemberRequestsService {
     private groupsService: GroupsService,
   ) {}
 
-  async getGroupMemberRequest(where: FindOptionsWhere<GroupMemberRequest>, relations?: string[]) {
+  async getGroupMemberRequest(
+    where: FindOptionsWhere<GroupMemberRequest>,
+    relations?: string[],
+  ) {
     return this.groupMemberRequestRepository.findOne({
       relations,
       where,
@@ -86,7 +92,10 @@ export class GroupMemberRequestsService {
     return true;
   }
 
-  async updateGroupMemberRequest(id: number, requestData: Partial<GroupMemberRequest>) {
+  async updateGroupMemberRequest(
+    id: number,
+    requestData: Partial<GroupMemberRequest>,
+  ) {
     await this.groupMemberRequestRepository.update(id, requestData);
     return this.groupMemberRequestRepository.findOneOrFail({ where: { id } });
   }

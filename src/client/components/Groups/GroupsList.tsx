@@ -33,7 +33,9 @@ const GroupsList = () => {
 
   return (
     <>
-      <LevelOneHeading header>{t('groups.headers.discoverGroups')}</LevelOneHeading>
+      <LevelOneHeading header>
+        {t('groups.headers.discoverGroups')}
+      </LevelOneHeading>
 
       <GroupForm />
 

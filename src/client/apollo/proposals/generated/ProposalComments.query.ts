@@ -77,7 +77,10 @@ export const ProposalCommentsDocument = gql`
  * });
  */
 export function useProposalCommentsQuery(
-  baseOptions: Apollo.QueryHookOptions<ProposalCommentsQuery, ProposalCommentsQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    ProposalCommentsQuery,
+    ProposalCommentsQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<ProposalCommentsQuery, ProposalCommentsQueryVariables>(
@@ -86,16 +89,23 @@ export function useProposalCommentsQuery(
   );
 }
 export function useProposalCommentsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<ProposalCommentsQuery, ProposalCommentsQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    ProposalCommentsQuery,
+    ProposalCommentsQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<ProposalCommentsQuery, ProposalCommentsQueryVariables>(
-    ProposalCommentsDocument,
-    options,
-  );
+  return Apollo.useLazyQuery<
+    ProposalCommentsQuery,
+    ProposalCommentsQueryVariables
+  >(ProposalCommentsDocument, options);
 }
-export type ProposalCommentsQueryHookResult = ReturnType<typeof useProposalCommentsQuery>;
-export type ProposalCommentsLazyQueryHookResult = ReturnType<typeof useProposalCommentsLazyQuery>;
+export type ProposalCommentsQueryHookResult = ReturnType<
+  typeof useProposalCommentsQuery
+>;
+export type ProposalCommentsLazyQueryHookResult = ReturnType<
+  typeof useProposalCommentsLazyQuery
+>;
 export type ProposalCommentsQueryResult = Apollo.QueryResult<
   ProposalCommentsQuery,
   ProposalCommentsQueryVariables

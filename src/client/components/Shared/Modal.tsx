@@ -87,7 +87,12 @@ const Modal = ({
               {title}
             </Typography>
           </Box>
-          <IconButton aria-label="close" color="primary" edge="start" onClick={onClose}>
+          <IconButton
+            aria-label="close"
+            color="primary"
+            edge="start"
+            onClick={onClose}
+          >
             <Close />
           </IconButton>
         </Toolbar>
@@ -95,7 +100,12 @@ const Modal = ({
     }
     return (
       <Toolbar>
-        <IconButton aria-label="close" color="primary" edge="start" onClick={onClose}>
+        <IconButton
+          aria-label="close"
+          color="primary"
+          edge="start"
+          onClick={onClose}
+        >
           <Close />
         </IconButton>
         <Box sx={titleBoxStyles}>
@@ -103,7 +113,11 @@ const Modal = ({
             {title}
           </Typography>
 
-          {subtext && <Typography sx={{ fontSize: 14, marginLeft: 0.2 }}>{subtext}</Typography>}
+          {subtext && (
+            <Typography sx={{ fontSize: 14, marginLeft: 0.2 }}>
+              {subtext}
+            </Typography>
+          )}
         </Box>
         {actionLabel && <Button onClick={closingAction}>{actionLabel}</Button>}
       </Toolbar>

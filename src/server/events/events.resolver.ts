@@ -52,17 +52,26 @@ export class EventsResolver {
   }
 
   @ResolveField(() => Int)
-  async interestedCount(@Parent() { id }: Event, @Context() { loaders }: { loaders: Dataloaders }) {
+  async interestedCount(
+    @Parent() { id }: Event,
+    @Context() { loaders }: { loaders: Dataloaders },
+  ) {
     return loaders.interestedCountLoader.load(id);
   }
 
   @ResolveField(() => Int)
-  async goingCount(@Parent() { id }: Event, @Context() { loaders }: { loaders: Dataloaders }) {
+  async goingCount(
+    @Parent() { id }: Event,
+    @Context() { loaders }: { loaders: Dataloaders },
+  ) {
     return loaders.goingCountLoader.load(id);
   }
 
   @ResolveField(() => String, { nullable: true })
-  async attendingStatus(@CurrentUser() { id: currentUserId }: User, @Parent() { id }: Event) {
+  async attendingStatus(
+    @CurrentUser() { id: currentUserId }: User,
+    @Parent() { id }: Event,
+  ) {
     return this.eventsService.getAttendingStatus(id, currentUserId);
   }
 
@@ -72,7 +81,10 @@ export class EventsResolver {
   }
 
   @ResolveField(() => Group)
-  async group(@Context() { loaders }: { loaders: Dataloaders }, @Parent() { groupId }: Event) {
+  async group(
+    @Context() { loaders }: { loaders: Dataloaders },
+    @Parent() { groupId }: Event,
+  ) {
     return groupId ? loaders.groupsLoader.load(groupId) : null;
   }
 
@@ -82,7 +94,10 @@ export class EventsResolver {
   }
 
   @ResolveField(() => Image)
-  async coverPhoto(@Parent() { id }: Event, @Context() { loaders }: { loaders: Dataloaders }) {
+  async coverPhoto(
+    @Parent() { id }: Event,
+    @Context() { loaders }: { loaders: Dataloaders },
+  ) {
     return loaders.eventCoverPhotosLoader.load(id);
   }
 

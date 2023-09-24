@@ -45,7 +45,10 @@ const Toast = () => {
       <Alert
         action={
           <IconButton size="small" onClick={handleClose}>
-            <Close fontSize="small" sx={{ color: theme.palette.primary.main }} />
+            <Close
+              fontSize="small"
+              sx={{ color: theme.palette.primary.main }}
+            />
           </IconButton>
         }
         severity={toastNotification.status}

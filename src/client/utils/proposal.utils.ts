@@ -1,7 +1,9 @@
 import { Namespace, TFunction } from 'react-i18next';
 import { ProposalActionType } from '../constants/proposal.constants';
 
-export const getProposalActionTypeOptions = (t: TFunction<Namespace<'ns1'>, undefined>) => [
+export const getProposalActionTypeOptions = (
+  t: TFunction<Namespace<'ns1'>, undefined>,
+) => [
   {
     message: t('proposals.actionTypes.planEvent'),
     value: ProposalActionType.PlanEvent,

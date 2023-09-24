@@ -60,7 +60,10 @@ export type UpdateGroupMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useUpdateGroupMutation(
-  baseOptions?: Apollo.MutationHookOptions<UpdateGroupMutation, UpdateGroupMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    UpdateGroupMutation,
+    UpdateGroupMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<UpdateGroupMutation, UpdateGroupMutationVariables>(
@@ -68,8 +71,11 @@ export function useUpdateGroupMutation(
     options,
   );
 }
-export type UpdateGroupMutationHookResult = ReturnType<typeof useUpdateGroupMutation>;
-export type UpdateGroupMutationResult = Apollo.MutationResult<UpdateGroupMutation>;
+export type UpdateGroupMutationHookResult = ReturnType<
+  typeof useUpdateGroupMutation
+>;
+export type UpdateGroupMutationResult =
+  Apollo.MutationResult<UpdateGroupMutation>;
 export type UpdateGroupMutationOptions = Apollo.BaseMutationOptions<
   UpdateGroupMutation,
   UpdateGroupMutationVariables

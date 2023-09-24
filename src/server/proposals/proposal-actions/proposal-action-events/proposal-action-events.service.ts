@@ -31,7 +31,10 @@ export class ProposalActionEventsService {
     private imagesService: ImagesService,
   ) {}
 
-  async getProposalActionEvent(where: FindOptionsWhere<ProposalActionEvent>, relations?: string[]) {
+  async getProposalActionEvent(
+    where: FindOptionsWhere<ProposalActionEvent>,
+    relations?: string[],
+  ) {
     return this.proposalActionEventRepository.findOne({
       where,
       relations,
@@ -58,7 +61,11 @@ export class ProposalActionEventsService {
 
   async createProposalActionEvent(
     proposalActionId: number,
-    { hostId, coverPhoto, ...proposalActionEventData }: Partial<ProposalActionEventInput>,
+    {
+      hostId,
+      coverPhoto,
+      ...proposalActionEventData
+    }: Partial<ProposalActionEventInput>,
   ) {
     const proposalActionEvent = await this.proposalActionEventRepository.save({
       ...proposalActionEventData,
@@ -90,7 +97,9 @@ export class ProposalActionEventsService {
         eventId: event.id,
         userId: hostId,
       });
-      const coverPhoto = images.find(({ imageType }) => imageType === ImageTypes.CoverPhoto);
+      const coverPhoto = images.find(
+        ({ imageType }) => imageType === ImageTypes.CoverPhoto,
+      );
       if (!coverPhoto) {
         throw new Error();
       }
@@ -106,7 +115,10 @@ export class ProposalActionEventsService {
     }
   }
 
-  async saveCoverPhoto(proposalActionEventId: number, coverPhoto: Promise<FileUpload>) {
+  async saveCoverPhoto(
+    proposalActionEventId: number,
+    coverPhoto: Promise<FileUpload>,
+  ) {
     const filename = await saveImage(coverPhoto);
     return this.imagesService.createImage({
       imageType: ImageTypes.CoverPhoto,

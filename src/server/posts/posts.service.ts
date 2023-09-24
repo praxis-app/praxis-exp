@@ -61,7 +61,9 @@ export class PostsService {
       postId: In(postIds),
       userId: keys[0].currentUserId,
     });
-    return postIds.map((postId) => likes.some((like: Like) => like.postId === postId));
+    return postIds.map((postId) =>
+      likes.some((like: Like) => like.postId === postId),
+    );
   }
 
   async getLikesCountBatch(postIds: number[]) {

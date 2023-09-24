@@ -131,7 +131,10 @@ export const PostCommentsDocument = gql`
  * });
  */
 export function usePostCommentsQuery(
-  baseOptions: Apollo.QueryHookOptions<PostCommentsQuery, PostCommentsQueryVariables>,
+  baseOptions: Apollo.QueryHookOptions<
+    PostCommentsQuery,
+    PostCommentsQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useQuery<PostCommentsQuery, PostCommentsQueryVariables>(
@@ -140,7 +143,10 @@ export function usePostCommentsQuery(
   );
 }
 export function usePostCommentsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<PostCommentsQuery, PostCommentsQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    PostCommentsQuery,
+    PostCommentsQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useLazyQuery<PostCommentsQuery, PostCommentsQueryVariables>(
@@ -148,8 +154,12 @@ export function usePostCommentsLazyQuery(
     options,
   );
 }
-export type PostCommentsQueryHookResult = ReturnType<typeof usePostCommentsQuery>;
-export type PostCommentsLazyQueryHookResult = ReturnType<typeof usePostCommentsLazyQuery>;
+export type PostCommentsQueryHookResult = ReturnType<
+  typeof usePostCommentsQuery
+>;
+export type PostCommentsLazyQueryHookResult = ReturnType<
+  typeof usePostCommentsLazyQuery
+>;
 export type PostCommentsQueryResult = Apollo.QueryResult<
   PostCommentsQuery,
   PostCommentsQueryVariables

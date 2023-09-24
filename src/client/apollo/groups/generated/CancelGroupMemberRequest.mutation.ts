@@ -60,7 +60,8 @@ export type CancelGroupMemberRequestMutationHookResult = ReturnType<
 >;
 export type CancelGroupMemberRequestMutationResult =
   Apollo.MutationResult<CancelGroupMemberRequestMutation>;
-export type CancelGroupMemberRequestMutationOptions = Apollo.BaseMutationOptions<
-  CancelGroupMemberRequestMutation,
-  CancelGroupMemberRequestMutationVariables
->;
+export type CancelGroupMemberRequestMutationOptions =
+  Apollo.BaseMutationOptions<
+    CancelGroupMemberRequestMutation,
+    CancelGroupMemberRequestMutationVariables
+  >;

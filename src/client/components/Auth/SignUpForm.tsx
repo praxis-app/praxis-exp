@@ -4,7 +4,12 @@ import { Form, Formik, FormikErrors } from 'formik';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSignUpMutation } from '../../apollo/auth/generated/SignUp.mutation';
-import { inviteTokenVar, isLoggedInVar, isNavDrawerOpenVar, toastVar } from '../../apollo/cache';
+import {
+  inviteTokenVar,
+  isLoggedInVar,
+  isNavDrawerOpenVar,
+  toastVar,
+} from '../../apollo/cache';
 import { SignUpInput } from '../../apollo/gen';
 import {
   IsFirstUserDocument,
@@ -18,7 +23,10 @@ import PrimaryActionButton from '../../components/Shared/PrimaryActionButton';
 import { TextField } from '../../components/Shared/TextField';
 import { INVITE_TOKEN } from '../../constants/server-invite.constants';
 import { UserFieldNames } from '../../constants/user.constants';
-import { getRandomString, removeLocalStorageItem } from '../../utils/shared.utils';
+import {
+  getRandomString,
+  removeLocalStorageItem,
+} from '../../utils/shared.utils';
 import { useParams } from 'react-router-dom';
 
 const SignUpForm = () => {
@@ -38,7 +46,12 @@ const SignUpForm = () => {
     inviteToken: token,
   };
 
-  const validateSignUp = ({ name, email, password, confirmPassword }: SignUpInput) => {
+  const validateSignUp = ({
+    name,
+    email,
+    password,
+    confirmPassword,
+  }: SignUpInput) => {
     const errors: FormikErrors<SignUpInput> = {};
     if (!name) {
       errors.name = t('signUp.errors.missingName');
@@ -97,14 +110,26 @@ const SignUpForm = () => {
   return (
     <Card>
       <CardContent>
-        <LevelOneHeading sx={{ marginBottom: 2 }}>{t('prompts.welcomeToPraxis')}</LevelOneHeading>
+        <LevelOneHeading sx={{ marginBottom: 2 }}>
+          {t('prompts.welcomeToPraxis')}
+        </LevelOneHeading>
 
-        <Formik initialValues={initialValues} onSubmit={handleSubmit} validate={validateSignUp}>
+        <Formik
+          initialValues={initialValues}
+          onSubmit={handleSubmit}
+          validate={validateSignUp}
+        >
           {({ isSubmitting, dirty }) => (
             <Form hidden={isNavDrawerOpen}>
               <FormGroup>
-                <TextField label={t('users.form.email')} name={UserFieldNames.Email} />
-                <TextField label={t('users.form.name')} name={UserFieldNames.Name} />
+                <TextField
+                  label={t('users.form.email')}
+                  name={UserFieldNames.Email}
+                />
+                <TextField
+                  label={t('users.form.name')}
+                  name={UserFieldNames.Name}
+                />
                 <TextField
                   label={t('users.form.password')}
                   name={UserFieldNames.Password}
@@ -124,7 +149,10 @@ const SignUpForm = () => {
               </FormGroup>
 
               <Flex sx={{ justifyContent: 'space-between' }}>
-                <ImageInput refreshKey={imageInputKey} setImage={setProfilePicture} />
+                <ImageInput
+                  refreshKey={imageInputKey}
+                  setImage={setProfilePicture}
+                />
 
                 <PrimaryActionButton
                   disabled={isSubmitting || !dirty}

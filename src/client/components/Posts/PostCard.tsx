@@ -16,7 +16,10 @@ import { isLoggedInVar } from '../../apollo/cache';
 import { useDeletePostMutation } from '../../apollo/posts/generated/DeletePost.mutation';
 import { PostCardFragment } from '../../apollo/posts/generated/PostCard.fragment';
 import { useMeQuery } from '../../apollo/users/generated/Me.query';
-import { MIDDOT_WITH_SPACES, NavigationPaths } from '../../constants/shared.constants';
+import {
+  MIDDOT_WITH_SPACES,
+  NavigationPaths,
+} from '../../constants/shared.constants';
 import { getGroupPath } from '../../utils/group.utils';
 import { timeAgo } from '../../utils/time.utils';
 import { getUserProfilePath } from '../../utils/user.utils';
@@ -116,7 +119,10 @@ const PostCard = ({ post, inModal = false, ...cardProps }: Props) => {
           </Link>
         )}
         <Box fontSize={14} sx={{ color: 'text.secondary' }}>
-          <Link href={userProfilePath} sx={showGroup ? { color: 'inherit' } : undefined}>
+          <Link
+            href={userProfilePath}
+            sx={showGroup ? { color: 'inherit' } : undefined}
+          >
             {user?.name}
           </Link>
           {MIDDOT_WITH_SPACES}
@@ -132,7 +138,8 @@ const PostCard = ({ post, inModal = false, ...cardProps }: Props) => {
     const editPostPath = `${NavigationPaths.Posts}/${id}${NavigationPaths.Edit}`;
     const deletePostPrompt = t('prompts.deleteItem', { itemType: 'post' });
 
-    const canManagePosts = me?.serverPermissions.managePosts || group?.myPermissions?.managePosts;
+    const canManagePosts =
+      me?.serverPermissions.managePosts || group?.myPermissions?.managePosts;
     const canDelete = canManagePosts || isMe;
 
     return (

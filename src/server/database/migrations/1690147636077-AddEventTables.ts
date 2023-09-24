@@ -24,7 +24,9 @@ export class AddEventTables1690147636077 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "group_member_request" ALTER COLUMN "id" SET DEFAULT nextval('"group_member_request_id_seq"')`,
     );
-    await queryRunner.query(`ALTER TABLE "group_member_request" ALTER COLUMN "id" DROP DEFAULT`);
+    await queryRunner.query(
+      `ALTER TABLE "group_member_request" ALTER COLUMN "id" DROP DEFAULT`,
+    );
     await queryRunner.query(
       `ALTER TABLE "image" ADD CONSTRAINT "FK_042895d4be7cf838f0f89949705" FOREIGN KEY ("eventId") REFERENCES "event"("id") ON DELETE CASCADE ON UPDATE NO ACTION`,
     );
@@ -49,8 +51,12 @@ export class AddEventTables1690147636077 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(`ALTER TABLE "post" DROP CONSTRAINT "FK_0497171f776587bf42b759bb2c4"`);
-    await queryRunner.query(`ALTER TABLE "event" DROP CONSTRAINT "FK_0a28dcf5832d1068df34fc59e46"`);
+    await queryRunner.query(
+      `ALTER TABLE "post" DROP CONSTRAINT "FK_0497171f776587bf42b759bb2c4"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "event" DROP CONSTRAINT "FK_0a28dcf5832d1068df34fc59e46"`,
+    );
     await queryRunner.query(
       `ALTER TABLE "event_attendee" DROP CONSTRAINT "FK_16b4a29e47abe22b1e3c851bcc9"`,
     );
@@ -63,11 +69,15 @@ export class AddEventTables1690147636077 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "group_member_request" DROP CONSTRAINT "FK_2872a8db74268161aede2556c27"`,
     );
-    await queryRunner.query(`ALTER TABLE "image" DROP CONSTRAINT "FK_042895d4be7cf838f0f89949705"`);
+    await queryRunner.query(
+      `ALTER TABLE "image" DROP CONSTRAINT "FK_042895d4be7cf838f0f89949705"`,
+    );
     await queryRunner.query(
       `ALTER TABLE "group_member_request" ALTER COLUMN "id" SET DEFAULT nextval('"group_member_request_id_seq"')`,
     );
-    await queryRunner.query(`ALTER TABLE "group_member_request" ALTER COLUMN "id" DROP DEFAULT`);
+    await queryRunner.query(
+      `ALTER TABLE "group_member_request" ALTER COLUMN "id" DROP DEFAULT`,
+    );
     await queryRunner.query(`DROP SEQUENCE "group_member_request_id_seq"`);
     await queryRunner.query(`ALTER TABLE "post" DROP COLUMN "eventId"`);
     await queryRunner.query(`ALTER TABLE "image" DROP COLUMN "eventId"`);

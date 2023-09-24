@@ -44,7 +44,10 @@ export type LeaveGroupMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useLeaveGroupMutation(
-  baseOptions?: Apollo.MutationHookOptions<LeaveGroupMutation, LeaveGroupMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    LeaveGroupMutation,
+    LeaveGroupMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<LeaveGroupMutation, LeaveGroupMutationVariables>(
@@ -52,8 +55,11 @@ export function useLeaveGroupMutation(
     options,
   );
 }
-export type LeaveGroupMutationHookResult = ReturnType<typeof useLeaveGroupMutation>;
-export type LeaveGroupMutationResult = Apollo.MutationResult<LeaveGroupMutation>;
+export type LeaveGroupMutationHookResult = ReturnType<
+  typeof useLeaveGroupMutation
+>;
+export type LeaveGroupMutationResult =
+  Apollo.MutationResult<LeaveGroupMutation>;
 export type LeaveGroupMutationOptions = Apollo.BaseMutationOptions<
   LeaveGroupMutation,
   LeaveGroupMutationVariables

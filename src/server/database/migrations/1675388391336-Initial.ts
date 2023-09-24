@@ -112,8 +112,12 @@ export class Initial1675388391336 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "refresh_token" DROP CONSTRAINT "FK_8e913e288156c133999341156ad"`,
     );
-    await queryRunner.query(`ALTER TABLE "post" DROP CONSTRAINT "FK_2393250dfaedc012a2286f7854e"`);
-    await queryRunner.query(`ALTER TABLE "post" DROP CONSTRAINT "FK_5c1cf55c308037b5aca1038a131"`);
+    await queryRunner.query(
+      `ALTER TABLE "post" DROP CONSTRAINT "FK_2393250dfaedc012a2286f7854e"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "post" DROP CONSTRAINT "FK_5c1cf55c308037b5aca1038a131"`,
+    );
     await queryRunner.query(
       `ALTER TABLE "member_request" DROP CONSTRAINT "FK_864520203508eeb8980a50c92c7"`,
     );
@@ -126,7 +130,9 @@ export class Initial1675388391336 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "group_member" DROP CONSTRAINT "FK_9f209c217eef89b8c32bd077903"`,
     );
-    await queryRunner.query(`ALTER TABLE "role" DROP CONSTRAINT "FK_3a26994d34035aaa72db4f05425"`);
+    await queryRunner.query(
+      `ALTER TABLE "role" DROP CONSTRAINT "FK_3a26994d34035aaa72db4f05425"`,
+    );
     await queryRunner.query(
       `ALTER TABLE "role_member" DROP CONSTRAINT "FK_d8d704a0c5445a41ff5ec5a6f26"`,
     );
@@ -136,11 +142,21 @@ export class Initial1675388391336 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "permission" DROP CONSTRAINT "FK_cdb4db95384a1cf7a837c4c683e"`,
     );
-    await queryRunner.query(`ALTER TABLE "image" DROP CONSTRAINT "FK_e2a8d2eb051eb21b6715f6d21b2"`);
-    await queryRunner.query(`ALTER TABLE "image" DROP CONSTRAINT "FK_335251c897e637fa2a83597f263"`);
-    await queryRunner.query(`ALTER TABLE "image" DROP CONSTRAINT "FK_e4b9d14ea1e4c5115ea7ec79bbb"`);
-    await queryRunner.query(`ALTER TABLE "image" DROP CONSTRAINT "FK_dc40417dfa0c7fbd70b8eb880cc"`);
-    await queryRunner.query(`ALTER TABLE "image" DROP CONSTRAINT "FK_72da7f42d43f0be3b3ef35692a0"`);
+    await queryRunner.query(
+      `ALTER TABLE "image" DROP CONSTRAINT "FK_e2a8d2eb051eb21b6715f6d21b2"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "image" DROP CONSTRAINT "FK_335251c897e637fa2a83597f263"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "image" DROP CONSTRAINT "FK_e4b9d14ea1e4c5115ea7ec79bbb"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "image" DROP CONSTRAINT "FK_dc40417dfa0c7fbd70b8eb880cc"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "image" DROP CONSTRAINT "FK_72da7f42d43f0be3b3ef35692a0"`,
+    );
     await queryRunner.query(
       `ALTER TABLE "proposal" DROP CONSTRAINT "FK_82e55bb65a396217357c522253f"`,
     );
@@ -150,8 +166,12 @@ export class Initial1675388391336 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "proposal_action" DROP CONSTRAINT "FK_542f653febd92b2a0d67dcadb05"`,
     );
-    await queryRunner.query(`ALTER TABLE "vote" DROP CONSTRAINT "FK_f5de237a438d298031d11a57c3b"`);
-    await queryRunner.query(`ALTER TABLE "vote" DROP CONSTRAINT "FK_a6099cc53a32762d8c69e71dcd1"`);
+    await queryRunner.query(
+      `ALTER TABLE "vote" DROP CONSTRAINT "FK_f5de237a438d298031d11a57c3b"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "vote" DROP CONSTRAINT "FK_a6099cc53a32762d8c69e71dcd1"`,
+    );
     await queryRunner.query(`DROP TABLE "refresh_token"`);
     await queryRunner.query(`DROP TABLE "user"`);
     await queryRunner.query(`DROP TABLE "post"`);

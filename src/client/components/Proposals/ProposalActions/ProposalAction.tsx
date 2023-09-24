@@ -12,7 +12,14 @@ interface Props {
 }
 
 const ProposalAction = ({
-  action: { event, actionType, groupCoverPhoto, groupDescription, groupName, role },
+  action: {
+    event,
+    actionType,
+    groupCoverPhoto,
+    groupDescription,
+    groupName,
+    role,
+  },
   ratified,
 }: Props) => {
   const { t } = useTranslation();
@@ -61,7 +68,13 @@ const ProposalAction = ({
     if (!role) {
       return <Typography>{t('errors.somethingWentWrong')}</Typography>;
     }
-    return <ProposalActionRole actionType={actionType} ratified={ratified} role={role} />;
+    return (
+      <ProposalActionRole
+        actionType={actionType}
+        ratified={ratified}
+        role={role}
+      />
+    );
   }
 
   return null;

@@ -26,7 +26,10 @@ export class ProposalActionsService {
     private proposalActionRolesService: ProposalActionRolesService,
   ) {}
 
-  async getProposalAction(where: FindOptionsWhere<ProposalAction>, relations?: string[]) {
+  async getProposalAction(
+    where: FindOptionsWhere<ProposalAction>,
+    relations?: string[],
+  ) {
     return this.proposalActionRepository.findOne({ where, relations });
   }
 
@@ -35,7 +38,9 @@ export class ProposalActionsService {
   }
 
   async getProposedGroupCoverPhoto(proposalActionId: number) {
-    const action = await this.getProposalAction({ id: proposalActionId }, ['images']);
+    const action = await this.getProposalAction({ id: proposalActionId }, [
+      'images',
+    ]);
     const groupCoverPhoto = action?.images.find(
       (image) => image.imageType === ImageTypes.CoverPhoto,
     );
@@ -48,8 +53,9 @@ export class ProposalActionsService {
     });
     return proposalIds.map(
       (id) =>
-        proposalActions.find((proposalAction: ProposalAction) => proposalAction.id === id) ||
-        new Error(`Could not load proposal action: ${id}`),
+        proposalActions.find(
+          (proposalAction: ProposalAction) => proposalAction.id === id,
+        ) || new Error(`Could not load proposal action: ${id}`),
     );
   }
 
@@ -61,7 +67,9 @@ export class ProposalActionsService {
     if (!event) {
       throw new UserInputError('Could not find proposal action event');
     }
-    const host = event.hosts?.find(({ status }) => status === EventAttendeeStatus.Host);
+    const host = event.hosts?.find(
+      ({ status }) => status === EventAttendeeStatus.Host,
+    );
     if (!host) {
       throw new UserInputError('Could not find proposal action event host');
     }
@@ -73,10 +81,10 @@ export class ProposalActionsService {
   }
 
   async implementCreateGroupRole(proposalActionId: number, groupId: number) {
-    const role = await this.proposalActionRolesService.getProposalActionRole({ proposalActionId }, [
-      'permission',
-      'members',
-    ]);
+    const role = await this.proposalActionRolesService.getProposalActionRole(
+      { proposalActionId },
+      ['permission', 'members'],
+    );
     if (!role) {
       throw new UserInputError('Could not find proposal action role');
     }
@@ -95,10 +103,11 @@ export class ProposalActionsService {
   }
 
   async implementChangeGroupRole(proposalActionId: number) {
-    const actionRole = await this.proposalActionRolesService.getProposalActionRole(
-      { proposalActionId },
-      ['permission', 'members'],
-    );
+    const actionRole =
+      await this.proposalActionRolesService.getProposalActionRole(
+        { proposalActionId },
+        ['permission', 'members'],
+      );
     if (!actionRole?.groupRoleId) {
       throw new UserInputError('Could not find proposal action role');
     }
@@ -122,23 +131,33 @@ export class ProposalActionsService {
       permissions: actionRole.permission,
     });
     if (userIdsToRemove?.length) {
-      await this.groupRolesService.deleteGroupRoleMembers(roleToUpdate.id, userIdsToRemove);
+      await this.groupRolesService.deleteGroupRoleMembers(
+        roleToUpdate.id,
+        userIdsToRemove,
+      );
     }
     if (actionRole.name || actionRole.color) {
-      await this.proposalActionRolesService.updateProposalActionRole(actionRole.id, {
-        oldName: actionRole.name ? roleToUpdate.name : undefined,
-        oldColor: actionRole.color ? roleToUpdate.color : undefined,
-      });
+      await this.proposalActionRolesService.updateProposalActionRole(
+        actionRole.id,
+        {
+          oldName: actionRole.name ? roleToUpdate.name : undefined,
+          oldColor: actionRole.color ? roleToUpdate.color : undefined,
+        },
+      );
     }
   }
 
   // TODO: Ensure new image file is saved in case group is deleted
-  async implementChangeGroupCoverPhoto(proposalActionId: number, groupId: number) {
+  async implementChangeGroupCoverPhoto(
+    proposalActionId: number,
+    groupId: number,
+  ) {
     const currentCoverPhoto = await this.imagesService.getImage({
       imageType: ImageTypes.CoverPhoto,
       groupId,
     });
-    const newCoverPhoto = await this.getProposedGroupCoverPhoto(proposalActionId);
+    const newCoverPhoto =
+      await this.getProposedGroupCoverPhoto(proposalActionId);
     if (!currentCoverPhoto || !newCoverPhoto) {
       throw new UserInputError('Could not find group cover photo');
     }

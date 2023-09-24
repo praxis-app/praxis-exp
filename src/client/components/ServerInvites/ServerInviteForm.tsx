@@ -18,7 +18,10 @@ import {
   ServerInvitesQuery,
 } from '../../apollo/invites/generated/ServerInvites.query';
 import { Time } from '../../constants/shared.constants';
-import { MAX_USES_OPTIONS, ServerInviteFieldNames } from '../../constants/server-invite.constants';
+import {
+  MAX_USES_OPTIONS,
+  ServerInviteFieldNames,
+} from '../../constants/server-invite.constants';
 import Flex from '../Shared/Flex';
 import PrimaryActionButton from '../Shared/PrimaryActionButton';
 
@@ -144,7 +147,9 @@ const ServerInviteForm = () => {
                         })}
                       </MenuItem>
                     ))}
-                    <MenuItem value={''}>{t('invites.form.maxUsesOptions.noLimit')}</MenuItem>
+                    <MenuItem value={''}>
+                      {t('invites.form.maxUsesOptions.noLimit')}
+                    </MenuItem>
                   </Select>
                 </FormControl>
               </FormGroup>

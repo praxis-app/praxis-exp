@@ -37,9 +37,14 @@ const DeleteGroupRoleButton = ({ role: { id, group, __typename } }: Props) => {
   };
 
   const handleClickWithConfirm = () =>
-    window.confirm(t('prompts.deleteItem', { itemType: 'role' })) && handleClick();
+    window.confirm(t('prompts.deleteItem', { itemType: 'role' })) &&
+    handleClick();
 
-  return <DeleteButton onClick={handleClickWithConfirm}>{t('roles.actions.delete')}</DeleteButton>;
+  return (
+    <DeleteButton onClick={handleClickWithConfirm}>
+      {t('roles.actions.delete')}
+    </DeleteButton>
+  );
 };
 
 export default DeleteGroupRoleButton;

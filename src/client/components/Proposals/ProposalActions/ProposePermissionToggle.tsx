@@ -29,11 +29,16 @@ const ProposePermissionToggle = ({
     return null;
   }
 
-  const permissionInput = formValues.permissions && formValues.permissions[permissionName];
+  const permissionInput =
+    formValues.permissions && formValues.permissions[permissionName];
   const isEnabled = permissions[permissionName];
-  const isChecked = !!(permissionInput !== undefined ? permissionInput : isEnabled);
+  const isChecked = !!(permissionInput !== undefined
+    ? permissionInput
+    : isEnabled);
 
-  const handleSwitchChange = ({ target: { checked } }: ChangeEvent<HTMLInputElement>) => {
+  const handleSwitchChange = ({
+    target: { checked },
+  }: ChangeEvent<HTMLInputElement>) => {
     const field = `permissions.${permissionName}`;
 
     if (!checked && isEnabled) {

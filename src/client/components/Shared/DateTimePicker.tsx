@@ -3,7 +3,12 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDateTimePicker as MuiDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 
-const DateTimePicker = ({ defaultValue, label, onChange, value }: DateTimePickerProps<any>) => (
+const DateTimePicker = ({
+  defaultValue,
+  label,
+  onChange,
+  value,
+}: DateTimePickerProps<any>) => (
   <LocalizationProvider dateAdapter={AdapterDayjs}>
     <MuiDateTimePicker
       defaultValue={defaultValue}

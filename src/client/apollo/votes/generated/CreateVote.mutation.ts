@@ -85,7 +85,10 @@ export type CreateVoteMutationFn = Apollo.MutationFunction<
  * });
  */
 export function useCreateVoteMutation(
-  baseOptions?: Apollo.MutationHookOptions<CreateVoteMutation, CreateVoteMutationVariables>,
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateVoteMutation,
+    CreateVoteMutationVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
   return Apollo.useMutation<CreateVoteMutation, CreateVoteMutationVariables>(
@@ -93,8 +96,11 @@ export function useCreateVoteMutation(
     options,
   );
 }
-export type CreateVoteMutationHookResult = ReturnType<typeof useCreateVoteMutation>;
-export type CreateVoteMutationResult = Apollo.MutationResult<CreateVoteMutation>;
+export type CreateVoteMutationHookResult = ReturnType<
+  typeof useCreateVoteMutation
+>;
+export type CreateVoteMutationResult =
+  Apollo.MutationResult<CreateVoteMutation>;
 export type CreateVoteMutationOptions = Apollo.BaseMutationOptions<
   CreateVoteMutation,
   CreateVoteMutationVariables

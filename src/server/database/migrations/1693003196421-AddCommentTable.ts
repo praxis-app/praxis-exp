@@ -9,8 +9,12 @@ export class AddCommentTable1693003196421 implements MigrationInterface {
     );
     await queryRunner.query(`ALTER TABLE "like" ADD "commentId" integer`);
     await queryRunner.query(`ALTER TABLE "image" ADD "commentId" integer`);
-    await queryRunner.query(`ALTER TABLE "like" DROP CONSTRAINT "FK_3acf7c55c319c4000e8056c1279"`);
-    await queryRunner.query(`ALTER TABLE "like" ALTER COLUMN "postId" DROP NOT NULL`);
+    await queryRunner.query(
+      `ALTER TABLE "like" DROP CONSTRAINT "FK_3acf7c55c319c4000e8056c1279"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "like" ALTER COLUMN "postId" DROP NOT NULL`,
+    );
     await queryRunner.query(
       `ALTER TABLE "like" ADD CONSTRAINT "FK_3acf7c55c319c4000e8056c1279" FOREIGN KEY ("postId") REFERENCES "post"("id") ON DELETE CASCADE ON UPDATE NO ACTION`,
     );
@@ -41,10 +45,18 @@ export class AddCommentTable1693003196421 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "comment" DROP CONSTRAINT "FK_94a85bb16d24033a2afdd5df060"`,
     );
-    await queryRunner.query(`ALTER TABLE "image" DROP CONSTRAINT "FK_09448fcefb6d065d9ad09d7a22e"`);
-    await queryRunner.query(`ALTER TABLE "like" DROP CONSTRAINT "FK_d86e0a3eeecc21faa0da415a18a"`);
-    await queryRunner.query(`ALTER TABLE "like" DROP CONSTRAINT "FK_3acf7c55c319c4000e8056c1279"`);
-    await queryRunner.query(`ALTER TABLE "like" ALTER COLUMN "postId" SET NOT NULL`);
+    await queryRunner.query(
+      `ALTER TABLE "image" DROP CONSTRAINT "FK_09448fcefb6d065d9ad09d7a22e"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "like" DROP CONSTRAINT "FK_d86e0a3eeecc21faa0da415a18a"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "like" DROP CONSTRAINT "FK_3acf7c55c319c4000e8056c1279"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "like" ALTER COLUMN "postId" SET NOT NULL`,
+    );
     await queryRunner.query(
       `ALTER TABLE "like" ADD CONSTRAINT "FK_3acf7c55c319c4000e8056c1279" FOREIGN KEY ("postId") REFERENCES "post"("id") ON DELETE CASCADE ON UPDATE NO ACTION`,
     );

@@ -225,14 +225,28 @@ export function useHomeFeedQuery(
   baseOptions?: Apollo.QueryHookOptions<HomeFeedQuery, HomeFeedQueryVariables>,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<HomeFeedQuery, HomeFeedQueryVariables>(HomeFeedDocument, options);
+  return Apollo.useQuery<HomeFeedQuery, HomeFeedQueryVariables>(
+    HomeFeedDocument,
+    options,
+  );
 }
 export function useHomeFeedLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<HomeFeedQuery, HomeFeedQueryVariables>,
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    HomeFeedQuery,
+    HomeFeedQueryVariables
+  >,
 ) {
   const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<HomeFeedQuery, HomeFeedQueryVariables>(HomeFeedDocument, options);
+  return Apollo.useLazyQuery<HomeFeedQuery, HomeFeedQueryVariables>(
+    HomeFeedDocument,
+    options,
+  );
 }
 export type HomeFeedQueryHookResult = ReturnType<typeof useHomeFeedQuery>;
-export type HomeFeedLazyQueryHookResult = ReturnType<typeof useHomeFeedLazyQuery>;
-export type HomeFeedQueryResult = Apollo.QueryResult<HomeFeedQuery, HomeFeedQueryVariables>;
+export type HomeFeedLazyQueryHookResult = ReturnType<
+  typeof useHomeFeedLazyQuery
+>;
+export type HomeFeedQueryResult = Apollo.QueryResult<
+  HomeFeedQuery,
+  HomeFeedQueryVariables
+>;
