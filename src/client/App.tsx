@@ -48,12 +48,17 @@ const router = createBrowserRouter([
         element: <Proposal />,
       },
       {
-        path: '/users/:name',
-        element: <UserProfile />,
-      },
-      {
-        path: '/users/:name/edit',
-        element: <EditUserProfile />,
+        path: '/users',
+        children: [
+          {
+            path: ':name',
+            element: <UserProfile />,
+          },
+          {
+            path: ':name/edit',
+            element: <EditUserProfile />,
+          },
+        ],
       },
     ],
   },
