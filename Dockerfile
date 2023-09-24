@@ -3,7 +3,7 @@ FROM node:18.17.1-alpine AS build_stage
 RUN apk add --update python3 build-base
 
 COPY src /app/src
-COPY uploads /app/uploads
+COPY content /app/content
 COPY package.json /app
 COPY package-lock.json /app
 COPY tsconfig.json /app
