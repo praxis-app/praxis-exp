@@ -1,5 +1,6 @@
 import { RouteObject } from 'react-router-dom';
 import EditGroup from '../pages/Groups/EditGroup';
+import EditGroupRole from '../pages/Groups/EditGroupRole';
 import GroupMemberRequests from '../pages/Groups/GroupMemberRequests';
 import GroupMembers from '../pages/Groups/GroupMembers';
 import GroupPage from '../pages/Groups/GroupPage';
@@ -32,6 +33,10 @@ const groupsRouter: RouteObject = {
     {
       path: ':name/roles',
       element: <GroupRoles />,
+    },
+    {
+      path: ':name/roles/:id/edit',
+      element: <EditGroupRole />,
     },
   ],
 };
