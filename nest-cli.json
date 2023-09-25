@@ -5,7 +5,7 @@
     "assets": [
       {
         "include": "**/*.jpeg",
-        "outDir": "dist/server"
+        "outDir": "dist"
       }
     ],
     "deleteOutDir": true
