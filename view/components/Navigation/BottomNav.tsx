@@ -6,9 +6,12 @@ import {
   Paper,
   SxProps,
 } from '@mui/material';
-import { SyntheticEvent, useState } from 'react';
+import { SyntheticEvent, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { isNavDrawerOpenVar } from '../../apollo/cache';
+import { NavigationPaths } from '../../constants/shared.constants';
+import { scrollTop } from '../../utils/shared.utils';
 
 const PAPER_STYLES: SxProps = {
   position: 'fixed',
@@ -22,44 +25,45 @@ const BottomNav = () => {
   const [value, setValue] = useState(0);
   const isNavDrawerOpen = useReactiveVar(isNavDrawerOpenVar);
 
+  const { pathname } = useLocation();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
-  // TODO: Add bottom nav functionality
-  // useEffect(() => {
-  //   if (!isNavDrawerOpen) {
-  //     const getMatching = (path: string): string => {
-  //       const match = asPath.match(path);
-  //       if (match) {
-  //         return asPath;
-  //       }
-  //       return '';
-  //     };
+  useEffect(() => {
+    if (!isNavDrawerOpen) {
+      const getMatching = (path: string): string => {
+        const match = pathname.match(path);
+        if (match) {
+          return pathname;
+        }
+        return '';
+      };
 
-  //     switch (asPath) {
-  //       case NavigationPaths.Home:
-  //         setValue(0);
-  //         break;
-  //       case getMatching('groups'):
-  //       case NavigationPaths.Groups:
-  //         setValue(2);
-  //         break;
-  //       case getMatching('events'):
-  //       case NavigationPaths.Events:
-  //         setValue(1);
-  //         break;
-  //       default:
-  //         setValue(3);
-  //     }
-  //   }
-  // }, [asPath, isNavDrawerOpen]);
+      switch (pathname) {
+        case NavigationPaths.Home:
+          setValue(0);
+          break;
+        case getMatching('groups'):
+        case NavigationPaths.Groups:
+          setValue(2);
+          break;
+        case getMatching('events'):
+        case NavigationPaths.Events:
+          setValue(1);
+          break;
+        default:
+          setValue(3);
+      }
+    }
+  }, [pathname, isNavDrawerOpen]);
 
-  // const handleHomeButtonClick = () => {
-  //   if (asPath === NavigationPaths.Home) {
-  //     scrollTop();
-  //   } else {
-  //     Router.push(NavigationPaths.Home);
-  //   }
-  // };
+  const handleHomeButtonClick = () => {
+    if (pathname === NavigationPaths.Home) {
+      scrollTop();
+    } else {
+      navigate(NavigationPaths.Home);
+    }
+  };
 
   const handleNavChange = (
     _: SyntheticEvent<Element, Event>,
@@ -74,16 +78,22 @@ const BottomNav = () => {
         showLabels
         value={value}
       >
-        <BottomNavigationAction icon={<Home />} label={t('navigation.home')} />
+        <BottomNavigationAction
+          icon={<Home />}
+          label={t('navigation.home')}
+          onClick={handleHomeButtonClick}
+        />
 
         <BottomNavigationAction
           icon={<EventNote />}
           label={t('navigation.events')}
+          onClick={() => navigate(NavigationPaths.Events)}
         />
 
         <BottomNavigationAction
           icon={<Group />}
           label={t('navigation.groups')}
+          onClick={() => navigate(NavigationPaths.Groups)}
         />
 
         <BottomNavigationAction
