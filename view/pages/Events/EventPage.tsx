@@ -46,7 +46,7 @@ const EventPage = () => {
         variables: { id: parseInt(id), isLoggedIn },
       });
     }
-  }, [id, getEvent]);
+  }, [id, getEvent, isDeleting, isLoggedIn]);
 
   if (loading) {
     return <ProgressBar />;
