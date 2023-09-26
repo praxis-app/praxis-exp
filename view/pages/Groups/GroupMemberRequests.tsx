@@ -1,5 +1,3 @@
-// TODO: Add remaining functionality - below is a WIP
-
 import {
   Card,
   CardContent as MuiCardContent,
