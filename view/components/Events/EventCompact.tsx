@@ -42,6 +42,8 @@ const EventCompact = ({ event, isLast }: Props) => {
   const canManageEvents = group?.myPermissions?.manageEvents;
 
   const imageSrc = getImagePath(coverPhoto.id);
+  const imageSize = isDesktop ? '90px' : '65px';
+
   const eventPagePath = getEventPath(id);
   const editEventPath = `${eventPagePath}/edit`;
   const startDate = dayjs(startsAt).format('ddd, MMM D, YYYY');
@@ -108,19 +110,16 @@ const EventCompact = ({ event, isLast }: Props) => {
       <Flex justifyContent="space-between">
         <Flex width="100%">
           <Link href={eventPagePath}>
-            <Box width={isDesktop ? '90px' : '65px'} marginRight={1.5}>
-              {/* TODO: Add image here
-              <Image
-                alt={t('images.labels.coverPhoto')}
-                style={{ borderRadius: '8px' }}
-                blurDataURL={imageSrc}
-                layout="responsive"
-                placeholder="blur"
-                src={imageSrc}
-                height={300}
-                width={300}
-              /> */}
-            </Box>
+            <Box
+              alt={t('images.labels.coverPhoto')}
+              borderRadius="8px"
+              component="img"
+              width={imageSize}
+              height={imageSize}
+              marginRight={1.5}
+              src={imageSrc}
+              sx={{ objectFit: 'cover' }}
+            />
           </Link>
 
           <Box marginTop={-0.5} width="100%">
