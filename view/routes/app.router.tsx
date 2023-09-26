@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../components/App/Layout';
 import Login from '../pages/Auth/Login';
-import GroupsIndex from '../pages/Groups/GroupsIndex';
 import Home from '../pages/Home';
 import ServerInvite from '../pages/Invites/ServerInvite';
 import ServerInvites from '../pages/Invites/ServerInvites';
@@ -39,10 +38,6 @@ const appRouter = createBrowserRouter([
       {
         path: 'proposals/:id',
         element: <Proposal />,
-      },
-      {
-        path: 'groups',
-        element: <GroupsIndex />,
       },
       groupsRouter,
       signUpRouter,

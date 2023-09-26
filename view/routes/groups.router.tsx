@@ -6,10 +6,15 @@ import GroupMembers from '../pages/Groups/GroupMembers';
 import GroupPage from '../pages/Groups/GroupPage';
 import GroupRoles from '../pages/Groups/GroupRoles';
 import GroupSettings from '../pages/Groups/GroupSettings';
+import GroupsIndex from '../pages/Groups/GroupsIndex';
 
 const groupsRouter: RouteObject = {
   path: '/groups',
   children: [
+    {
+      path: '',
+      element: <GroupsIndex />,
+    },
     {
       path: ':name',
       element: <GroupPage />,
