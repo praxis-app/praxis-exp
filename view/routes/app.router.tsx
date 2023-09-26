@@ -6,6 +6,7 @@ import ServerInvite from '../pages/Invites/ServerInvite';
 import ServerInvites from '../pages/Invites/ServerInvites';
 import Post from '../pages/Posts/Post';
 import Proposal from '../pages/Proposals/Proposal';
+import eventsRouter from './events.router';
 import groupsRouter from './groups.router';
 import signUpRouter from './sign-up.router';
 import usersRouter from './users.router';
@@ -39,6 +40,7 @@ const appRouter = createBrowserRouter([
         path: 'proposals/:id',
         element: <Proposal />,
       },
+      eventsRouter,
       groupsRouter,
       signUpRouter,
       usersRouter,
