@@ -45,8 +45,9 @@ const EventsIndex = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
+  const tabParam = searchParams.get('tab');
+
   useEffect(() => {
-    const tabParam = searchParams.get('tab');
     let input: EventsInput = {};
 
     if (!tabParam) {
@@ -67,7 +68,7 @@ const EventsIndex = () => {
     getEvents({
       variables: { input, isLoggedIn },
     });
-  }, [searchParams.get('tab'), setTab, getEvents, isLoggedIn]);
+  }, [tabParam, setTab, getEvents, isLoggedIn]);
 
   const events = data?.events || [];
   const pathPrefix = `${NavigationPaths.Events}${TAB_QUERY_PARAM}`;

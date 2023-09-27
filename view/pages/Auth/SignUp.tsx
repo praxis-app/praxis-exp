@@ -44,7 +44,7 @@ const SignUp = () => {
         },
       });
     }
-  }, [isLoggedIn, token]);
+  }, [isLoggedIn, token, navigate, getServerInvite]);
 
   if (serverInviteError) {
     return <Typography>{t('invites.prompts.expiredOrInvalid')}</Typography>;

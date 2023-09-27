@@ -26,7 +26,7 @@ const EditGroupRole = () => {
     if (id) {
       getRole({ variables: { id: parseInt(id) } });
     }
-  }, [name]);
+  }, [getRole, id]);
 
   const role = data?.groupRole;
   const groupPath = getGroupPath(name || '');

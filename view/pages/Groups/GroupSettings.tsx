@@ -26,7 +26,7 @@ const GroupSettings = () => {
     if (name) {
       getGroup({ variables: { name } });
     }
-  }, [name]);
+  }, [name, getGroup]);
 
   if (isDeniedAccess(error) || (group && !canManageSettings)) {
     return <Typography>{t('prompts.permissionDenied')}</Typography>;

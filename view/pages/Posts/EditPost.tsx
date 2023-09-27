@@ -20,7 +20,7 @@ const EditPost = () => {
         variables: { id: parseInt(id) },
       });
     }
-  }, [id]);
+  }, [id, getPost]);
 
   if (error) {
     return <Typography>{t('errors.somethingWentWrong')}</Typography>;

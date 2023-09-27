@@ -17,7 +17,7 @@ const EditProposal = () => {
         variables: { id: parseInt(id) },
       });
     }
-  }, [id]);
+  }, [id, getProposal]);
 
   if (error) {
     return <Typography>{t('errors.somethingWentWrong')}</Typography>;

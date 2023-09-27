@@ -27,7 +27,7 @@ const GroupRoles = () => {
     if (name) {
       getGroupRoles({ variables: { name } });
     }
-  }, [name]);
+  }, [name, getGroupRoles]);
 
   if (isDeniedAccess(error) || (group && !group.myPermissions.manageRoles)) {
     return <Typography>{t('prompts.permissionDenied')}</Typography>;

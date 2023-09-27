@@ -25,7 +25,7 @@ const PostPage = () => {
         },
       });
     }
-  }, [id]);
+  }, [id, getPost, isLoggedIn]);
 
   if (loading) {
     return <ProgressBar />;

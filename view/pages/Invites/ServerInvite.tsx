@@ -34,7 +34,7 @@ const ServerInvite = () => {
         },
       });
     }
-  }, [isLoggedIn, token]);
+  }, [isLoggedIn, token, navigate, getServerInvite]);
 
   if (!token) {
     return <Typography>{t('invites.prompts.inviteRequired')}</Typography>;

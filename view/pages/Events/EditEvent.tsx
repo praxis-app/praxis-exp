@@ -31,7 +31,7 @@ const EditEvent = () => {
         variables: { id: parseInt(id) },
       });
     }
-  }, [id]);
+  }, [id, getEvent]);
 
   if (error) {
     return <Typography>{t('errors.somethingWentWrong')}</Typography>;
