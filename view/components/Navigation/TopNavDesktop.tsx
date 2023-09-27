@@ -53,7 +53,7 @@ const TopNavDesktop = () => {
   const userProfilePath = getUserProfilePath(me?.name);
   const signUpPath = isFirstUser
     ? NavigationPaths.SignUp
-    : `/signup/${inviteToken}`;
+    : `${NavigationPaths.SignUp}/${inviteToken}`;
 
   const handleMenuButtonClick = (event: MouseEvent<HTMLButtonElement>) =>
     setMenuAnchorEl(event.currentTarget);

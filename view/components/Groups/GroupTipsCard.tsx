@@ -1,10 +1,10 @@
 import { useReactiveVar } from '@apollo/client';
 import {
   Card,
-  CardContent as MuiCardContent,
   CardHeader,
-  styled,
+  CardContent as MuiCardContent,
   Typography,
+  styled,
 } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { inviteTokenVar } from '../../apollo/cache';
@@ -38,7 +38,7 @@ const GroupTipsCard = () => {
           {inviteToken && (
             <>
               <Link
-                href={`/signup/${inviteToken}`}
+                href={`${NavigationPaths.SignUp}/${inviteToken}`}
                 sx={{ marginRight: '0.5ch' }}
               >
                 {t('users.actions.signUp')}

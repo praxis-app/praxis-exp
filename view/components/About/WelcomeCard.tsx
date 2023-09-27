@@ -22,7 +22,7 @@ const WelcomeCard = () => {
 
   const signUpPath = data?.isFirstUser
     ? NavigationPaths.SignUp
-    : `/signup/${inviteToken}`;
+    : `${NavigationPaths.SignUp}/${inviteToken}`;
 
   return (
     <Card>

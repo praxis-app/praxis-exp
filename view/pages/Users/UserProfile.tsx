@@ -35,7 +35,7 @@ const UserProfile = () => {
           {inviteToken && (
             <>
               <Link
-                href={`/signup/${inviteToken}`}
+                href={`${NavigationPaths.SignUp}/${inviteToken}`}
                 sx={{ marginRight: '0.5ch' }}
               >
                 {t('users.actions.signUp')}
