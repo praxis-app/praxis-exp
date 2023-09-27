@@ -9,7 +9,7 @@ import PostCard from '../../components/Posts/PostCard';
 import ProgressBar from '../../components/Shared/ProgressBar';
 import { isDeniedAccess } from '../../utils/error.utils';
 
-const Post = () => {
+const PostPage = () => {
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const [getPost, { data, loading, error }] = usePostLazyQuery({});
 
@@ -45,4 +45,4 @@ const Post = () => {
   return <PostCard post={data.post} />;
 };
 
-export default Post;
+export default PostPage;
