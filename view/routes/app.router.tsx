@@ -8,6 +8,7 @@ import Post from '../pages/Posts/Post';
 import Proposal from '../pages/Proposals/Proposal';
 import eventsRouter from './events.router';
 import groupsRouter from './groups.router';
+import rolesRouter from './roles.router';
 import signUpRouter from './sign-up.router';
 import usersRouter from './users.router';
 
@@ -42,6 +43,7 @@ const appRouter = createBrowserRouter([
       },
       eventsRouter,
       groupsRouter,
+      rolesRouter,
       signUpRouter,
       usersRouter,
     ],
