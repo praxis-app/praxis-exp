@@ -29,7 +29,7 @@ const GroupPage = () => {
         variables: { name, isLoggedIn },
       });
     }
-  }, [name]);
+  }, [name, isLoggedIn, getGroup]);
 
   if (loading) {
     return <ProgressBar />;

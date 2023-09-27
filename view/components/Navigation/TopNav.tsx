@@ -58,7 +58,7 @@ const TopNav = ({ appBarProps }: Props) => {
     ...(isDesktop ? desktopToolbarStyles : {}),
   };
 
-  const renderBrand = () => {
+  const renderBrand = () => (
     // TODO: Add reload functionality
     // if (asPath === NavigationPaths.Home) {
     //   return (
@@ -67,12 +67,11 @@ const TopNav = ({ appBarProps }: Props) => {
     //     </LevelOneHeading>
     //   );
     // }
-    return (
-      <Link href={NavigationPaths.Home}>
-        <LevelOneHeading sx={brandStyles}>{t('brand')}</LevelOneHeading>
-      </Link>
-    );
-  };
+
+    <Link href={NavigationPaths.Home}>
+      <LevelOneHeading sx={brandStyles}>{t('brand')}</LevelOneHeading>
+    </Link>
+  );
 
   return (
     <AppBar role="banner" position="fixed" sx={appBarStyles} {...appBarProps}>

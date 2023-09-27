@@ -26,9 +26,9 @@ const EditRoleTabs = ({ role }: Props) => {
   const isAboveSmall = useAboveBreakpoint('sm');
 
   const isGroupRole = 'group' in role;
+  const tabParam = searchParams.get('tab');
 
   useEffect(() => {
-    const tabParam = searchParams.get('tab');
     if (tabParam === EditRoleTabNames.Permissions) {
       setTab(1);
       return;
@@ -38,7 +38,7 @@ const EditRoleTabs = ({ role }: Props) => {
       return;
     }
     setTab(0);
-  }, [searchParams.get('tab')]);
+  }, [tabParam, setTab]);
 
   const handleTabChange = (
     _: SyntheticEvent<Element, Event>,

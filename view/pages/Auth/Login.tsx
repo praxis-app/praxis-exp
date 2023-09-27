@@ -14,7 +14,7 @@ const Login = () => {
     if (isLoggedIn) {
       navigate(NavigationPaths.Home);
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, navigate]);
 
   if (isLoggedIn) {
     return <ProgressBar />;

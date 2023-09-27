@@ -39,7 +39,7 @@ const GroupMemberRequests = () => {
         variables: { groupName: name },
       });
     }
-  }, [name]);
+  }, [name, getGroupMembersRequests]);
 
   if (isDeniedAccess(error)) {
     return <Typography>{t('prompts.permissionDenied')}</Typography>;

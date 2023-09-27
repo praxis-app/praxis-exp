@@ -25,7 +25,7 @@ const ProposalPage = () => {
         },
       });
     }
-  }, []);
+  }, [id, isLoggedIn, getProposal]);
 
   if (loading) {
     return <ProgressBar />;

@@ -24,7 +24,7 @@ const EditServerRole = () => {
         variables: { id: parseInt(id) },
       });
     }
-  }, [id]);
+  }, [id, getServerRole]);
 
   const me = data?.me;
   const role = data?.serverRole;

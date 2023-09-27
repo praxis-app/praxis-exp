@@ -39,7 +39,7 @@ const GroupMembers = () => {
         variables: { name },
       });
     }
-  }, [name]);
+  }, [name, getGroupMembers]);
 
   if (error) {
     return <Typography>{t('errors.somethingWentWrong')}</Typography>;

@@ -23,7 +23,7 @@ const EditGroup = () => {
     if (name) {
       getGroup({ variables: { name } });
     }
-  }, [name]);
+  }, [name, getGroup]);
 
   if (error) {
     return <Typography>{t('errors.somethingWentWrong')}</Typography>;
