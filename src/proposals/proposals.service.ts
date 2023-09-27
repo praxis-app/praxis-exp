@@ -7,7 +7,6 @@ import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FileUpload } from 'graphql-upload';
 import { FindOptionsWhere, In, Repository } from 'typeorm';
-import { DefaultGroupSetting } from '../groups/groups.constants';
 import { GroupsService } from '../groups/groups.service';
 import { deleteImageFile, saveImage } from '../images/image.utils';
 import { ImagesService, ImageTypes } from '../images/images.service';
@@ -28,6 +27,11 @@ import {
   ProposalActionType,
   ProposalStage,
 } from './proposals.constants';
+import {
+  GROUP_RATIFICATION_THRESHOLD,
+  GROUP_RESERVATIONS_LIMIT,
+  GROUP_STAND_ASIDES_LIMIT,
+} from '../groups/groups.constants';
 
 type ProposalWithCommentCount = Proposal & { commentCount: number };
 
@@ -248,8 +252,7 @@ export class ProposalsService {
       votes,
     } = proposal;
 
-    const ratificationThreshold =
-      DefaultGroupSetting.RatificationThreshold * 0.01;
+    const ratificationThreshold = GROUP_RATIFICATION_THRESHOLD * 0.01;
 
     return this.hasConsensus(ratificationThreshold, members, votes);
   }
@@ -264,8 +267,8 @@ export class ProposalsService {
 
     return (
       agreements.length >= groupMembers.length * ratificationThreshold &&
-      reservations.length <= DefaultGroupSetting.ReservationsLimit &&
-      standAsides.length <= DefaultGroupSetting.StandAsidesLimit &&
+      reservations.length <= GROUP_RESERVATIONS_LIMIT &&
+      standAsides.length <= GROUP_STAND_ASIDES_LIMIT &&
       blocks.length === 0
     );
   }

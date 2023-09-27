@@ -4,16 +4,6 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-declare global {
-  namespace NodeJS {
-    interface ProcessEnv {
-      CLIENT_PORT?: string;
-      SERVER_PORT?: string;
-      NODE_ENV?: string;
-    }
-  }
-}
-
 // https://vitejs.dev/config
 export default defineConfig({
   plugins: [react()],

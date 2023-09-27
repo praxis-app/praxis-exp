@@ -87,6 +87,5 @@ export const getRandomString = () =>
     .map((c) => (Math.random() < 0.5 ? c : c.toUpperCase()))
     .join('');
 
-export const getTypedKeys = <T>(object: T): (keyof T)[] => {
-  return Object.keys(object as {}) as (keyof T)[];
-};
+export const getTypedKeys = <T>(obj: T): (keyof T)[] =>
+  Object.keys(obj as object) as (keyof T)[];
