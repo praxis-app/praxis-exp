@@ -1,14 +1,14 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../components/App/Layout';
-import Login from '../pages/Auth/Login';
 import Home from '../pages/Home';
 import ServerInvite from '../pages/Invites/ServerInvite';
 import ServerInvites from '../pages/Invites/ServerInvites';
-import Post from '../pages/Posts/Post';
-import Proposal from '../pages/Proposals/Proposal';
+import authRouter from './auth.router';
 import eventsRouter from './events.router';
 import groupsRouter from './groups.router';
-import signUpRouter from './sign-up.router';
+import postsRouter from './posts.router';
+import proposalsRouter from './proposals.router';
+import rolesRouter from './roles.router';
 import usersRouter from './users.router';
 
 const appRouter = createBrowserRouter([
@@ -21,10 +21,6 @@ const appRouter = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: 'login',
-        element: <Login />,
-      },
-      {
         path: 'invites',
         element: <ServerInvites />,
       },
@@ -32,17 +28,12 @@ const appRouter = createBrowserRouter([
         path: 'i/:token',
         element: <ServerInvite />,
       },
-      {
-        path: 'posts/:id',
-        element: <Post />,
-      },
-      {
-        path: 'proposals/:id',
-        element: <Proposal />,
-      },
+      authRouter,
       eventsRouter,
       groupsRouter,
-      signUpRouter,
+      postsRouter,
+      proposalsRouter,
+      rolesRouter,
       usersRouter,
     ],
   },

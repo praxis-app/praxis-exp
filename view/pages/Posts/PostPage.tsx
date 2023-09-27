@@ -4,28 +4,28 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useParams } from 'react-router-dom';
 import { isLoggedInVar } from '../../apollo/cache';
-import { useProposalLazyQuery } from '../../apollo/proposals/generated/Proposal.query';
-import ProposalCard from '../../components/Proposals/ProposalCard';
+import { usePostLazyQuery } from '../../apollo/posts/generated/Post.query';
+import PostCard from '../../components/Posts/PostCard';
 import ProgressBar from '../../components/Shared/ProgressBar';
 import { isDeniedAccess } from '../../utils/error.utils';
 
-const Proposal = () => {
+const PostPage = () => {
   const isLoggedIn = useReactiveVar(isLoggedInVar);
-  const [getProposal, { data, loading, error }] = useProposalLazyQuery();
+  const [getPost, { data, loading, error }] = usePostLazyQuery({});
 
-  const { t } = useTranslation();
   const { id } = useParams();
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (id) {
-      getProposal({
+      getPost({
         variables: {
           id: parseInt(id),
           isLoggedIn,
         },
       });
     }
-  }, []);
+  }, [id]);
 
   if (loading) {
     return <ProgressBar />;
@@ -42,7 +42,7 @@ const Proposal = () => {
     return null;
   }
 
-  return <ProposalCard proposal={data.proposal} />;
+  return <PostCard post={data.post} />;
 };
 
-export default Proposal;
+export default PostPage;

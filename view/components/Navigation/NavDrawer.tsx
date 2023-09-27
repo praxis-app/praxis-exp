@@ -99,7 +99,7 @@ const NavDrawer = () => {
     if (!meData?.me) {
       const signUpPath = isFirstUserData?.isFirstUser
         ? NavigationPaths.SignUp
-        : `/signup/${inviteToken}`;
+        : `${NavigationPaths.SignUp}/${inviteToken}`;
 
       return (
         <>
