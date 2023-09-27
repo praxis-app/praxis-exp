@@ -4,13 +4,14 @@ import Login from '../pages/Auth/Login';
 import Home from '../pages/Home';
 import ServerInvite from '../pages/Invites/ServerInvite';
 import ServerInvites from '../pages/Invites/ServerInvites';
-import Proposal from '../pages/Proposals/Proposal';
+import ProposalPage from '../pages/Proposals/ProposalPage';
 import eventsRouter from './events.router';
 import groupsRouter from './groups.router';
 import postsRouter from './posts.router';
 import rolesRouter from './roles.router';
 import signUpRouter from './sign-up.router';
 import usersRouter from './users.router';
+import proposalsRouter from './proposals.router';
 
 const appRouter = createBrowserRouter([
   {
@@ -33,13 +34,10 @@ const appRouter = createBrowserRouter([
         path: 'i/:token',
         element: <ServerInvite />,
       },
-      {
-        path: 'proposals/:id',
-        element: <Proposal />,
-      },
       eventsRouter,
       groupsRouter,
       postsRouter,
+      proposalsRouter,
       rolesRouter,
       signUpRouter,
       usersRouter,

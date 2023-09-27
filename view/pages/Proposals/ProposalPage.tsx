@@ -9,7 +9,7 @@ import ProposalCard from '../../components/Proposals/ProposalCard';
 import ProgressBar from '../../components/Shared/ProgressBar';
 import { isDeniedAccess } from '../../utils/error.utils';
 
-const Proposal = () => {
+const ProposalPage = () => {
   const isLoggedIn = useReactiveVar(isLoggedInVar);
   const [getProposal, { data, loading, error }] = useProposalLazyQuery();
 
@@ -45,4 +45,4 @@ const Proposal = () => {
   return <ProposalCard proposal={data.proposal} />;
 };
 
-export default Proposal;
+export default ProposalPage;
