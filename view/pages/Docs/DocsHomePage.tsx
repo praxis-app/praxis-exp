@@ -55,17 +55,14 @@ const DocsHomePage = () => {
       </Typography>
 
       <Box margin="0 auto" paddingBottom={2.5} paddingTop={1} width="90%">
-        {/* <Image
+        <Box
           alt="Role Change Proposal"
-          blurDataURL="/images/role-change-proposal.png"
-          src="/images/role-change-proposal.png"
-          objectFit="contain"
-          layout="responsive"
-          loading="lazy"
-          placeholder="blur"
-          width={300}
-          height={190}
-        /> */}
+          component="img"
+          width="100%"
+          height="auto"
+          src="/assets/images/role-change-proposal.png"
+          sx={{ objectFit: 'cover' }}
+        />
 
         <Typography
           color="text.secondary"
