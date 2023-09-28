@@ -3,10 +3,15 @@ import EditUserProfile from '../pages/Users/EditUserProfile';
 import Followers from '../pages/Users/Followers';
 import Following from '../pages/Users/Following';
 import UserProfile from '../pages/Users/UserProfile';
+import UsersIndex from '../pages/Users/UsersIndex';
 
 const usersRouter: RouteObject = {
   path: '/users',
   children: [
+    {
+      path: '',
+      element: <UsersIndex />,
+    },
     {
       path: ':name',
       element: <UserProfile />,
