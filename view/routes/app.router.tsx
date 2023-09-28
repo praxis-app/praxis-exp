@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../components/App/Layout';
+import DocsHomePage from '../pages/Docs/DocsHomePage';
 import Home from '../pages/Home';
 import ServerInvite from '../pages/Invites/ServerInvite';
 import ServerInvites from '../pages/Invites/ServerInvites';
@@ -27,6 +28,10 @@ const appRouter = createBrowserRouter([
       {
         path: 'i/:token',
         element: <ServerInvite />,
+      },
+      {
+        path: 'docs',
+        element: <DocsHomePage />,
       },
       authRouter,
       eventsRouter,
