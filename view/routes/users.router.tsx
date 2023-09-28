@@ -1,7 +1,8 @@
 import { RouteObject } from 'react-router-dom';
-import UserProfile from '../pages/Users/UserProfile';
 import EditUserProfile from '../pages/Users/EditUserProfile';
 import Followers from '../pages/Users/Followers';
+import Following from '../pages/Users/Following';
+import UserProfile from '../pages/Users/UserProfile';
 
 const usersRouter: RouteObject = {
   path: '/users',
@@ -17,6 +18,10 @@ const usersRouter: RouteObject = {
     {
       path: ':name/followers',
       element: <Followers />,
+    },
+    {
+      path: ':name/following',
+      element: <Following />,
     },
   ],
 };
