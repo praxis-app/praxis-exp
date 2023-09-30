@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLSchema } from 'graphql';
 import { applyMiddleware } from 'graphql-middleware';
 import { GraphQLUpload } from 'graphql-upload';
@@ -25,7 +26,6 @@ import { ShieldModule } from './shield/shield.module';
 import { shieldPermissions } from './shield/shield.permissions';
 import { UsersModule } from './users/users.module';
 import { VotesModule } from './votes/votes.module';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
 const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
   driver: ApolloDriver,
@@ -55,7 +55,7 @@ const DatabaseModule = TypeOrmModule.forRootAsync({
     password: configService.get('DB_PASSWORD'),
     port: parseInt(configService.get('DB_PORT') as string),
     synchronize: configService.get('NODE_ENV') === Environment.Development,
-    entities: [__dirname + '/../**/*{.entity,.model}.js'],
+    entities: [__dirname + '/**/*{.entity,.model}.js'],
   }),
 });
 

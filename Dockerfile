@@ -32,4 +32,7 @@ FROM node:18.17.1-alpine AS runtime_stage
 
 COPY --from=build_stage /app /app
 
+# TODO: Remove after testing
+RUN ls /app/dist
+
 CMD [ "node", "/app/dist/main.js" ]
