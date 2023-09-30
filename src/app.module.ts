@@ -3,7 +3,6 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ServeStaticModule } from '@nestjs/serve-static';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLSchema } from 'graphql';
 import { applyMiddleware } from 'graphql-middleware';
 import { GraphQLUpload } from 'graphql-upload';
@@ -12,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { CommentsModule } from './comments/comments.module';
 import { ContextModule } from './context/context.module';
 import { ContextService } from './context/context.service';
+import { DatabaseModule } from './database/database.module';
 import { DataloaderModule } from './dataloader/dataloader.module';
 import { EventsModule } from './events/events.module';
 import { GroupsModule } from './groups/groups.module';
@@ -42,20 +42,6 @@ const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
     resolvers: { Upload: GraphQLUpload },
     transformSchema: (schema: GraphQLSchema) =>
       applyMiddleware(schema, shieldPermissions),
-  }),
-});
-
-const DatabaseModule = TypeOrmModule.forRootAsync({
-  inject: [ConfigService],
-  useFactory: (configService: ConfigService) => ({
-    type: 'postgres',
-    host: configService.get('DB_HOST'),
-    database: configService.get('DB_SCHEMA'),
-    username: configService.get('DB_USERNAME'),
-    password: configService.get('DB_PASSWORD'),
-    port: parseInt(configService.get('DB_PORT') as string),
-    synchronize: configService.get('NODE_ENV') === Environment.Development,
-    entities: [__dirname + '/**/*{.entity,.model}.js'],
   }),
 });
 
