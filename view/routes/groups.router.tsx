@@ -1,12 +1,12 @@
 import { RouteObject } from 'react-router-dom';
-import EditGroup from '../pages/Groups/EditGroup';
-import EditGroupRole from '../pages/Groups/EditGroupRole';
-import GroupMemberRequests from '../pages/Groups/GroupMemberRequests';
-import GroupMembers from '../pages/Groups/GroupMembers';
-import GroupPage from '../pages/Groups/GroupPage';
-import GroupRoles from '../pages/Groups/GroupRoles';
-import GroupSettings from '../pages/Groups/GroupSettings';
-import GroupsIndex from '../pages/Groups/GroupsIndex';
+import EditGroup from '../components/Pages/Groups/EditGroup';
+import EditGroupRole from '../components/Pages/Groups/EditGroupRole';
+import GroupMemberRequests from '../components/Pages/Groups/GroupMemberRequests';
+import GroupMembers from '../components/Pages/Groups/GroupMembers';
+import GroupPage from '../components/Pages/Groups/GroupPage';
+import GroupRoles from '../components/Pages/Groups/GroupRoles';
+import GroupSettings from '../components/Pages/Groups/GroupSettings';
+import GroupsIndex from '../components/Pages/Groups/GroupsIndex';
 
 const groupsRouter: RouteObject = {
   path: '/groups',

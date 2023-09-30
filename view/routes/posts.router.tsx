@@ -1,6 +1,6 @@
 import { RouteObject } from 'react-router-dom';
-import EditPost from '../pages/Posts/EditPost';
-import PostPage from '../pages/Posts/PostPage';
+import EditPost from '../components/Pages/Posts/EditPost';
+import PostPage from '../components/Pages/Posts/PostPage';
 
 const postsRouter: RouteObject = {
   path: '/posts',
