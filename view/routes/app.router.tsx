@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../components/App/Layout';
-import DocsHomePage from '../pages/Docs/DocsHomePage';
-import Home from '../pages/Home';
-import ServerInvite from '../pages/Invites/ServerInvite';
-import ServerInvites from '../pages/Invites/ServerInvites';
+import DocsHomePage from '../components/Pages/Docs/DocsHomePage';
+import Home from '../components/Pages/Home';
+import ServerInvite from '../components/Pages/Invites/ServerInvite';
+import ServerInvites from '../components/Pages/Invites/ServerInvites';
 import authRouter from './auth.router';
 import eventsRouter from './events.router';
 import groupsRouter from './groups.router';

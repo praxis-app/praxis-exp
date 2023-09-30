@@ -1,9 +1,9 @@
 import { RouteObject } from 'react-router-dom';
-import EditUserProfile from '../pages/Users/EditUserProfile';
-import Followers from '../pages/Users/Followers';
-import Following from '../pages/Users/Following';
-import UserProfile from '../pages/Users/UserProfile';
-import UsersIndex from '../pages/Users/UsersIndex';
+import EditUserProfile from '../components/Pages/Users/EditUserProfile';
+import Followers from '../components/Pages/Users/Followers';
+import Following from '../components/Pages/Users/Following';
+import UserProfile from '../components/Pages/Users/UserProfile';
+import UsersIndex from '../components/Pages/Users/UsersIndex';
 
 const usersRouter: RouteObject = {
   path: '/users',
