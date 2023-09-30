@@ -5,6 +5,7 @@ RUN apk add --update python3 build-base
 COPY src /app/src
 COPY view /app/view
 COPY content /app/content
+COPY database /app/database
 
 COPY package.json /app
 COPY package-lock.json /app
