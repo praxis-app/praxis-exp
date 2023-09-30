@@ -11,7 +11,6 @@ import { AuthModule } from './auth/auth.module';
 import { CommentsModule } from './comments/comments.module';
 import { ContextModule } from './context/context.module';
 import { ContextService } from './context/context.service';
-import { DatabaseModule } from './database/database.module';
 import { DataloaderModule } from './dataloader/dataloader.module';
 import { EventsModule } from './events/events.module';
 import { GroupsModule } from './groups/groups.module';
@@ -26,8 +25,9 @@ import { ShieldModule } from './shield/shield.module';
 import { shieldPermissions } from './shield/shield.permissions';
 import { UsersModule } from './users/users.module';
 import { VotesModule } from './votes/votes.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
-export const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
+const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
   driver: ApolloDriver,
   imports: [ContextModule],
   inject: [ConfigService, ContextService],
@@ -45,14 +45,29 @@ export const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
   }),
 });
 
+const DatabaseModule = TypeOrmModule.forRootAsync({
+  inject: [ConfigService],
+  useFactory: (configService: ConfigService) => ({
+    type: 'postgres',
+    host: configService.get('DB_HOST'),
+    database: configService.get('DB_SCHEMA'),
+    username: configService.get('DB_USERNAME'),
+    password: configService.get('DB_PASSWORD'),
+    port: parseInt(configService.get('DB_PORT') as string),
+    synchronize: configService.get('NODE_ENV') === Environment.Development,
+    entities: [__dirname + '/../**/*{.entity,.model}.js'],
+  }),
+});
+
+const ViewModule = ServeStaticModule.forRoot({
+  rootPath: join(__dirname, 'view'),
+  exclude: ['/api/(.*)', '/graphql'],
+  renderPath: '/*',
+});
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, 'view'),
-      exclude: ['/api/(.*)', '/graphql'],
-      renderPath: '/*',
-    }),
     ApolloModule,
     AuthModule,
     CommentsModule,
@@ -68,6 +83,7 @@ export const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
     ServerRolesModule,
     ShieldModule,
     UsersModule,
+    ViewModule,
     VotesModule,
   ],
 })

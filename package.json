@@ -20,8 +20,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "typeorm": "typeorm-ts-node-esm",
-    "typeorm:gen": "npm run typeorm migration:generate -- -d ./src/database/data-source.ts",
-    "typeorm:run": "npm run typeorm migration:run -- -d ./src/database/data-source.ts"
+    "typeorm:gen": "npm run typeorm migration:generate -- -d ./database/data-source.ts",
+    "typeorm:run": "npm run typeorm migration:run -- -d ./database/data-source.ts"
   },
   "dependencies": {
     "@apollo/client": "^3.8.3",
