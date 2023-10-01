@@ -15,7 +15,7 @@ const DocsHomePage = () => {
 
   return (
     <Box marginBottom={15} marginTop={isDesktop ? 0 : 1}>
-      <LevelOneHeading header>What is Praxis?</LevelOneHeading>
+      <LevelOneHeading header>What is Praxis? 💥</LevelOneHeading>
 
       <Typography marginBottom={3}>
         Welcome to the Praxis documentation! This page will give you a brief
