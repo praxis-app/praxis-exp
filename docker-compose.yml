@@ -7,7 +7,7 @@ services:
       context: .
       target: runtime_stage
     volumes:
-      - app:/app
+      - content:/app/content
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     command: node /app/dist/main.js
@@ -35,5 +35,5 @@ services:
 networks:
   webnet:
 volumes:
-  app:
+  content:
   pgdata:
