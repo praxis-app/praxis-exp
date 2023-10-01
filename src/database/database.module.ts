@@ -15,7 +15,7 @@ import { Environment } from '../shared/shared.constants';
         password: configService.get('DB_PASSWORD'),
         port: parseInt(configService.get('DB_PORT') as string),
         synchronize: configService.get('NODE_ENV') === Environment.Development,
-        entities: [__dirname + '/../**/*{.entity,.model}.js'],
+        entities: [__dirname + '/../**/*.model.js'],
       }),
     }),
   ],

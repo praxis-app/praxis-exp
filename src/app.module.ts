@@ -27,7 +27,7 @@ import { shieldPermissions } from './shield/shield.permissions';
 import { UsersModule } from './users/users.module';
 import { VotesModule } from './votes/votes.module';
 
-export const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
+const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
   driver: ApolloDriver,
   imports: [ContextModule],
   inject: [ConfigService, ContextService],
@@ -45,14 +45,15 @@ export const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
   }),
 });
 
+const ViewModule = ServeStaticModule.forRoot({
+  rootPath: join(__dirname, 'view'),
+  exclude: ['/api/(.*)', '/graphql'],
+  renderPath: '/*',
+});
+
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, 'view'),
-      exclude: ['/api/(.*)', '/graphql'],
-      renderPath: '/*',
-    }),
     ApolloModule,
     AuthModule,
     CommentsModule,
@@ -68,6 +69,7 @@ export const ApolloModule = GraphQLModule.forRootAsync<ApolloDriverConfig>({
     ServerRolesModule,
     ShieldModule,
     UsersModule,
+    ViewModule,
     VotesModule,
   ],
 })

@@ -26,6 +26,7 @@ RUN rm -rf node_modules
 RUN rm -rf test
 RUN npm ci --only=production
 RUN rm -rf src
+RUN rm -rf view
 
 FROM node:18.17.1-alpine AS runtime_stage
 
