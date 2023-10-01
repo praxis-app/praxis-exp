@@ -1,6 +1,7 @@
 // TODO: Move text to en.json once documentation is finalized
 
 import { Box, Typography } from '@mui/material';
+import roleChangeProposal from '../../assets/images/role-change-proposal.png';
 import DocsDefinitionListItem from '../../components/Docs/DocsDefinitionListItem';
 import DocsLink from '../../components/Docs/DocsLink';
 import DocsPermissionList from '../../components/Docs/DocsPermissionList';
@@ -60,7 +61,7 @@ const DocsHomePage = () => {
           component="img"
           width="100%"
           height="auto"
-          src="/assets/images/role-change-proposal.png"
+          src={roleChangeProposal}
           sx={{ objectFit: 'cover' }}
         />
 
