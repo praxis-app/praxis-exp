@@ -35,7 +35,6 @@
       "error",
       { "allowSingleExtends": true }
     ],
-    "arrow-body-style": ["error", "as-needed"],
     "curly": ["error", "all"],
     "func-style": ["error", "expression"],
     "no-unreachable": "error",
