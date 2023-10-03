@@ -1,7 +1,7 @@
 import { UserInputError } from '@nestjs/apollo';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FileUpload } from 'graphql-upload';
+import { FileUpload } from 'graphql-upload-ts';
 import { FindOptionsWhere, In, Repository } from 'typeorm';
 import { EventAttendeeStatus } from '../../events/event-attendees/models/event-attendee.model';
 import { GroupRolesService } from '../../groups/group-roles/group-roles.service';

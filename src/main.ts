@@ -4,7 +4,7 @@ import { GraphQLSchemaHost } from '@nestjs/graphql';
 import * as cookieParser from 'cookie-parser';
 import { writeFileSync } from 'fs';
 import { printSchema } from 'graphql';
-import { graphqlUploadExpress } from 'graphql-upload';
+import { graphqlUploadExpress } from 'graphql-upload-ts';
 import { join } from 'path';
 import { AppModule } from './app.module';
 import { Environment } from './shared/shared.constants';

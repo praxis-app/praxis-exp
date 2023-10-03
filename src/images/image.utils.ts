@@ -1,6 +1,6 @@
 import { UnsupportedMediaTypeException } from '@nestjs/common';
 import * as fs from 'fs';
-import { FileUpload } from 'graphql-upload';
+import { FileUpload } from 'graphql-upload-ts';
 import { promisify } from 'util';
 
 const DEFAULT_IMAGES_SIZE = 10;

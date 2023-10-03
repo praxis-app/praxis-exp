@@ -5,7 +5,7 @@
 
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { FileUpload } from 'graphql-upload';
+import { FileUpload } from 'graphql-upload-ts';
 import { FindOptionsWhere, In, Repository } from 'typeorm';
 import { GroupsService } from '../groups/groups.service';
 import { deleteImageFile, saveImage } from '../images/image.utils';
