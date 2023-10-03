@@ -4,7 +4,7 @@
  */
 
 import { Field, InputType } from '@nestjs/graphql';
-import { FileUpload, GraphQLUpload } from 'graphql-upload';
+import { FileUpload, GraphQLUpload } from 'graphql-upload-ts';
 import { ProposalActionEventInput } from '../proposal-action-events/models/proposal-action-event.input';
 import { ProposalActionRoleInput } from '../proposal-action-roles/models/proposal-action-role-input';
 

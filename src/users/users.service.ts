@@ -2,7 +2,7 @@ import { UserInputError } from '@nestjs/apollo';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as fs from 'fs';
-import { FileUpload } from 'graphql-upload';
+import { FileUpload } from 'graphql-upload-ts';
 import { FindOptionsWhere, In, Repository } from 'typeorm';
 import { IsFollowedByMeKey } from '../dataloader/dataloader.types';
 import { GroupPermissionsMap } from '../groups/group-roles/models/group-permissions.type';
