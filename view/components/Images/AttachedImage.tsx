@@ -1,3 +1,4 @@
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { AttachedImageFragment } from '../../apollo/images/generated/AttachedImage.fragment';
 import { getImagePath } from '../../utils/image.utils';
 
@@ -8,14 +9,12 @@ interface Props {
 }
 
 const AttachedImage = ({ image, marginBottom, width = '100%' }: Props) => (
-  <img
+  <LazyLoadImage
     alt={image.filename}
+    effect="blur"
     src={getImagePath(image.id)}
-    style={{
-      display: 'block',
-      marginBottom,
-      width,
-    }}
+    style={{ display: 'block', marginBottom }}
+    width={width}
   />
 );
 

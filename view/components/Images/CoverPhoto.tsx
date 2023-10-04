@@ -1,6 +1,7 @@
 import { Box, SxProps } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import { useTranslation } from 'react-i18next';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useIsDesktop } from '../../hooks/shared.hooks';
 import { getImagePath } from '../../utils/image.utils';
 
@@ -15,10 +16,6 @@ interface Props {
 const CoverPhoto = ({ imageFile, imageId, rounded, topRounded, sx }: Props) => {
   const { t } = useTranslation();
   const isDesktop = useIsDesktop();
-
-  const imageStyles = {
-    transform: `translateY(-${isDesktop ? 210 : 115}px)`,
-  };
 
   const getImageSrc = () => {
     if (imageFile) {
@@ -63,12 +60,13 @@ const CoverPhoto = ({ imageFile, imageId, rounded, topRounded, sx }: Props) => {
         ...sharedBoxStyles,
       }}
     >
-      <img
+      <LazyLoadImage
         alt={t('images.labels.coverPhoto')}
-        placeholder="blur"
-        src={getImageSrc()}
-        style={imageStyles}
+        effect="blur"
         height="auto"
+        src={getImageSrc()}
+        style={{ marginTop: '-25%' }}
+        visibleByDefault={!imageId}
         width="100%"
       />
     </Box>
