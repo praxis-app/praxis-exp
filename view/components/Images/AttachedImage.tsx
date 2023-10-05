@@ -11,7 +11,7 @@ interface Props {
 }
 
 const AttachedImage = ({ image, marginBottom, width = '100%' }: Props) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [isLoading, setIsLoaded] = useState(true);
   const isDesktop = useIsDesktop();
 
   const loadingHeight = isDesktop ? '500px' : '200px';
@@ -21,8 +21,8 @@ const AttachedImage = ({ image, marginBottom, width = '100%' }: Props) => {
       alt={image.filename}
       effect="blur"
       width={width}
-      height={isLoaded ? 'auto' : loadingHeight}
-      onLoad={() => setIsLoaded(true)}
+      height={isLoading ? loadingHeight : 'auto'}
+      onLoad={() => setIsLoaded(false)}
       src={getImagePath(image.id)}
       style={{ display: 'block', marginBottom }}
     />
