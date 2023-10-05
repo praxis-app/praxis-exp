@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { AttachedImageFragment } from '../../apollo/images/generated/AttachedImage.fragment';
+import { useIsDesktop } from '../../hooks/shared.hooks';
 import { getImagePath } from '../../utils/image.utils';
 
 interface Props {
@@ -8,14 +10,23 @@ interface Props {
   width?: string | number;
 }
 
-const AttachedImage = ({ image, marginBottom, width = '100%' }: Props) => (
-  <LazyLoadImage
-    alt={image.filename}
-    effect="blur"
-    src={getImagePath(image.id)}
-    style={{ display: 'block', marginBottom }}
-    width={width}
-  />
-);
+const AttachedImage = ({ image, marginBottom, width = '100%' }: Props) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const isDesktop = useIsDesktop();
+
+  const loadingHeight = isDesktop ? '500px' : '200px';
+
+  return (
+    <LazyLoadImage
+      alt={image.filename}
+      effect="blur"
+      width={width}
+      height={isLoaded ? 'auto' : loadingHeight}
+      onLoad={() => setIsLoaded(true)}
+      src={getImagePath(image.id)}
+      style={{ display: 'block', marginBottom }}
+    />
+  );
+};
 
 export default AttachedImage;
